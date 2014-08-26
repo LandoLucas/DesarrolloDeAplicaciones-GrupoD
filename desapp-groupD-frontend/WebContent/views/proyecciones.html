@@ -1,0 +1,84 @@
+<div class="col-sm-3 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<div class="jumbotron">
+		<h4>Empresas registradas</h4>
+	</div>
+
+	<div class="container-fluid ">
+		<form class="form-horizontal" role="form">
+
+			<form class="form-inline">
+				<a type="submit" class="btn btn-primary" ng-click="nuevaEmpresa()"
+					ng-show="{{m('registrarEmpresa')}}"
+					title="Haga click para agregar una nueva empresa al sistema">Nueva</a>
+			</form>
+			<br />
+			<legend></legend>
+
+			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
+				<label for="inputBusquedaCodigo" class="col-xs-4">Código</label>
+				<div class="col-xs-8">
+					<input type="text" class="form-control" id="inputBusquedaCodigo"
+						ng-model="inputBusquedaCodigo" placeholder="Ingrese el código">
+				</div>
+			</div>
+
+			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
+				<label for="inputBusquedaDescripcion" class="col-xs-4">Descripción</label>
+				<div class="col-xs-8">
+					<input type="text" class="form-control"
+						id="inputBusquedaDescripcion" ng-model="inputBusquedaDescripcion"
+						placeholder="Ingrese la descripción">
+				</div>
+			</div>
+
+			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
+				<label for="inputBusquedaRazonSocial" class="col-xs-4">Razón
+					Social</label>
+				<div class="col-xs-8">
+					<input type="text" class="form-control"
+						id="inputBusquedaRazonSocial" ng-model="inputBusquedaRazonSocial"
+						placeholder="Ingrese la razón social">
+				</div>
+			</div>
+
+			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
+				<label for="inputBusquedaDireccion" class="col-xs-4">Dirección</label>
+				<div class="col-xs-8">
+					<input type="text" class="form-control" id="inputBusquedaDireccion"
+						ng-model="inputBusquedaDireccion"
+						placeholder="Ingrese la dirección">
+				</div>
+			</div>
+
+			<div class="form-group center-block">
+				<button type="submit" ng-click="activate()"
+					class="btn btn-primary col-xs-8 col-xs-offset-4 col-lg-3 col-lg-offset-4">Buscar</button>
+			</div>
+		</form>
+	</div>
+
+	<h2 class="sub-header"></h2>
+	<div class="table-responsive">
+		<table ng-table="tableParams" class="table ng-table-responsive"
+			show-filter="true">
+			<tr ng-repeat="empresa in resultadoEmpresas">
+				<td data-title="'Código'">{{empresa.codigo}}</td>
+				<td data-title="'Descripción'">{{empresa.descripcion}}</td>
+				<td data-title="'Dirección'">{{empresa.direccion}}</td>
+				<td data-title="'Razón Social'">{{empresa.razonSocial}}</td>
+				<td data-title="'Sucursales'">{{empresa.cantidadSucursales}}</td>
+				<td data-title="'Sectores'">{{empresa.cantidadSectores}}</td>
+				<td data-title="'Terminales'">{{empresa.cantidadTerminales}}</td>
+				<td data-title="'Acciones'"><button type="button"
+						class="btn btn-warning"
+						ng-click="prepararEditarEmpresa(empresa.id)"
+						ng-show="{{m('actualizarEmpresa')}}"
+						title="Editar la empresa {{empresa.codigo}}">Editar</button>
+					<button type="button" class="btn btn-danger"
+						ng-show="{{m('borrarEmpresa')}}"
+						ng-click="confirmacionBorrarEmpresa(empresa.id,empresa.razonSocial)"
+						title="Borrar la empresa {{empresa.codigo}}">Borrar</button></td>
+			</tr>
+		</table>
+	</div>
+</div>

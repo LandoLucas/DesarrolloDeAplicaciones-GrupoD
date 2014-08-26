@@ -1,0 +1,56 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<div class="jumbotron">
+		<h4>{{titulo}}</h4>
+	</div>
+	<div class="container-fluid">
+
+		<div class="bs-example">
+			<form name="crudEmpresa" class="form-horizontal" >
+				<div class="form-group">
+					<label for="inputCodigo" class="control-label col-xs-2">Código</label>
+					<div class="col-xs-10">
+						<input type="text" ng-pattern="/^[0-9]+$/"  class="form-control" id="inputCodigo"
+							ng-model="inputCodigo" placeholder="Ingrese el código"
+							 >
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputRazonSocial" class="control-label col-xs-2">Razón
+						Social</label>
+					<div class="col-xs-10">
+						<input type="text" class="form-control" id="inputRazonSocial"
+							ng-model="inputRazonSocial" placeholder="Ingrese la razón social">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputDireccion" class="control-label col-xs-2">Dirección</label>
+					<div class="col-xs-10">
+						<input type="text" class="form-control" id="inputDireccion"
+							ng-model="inputDireccion" placeholder="Ingrese la dirección">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputDecripcion" class="control-label col-xs-2">Descripción</label>
+					<div class="col-xs-10">
+						<input type="text" class="form-control" id="inputDireccion"
+							ng-model="inputDescripcion" placeholder="Ingrese la descripción">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-xs-offset-2 col-xs-10">
+
+						<button type="submit" class="btn btn-success"
+							ng-show="modoRegistro()" ng-click="registrarEmpresa()">Confirmar</button>
+
+						<button type="submit" class="btn btn-success"
+							ng-click="actualizarEmpresa()" ng-show="modoEdicion()">Actualizar</button>
+
+						<a type="button" class="btn btn-default" ng-href="#empresas">Cancelar</a>
+					</div>
+				</div>
+				
+			</form>
+		</div>
+	</div>
+</div>
+

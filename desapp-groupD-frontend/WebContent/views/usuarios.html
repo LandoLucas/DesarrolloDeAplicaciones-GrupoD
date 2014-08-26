@@ -1,0 +1,100 @@
+
+
+
+<div class="col-sm-3 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<div class="jumbotron">
+		<h4>Usuarios registrados</h4>
+	</div>
+
+	<div class="container-fluid">
+		<form class="form-horizontal" role="form">
+			<form class="form-inline">
+				<a type="submit" class="btn btn-primary" ng-click="nuevoUsuario()"
+					ng-show="{{m('registrarUsuario')}}"
+					title="Haga click para agregar un nuevo usuario al sistema">Nuevo</a>
+			</form>
+			<br />
+			<legend></legend>
+
+			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
+				<label for="inputBusquedaCodigo" class="col-xs-4">Código</label>
+				<div class="col-xs-8">
+					<input type="text" class="form-control" id="inputBusquedaCodigo"
+						ng-model="inputBusquedaCodigo" placeholder="Ingrese el código">
+				</div>
+			</div>
+			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
+				<label for="inputBusquedaLegajo" class="col-xs-4">Legajo</label>
+				<div class="col-xs-8">
+					<input type="text" class="form-control" id="inputBusquedaLegajo"
+						ng-model="inputBusquedaLegajo" placeholder="Ingrese el lejago">
+				</div>
+			</div>
+			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
+				<label for="inputBusquedaNickname" class="col-xs-4"">Nickname</label>
+				<div class="col-xs-8">
+					<input type="text" class="form-control" id="inputBusquedaNickname"
+						ng-model="inputBusquedaNickname" placeholder="Ingrese el nickname">
+				</div>
+			</div>
+			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
+				<label for="inputBusquedaNombre" class="col-xs-4"">Nombre</label>
+				<div class="col-xs-8">
+					<input type="text" class="form-control" id="inputBusquedaNombre"
+						ng-model="inputBusquedaNombre" placeholder="Ingrese el nombre">
+				</div>
+			</div>
+			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
+				<label for="inputBusquedaApellido" class="col-xs-4"">Apellido</label>
+				<div class="col-xs-8">
+					<input type="text" class="form-control" id="inputBusquedaApellido"
+						ng-model="inputBusquedaApellido" placeholder="Ingrese el apellido">
+				</div>
+			</div>
+			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
+				<label for="selectBusquedaNivelDePermiso" class="col-xs-4">Niveles
+					de Permiso</label>
+				<div class="col-xs-8">
+					<select ng-model="selectBusquedaNivelDePermiso"
+						ng-options="nivel as nivel.description for nivel in nivelesDePermiso"
+						class="form-control">
+						<option value="" label="Seleccione una opción" />
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group center-block">
+				<button type="submit" ng-click="buscarUsuarios()"
+					class="btn btn-primary col-xs-8 col-xs-offset-4 col-lg-3 col-lg-offset-4">Buscar</button>
+			</div>
+
+		</form>
+	</div>
+
+	<h2 class="sub-header"></h2>
+	<div class="table-responsive">
+
+		<table ng-table="tableParams" class="table ng-table-responsive"
+			show-filter="true">
+			<tr ng-repeat="usuario in resultadoUsuarios">
+				<td data-title="'Código'">{{usuario.codigo}}</td>
+				<td data-title="'Legajo'">{{usuario.legajo}}</td>
+				<td data-title="'Nickname'">{{usuario.nickname}}</td>
+				<td data-title="'Nombre'">{{usuario.nombre}}</td>
+				<td data-title="'Apellido'">{{usuario.apellido}}</td>
+				<td data-title="'NivelDePermiso'">{{usuario.nivelDePermiso}}</td>
+				<td data-title="'Acciones'"><button type="button"
+						class="btn btn-warning"
+						ng-click="prepararEditarUsuario(usuario.id)"
+						ng-show="{{m('actualizarUsuario')}}"
+						title="Editar Usuario {{usuario.nickname}}">Editar</button>
+					<button type="button" class="btn btn-danger"
+						ng-show="{{m('borrarUsuario')}}"
+						ng-click="confirmacionBorrarUsuario(usuario.id, usuario.codigo)"
+						title="Eliminar usuario {{usuario.nickname}}">Borrar</button></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+</div>

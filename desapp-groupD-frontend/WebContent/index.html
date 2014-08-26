@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sistema de gestión</title>
+<meta name="description" content="">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Stylesheets placed first for inmediate expected visualization -->
+<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" />
+<link href="styles/dashboard.css" rel="stylesheet">
+<link rel="stylesheet" href="styles/main.css">
+<link href="styles/login.css" rel="stylesheet">
+<link
+	href="vendor/angular-bootstrap-duallist/bootstrap-duallistbox.min.css"
+	rel="stylesheet">
+<link href="vendor/angular-ngtable/ng-table.css" rel="stylesheet">
+<link href="vendor/angular-growl/angular-growl.css" rel="stylesheet">
+<link href="vendor/angular-dialog-service/dialogs.css" rel="stylesheet">
+
+
+<!-- endbuild -->
+</head>
+<body ng-app="tp-dapp-eiroa-lando" class="intelliAuth waiting-for-angular">
+
+	<div ng-controller="IndexCtrl" class="content-outer">
+		<!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+		<!-- Content -->
+
+
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation"
+			id="navbar">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Sistema de gestión</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right ">
+						<li class="dropdown" ng-show="true"><a href=""
+							data-toggle="dropdown" class="dropdown-toggle"
+							title="Seleccione que sección a editar">Secciones <b
+								class="caret""></b>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a ng-href="#cargarDatos" ng-show="true"
+									ng-click="restrictedAction()">Cargar datos</a></li>
+								<li><a ng-href="#sectores" ng-show="true"
+									ng-click="restrictedAction()">Gastos y proyecciones</a></li>
+								<li><a ng-href="#sucursales"
+									ng-show="{{m('mod_sucursales')}}" ng-click="restrictedAction()">Sucursales</a></li>
+								<li><a ng-href="#terminales"
+									ng-show="{{m('mod_terminales')}}" ng-click="restrictedAction()">Terminales</a></li>
+								<li class="divider"></li>
+								<li><a ng-href="#usuarios" ng-show="{{m('mod_usuarios')}}"
+									ng-click="restrictedAction()">Usuarios</a></li>
+								<li><a ng-href="#permisos" ng-show="{{m('mod_permisos')}}"
+									ng-click="restrictedAction()">Permisos</a></li>
+								<li class="divider"></li>
+								<li><a ng-click="irAProgramacion()"
+									ng-show="{{m('mod_programacion')}}"
+									ng-click="restrictedAction()">Programación de contenidos</a></li>
+								<li><a ng-href="#sincronizacion"
+									ng-show="{{m('mod_sincronizacion')}}"
+									ng-click="restrictedAction()">Sincronización</a></li>
+							</ul></li>
+						<li><a ng-href="#" ng-click="restrictedAction()"
+							ng-if="true">Inicio</a></li>
+						<li><a ng-href="#" ng-click="restrictedAction()"
+							ng-hide="true">Login</a></li>
+						<li><b class="text"
+							style="display: block; padding-top: 15px; color: white;">{{getUsuario()}}</b></li>
+
+						<li class="divider"></li>
+						<li><a href="#" ng-click="launch('confirm')">Desconectarse</a></li>
+
+
+					</ul>
+
+
+				</div>
+			</div>
+		</div>
+
+		<div growl></div>
+
+
+		<div class="container"  ng-hide="true">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<div class="row clearfix">
+						<div class="col-md-12 column">
+							<div id="login-holder">
+								<div id="loginbox">
+									<div id="login-inner" ng-controller="LoginCtrl">
+										<div class="container">
+											<div class="row">
+												<div class="col-sm-6 col-md-4 col-md-offset-4">
+													<h1 class="text-center login-title"></h1>
+													<div class="account-wall">
+														<center>
+															<img src="images/logo.png" alt="">
+														</center>
+														<form class="form-signin" ng-submit="submitLogin()">
+															<input type="text" class="form-control" ng-model="user"
+																placeholder="nickname" required autofocus> <input
+																type="password" class="form-control"
+																placeholder="contraseña" ng-model="pass" required>
+															<button class="btn btn-lg btn-primary btn-block"
+																type="submit">Ingresar</button>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid" id="main">
+			<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar">
+
+					<div class="list-group" ng-controller="IndexCtrl">
+						<a class="list-group-item" ng-show="UserScope.inMainMenu"
+							ng-class="{active:isActive('/cargarDatos')}" ng-href="#/cargarDatos">Cargar Gastos e Ingresos</a>						
+						<a class="list-group-item"
+							ng-class="{active:isActive('/sectores')}"
+							ng-show="UserScope.inMainMenu" ng-href="#/sectores">Ver gastos y proyecciones</a>
+
+							<a class="list-group-item"
+							ng-class="{active:isActive('/sectores')}"
+							ng-show="UserScope.inCargarDatos" ng-href="#/sectores">Cuentas</a>
+							<a class="list-group-item"
+							ng-class="{active:isActive('/sectores')}"
+							ng-show="UserScope.inCargarDatos" ng-href="#/sectores">Cargar un Ingreso</a>
+							<a class="list-group-item"
+							ng-class="{active:isActive('/sectores')}"
+							ng-show="UserScope.inCargarDatos" ng-href="#/sectores">Cargar un Egreso</a>
+							<a class="list-group-item"
+							ng-class="{active:isActive('/sectores')}"
+							ng-show="UserScope.inCargarDatos" ng-href="#/sectores">Cargar un comprobante</a>
+
+
+						<a class="list-group-item" ng-controller="CargarDatosCtrl" ng-show="{{getState()}}"
+							ng-class="{active:isActive('/sucursales')}"
+							ng-href="#/sucursales">Sucursales</a> 
+						<a class="list-group-item"
+							ng-show="{{m('mod_terminales')}}"
+							ng-class="{active:isActive('/terminales')}" ng-href="#/terminales">Terminales</a> 
+					    <a class="list-group-item"
+							ng-class="{active:isActive('/usuarios')}"
+							ng-show="{{m('mod_usuarios')}}" ng-href="#/usuarios">Usuarios</a>
+						<a class="list-group-item"
+							ng-class="{active:isActive('/permisos')}"
+							ng-show="{{m('mod_permisos')}}" ng-href="#/permisos">Permisos</a>
+						<a class="list-group-item"
+							ng-class="{active:isActive('/programacionDeContenidos')}"
+							ng-show="{{m('mod_programacion')}}" ng-click="irAProgramacion()">Programación
+							de Contenidos</a> 
+						<a class="list-group-item"
+							ng-class="{active:isActive('/sincronizacion')}"
+							ng-show="{{m('mod_sincronizacion')}}" ng-href="#/sincronizacion">Sincronización</a>
+
+					</div>
+				</div>
+
+				<!-- Content redirected from Angular, this may change along the different views -->
+				<div ng-view=""></div>
+			</div>
+		</div>
+
+
+
+
+		<div class="footer" id="footer"></div>
+
+	</div>
+
+
+
+	<!--[if lt IE 9]>
+    <script src="vendor/es5-shim/es5-shim.js"></script>
+    <script src="vendor/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+
+	<!-- Javascripst placed at the end for better user experience -->
+	<script src="vendor/jquery/dist/jquery.js"></script>
+	<script type="text/javascript">
+		jQuery.event.props.push('dataTransfer');
+	</script>
+	<script src="vendor/angular-file-upload/FileAPI.min.js"></script>
+	<script src="vendor/angular-file-upload/shiminhtml5.js"></script>
+	<script data-require="angular.js@*" data-semver="1.2.0-rc3-nonmin"
+		src="vendor/angular/angular.js"></script>
+	<script src="vendor/angular-file-upload/fileuploadmin.js"></script>
+	<script src="vendor/json3/lib/json3.js"></script>
+	<script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="vendor/angular-resource/angular-resource.js"></script>
+	<script src="vendor/angular-mocks/angular-mocks.js"></script>
+	<script src="vendor/angular-translate/angular-translate.min.js"></script>
+	<script src="vendor/angular-cookies/angular-cookies.js"></script>
+	<script src="vendor/angular-sanitize/angular-sanitize.js"></script>
+	<script src="vendor/angular-animate/angular-animate.js"></script>
+	<script src="vendor/angular-touch/angular-touch.js"></script>
+	<script src="vendor/angular-route/angular-route.js"></script>
+	<script src="vendor/angular-drag-and-drop/angular-dragdrop.min.js"></script>
+	<script data-require="ng-table@*" data-semver="0.3.0"
+		src="vendor/angular-ngtable/ng-table.js"></script>
+	<script
+		src="vendor/angular-bootstrap-duallist/angular-bootstrap-duallistbox.min.js"></script>
+	<script
+		src="vendor/angular-bootstrap-duallist/jquery.bootstrap-duallistbox.min.js"></script>
+	<script src="vendor/ngStorage-master/ngStorage.js"></script>
+	<script src="vendor/angular-http-auth-master/http-auth-interceptor.js"></script>
+	<script src="vendor/angular-local-storage/angular-local-storage.min.js"></script>
+	<script src="vendor/checklist-model/checklist-model.js"></script>
+	<script src="vendor/angular-growl/angular-growl.js"></script>
+	<script
+		src="vendor/angular-dialog-service/ui-bootstrap-tpls-0.11.0.min.js"></script>
+	<script src="vendor/angular-dialog-service/dialogs.js"></script>
+	<script
+		src="vendor/angular-dialog-service/dialogs-default-translations.min.js"></script>
+
+
+
+
+
+
+	<!-- Application scripts -->
+	<script src="scripts/env.js"></script>
+	<script src="scripts/app.js"></script>
+	<script src="scripts/services/facade.js"></script>
+	<script src="scripts/services/rootServices.js"></script>
+	<script src="scripts/controllers/helpers/combosHelper.js"></script>
+	<script src="scripts/controllers/helpers/restHelper.js"></script>
+	<script src="scripts/controllers/helpers/mediaHelper.js"></script>
+	<script src="scripts/controllers/helpers/secHelper.js"></script>
+	<script src="scripts/controllers/cargarDatos.js"></script>
+	<script src="scripts/controllers/sucursales.js"></script>
+	<script src="scripts/controllers/sectores.js"></script>
+	<script src="scripts/controllers/permisos.js"></script>
+	<script src="scripts/controllers/acciones.js"></script>
+	<script src="scripts/controllers/usuarios.js"></script>
+	<script src="scripts/controllers/contenidos.js"></script>
+	<script src="scripts/controllers/terminales.js"></script>
+	<script src="scripts/controllers/sectoresYSucursales.js"></script>
+	<script src="scripts/controllers/crudUsuario.js"></script>
+	<script src="scripts/controllers/crudEmpresa.js"></script>
+	<script src="scripts/controllers/crudSucursal.js"></script>
+	<script src="scripts/controllers/programacionDeContenidos.js"></script>
+	<script src="scripts/controllers/crudSector.js"></script>
+	<script src="scripts/controllers/crudTerminal.js"></script>
+	<script src="scripts/controllers/crudPermiso.js"></script>
+	<script src="scripts/modules/login_module.js"></script>
+	<script src="scripts/modules/content_module.js"></script>
+	<script src="scripts/modules/content-mocks_module.js"></script>
+	<script src="scripts/controllers/sincronizacion.js"></script>
+	<script src="scripts/controllers/inicio.js"></script>
+
+
+</body>
+</html>
