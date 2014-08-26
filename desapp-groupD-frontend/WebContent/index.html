@@ -56,23 +56,8 @@
 								<li><a ng-href="#cargarDatos" ng-show="true"
 									ng-click="restrictedAction()">Cargar datos</a></li>
 								<li><a ng-href="#sectores" ng-show="true"
-									ng-click="restrictedAction()">Gastos y proyecciones</a></li>
-								<li><a ng-href="#sucursales"
-									ng-show="{{m('mod_sucursales')}}" ng-click="restrictedAction()">Sucursales</a></li>
-								<li><a ng-href="#terminales"
-									ng-show="{{m('mod_terminales')}}" ng-click="restrictedAction()">Terminales</a></li>
+									ng-click="restrictedAction()">Gastos y proyecciones</a></li>							
 								<li class="divider"></li>
-								<li><a ng-href="#usuarios" ng-show="{{m('mod_usuarios')}}"
-									ng-click="restrictedAction()">Usuarios</a></li>
-								<li><a ng-href="#permisos" ng-show="{{m('mod_permisos')}}"
-									ng-click="restrictedAction()">Permisos</a></li>
-								<li class="divider"></li>
-								<li><a ng-click="irAProgramacion()"
-									ng-show="{{m('mod_programacion')}}"
-									ng-click="restrictedAction()">Programación de contenidos</a></li>
-								<li><a ng-href="#sincronizacion"
-									ng-show="{{m('mod_sincronizacion')}}"
-									ng-click="restrictedAction()">Sincronización</a></li>
 							</ul></li>
 						<li><a ng-href="#" ng-click="restrictedAction()"
 							ng-if="true">Inicio</a></li>
@@ -158,25 +143,11 @@
 							ng-show="UserScope.inCargarDatos" ng-href="#/sectores">Cargar un comprobante</a>
 
 
-						<a class="list-group-item" ng-controller="CargarDatosCtrl" ng-show="{{getState()}}"
-							ng-class="{active:isActive('/sucursales')}"
-							ng-href="#/sucursales">Sucursales</a> 
-						<a class="list-group-item"
-							ng-show="{{m('mod_terminales')}}"
-							ng-class="{active:isActive('/terminales')}" ng-href="#/terminales">Terminales</a> 
+						
 					    <a class="list-group-item"
 							ng-class="{active:isActive('/usuarios')}"
 							ng-show="{{m('mod_usuarios')}}" ng-href="#/usuarios">Usuarios</a>
-						<a class="list-group-item"
-							ng-class="{active:isActive('/permisos')}"
-							ng-show="{{m('mod_permisos')}}" ng-href="#/permisos">Permisos</a>
-						<a class="list-group-item"
-							ng-class="{active:isActive('/programacionDeContenidos')}"
-							ng-show="{{m('mod_programacion')}}" ng-click="irAProgramacion()">Programación
-							de Contenidos</a> 
-						<a class="list-group-item"
-							ng-class="{active:isActive('/sincronizacion')}"
-							ng-show="{{m('mod_sincronizacion')}}" ng-href="#/sincronizacion">Sincronización</a>
+						
 
 					</div>
 				</div>
