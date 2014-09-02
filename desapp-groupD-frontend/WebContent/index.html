@@ -56,11 +56,16 @@
 								class="caret""></b>
 						</a>
 							<ul class="dropdown-menu">
+							<li><a ng-href="#cuentas" ng-show="true"
+									ng-click="restrictedAction()">Cuentas</a></li>
+							<li class="divider"></li>
 								<li><a ng-href="#cargarDatos" ng-show="true"
 									ng-click="restrictedAction()">Cargar datos</a></li>
 								<li><a ng-href="#sectores" ng-show="true"
 									ng-click="restrictedAction()">Gastos y proyecciones</a></li>							
 								<li class="divider"></li>
+								<li><a ng-href="#consolidarCuentas" ng-show="true"
+									ng-click="restrictedAction()">Consolidar Cuentas</a></li>
 							</ul></li>
 						<li><a ng-href="#" ng-click="restrictedAction()"
 							ng-if="true">Inicio</a></li>
@@ -126,24 +131,51 @@
 				<div class="col-sm-3 col-md-2 sidebar">
 
 					<div class="list-group" ng-controller="IndexCtrl">
+					<a class="list-group-item"
+							ng-class="{active:isActive('/cuentas')}"
+							ng-show="UserScope.inMainMenu" ng-href="#/cuentas">Cuentas</a>
 						<a class="list-group-item" ng-show="UserScope.inMainMenu"
 							ng-class="{active:isActive('/cargarDatos')}" ng-href="#/cargarDatos">Cargar Gastos e Ingresos</a>						
 						<a class="list-group-item"
-							ng-class="{active:isActive('/sectores')}"
-							ng-show="UserScope.inMainMenu" ng-href="#/sectores">Ver gastos y proyecciones</a>
+							ng-class="{active:isActive('/gastosYProyecciones')}"
+							ng-show="UserScope.inMainMenu" ng-href="#/gastosYProyecciones">Ver gastos y proyecciones</a>
+							
+						<a class="list-group-item"
+							ng-class="{active:isActive('/consolidarCuentas')}"
+							ng-show="UserScope.inMainMenu" ng-href="#/consolidarCuentas">Consolidar cuentas</a>
 
+							
 							<a class="list-group-item"
-							ng-class="{active:isActive('/sectores')}"
-							ng-show="UserScope.inCargarDatos" ng-href="#/sectores">Cuentas</a>
+							ng-class="{active:isActive('/ingreso')}"
+							ng-click="setInNewIncome()"
+							ng-show="UserScope.inCargarDatos" ng-href="#/ingreso">Cargar un Ingreso</a>
 							<a class="list-group-item"
-							ng-class="{active:isActive('/sectores')}"
-							ng-show="UserScope.inCargarDatos" ng-href="#/sectores">Cargar un Ingreso</a>
+							ng-click="setInNewOutcome()"
+							ng-class="{active:isActive('/egreso')}"
+							ng-show="UserScope.inCargarDatos" ng-href="#/egreso">Cargar un Egreso</a>
 							<a class="list-group-item"
-							ng-class="{active:isActive('/sectores')}"
-							ng-show="UserScope.inCargarDatos" ng-href="#/sectores">Cargar un Egreso</a>
-							<a class="list-group-item"
-							ng-class="{active:isActive('/sectores')}"
-							ng-show="UserScope.inCargarDatos" ng-href="#/sectores">Cargar un comprobante</a>
+							ng-class="{active:isActive('/comprobantes')}"
+							ng-show="UserScope.inCargarDatos" ng-href="#/comprobantes">Cargar un comprobante</a>
+							<button class="list-group-item"
+							ng-click="setPurchase()"
+							ng-show="UserScope.inBills" >Comprobante de compra</button>
+							
+							<button class="list-group-item"
+							ng-click="setSale()"
+							ng-show="UserScope.inBills">Comprobante de venta</button>
+							
+							<button class="list-group-item"
+							ng-click="setTypeA()"
+							ng-show="UserScope.inBillType" >Tipo A</button>
+							<button class="list-group-item"
+							ng-click="setTypeB()"
+							ng-show="UserScope.inBillType">Tipo B</button>
+							<button class="list-group-item"
+							ng-click="setTypeC()"
+							ng-show="UserScope.inBillType" >Tipo C</button>
+							<button class="list-group-item"
+							ng-click="setTypeX()"
+							ng-show="UserScope.inBillType" >Tipo X</button>
 
 
 						
@@ -228,6 +260,8 @@
 	<script src="scripts/controllers/helpers/mediaHelper.js"></script>
 	<script src="scripts/controllers/helpers/secHelper.js"></script>
 	<script src="scripts/controllers/cargarDatos.js"></script>
+	<script src="scripts/controllers/accounts.js"></script>
+		<script src="scripts/controllers/crudOperation.js"></script>
 	<script src="scripts/modules/login_module.js"></script>
 	<script src="scripts/modules/content_module.js"></script>
 	<script src="scripts/modules/content-mocks_module.js"></script>

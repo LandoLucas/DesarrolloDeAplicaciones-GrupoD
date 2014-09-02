@@ -33,7 +33,15 @@
 								return localStorageService.get('userInMainMenu');
 							}; 
 
-
+							$scope.setInNewOutcome = function(){
+								$rootScope.editingOperation = false;
+								$rootScope.outcomeOperation =true;
+							};
+							
+							$scope.setInNewIncome = function(){
+								$rootScope.editingOperation = false;
+								$rootScope.outcomeOperation =false;
+							};
 
 							$rootScope.inDatos = false;
 							$scope.usuarioLogueado = localStorageService
@@ -230,6 +238,19 @@
 			}).when('/about', {
 				templateUrl : 'views/about.html',
 				controller : 'AboutCtrl'
+			}).when('/ingreso', {
+				templateUrl : 'views/crudMovimiento.html',
+				controller : 'CrudOperationCtrl'
+				
+			}).when('/egreso', {
+				templateUrl : 'views/crudMovimiento.html',
+				controller : 'CrudOperationCtrl'
+			}).when('/cuentas', {
+				templateUrl : 'views/financialAccounts.html',
+				controller : 'AccountCtrl'
+			}).when('/comprobantes', {
+				templateUrl : 'views/comprobantes.html',
+				controller : 'ComprobanteCtrl'
 			}).when('/cargarDatos', {
 				templateUrl : 'views/cargarDatos.html',
 				controller : 'CargarDatosCtrl'

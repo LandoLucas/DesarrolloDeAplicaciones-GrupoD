@@ -5,7 +5,8 @@ var rootServices = angular.module('tp-dapp-eiroa-lando.services', []);
 rootServices.service('globalService', function () {
     this.UserScope = {
         inMainMenu: 'false',
-        inCargarDatos: 'false'
+        inCargarDatos: 'false',
+        inNewOperation: 'false'
     };
     this.getUserPosition= function () {
         return this.UserScope;
@@ -27,5 +28,13 @@ rootServices.service('globalService', function () {
     };
     this.setInCargarDatos = function (){
     	this.anulateAllExcept('inCargarDatos');
+    };
+    
+    this.setInNewOperation = function (){
+    	this.anulateAllExcept('inNewOperation');
+    };
+    
+    this.setInNewBill = function (){
+    	this.anulateAllExcept('inNewBill');
     };
 });
