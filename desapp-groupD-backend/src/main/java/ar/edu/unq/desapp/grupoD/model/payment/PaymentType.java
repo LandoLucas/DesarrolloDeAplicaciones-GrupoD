@@ -2,23 +2,23 @@ package ar.edu.unq.desapp.grupoD.model.payment;
 
 import ar.edu.unq.desapp.grupoD.model.account.Account;
 
-/**
- * Supported payment types are:
- * - Cash
- * - Credit card
- * - Bank account transfer 
- * @author Lucas
- *
- */
-public abstract class PaymentType {
+public class PaymentType {
 
 	protected Account account;
-	
+
+	protected Account getAccount() {
+		return account;
+	}
+
+	protected void setAccount(Account account) {
+		this.account = account;
+	}
+
 	/**
-	 * Delegates to the account the process of billing
-	 * @param amount of the operation to add or substract
+	 * Delegates the process of billing to the account
+	 * @param amount
 	 */
-	public void bill(double amount){
+	public void bill(double amount) {
 		this.account.bill(amount);
 	}
 

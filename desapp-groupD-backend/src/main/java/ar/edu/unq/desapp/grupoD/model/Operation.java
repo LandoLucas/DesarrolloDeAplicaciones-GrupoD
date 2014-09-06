@@ -3,6 +3,7 @@ package ar.edu.unq.desapp.grupoD.model;
 import org.joda.time.DateTime;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
+import ar.edu.unq.desapp.grupoD.exceptions.InvalidOperationIDException;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 
@@ -61,10 +62,11 @@ public class Operation {
 
 	/**
 	 * Sets the optional operationID.
-	 * 
-	 * @param operationID
+	 * @param operationID to be set. An int above 0
+	 * @throws InvalidOperationID If the ID is equal or below 0
 	 */
-	public void setOperationID(int operationID) {
+	public void setOperationID(int operationID) throws InvalidOperationIDException {
+		if(operationID <= 0 )throw new InvalidOperationIDException();
 		// TODO we need to check if this ID already exists. It could be done
 		// against the database once we have it
 		this.operationID = operationID;

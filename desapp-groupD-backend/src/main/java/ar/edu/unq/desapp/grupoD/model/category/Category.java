@@ -12,4 +12,19 @@ public class Category {
 	private static String categoryName;
 	private static SubCategory subcategory;
 	
+	
+	public static String getCategoryName() {
+		return categoryName;
+	}
+	public static void setCategoryName(String categoryName) {
+		Category.categoryName = categoryName;
+	}
+	public static SubCategory getSubcategory() {
+		return subcategory;
+	}
+	public static void setSubcategory(SubCategory subcategory) {
+		Category.subcategory = subcategory;
+	}
+	
+	
 }
