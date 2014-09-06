@@ -11,4 +11,14 @@ package ar.edu.unq.desapp.grupoD.model.category;
 public class Concept {
 
 	private static String conceptName;
+
+	public static String getConceptName() {
+		return conceptName;
+	}
+
+	public static void setConceptName(String conceptName) {
+		Concept.conceptName = conceptName;
+	}
+
+	
 }

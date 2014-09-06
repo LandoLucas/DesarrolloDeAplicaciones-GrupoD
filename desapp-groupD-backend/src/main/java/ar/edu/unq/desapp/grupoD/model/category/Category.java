@@ -12,7 +12,6 @@ public class Category {
 	private static String categoryName;
 	private static SubCategory subcategory;
 	
-	
 	public static String getCategoryName() {
 		return categoryName;
 	}
@@ -25,6 +24,5 @@ public class Category {
 	public static void setSubcategory(SubCategory subcategory) {
 		Category.subcategory = subcategory;
 	}
-	
 	
 }
