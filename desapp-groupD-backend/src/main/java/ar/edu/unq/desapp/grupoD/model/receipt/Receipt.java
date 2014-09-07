@@ -21,7 +21,7 @@ public abstract class Receipt {
 	protected String address;
 	protected int telephoneNumber;
 	protected double finalImport;
-	protected double operationID;
+	protected int operationID;
 
 	protected Receipt(DateTime date, int receiptNumber,
 			String clientOrLegalEntityName, String firmName, String cUIT,
@@ -38,7 +38,7 @@ public abstract class Receipt {
 		this.setFinalImport(finalImport);
 	}
 
-	protected double getOperationID() {
+	protected int getOperationID() {
 		return operationID;
 	}
 
@@ -46,7 +46,7 @@ public abstract class Receipt {
 	 * Sets an optional operationID to correspond this receipt with an operation on the system
 	 * @param operationID
 	 */
-	protected void setOperationID(double operationID) {
+	protected void setOperationID(int operationID) {
 		this.operationID = operationID;
 	}
 

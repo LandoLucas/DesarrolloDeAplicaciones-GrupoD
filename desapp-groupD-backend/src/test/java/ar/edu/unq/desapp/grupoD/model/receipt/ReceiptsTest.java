@@ -59,6 +59,30 @@ public class ReceiptsTest {
 		assertEquals( telephoneNumber , receipt.getTelephoneNumber());
 		assertEquals(finalImport, receipt.getFinalImport() , 0.000001);
 	}
+
+	@Test
+	public void newReceiptTypeXTest() throws InvalidReceiptNumberException{
+		DateTime date = new DateTime();
+		int receiptNumber = 1;
+		String clientOrLegalEntityName = "The Coca Cola Company";
+		String firmName = "Coka Cola";
+		String cUIT = "20-33123123-2";
+		String address = "Street n°123 State";
+		int telephoneNumber = 41321234;
+		double finalImport = 1000;
+
+		Receipt receipt = new ReceiptTypeX(date, receiptNumber, clientOrLegalEntityName, firmName, cUIT, address, telephoneNumber, finalImport);
+				
+		assertSame( date , receipt.getDate());
+		assertEquals( receiptNumber , receipt.getReceiptNumber());
+		assertEquals( clientOrLegalEntityName, receipt.getClientOrLegalEntityName());
+		assertEquals( firmName , receipt.getFirmName());
+		assertEquals( cUIT , receipt.getCUIT());
+		assertEquals( address , receipt.getAddress());
+		assertEquals( telephoneNumber , receipt.getTelephoneNumber());
+		assertEquals(finalImport, receipt.getFinalImport() , 0.000001);
+	}
+
 	
 	
 	@Test(expected = InvalidReceiptNumberException.class)
@@ -69,6 +93,18 @@ public class ReceiptsTest {
 		receiptBuilder.build();
 	}
 
+	
+	@Test
+	public void getAndSetOperationID() throws InvalidReceiptNumberException{
+		ReceiptBuilder receiptBuilder = new ReceiptBuilder();
+		Receipt receipt = receiptBuilder.build();
+		int operationID = 12;
+		
+		receipt.setOperationID(operationID);
+		
+		assertEquals(operationID , receipt.getOperationID());
+		
+	}
 	
 	@Test
 	public void newReceiptTypeATest() throws InvalidReceiptNumberException{
