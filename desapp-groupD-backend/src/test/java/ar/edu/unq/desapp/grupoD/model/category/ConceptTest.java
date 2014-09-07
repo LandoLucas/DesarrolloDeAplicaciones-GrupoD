@@ -3,6 +3,9 @@ package ar.edu.unq.desapp.grupoD.model.category;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
+/**
+ * @author Lucas
+ */
 public class ConceptTest {
 
 	

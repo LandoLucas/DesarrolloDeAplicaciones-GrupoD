@@ -13,6 +13,9 @@ import ar.edu.unq.desapp.grupoD.exceptions.InvalidOperationIDException;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 
+/**
+ * @author Lucas
+ */
 public class OperationTest {
 
 	

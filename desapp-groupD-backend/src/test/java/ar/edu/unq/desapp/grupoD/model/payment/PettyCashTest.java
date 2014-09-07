@@ -6,6 +6,9 @@ import static org.mockito.Mockito.*;
 
 import ar.edu.unq.desapp.grupoD.model.account.Account;
 
+/**
+ * @author Lucas
+ */
 public class PettyCashTest {
 
 	

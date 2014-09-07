@@ -8,6 +8,9 @@ import org.junit.Test;
 
 import ar.edu.unq.desapp.grupoD.model.account.Account;
 
+/**
+ * @author Lucas
+ */
 public class BankTransferTest {
 
 	
