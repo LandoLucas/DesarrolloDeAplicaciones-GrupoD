@@ -44,7 +44,7 @@ public class ReceiptTypeA extends Receipt {
 		this.setGravado(gravado);
 		this.setNoGravado(noGravado);
 
-		this.setFinalImport( calculateBaseImport() );
+		this.setFinalImport( calculateFinalImport() );
 	}
 
 	public double getIVA() {
@@ -79,7 +79,7 @@ public class ReceiptTypeA extends Receipt {
 		this.noGravado = noGravado;
 	}
 	
-	private double calculateBaseImport() {
+	private double calculateFinalImport() {
 		return IVA + IIBB + gravado + noGravado;
 	}
 
