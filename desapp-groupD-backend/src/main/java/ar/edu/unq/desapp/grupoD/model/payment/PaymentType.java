@@ -2,7 +2,7 @@ package ar.edu.unq.desapp.grupoD.model.payment;
 
 import ar.edu.unq.desapp.grupoD.model.account.Account;
 
-public class PaymentType {
+public abstract class PaymentType {
 
 	protected Account account;
 

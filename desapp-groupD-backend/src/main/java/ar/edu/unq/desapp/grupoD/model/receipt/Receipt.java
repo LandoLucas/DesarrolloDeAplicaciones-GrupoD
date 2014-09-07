@@ -21,10 +21,12 @@ public abstract class Receipt {
 	protected String address;
 	protected int telephoneNumber;
 	protected double finalImport;
+	protected double operationID;
 
 	protected Receipt(DateTime date, int receiptNumber,
 			String clientOrLegalEntityName, String firmName, String cUIT,
-			String address, int telephoneNumber, double finalImport) throws InvalidReceiptNumberException {
+			String address, int telephoneNumber, double finalImport)
+			throws InvalidReceiptNumberException {
 		super();
 		this.setDate(date);
 		this.setReceiptNumber(receiptNumber);
@@ -34,6 +36,18 @@ public abstract class Receipt {
 		this.setAddress(address);
 		this.setTelephoneNumber(telephoneNumber);
 		this.setFinalImport(finalImport);
+	}
+
+	protected double getOperationID() {
+		return operationID;
+	}
+
+	/**
+	 * Sets an optional operationID to correspond this receipt with an operation on the system
+	 * @param operationID
+	 */
+	protected void setOperationID(double operationID) {
+		this.operationID = operationID;
 	}
 
 	protected DateTime getDate() {
@@ -48,8 +62,10 @@ public abstract class Receipt {
 		return receiptNumber;
 	}
 
-	protected void setReceiptNumber(int receiptNumber) throws InvalidReceiptNumberException {
-		if(receiptNumber <= 0)throw new InvalidReceiptNumberException();
+	protected void setReceiptNumber(int receiptNumber)
+			throws InvalidReceiptNumberException {
+		if (receiptNumber <= 0)
+			throw new InvalidReceiptNumberException();
 		this.receiptNumber = receiptNumber;
 	}
 
