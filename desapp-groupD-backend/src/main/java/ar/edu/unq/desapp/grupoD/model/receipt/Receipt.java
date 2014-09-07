@@ -11,21 +11,20 @@ import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
  * 
  * @author Lucas
  */
-public class Receipt {
+public abstract class Receipt {
 
-	private DateTime date;
-	private int receiptNumber;
-	private String clientOrLegalEntityName;
-	private String firmName;
-	private String CUIT;
-	private String address;
-	private int telephoneNumber;
-	private ReceiptType receiptType;
+	protected DateTime date;
+	protected int receiptNumber;
+	protected String clientOrLegalEntityName;
+	protected String firmName;
+	protected String CUIT;
+	protected String address;
+	protected int telephoneNumber;
+	protected double finalImport;
 
-	
-	public Receipt(DateTime date, int receiptNumber,
+	protected Receipt(DateTime date, int receiptNumber,
 			String clientOrLegalEntityName, String firmName, String cUIT,
-			String address, int telephoneNumber, ReceiptType receiptType) throws InvalidReceiptNumberException {
+			String address, int telephoneNumber, double finalImport) throws InvalidReceiptNumberException {
 		super();
 		this.setDate(date);
 		this.setReceiptNumber(receiptNumber);
@@ -34,72 +33,72 @@ public class Receipt {
 		this.setCUIT(cUIT);
 		this.setAddress(address);
 		this.setTelephoneNumber(telephoneNumber);
-		this.setReceiptType(receiptType);
+		this.setFinalImport(finalImport);
 	}
 
-	public DateTime getDate() {
+	protected DateTime getDate() {
 		return date;
 	}
 
-	public void setDate(DateTime date) {
+	protected void setDate(DateTime date) {
 		this.date = date;
 	}
 
-	public int getReceiptNumber() {
+	protected int getReceiptNumber() {
 		return receiptNumber;
 	}
 
-	public void setReceiptNumber(int receiptNumber) throws InvalidReceiptNumberException {
-		if(receiptNumber <=0) throw new InvalidReceiptNumberException();
+	protected void setReceiptNumber(int receiptNumber) throws InvalidReceiptNumberException {
+		if(receiptNumber <= 0)throw new InvalidReceiptNumberException();
 		this.receiptNumber = receiptNumber;
 	}
 
-	public String getClientOrLegalEntityName() {
+	protected String getClientOrLegalEntityName() {
 		return clientOrLegalEntityName;
 	}
 
-	public void setClientOrLegalEntityName(String clientOrLegalEntityName) {
+	protected void setClientOrLegalEntityName(String clientOrLegalEntityName) {
 		this.clientOrLegalEntityName = clientOrLegalEntityName;
 	}
 
-	public String getFirmName() {
+	protected String getFirmName() {
 		return firmName;
 	}
 
-	public void setFirmName(String firmName) {
+	protected void setFirmName(String firmName) {
 		this.firmName = firmName;
 	}
 
-	public String getCUIT() {
+	protected String getCUIT() {
 		return CUIT;
 	}
 
-	public void setCUIT(String cUIT) {
+	protected void setCUIT(String cUIT) {
 		CUIT = cUIT;
 	}
 
-	public String getAddress() {
+	protected String getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	protected void setAddress(String address) {
 		this.address = address;
 	}
 
-	public int getTelephoneNumber() {
+	protected int getTelephoneNumber() {
 		return telephoneNumber;
 	}
 
-	public void setTelephoneNumber(int telephoneNumber) {
+	protected void setTelephoneNumber(int telephoneNumber) {
 		this.telephoneNumber = telephoneNumber;
 	}
 
-	public ReceiptType getReceiptType() {
-		return receiptType;
+	protected double getFinalImport() {
+		return finalImport;
 	}
 
-	public void setReceiptType(ReceiptType receiptType) {
-		this.receiptType = receiptType;
+	protected void setFinalImport(double finalImport) {
+		this.finalImport = finalImport;
 	}
 
 }
