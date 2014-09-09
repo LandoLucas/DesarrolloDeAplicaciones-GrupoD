@@ -6,9 +6,9 @@
 	<div class="container-fluid">
 
 		<div class="bs-example">
-			<form name="crudOperation" class="form-horizontal" >
-			
-			<div class="form-group">
+			<form name="crudOperation" class="form-horizontal">
+
+				<div class="form-group">
 					<label for="inputCodigo" class="control-label col-xs-2">Código</label>
 					<div class="col-xs-10">
 						<input type="text" class="form-control" id="inputCode"
@@ -18,12 +18,11 @@
 				<div class="form-group">
 					<label for="inputDate" class="control-label col-xs-2">Fecha</label>
 					<div class="col-xs-10">
-						<input type="date"   class="form-control" id="inputDate"
-							ng-model="inputDate" 
-							 >
+						<input type="date" class="form-control" id="inputDate"
+							ng-model="inputDate">
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label for="inputAmount" class="control-label col-xs-2">Monto</label>
 					<div class="col-xs-10">
@@ -32,37 +31,64 @@
 					</div>
 				</div>
 				
+
+				
 				<div class="form-group">
 					<label for="selectCategory" class="control-label col-xs-2">Seleccione
 						la categoría</label>
 					<div class="col-xs-10">
-						<select ng-model="selectCategory"
-							ng-options="cat as cat.description for cat in categories"
-							class="form-control" >
-							<option value="" label="Seleccione una opción"></option>
-						</select>
+						<div class="form-inline">
+							<div class="form-group">
+								<select ng-model="selectCategory"
+									ng-options="cat as cat.description for cat in categories"
+									class="form-control"
+									style="width:200px;margin-left:15px;">
+									<option value="" label="Seleccione una opción"></option>
+									
+								</select>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-info form control"
+								style="padding:2px;margin-left:35px;"
+									ng-click="dialogNewCategory()">Nueva categoría</button>
+							</div>
+						</div>
+
+
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label for="selectSubCategory" class="control-label col-xs-2">Seleccione
 						la sub categoría</label>
 					<div class="col-xs-10">
-						<select ng-model="selectSubCategory"
+						<div class="form-inline ">
+							<div class="form-group">
+							<select ng-model="selectSubCategory"
 							ng-options="cat as catsub.description for catsub in subcategories"
-							class="form-control" >
+							class="form-control"
+							style="width:200px;margin-left:15px;">
 							<option value="" label="Seleccione una opción"></option>
 						</select>
+						</div>
+							<div class="form-group">
+							<button type="submit" class="btn btn-info form control"
+								style="padding:2px;margin-left:35px;"
+									ng-click="dialogNewSubcategory()">Nueva sub-categoría</button>
+							
+							</div>
+						</div>
+						
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label for="selectPaymentType" class="control-label col-xs-2">Seleccione
 						el tipo de pago</label>
 					<div class="col-xs-10">
 						<select ng-model="selectPaymentType"
 							ng-options="ptype as ptype.name for ptype in ptypes"
-							class="form-control" >
+							class="form-control">
 							<option value="" label="Seleccione una opción"></option>
 						</select>
 					</div>
@@ -83,10 +109,10 @@
 						<button type="submit" class="btn btn-success"
 							ng-click="updateOperation()" ng-show="modoEdicion()">Actualizar</button>
 
-						<a type="button" class="btn btn-default" ng-href="#empresas">Cancelar</a>
+						<a type="button" class="btn btn-default" ng-href="#cargarDatos">Cancelar</a>
 					</div>
 				</div>
-				
+
 			</form>
 		</div>
 	</div>
