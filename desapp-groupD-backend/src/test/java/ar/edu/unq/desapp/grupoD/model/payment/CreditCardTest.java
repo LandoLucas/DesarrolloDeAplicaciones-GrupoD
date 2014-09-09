@@ -6,6 +6,7 @@ import static org.mockito.Mockito.verify;
 
 import org.junit.Test;
 
+import ar.edu.unq.desapp.grupoD.model.Operation;
 import ar.edu.unq.desapp.grupoD.model.account.Account;
 
 /**
@@ -25,13 +26,14 @@ public class CreditCardTest {
 
 	@Test
 	public void billTest(){
+		Operation operation = mock(Operation.class);
 		Account account = mock(Account.class);
 		CreditCard creditCard = new CreditCard(account);
 		double amount = 10d;
 		
-		creditCard.bill(amount);
+		creditCard.bill(amount, operation);
 	
-		verify(account).bill(amount);
+		verify(account).bill(amount, operation);
 	}
 	
 	

@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoD.model.payment;
 
+import ar.edu.unq.desapp.grupoD.model.Operation;
 import ar.edu.unq.desapp.grupoD.model.account.Account;
 
 public abstract class PaymentType {
@@ -18,8 +19,16 @@ public abstract class PaymentType {
 	 * Delegates the process of billing to the account
 	 * @param amount
 	 */
-	public void bill(double amount) {
-		this.account.bill(amount);
+	public void bill(double amount , Operation operation) {
+		this.account.bill(amount, operation);
+	}
+
+	/**
+	 * @return the amount of days is necessary to 'wait' until the money is available.
+	 * In case of the credit cards, this takes 15 days
+	 */
+	public int getTimeToCredit() {
+		return 0;
 	}
 
 }

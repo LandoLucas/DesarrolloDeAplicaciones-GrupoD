@@ -19,6 +19,16 @@ public class Account {
 			new DebitAccount(amount, operation);
 	}
 
+	/**
+	 * This method is used when it is necessary to adjust an account balance. It is intended to be an immediate change on the total to reflect real values. 
+	 * @param amount to be corrected
+	 * @param isIncome to know if there is need to add or substract money
+	 */
+	public void adjustAccount(double amount, boolean isIncome) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 }

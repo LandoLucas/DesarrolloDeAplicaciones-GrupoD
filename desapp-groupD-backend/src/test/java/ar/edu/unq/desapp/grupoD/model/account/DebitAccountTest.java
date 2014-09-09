@@ -1,12 +1,14 @@
 package ar.edu.unq.desapp.grupoD.model.account;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.junit.Test;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
-import ar.edu.unq.desapp.grupoD.exceptions.InvalidOperationIDException;
 import ar.edu.unq.desapp.grupoD.model.Operation;
 import ar.edu.unq.desapp.grupoD.model.payment.BankTransfer;
 import ar.edu.unq.desapp.grupoD.model.payment.CreditCard;
@@ -18,12 +20,15 @@ import ar.edu.unq.desapp.grupoD.model.payment.PettyCash;
 public class DebitAccountTest {
 
 	@Test
-	public void TestDebitAccountConstructorIfIncome() throws InvalidOperationIDException {
+	public void TestDebitAccountConstructorIfIncome() {
 		double amount = 10;
 		int operationID = 1;
 		Operation operation = mock(Operation.class);
+		PaymentType paymentType = mock(PaymentType.class);
 		when(operation.getOperationID()).thenReturn(operationID);
 		when(operation.isIncome()).thenReturn(true);
+		when(operation.getPaymentType()).thenReturn( paymentType );
+		when(paymentType.getTimeToCredit()).thenReturn( 0 );
 		
 		DebitAccount debitAccount = new DebitAccount(amount, operation);
 		
@@ -32,12 +37,15 @@ public class DebitAccountTest {
 	}
 	
 	@Test
-	public void TestDebitAccountConstructorIfOutcome() throws InvalidOperationIDException {
+	public void TestDebitAccountConstructorIfOutcome() {
 		double amount = 10;
 		int operationID = 1;
 		Operation operation = mock(Operation.class);
 		when(operation.getOperationID()).thenReturn(operationID);
 		when(operation.isIncome()).thenReturn(false);
+		PaymentType paymentType = mock(PaymentType.class);
+		when(operation.getPaymentType()).thenReturn( paymentType );
+		when(paymentType.getTimeToCredit()).thenReturn( 0 );
 		
 		DebitAccount debitAccount = new DebitAccount(amount, operation);
 		
@@ -46,12 +54,13 @@ public class DebitAccountTest {
 	}
 	
 	@Test
-	public void TestSetTimeToCreditIfCreditCard() throws InvalidOperationIDException {
+	public void TestSetTimeToCreditIfCreditCard() {
 		double amount = 10;
 		Operation operation = mock(Operation.class);
 		CreditCard creditCard = mock(CreditCard.class);
-		PaymentType paymentType =mock(PaymentType.class);
-		when(operation.getPaymentType().getTimeToCredit()).thenReturn(15);
+		PaymentType paymentType = mock(PaymentType.class);
+		when(operation.getPaymentType()).thenReturn(paymentType);
+		when(paymentType.getTimeToCredit()).thenReturn(15);
 		
 		DebitAccount debitAccount = new DebitAccount(amount, operation);
 		
@@ -59,7 +68,7 @@ public class DebitAccountTest {
 	}
 	
 	@Test
-	public void TestSetTimeToCreditIfBankTransfer() throws InvalidOperationIDException {
+	public void TestSetTimeToCreditIfBankTransfer() {
 		double amount = 10;
 		Operation operation = mock(Operation.class);
 		BankTransfer bankTransfer = mock(BankTransfer.class);
@@ -71,7 +80,7 @@ public class DebitAccountTest {
 	}
 	
 	@Test
-	public void TestSetTimeToCreditIfPettyCash() throws InvalidOperationIDException {
+	public void TestSetTimeToCreditIfPettyCash() {
 		double amount = 10;
 		Operation operation = mock(Operation.class);
 		PettyCash pettyCash = mock(PettyCash.class);
@@ -86,11 +95,15 @@ public class DebitAccountTest {
 	public void TestGenerateCredit() throws InvalidAmountException{
 		double amount = 10;
 		Operation operation = mock(Operation.class);
-		
+		PaymentType paymentType = mock(PaymentType.class);
+		when(operation.getPaymentType()).thenReturn( paymentType );
+		when(paymentType.getTimeToCredit()).thenReturn( 0 );
+		when(operation.getAmount()).thenReturn(100d);
 		DebitAccount debitAccount = new DebitAccount(amount, operation);
 		
-		verify(debitAccount).generateCredit();
-		
+		debitAccount.generateCredit();
+	
+		fail("pending assertions");
 	}
 
 }

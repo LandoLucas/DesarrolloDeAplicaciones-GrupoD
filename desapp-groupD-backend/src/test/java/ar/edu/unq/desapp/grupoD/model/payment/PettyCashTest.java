@@ -1,9 +1,10 @@
 package ar.edu.unq.desapp.grupoD.model.payment;
 
 import org.junit.Test;
+
 import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.*;
-
+import ar.edu.unq.desapp.grupoD.model.Operation;
 import ar.edu.unq.desapp.grupoD.model.account.Account;
 
 /**
@@ -23,13 +24,14 @@ public class PettyCashTest {
 
 	@Test
 	public void billTest(){
+		Operation operation = mock(Operation.class);
 		Account account = mock(Account.class);
 		PettyCash pettyCash = new PettyCash(account);
 		double amount = 10d;
 		
-		pettyCash.bill(amount);
+		pettyCash.bill(amount, operation);
 	
-		verify(account).bill(amount);
+		verify(account).bill(amount, operation);
 	}
 	
 	

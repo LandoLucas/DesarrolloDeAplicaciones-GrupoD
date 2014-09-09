@@ -1,9 +1,12 @@
 package ar.edu.unq.desapp.grupoD.model.account;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import org.junit.Test;
-import ar.edu.unq.desapp.grupoD.exceptions.InvalidOperationIDException;
+
 import ar.edu.unq.desapp.grupoD.model.Operation;
 /**
  * @author JulianV
@@ -11,7 +14,7 @@ import ar.edu.unq.desapp.grupoD.model.Operation;
 public class BankAccountTest {
 
 	@Test
-	public void TestBankAccountConstructorIfIncome() throws InvalidOperationIDException {
+	public void TestBankAccountConstructorIfIncome() {
 		double amount = 10;
 		int operationID = 1;
 		Operation operation = mock(Operation.class);
@@ -25,7 +28,7 @@ public class BankAccountTest {
 	}
 	
 	@Test
-	public void TestBankAccountConstructorIfOutcome() throws InvalidOperationIDException {
+	public void TestBankAccountConstructorIfOutcome() {
 		double amount = 10;
 		int operationID = 1;
 		Operation operation = mock(Operation.class);

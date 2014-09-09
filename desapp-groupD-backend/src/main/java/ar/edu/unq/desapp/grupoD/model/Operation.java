@@ -3,7 +3,7 @@ package ar.edu.unq.desapp.grupoD.model;
 import org.joda.time.DateTime;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
-import ar.edu.unq.desapp.grupoD.exceptions.InvalidOperationIDException;
+import ar.edu.unq.desapp.grupoD.model.account.Account;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 
@@ -17,6 +17,7 @@ public class Operation {
 	private Category category;
 	private PaymentType paymentType;
 
+	private static int next_operation_id = 1;
 	/**
 	 * Returns an instance of a money operation and it saves the transaction details.
 	 * It is intended to be used when the transaction has already been done.  
@@ -37,7 +38,6 @@ public class Operation {
 	 */
 	public Operation(DateTime date, double amount, boolean isIncome,
 			String shift, Category category, PaymentType paymentType) throws InvalidAmountException {
-		super();
 		this.setDate(date);
 		this.setAmount(amount);
 		this.setIncome(isIncome);
@@ -45,8 +45,26 @@ public class Operation {
 		this.setCategory(category);
 		this.setPaymentType(paymentType);
 		
+		setOperationID();
 		this.bill();
 	}
+	
+	/**
+	 * Intended to be used as an adjustment operation where you need to correct the balance of one of the accounts.
+	 * It is like a normal operation but it lacks some information such as the shift and it needs to know which account needs to be adjusted.
+	 */
+	public Operation(DateTime date, double amount, boolean isIncome,
+			 Category category, Account account) throws InvalidAmountException {
+		this.setDate(date);
+		this.setAmount(amount);
+		this.setIncome(isIncome);
+		this.setCategory(category);
+		
+		setOperationID();
+		account.adjustAccount(amount , isIncome);
+	}
+	
+	
 	
 	public DateTime getDate() {
 		return date;
@@ -61,15 +79,19 @@ public class Operation {
 	}
 
 	/**
-	 * Sets the optional operationID.
-	 * @param operationID to be set. An int above 0
-	 * @throws InvalidOperationID If the ID is equal or below 0
+	 * Sets automatically the operation ID
 	 */
-	public void setOperationID(int operationID) throws InvalidOperationIDException {
-		if(operationID <= 0 )throw new InvalidOperationIDException();
-		// TODO we need to check if this ID already exists. It could be done
-		// against the database once we have it
-		this.operationID = operationID;
+	private synchronized void setOperationID(){
+		this.operationID = next_operation_id;
+		next_operation_id = next_operation_id + 1;
+		//TODO once we have the database we might want to consider to retrieve the last operation ID from it since any restart will make the counter to reset.
+	}
+	
+	/**
+	 * To be used ONLY for unit test
+	 */
+	protected static void resetCounter(){
+		next_operation_id = 1;
 	}
 
 	public double getAmount() {
@@ -118,7 +140,7 @@ public class Operation {
 	 * Delegates the billing to the correspondent payment type.
 	 */
 	private void bill() {
-		this.paymentType.bill( this.amount );
+		this.paymentType.bill( this.amount , this);
 	}
 
 }

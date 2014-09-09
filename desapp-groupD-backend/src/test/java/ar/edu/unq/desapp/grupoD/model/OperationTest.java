@@ -9,7 +9,7 @@ import org.joda.time.DateTime;
 import org.junit.Test;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
-import ar.edu.unq.desapp.grupoD.exceptions.InvalidOperationIDException;
+import ar.edu.unq.desapp.grupoD.model.account.Account;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 
@@ -25,7 +25,7 @@ public class OperationTest {
 		DateTime date = new DateTime();
 		double amount = 100;
 		boolean isIncome = true;
-		String shift = "tarde";
+		String shift = "afternoon";
 		Category category = mock(Category.class);
 		PaymentType paymentType = mock(PaymentType.class);
 		
@@ -38,7 +38,25 @@ public class OperationTest {
 		assertSame(category , operation.getCategory());
 		assertSame(paymentType , operation.getPaymentType());
 		
-		verify(paymentType).bill(amount);
+		verify(paymentType).bill(amount, operation);
+	}
+
+	@Test
+	public void newAdjustmentOperationTest() throws InvalidAmountException{
+		DateTime date = new DateTime();
+		double amount = 100;
+		boolean isIncome = true;
+		Category category = mock(Category.class);
+		Account account = mock(Account.class);
+		
+		Operation operation = new Operation(date, amount, isIncome, category, account);
+		
+		assertSame(date , operation.getDate());
+		assertEquals(amount , operation.getAmount() , 1);
+		assertSame(isIncome , operation.isIncome());
+		assertSame(category , operation.getCategory());
+		
+		verify(account).adjustAccount(amount, isIncome);
 	}
 	
 	@Test(expected = InvalidAmountException.class)
@@ -49,24 +67,21 @@ public class OperationTest {
 		operationBuilder.build();
 	}
 
+	
 	@Test
-	public void setValidOperationIDTest() throws InvalidAmountException, InvalidOperationIDException{
-		OperationBuilder operationBuilder = new OperationBuilder();
-		Operation operation = operationBuilder.build();
+	public void getOperationIDTest() throws InvalidAmountException{
+		DateTime date = new DateTime();
+		double amount = 100;
+		boolean isIncome = true;
+		Category category = mock(Category.class);
+		Account account = mock(Account.class);
+		Operation.resetCounter();
 		
-		int operationID = 10;
-		operation.setOperationID(operationID);
-		
-		assertEquals( operationID , operation.getOperationID());
+		Operation operation = new Operation(date, amount, isIncome, category, account);
+		assertEquals( 1 , operation.getOperationID());
+	
+		Operation operation2 = new Operation(date, amount, isIncome, category, account);
+		assertEquals( 2 , operation2.getOperationID());
 	}
 	
-	
-	@Test(expected = InvalidOperationIDException.class)
-	public void setInvalidOperationIDTest() throws InvalidAmountException, InvalidOperationIDException{
-		OperationBuilder operationBuilder = new OperationBuilder();
-		Operation operation = operationBuilder.build();
-		
-		int operationID = 0;
-		operation.setOperationID(operationID);
-	}
 }

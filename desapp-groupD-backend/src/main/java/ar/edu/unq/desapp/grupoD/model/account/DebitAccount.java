@@ -24,7 +24,6 @@ public class DebitAccount extends Account {
 
 	private void setTimeToCredit() {
 		timeToCredit = operation.getPaymentType().getTimeToCredit();
-		
 	}
 	
 	public void generateCredit() throws InvalidAmountException{
