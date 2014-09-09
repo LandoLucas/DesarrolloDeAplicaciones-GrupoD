@@ -156,26 +156,26 @@
 							<a class="list-group-item"
 							ng-class="{active:isActive('/comprobantes')}"
 							ng-show="UserScope.inCargarDatos" ng-href="#/comprobantes">Cargar un comprobante</a>
-							<button class="list-group-item"
+							<a class="list-group-item a"
 							ng-click="setPurchase()"
-							ng-show="UserScope.inBills" >Comprobante de compra</button>
+							ng-show="UserScope.inBills" >Comprobante de compra</a>
 							
-							<button class="list-group-item"
+							<a class="list-group-item"
 							ng-click="setSale()"
-							ng-show="UserScope.inBills">Comprobante de venta</button>
+							ng-show="UserScope.inBills">Comprobante de venta</a>
 							
 							<button class="list-group-item"
 							ng-click="setTypeA()"
-							ng-show="UserScope.inBillType" >Tipo A</button>
+							ng-show="UserScope.inBill" >Tipo A</button>
 							<button class="list-group-item"
 							ng-click="setTypeB()"
-							ng-show="UserScope.inBillType">Tipo B</button>
+							ng-show="UserScope.inBill">Tipo B</button>
 							<button class="list-group-item"
 							ng-click="setTypeC()"
-							ng-show="UserScope.inBillType" >Tipo C</button>
+							ng-show="UserScope.inBill" >Tipo C</button>
 							<button class="list-group-item"
 							ng-click="setTypeX()"
-							ng-show="UserScope.inBillType" >Tipo X</button>
+							ng-show="UserScope.inBill" >Tipo X</button>
 
 
 						
@@ -263,6 +263,7 @@
 	<script src="scripts/controllers/accounts.js"></script>
 	<script src="scripts/controllers/newCategory.js"></script>
 	<script src="scripts/controllers/newSubcategory.js"></script>
+	<script src="scripts/controllers/bills.js"></script>
 		<script src="scripts/controllers/crudOperation.js"></script>
 	<script src="scripts/modules/login_module.js"></script>
 	<script src="scripts/modules/content_module.js"></script>

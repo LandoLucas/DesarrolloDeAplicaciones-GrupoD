@@ -6,7 +6,9 @@ rootServices.service('globalService', function () {
     this.UserScope = {
         inMainMenu: 'false',
         inCargarDatos: 'false',
-        inNewOperation: 'false'
+        inNewOperation: 'false',
+        inNewBill: 'false',
+        inBills: 'false',
     };
     this.getUserPosition= function () {
         return this.UserScope;
@@ -36,5 +38,8 @@ rootServices.service('globalService', function () {
     
     this.setInNewBill = function (){
     	this.anulateAllExcept('inNewBill');
+    };
+    this.setInBills = function (){
+    	this.anulateAllExcept('inBills');
     };
 });
