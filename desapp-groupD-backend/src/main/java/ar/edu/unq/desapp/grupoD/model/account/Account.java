@@ -1,20 +1,24 @@
 package ar.edu.unq.desapp.grupoD.model.account;
 
 import ar.edu.unq.desapp.grupoD.model.Operation;
+import ar.edu.unq.desapp.grupoD.model.payment.BankTransfer;
+import ar.edu.unq.desapp.grupoD.model.payment.PettyCash;
 
 /**
  * @author JulianV
  *
  */
-public abstract class Account {
+public class Account {
 
-	public abstract void bill(double amount, Operation operation);
-	
-	public abstract double getAmount();
-	
-	public abstract int getOperationID();
-	
-	public abstract double setAmount(double amount);
+	public void bill(double amount, Operation operation){
+		if(operation.getPaymentType() instanceof BankTransfer)
+			new BankAccount(amount, operation);
+		else if(operation.getPaymentType() instanceof PettyCash)
+			new PettyCashAccount(amount, operation);
+		else
+			new DebitAccount(amount, operation);
+	}
+
 	
 
 }

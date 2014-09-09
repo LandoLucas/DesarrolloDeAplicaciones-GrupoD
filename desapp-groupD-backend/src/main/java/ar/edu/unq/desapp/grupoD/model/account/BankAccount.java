@@ -12,27 +12,23 @@ public class BankAccount extends Account {
 	private int operationID;
 	private Operation operation;
 	
-	@Override
-	public void bill(double amount, Operation operation) {
+	protected BankAccount(double amount, Operation operation) {
 		this.operationID = operation.getOperationID();
 		this.operation = operation;
 		this.amount = setAmount(amount);
 	}
 
-	@Override
-	public double setAmount(double newAmount) {
+	private double setAmount(double newAmount) {
 		if (operation.isIncome())
 			return this.amount = this.amount + newAmount;
 		else
 			return this.amount = this.amount - newAmount;
 	}
 
-	@Override
 	public double getAmount() {
 		return amount;
 	}
 
-	@Override
 	public int getOperationID() {
 		return operationID;
 	}
