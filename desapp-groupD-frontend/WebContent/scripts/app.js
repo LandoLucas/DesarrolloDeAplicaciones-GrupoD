@@ -241,7 +241,6 @@
 			}).when('/ingreso', {
 				templateUrl : 'views/crudMovimiento.html',
 				controller : 'CrudOperationCtrl',
-//				resolve: { data:function(){alert('Hello');}}
 			}).when('/egreso', {
 				templateUrl : 'views/crudMovimiento.html',
 				controller : 'CrudOperationCtrl'
