@@ -91,19 +91,5 @@ public class DebitAccountTest {
 		assertEquals( 0, debitAccount.getTimeToCredit(), 1);
 	}
 	
-	@Test
-	public void TestGenerateCredit() throws InvalidAmountException{
-		double amount = 10;
-		Operation operation = mock(Operation.class);
-		PaymentType paymentType = mock(PaymentType.class);
-		when(operation.getPaymentType()).thenReturn( paymentType );
-		when(paymentType.getTimeToCredit()).thenReturn( 0 );
-		when(operation.getAmount()).thenReturn(100d);
-		DebitAccount debitAccount = new DebitAccount(amount, operation);
-		
-		debitAccount.generateCredit();
-	
-		fail("pending assertions");
-	}
 
 }
