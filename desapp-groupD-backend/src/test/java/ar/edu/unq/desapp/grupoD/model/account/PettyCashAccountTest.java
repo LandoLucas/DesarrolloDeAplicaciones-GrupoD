@@ -20,11 +20,14 @@ public class PettyCashAccountTest {
 		Operation operation = mock(Operation.class);
 		when(operation.getOperationID()).thenReturn(operationID);
 		when(operation.isIncome()).thenReturn(true);
+		when(operation.getAmount()).thenReturn(amount);
 		
-		PettyCashAccount pettyCashAccount = new PettyCashAccount(amount, operation);
+		new PettyCashAccount(operation);
 		
-		assertEquals( amount, pettyCashAccount.getAmount(), 1);
+		assertEquals( amount, PettyCashAccount.getBalance(), 1);
 		assertSame(operationID , operation.getOperationID());
+		
+		PettyCashAccount.resetBalance();
 	}
 	
 	@Test
@@ -34,10 +37,29 @@ public class PettyCashAccountTest {
 		Operation operation = mock(Operation.class);
 		when(operation.getOperationID()).thenReturn(operationID);
 		when(operation.isIncome()).thenReturn(false);
+		when(operation.getAmount()).thenReturn(amount);
 		
-		PettyCashAccount pettyCashAccount = new PettyCashAccount(amount, operation);
+		new PettyCashAccount(operation);
 		
-		assertEquals( 0-amount, pettyCashAccount.getAmount(), 1);
+		assertEquals( 0-amount, PettyCashAccount.getBalance(), 1);
 		assertSame(operationID , operation.getOperationID());
+		
+		PettyCashAccount.resetBalance();
+	}
+	
+	@Test
+	public void TestGetOperationID(){
+		double amount = 10;
+		int operationID = 1;
+		Operation operation = mock(Operation.class);
+		when(operation.getOperationID()).thenReturn(operationID);
+		when(operation.getAmount()).thenReturn(amount);
+		
+		PettyCashAccount pettyCashAccount = new PettyCashAccount(operation);
+		
+		assertSame(operationID , pettyCashAccount.getOperationID());
+		
+		PettyCashAccount.resetBalance();
+		
 	}
 }

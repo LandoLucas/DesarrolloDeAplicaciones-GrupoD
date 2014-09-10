@@ -20,11 +20,14 @@ public class BankAccountTest {
 		Operation operation = mock(Operation.class);
 		when(operation.getOperationID()).thenReturn(operationID);
 		when(operation.isIncome()).thenReturn(true);
+		when(operation.getAmount()).thenReturn(amount);
 		
-		BankAccount BankAccount = new BankAccount(amount, operation);
+		new BankAccount(operation);
 		
-		assertEquals( amount, BankAccount.getAmount(), 1);
+		assertEquals( amount, BankAccount.getBalance(), 1);
 		assertSame(operationID , operation.getOperationID());
+		
+		DebitAccount.resetBalance();
 	}
 	
 	@Test
@@ -34,10 +37,28 @@ public class BankAccountTest {
 		Operation operation = mock(Operation.class);
 		when(operation.getOperationID()).thenReturn(operationID);
 		when(operation.isIncome()).thenReturn(false);
+		when(operation.getAmount()).thenReturn(amount);
 		
-		BankAccount bankAccount = new BankAccount(amount, operation);
+		new BankAccount(operation);
 		
-		assertEquals( 0-amount, bankAccount.getAmount(), 1);
+		assertEquals( 0-amount, BankAccount.getBalance(), 1);
 		assertSame(operationID , operation.getOperationID());
+		
+		DebitAccount.resetBalance();
+	}
+	
+	@Test
+	public void TestGetOperationID(){
+		double amount = 10;
+		int operationID = 1;
+		Operation operation = mock(Operation.class);
+		when(operation.getOperationID()).thenReturn(operationID);
+		when(operation.getAmount()).thenReturn(amount);
+		
+		BankAccount bankAccount = new BankAccount(operation);
+		
+		assertSame(operationID , bankAccount.getOperationID());
+		
+		DebitAccount.resetBalance();
 	}
 }

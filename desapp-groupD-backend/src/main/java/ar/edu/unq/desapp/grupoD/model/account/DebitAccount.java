@@ -10,17 +10,26 @@ import ar.edu.unq.desapp.grupoD.model.Operation;
  *
  */
 public class DebitAccount extends Account {
+	private static double balance = 0;
+	
 	private double amount;
 	private int timeToCredit;
 	private int operationID;
 	private Operation operation;
 	
-	protected DebitAccount(double amount, Operation operation) {
+	@Override
+	public void bill(Operation operation) {
+		new DebitAccount(operation);
+		
+	}
+	
+	protected DebitAccount(Operation operation) {
 		this.operationID = operation.getOperationID();
 		this.operation = operation;
-		this.amount = setAmount(amount);
+		this.amount = operation.getAmount();
+		setBalance(this.amount, operation);
 		this.setTimeToCredit();
-	}
+	} 
 
 	private void setTimeToCredit() {
 		timeToCredit = operation.getPaymentType().getTimeToCredit();
@@ -30,13 +39,22 @@ public class DebitAccount extends Account {
 		//Creates a new operation that register the Credit movement from the DebitAccount to the BankAccount 
 		new Operation( new DateTime(), this.getAmount(),
 					true, operation.getShift(), operation.getCategory(), operation.getPaymentType());
+		//balance = balance - operation.getAmount(); 
 	} 
 
-	public double setAmount(double newAmount) {
+	public static void setBalance(double newAmount, Operation operation) {
 		if (operation.isIncome())
-			return this.amount = this.amount + newAmount;
+			balance = balance + newAmount;
 		else
-			return this.amount = this.amount - newAmount;
+			balance = balance - newAmount;
+	}
+	
+	public static double getBalance(){
+		return balance;
+	}
+	
+	public static void resetBalance(){
+		balance = 0;
 	}
 
 	public double getAmount() {

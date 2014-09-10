@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoD.model.payment;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -29,11 +30,19 @@ public class CreditCardTest {
 		Operation operation = mock(Operation.class);
 		Account account = mock(Account.class);
 		CreditCard creditCard = new CreditCard(account);
-		double amount = 10d;
 		
-		creditCard.bill(amount, operation);
+		creditCard.bill(operation);
 	
-		verify(account).bill(amount, operation);
+		verify(account).bill(operation);
+	}
+	
+	@Test
+	public void getTimeToCreditTest(){
+		Account account = mock(Account.class);
+		
+		CreditCard creditCard = new CreditCard(account);
+		
+		assertEquals(15, creditCard.getTimeToCredit(),1);
 	}
 	
 	

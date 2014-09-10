@@ -61,7 +61,7 @@ public class Operation {
 		this.setCategory(category);
 		
 		setOperationID();
-		account.adjustAccount(amount , isIncome);
+		account.bill( this);
 	}
 	
 	
@@ -140,7 +140,7 @@ public class Operation {
 	 * Delegates the billing to the correspondent payment type.
 	 */
 	private void bill() {
-		this.paymentType.bill( this.amount , this);
+		this.paymentType.bill(this);
 	}
 
 }

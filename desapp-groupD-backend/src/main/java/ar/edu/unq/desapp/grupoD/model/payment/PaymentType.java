@@ -19,8 +19,8 @@ public abstract class PaymentType {
 	 * Delegates the process of billing to the account
 	 * @param amount
 	 */
-	public void bill(double amount , Operation operation) {
-		this.account.bill(amount, operation);
+	public void bill( Operation operation) {
+		this.account.bill(operation);
 	}
 
 	/**

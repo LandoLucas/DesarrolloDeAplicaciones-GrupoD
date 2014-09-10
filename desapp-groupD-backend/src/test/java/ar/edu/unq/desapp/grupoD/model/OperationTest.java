@@ -38,7 +38,7 @@ public class OperationTest {
 		assertSame(category , operation.getCategory());
 		assertSame(paymentType , operation.getPaymentType());
 		
-		verify(paymentType).bill(amount, operation);
+		verify(paymentType).bill( operation);
 	}
 
 	@Test
@@ -56,7 +56,7 @@ public class OperationTest {
 		assertSame(isIncome , operation.isIncome());
 		assertSame(category , operation.getCategory());
 		
-		verify(account).adjustAccount(amount, isIncome);
+		verify(account).bill(operation);
 	}
 	
 	@Test(expected = InvalidAmountException.class)

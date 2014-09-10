@@ -7,22 +7,37 @@ import ar.edu.unq.desapp.grupoD.model.Operation;
  *
  */
 public class BankAccount extends Account {
+	private static double balance = 0;
 
 	private double amount;
 	private int operationID;
 	private Operation operation;
 	
-	protected BankAccount(double amount, Operation operation) {
+	@Override
+	public void bill(Operation operation) {
+		new BankAccount(operation);
+	}
+	
+	protected BankAccount(Operation operation) {
 		this.operationID = operation.getOperationID();
 		this.operation = operation;
-		this.amount = setAmount(amount);
+		this.amount = operation.getAmount();
+		setBalance(this.amount, operation);
 	}
 
-	private double setAmount(double newAmount) {
+	public static void setBalance(double newAmount, Operation operation) {
 		if (operation.isIncome())
-			return this.amount = this.amount + newAmount;
+			balance = balance + newAmount;
 		else
-			return this.amount = this.amount - newAmount;
+			balance = balance - newAmount;
+	}
+	
+	public static double getBalance(){
+		return balance;
+	}
+	
+	public static void resetBalance(){
+		balance = 0;
 	}
 
 	public double getAmount() {
