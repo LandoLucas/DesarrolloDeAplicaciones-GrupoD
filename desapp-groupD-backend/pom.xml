@@ -5,7 +5,7 @@
 	<groupId>ar.edu.unq.desapp.grupoD</groupId>
 	<artifactId>desapp-groupD-backend</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>desapp-groupD-backend</name>
 	<url>http://maven.apache.org</url>
@@ -32,4 +32,37 @@
 			<version>1.9.5</version>
 		</dependency>
 	</dependencies>
+	
+	<build>
+	  <plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-war-plugin</artifactId>
+			<configuration>
+				<webResources>
+					<resource>
+						<directory>${basedir}/src/main/java</directory>
+						<targetPath>WEB-INF/classes</targetPath>
+						<includes>
+							<include>**/*.properties</include>
+							<include>**/*.xml</include>
+							<include>**/*.css</include>
+							<include>**/*.html</include>
+						</includes>
+					</resource>
+				</webResources>
+			</configuration>
+		</plugin>
+ 
+		<plugin>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<configuration>
+				<source>1.6</source>
+				<target>1.6</target>
+			</configuration>
+		</plugin>
+ 
+	   </plugins>
+	</build>
+	
 </project>
