@@ -24,6 +24,8 @@
 				<version>6.1.16</version>
 
 				<configuration>
+					<webAppSourceDirectory>${basedir}/WebContent</webAppSourceDirectory>
+					<webXml>${basedir}/WebContent/web.xml</webXml>
 					<scanIntervalSeconds>5</scanIntervalSeconds>
 					<executions>
 						<execution>
