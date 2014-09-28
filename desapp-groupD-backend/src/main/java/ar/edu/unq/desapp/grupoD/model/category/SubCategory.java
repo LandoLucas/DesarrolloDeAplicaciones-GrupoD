@@ -11,23 +11,27 @@ package ar.edu.unq.desapp.grupoD.model.category;
  */
 public class SubCategory {
 
-	private static String subcategoryName;
-	private static Concept concept;
+	private String subcategoryName;
+	private Concept concept;
 
-	public static String getSubcategoryName() {
+	public String getSubcategoryName() {
 		return subcategoryName;
 	}
 
-	public static void setSubcategoryName(String subcategoryName) {
-		SubCategory.subcategoryName = subcategoryName;
+	public void setSubcategoryName(String subcategoryName) {
+		this.subcategoryName = subcategoryName;
 	}
 
-	public static Concept getConcept() {
+	public Concept getConcept() {
 		return concept;
 	}
 
-	public static void setConcept(Concept concept) {
-		SubCategory.concept = concept;
+	public void setConcept(Concept concept) {
+		this.concept = concept;
+	}
+	
+	public SubCategory(String name){
+		this.subcategoryName = name;
 	}
 
 }

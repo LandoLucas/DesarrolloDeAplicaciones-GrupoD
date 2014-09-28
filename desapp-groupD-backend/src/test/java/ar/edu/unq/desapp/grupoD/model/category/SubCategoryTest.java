@@ -13,21 +13,22 @@ public class SubCategoryTest {
 
 	
 	@Test
-	public void getAndSetSubCategory(){
+	public void subCategoryConstructor(){
 		String subCategoryName = "Sells";
+
+		SubCategory subCategory = new SubCategory(subCategoryName);
 		
-		SubCategory.setSubcategoryName(subCategoryName);
-	
-		assertEquals( subCategoryName , SubCategory.getSubcategoryName());
+		assertEquals( subCategoryName , subCategory.getSubcategoryName());
 	}
 	
 	@Test
 	public void getAndSetConceptTest(){
 		Concept concept = mock(Concept.class);
+		SubCategory subcategory = new SubCategory("name");
 		
-		SubCategory.setConcept(concept);
+		subcategory.setConcept(concept);
 		
-		assertSame( concept , SubCategory.getConcept());
+		assertSame( concept , subcategory.getConcept());
 	}
 	
 }

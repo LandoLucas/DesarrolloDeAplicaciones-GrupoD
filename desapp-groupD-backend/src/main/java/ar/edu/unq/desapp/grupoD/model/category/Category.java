@@ -1,5 +1,7 @@
 package ar.edu.unq.desapp.grupoD.model.category;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * A Category is used to indicate if the operation is an income or an outcome.
  * For example:
@@ -7,22 +9,26 @@ package ar.edu.unq.desapp.grupoD.model.category;
  * Outcome of U$$200 Category: Supplier
  * @author Lucas
  */
+@XmlRootElement(name="category")
 public class Category {
 
-	private static String categoryName;
-	private static SubCategory subcategory;
+	private String categoryName;
+	private SubCategory subcategory;
 	
-	public static String getCategoryName() {
+	public String getCategoryName() {
 		return categoryName;
 	}
-	public static void setCategoryName(String categoryName) {
-		Category.categoryName = categoryName;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
-	public static SubCategory getSubcategory() {
+	public SubCategory getSubcategory() {
 		return subcategory;
 	}
-	public static void setSubcategory(SubCategory subcategory) {
-		Category.subcategory = subcategory;
+	public void setSubcategory(SubCategory subcategory) {
+		this.subcategory = subcategory;
 	}
 	
+	public Category(String name){
+		categoryName = name;
+	}
 }

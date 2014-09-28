@@ -12,22 +12,23 @@ public class CategoryTest {
 
 	
 	@Test
-	public void getAndSetCategory(){
+	public void categoryConstructor(){
 		String categoryName = "Income";
+
+		Category category = new Category(categoryName);
 		
-		Category.setCategoryName(categoryName);
-	
-		assertEquals( categoryName , Category.getCategoryName());
+		assertEquals( categoryName , category.getCategoryName());
 	}
 	
 	
 	@Test
 	public void getAndSetSubcategoryTest(){
 		SubCategory subcategory = mock(SubCategory.class);
+		Category category = new Category("categoryName");
 		
-		Category.setSubcategory(subcategory);
+		category.setSubcategory(subcategory);
 		
-		assertSame( subcategory , Category.getSubcategory());
+		assertSame( subcategory , category.getSubcategory());
 	}
 	
 }
