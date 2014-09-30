@@ -11,6 +11,8 @@ import org.junit.Test;
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.model.account.Account;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
+import ar.edu.unq.desapp.grupoD.model.category.Concept;
+import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 
 /**
@@ -27,9 +29,11 @@ public class OperationTest {
 		boolean isIncome = true;
 		String shift = "afternoon";
 		Category category = mock(Category.class);
+		SubCategory subCategory = mock(SubCategory.class);
+		Concept concept = mock(Concept.class);
 		PaymentType paymentType = mock(PaymentType.class);
 		
-		Operation operation = new Operation(date, amount, isIncome, shift, category, paymentType);
+		Operation operation = new Operation(date, amount, isIncome, shift, category, subCategory, concept, paymentType);
 		
 		assertSame(date , operation.getDate());
 		assertEquals(amount , operation.getAmount() , 1);

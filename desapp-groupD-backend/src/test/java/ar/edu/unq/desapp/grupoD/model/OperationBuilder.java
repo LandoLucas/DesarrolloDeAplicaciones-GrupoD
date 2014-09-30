@@ -6,6 +6,8 @@ import org.joda.time.DateTime;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
+import ar.edu.unq.desapp.grupoD.model.category.Concept;
+import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 
 /**
@@ -19,10 +21,12 @@ public class OperationBuilder {
 	private boolean isIncome = true;
 	private String shift = "tarde";
 	private Category category = mock(Category.class);
+	private SubCategory subCategory = mock(SubCategory.class);
+	private Concept concept = mock(Concept.class);
 	private PaymentType paymentType = mock(PaymentType.class);
 
 	public Operation build() throws InvalidAmountException{
-		return new Operation(date, amount, isIncome, shift, category, paymentType);
+		return new Operation(date, amount, isIncome, shift, category, subCategory, concept, paymentType);
 	}
 
 	public OperationBuilder withAmount(double amount){

@@ -5,6 +5,8 @@ import org.joda.time.DateTime;
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.model.account.Account;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
+import ar.edu.unq.desapp.grupoD.model.category.Concept;
+import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 
 public class Operation {
@@ -15,6 +17,8 @@ public class Operation {
 	private boolean isIncome;
 	private String shift;
 	private Category category;
+	private SubCategory subcategory;
+	private Concept concept;
 	private PaymentType paymentType;
 
 	private static int next_operation_id = 1;
@@ -37,7 +41,7 @@ public class Operation {
 	 * @throws InvalidAmountException if the amount is equal or below 0
 	 */
 	public Operation(DateTime date, double amount, boolean isIncome,
-			String shift, Category category, PaymentType paymentType) throws InvalidAmountException {
+			String shift, Category category, SubCategory subCategory, Concept concept, PaymentType paymentType) throws InvalidAmountException {
 		this.setDate(date);
 		this.setAmount(amount);
 		this.setIncome(isIncome);
@@ -141,6 +145,14 @@ public class Operation {
 	 */
 	private void bill() {
 		this.paymentType.bill(this);
+	}
+
+	public SubCategory getSubCategory() {
+		return this.subcategory;
+	}
+
+	public Concept getConcept() {
+		return this.concept;
 	}
 
 }
