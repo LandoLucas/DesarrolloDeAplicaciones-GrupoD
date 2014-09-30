@@ -28,7 +28,11 @@
 
 
 							$scope.UserScope = globalService.getUserPosition();
-
+							
+                            $scope.goBack = function(){
+                                $window.history.back();
+                            };
+                            
 							$scope.inMainMenu = function(){
 								return localStorageService.get('userInMainMenu');
 							}; 

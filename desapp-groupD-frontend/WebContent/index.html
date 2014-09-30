@@ -53,9 +53,9 @@
 						<li class="dropdown" ng-show="true"><a href=""
 							data-toggle="dropdown" class="dropdown-toggle"
 							title="Seleccione que sección a editar">Secciones <b
-								class="caret""></b>
+								class="caret"></b>
 						</a>
-							<ul class="dropdown-menu">
+							<ul class="dropdown-menu"/>
 							<li><a ng-href="#cuentas" ng-show="true"
 									ng-click="restrictedAction()">Cuentas</a></li>
 							<li class="divider"></li>
@@ -131,6 +131,8 @@
 				<div class="col-sm-3 col-md-2 sidebar">
 
 					<div class="list-group" ng-controller="IndexCtrl">
+                     <span class="glyphicon glyphicon-circle-arrow-left" style="font-size:45px;cursor: pointer;padding: 5px;" 
+                           tooltip-placement="right" tooltip="Volver atrás" ng-click="goBack()"></span>       
 					<a class="list-group-item"
 							ng-class="{active:isActive('/cuentas')}"
 							ng-show="UserScope.inMainMenu" ng-href="#/cuentas">Cuentas</a>

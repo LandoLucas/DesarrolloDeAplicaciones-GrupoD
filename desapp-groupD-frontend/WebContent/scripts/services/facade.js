@@ -25,6 +25,34 @@ function invokeRestService(cnxHttp, header, data, modulo, servicio,
 	});
 }
 
+
+function invokeGetRestService(cnxHttp, header, data, modulo, servicio,
+		handlerOnSuccess, handlerOnError) {
+	var respuesta = [];
+
+	cnxHttp(
+			{
+				method : 'GET',
+				url : 'http://' + restHost + '/' + restContext + '/rest/'
+						+ modulo + '/' + servicio,
+				data : data,
+				headers : header,
+				transformRequest : function(obj) {
+					var str = [];
+					for ( var p in obj)
+						str.push(encodeURIComponent(p) + "="
+								+ encodeURIComponent(obj[p]));
+					return str.join("&");
+				}
+			}).success(function(response) {
+		handlerOnSuccess(response);
+
+	}).error(function(response) {
+		console.log(response)
+		handlerOnError(response);
+	});
+}
+
 function defaultHandlerOnError(response) {
 	console.log(response);
 }

@@ -94,10 +94,13 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputDescription" class="control-label col-xs-2">Descripción</label>
+					<label for="selectConceptType" class="control-label col-xs-2">Concepto</label>
 					<div class="col-xs-10">
-						<input type="text" class="form-control" id="inpuftDescription"
-							ng-model="inputDescription" placeholder="Ingrese la descripción">
+						<select ng-model="selectConceptType"
+							ng-options="conceptType as conceptType.name for conceptType in conceptTypes"
+							class="form-control">
+							<option value="" label="Seleccione una opción"></option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">
