@@ -1,5 +1,12 @@
 package ar.edu.unq.desapp.grupoD.model.category;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 /**
  * A Subcategory represents a more precise description within a category to
  * specify where the money is spent or where it is coming from. For example:
@@ -9,9 +16,17 @@ package ar.edu.unq.desapp.grupoD.model.category;
  * @author Lucas
  * 
  */
+@Entity
+@Table(name="SubCategory")
 public class SubCategory {
 
+	@Id
+	@GeneratedValue
+	private Integer id;
+	
 	private String subcategoryName;
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	private Concept concept;
 
 	public String getSubcategoryName() {
@@ -34,4 +49,5 @@ public class SubCategory {
 		this.subcategoryName = name;
 	}
 
+	public SubCategory(){}
 }

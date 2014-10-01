@@ -12,9 +12,7 @@ import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 public class CategoryDao {
 
 	public List<Category> getAllCategories() {
-		List<Category> list = new ArrayList<Category>();
-		list.add(new Category("asd"));
-		return list;
+		return HibernateManager.getSessionFactory().openSession().createQuery("FROM Category").list();
 	}
 
 	public List<SubCategory> getAllSubCategories() {
@@ -23,7 +21,8 @@ public class CategoryDao {
 	}
 	
 	public void saveOrUpdateCategory(Category category) {
-		//TODO implement
+		SaveOrUpdateCategoryOperation operation = new SaveOrUpdateCategoryOperation(category);
+		HibernateManager.executeWithTransaction(operation);
 	}
 	
 	public void saveOrUpdateSubCategory(SubCategory subcategory) {

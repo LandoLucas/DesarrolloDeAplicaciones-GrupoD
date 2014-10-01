@@ -1,5 +1,10 @@
 package ar.edu.unq.desapp.grupoD.model.category;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * A Concept brakes down the description of the operation to the lowest level, giving more detailed information of the operation soruce  
  * For example:
@@ -8,8 +13,14 @@ package ar.edu.unq.desapp.grupoD.model.category;
  * @author Lucas
  *
  */
+@Entity
+@Table(name="Concept")
 public class Concept {
 
+	@Id
+	@GeneratedValue
+	private Integer id;
+	
 	private static String conceptName;
 
 	public static String getConceptName() {

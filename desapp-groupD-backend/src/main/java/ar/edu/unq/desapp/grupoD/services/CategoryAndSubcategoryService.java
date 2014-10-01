@@ -29,8 +29,7 @@ public class CategoryAndSubcategoryService {
     @Path("/{name}")
     @Produces("application/json")
     public List<Category> getAllCategories(@PathParam("name") String name){
-		List<Category> categoriesList = categoryDao.getAllCategories();
-		return categoriesList;
+		return categoryDao.getAllCategories();
     }
 	
 	
