@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Proxy;
+
 /**
  * A Concept brakes down the description of the operation to the lowest level, giving more detailed information of the operation soruce  
  * For example:
@@ -15,6 +17,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="Concept")
+@Proxy(lazy=true)
 public class Concept {
 
 	@Id
@@ -31,5 +34,10 @@ public class Concept {
 		Concept.conceptName = conceptName;
 	}
 
+	public Concept(){};
+	
+	public Concept(String conceptName){
+		this.conceptName = conceptName;
+	}
 	
 }

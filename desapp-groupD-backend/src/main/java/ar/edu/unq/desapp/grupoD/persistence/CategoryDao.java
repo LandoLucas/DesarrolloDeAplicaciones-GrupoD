@@ -3,6 +3,9 @@ package ar.edu.unq.desapp.grupoD.persistence;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 
@@ -11,8 +14,25 @@ import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
  */
 public class CategoryDao {
 
+	private HibernateManager manager;
+	private SaveOrUpdateCategoryOperation operation;
+	private GetCategoriesOperation getOperation;
+	
+	public void setOperation(SaveOrUpdateCategoryOperation operation) {
+		this.operation = operation;
+	}
+	
+	public void setGetOperation(GetCategoriesOperation getOperation) {
+		this.getOperation = getOperation;
+	}
+
+	public void setManager(HibernateManager manager) {
+		this.manager = manager;
+	}
+
 	public List<Category> getAllCategories() {
-		return HibernateManager.getSessionFactory().openSession().createQuery("FROM Category").list();
+		manager.executeWithTransaction(getOperation);
+		return getOperation.getCategories();
 	}
 
 	public List<SubCategory> getAllSubCategories() {
@@ -21,8 +41,8 @@ public class CategoryDao {
 	}
 	
 	public void saveOrUpdateCategory(Category category) {
-		SaveOrUpdateCategoryOperation operation = new SaveOrUpdateCategoryOperation(category);
-		HibernateManager.executeWithTransaction(operation);
+		operation.setCategory(category);
+		manager.executeWithTransaction(operation);
 	}
 	
 	public void saveOrUpdateSubCategory(SubCategory subcategory) {

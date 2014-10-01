@@ -5,13 +5,24 @@ import ar.edu.unq.desapp.grupoD.model.category.Category;
 public class SaveOrUpdateCategoryOperation implements TransactionalOperation{
 
 	private Category category;
+	private HibernateManager manager;
 	
+	public void setManager(HibernateManager manager) {
+		this.manager = manager;
+	}
+	
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 	public SaveOrUpdateCategoryOperation(Category category) {
 		this.category = category;
 	}
+
+	public SaveOrUpdateCategoryOperation() {}
 	
 	@Override
 	public void execute() {
-		HibernateManager.getSession().saveOrUpdate(this.category);
+		manager.getSession().saveOrUpdate(this.category);
 	}
 }

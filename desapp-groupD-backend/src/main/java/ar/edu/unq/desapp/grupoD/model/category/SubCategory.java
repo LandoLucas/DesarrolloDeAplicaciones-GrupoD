@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Proxy;
+
 /**
  * A Subcategory represents a more precise description within a category to
  * specify where the money is spent or where it is coming from. For example:
@@ -18,6 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="SubCategory")
+@Proxy(lazy=true)
 public class SubCategory {
 
 	@Id
@@ -45,9 +48,15 @@ public class SubCategory {
 		this.concept = concept;
 	}
 	
-	public SubCategory(String name){
+	public SubCategory(String name , Concept concept){
+		this.subcategoryName = name;
+		this.concept = concept;
+	}
+	
+	public SubCategory(String name ){
 		this.subcategoryName = name;
 	}
+	
 
 	public SubCategory(){}
 }

@@ -3,37 +3,30 @@ package ar.edu.unq.desapp.grupoD.persistence;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 /**
  * @author Lucas
  */
 public class HibernateManager {
 
-	private static ThreadLocal<Session> sessionInThread = new ThreadLocal<Session>();
-	private static SessionFactory sessionFactory = getSessionFactory();
+	private SessionFactory sessionFactory;
+	private ThreadLocal<Session> threadLocal = new ThreadLocal<Session>();
 	
-	public synchronized static SessionFactory getSessionFactory() {
-		if (sessionFactory == null) {
-		    Configuration cfg = new Configuration();
-			cfg.configure();
-
-			sessionFactory = cfg.buildSessionFactory();
-		}
-
-		return sessionFactory;
+	public void setSessionFactory(SessionFactory sessionFactory){
+		this.sessionFactory = sessionFactory;
 	}
-
+	
 	/**
 	 * Executes a series of commands in a transaction.
 	 * @param operation
 	 */
-	public static void executeWithTransaction(TransactionalOperation operation){ 
+	public void executeWithTransaction(TransactionalOperation operation){ 
 			Session session = null;
 		try{
 			session = sessionFactory.openSession();
+			threadLocal.set(session);
+			
 			session.beginTransaction();
-			sessionInThread.set(session);
 			
 			operation.execute();
 
@@ -51,9 +44,9 @@ public class HibernateManager {
 		}
 
 	}
-
-	public static Session getSession() {
-		return sessionInThread.get();
+	
+	public Session getSession() {
+		return threadLocal.get();
 	}
 
 }
