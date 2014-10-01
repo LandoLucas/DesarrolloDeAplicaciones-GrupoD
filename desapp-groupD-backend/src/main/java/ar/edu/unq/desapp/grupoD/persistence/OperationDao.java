@@ -23,4 +23,8 @@ public class OperationDao {
 		// TODO Auto-generated method stub
 	}
 
+	public void deleteOperationByID(int id) {
+		// TODO Auto-generated method stub
+	}
+
 }

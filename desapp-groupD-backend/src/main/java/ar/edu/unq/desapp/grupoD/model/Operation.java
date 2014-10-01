@@ -17,7 +17,7 @@ public class Operation {
 	private boolean isIncome;
 	private String shift;
 	private Category category;
-	private SubCategory subcategory;
+	private SubCategory subCategory;
 	private Concept concept;
 	private PaymentType paymentType;
 
@@ -47,12 +47,22 @@ public class Operation {
 		this.setIncome(isIncome);
 		this.setShift(shift);
 		this.setCategory(category);
+		this.setSubCategory(subCategory);
+		this.setConcept(concept);
 		this.setPaymentType(paymentType);
 		
 		setOperationID();
 		this.bill();
 	}
 	
+	public void setSubCategory(SubCategory subCategory) {
+		this.subCategory = subCategory;
+	}
+
+	public void setConcept(Concept concept) {
+		this.concept = concept;
+	}
+
 	/**
 	 * Intended to be used as an adjustment operation where you need to correct the balance of one of the accounts.
 	 * It is like a normal operation but it lacks some information such as the shift and it needs to know which account needs to be adjusted.
@@ -148,11 +158,15 @@ public class Operation {
 	}
 
 	public SubCategory getSubCategory() {
-		return this.subcategory;
+		return this.subCategory;
 	}
 
 	public Concept getConcept() {
 		return this.concept;
+	}
+	
+	public Operation deleteOperation() throws InvalidAmountException{
+		return new Operation(this.date, this.amount, !this.isIncome, this.shift, this.category, this.subCategory, this.concept, this.paymentType);
 	}
 
 }
