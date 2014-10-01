@@ -11,7 +11,7 @@ public class BankAccount extends Account {
 
 	private double amount;
 	private int operationID;
-	private Operation operation;
+//	private Operation operation;
 	
 	@Override
 	public void bill(Operation operation) {
@@ -20,7 +20,7 @@ public class BankAccount extends Account {
 	
 	protected BankAccount(Operation operation) {
 		this.operationID = operation.getOperationID();
-		this.operation = operation;
+//		this.operation = operation;
 		this.amount = operation.getAmount();
 		setBalance(this.amount, operation);
 	}

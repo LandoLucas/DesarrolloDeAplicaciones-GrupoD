@@ -9,7 +9,12 @@ public class ReceiptADao {
 		return null;
 	}
 
-	public void saveRecipt(ReceiptTypeA receipt) {
+	public void saveReciptA(ReceiptTypeA receipt) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateReciptA(ReceiptTypeA receiptToEdit) {
 		// TODO Auto-generated method stub
 		
 	}

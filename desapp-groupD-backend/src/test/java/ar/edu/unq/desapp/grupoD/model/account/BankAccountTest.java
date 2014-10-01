@@ -15,7 +15,7 @@ public class BankAccountTest {
 
 	@Test
 	public void TestBankAccountConstructorIfIncome() {
-		double amount = 10;
+		double amount = 20;
 		int operationID = 1;
 		Operation operation = mock(Operation.class);
 		when(operation.getOperationID()).thenReturn(operationID);
@@ -25,9 +25,8 @@ public class BankAccountTest {
 		new BankAccount(operation);
 		
 		assertEquals( amount, BankAccount.getBalance(), 1);
-		assertSame(operationID , operation.getOperationID());
 		
-		DebitAccount.resetBalance();
+		BankAccount.resetBalance();
 	}
 	
 	@Test
@@ -42,9 +41,8 @@ public class BankAccountTest {
 		new BankAccount(operation);
 		
 		assertEquals( 0-amount, BankAccount.getBalance(), 1);
-		assertSame(operationID , operation.getOperationID());
 		
-		DebitAccount.resetBalance();
+		BankAccount.resetBalance();
 	}
 	
 	@Test
@@ -59,6 +57,6 @@ public class BankAccountTest {
 		
 		assertSame(operationID , bankAccount.getOperationID());
 		
-		DebitAccount.resetBalance();
+		BankAccount.resetBalance();
 	}
 }

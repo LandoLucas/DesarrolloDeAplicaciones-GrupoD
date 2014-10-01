@@ -7,10 +7,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
-
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
-
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
 import ar.edu.unq.desapp.grupoD.model.receipt.Receipt;
 import ar.edu.unq.desapp.grupoD.model.receipt.ReceiptTypeA;
@@ -42,7 +40,7 @@ public class ReceiptTypeAService {
 		
 		ReceiptTypeA receipt = new ReceiptTypeA(date, receiptNumber, clientOrLegalEntityName, firmName, cUIT,address, telephoneNumber,
 			iVA, iIBB, gravado, noGravado);
-		ReceiptADao.saveRecipt(receipt);
+		ReceiptADao.saveReciptA(receipt);
 		
 		return Response.ok().build();
 	}
@@ -56,7 +54,7 @@ public class ReceiptTypeAService {
 			@FormParam("noGravado") double noGravado) throws InvalidReceiptNumberException{
 		
 		ReceiptTypeA receiptToEdit = new ReceiptTypeA(date, receiptNumber, clientOrLegalEntityName, firmName, cUIT, address, telephoneNumber, iVA, iIBB, gravado, noGravado);
-		ReceiptADao.saveRecipt(receiptToEdit);
+		ReceiptADao.updateReciptA(receiptToEdit);
 		return Response.ok().build();
 	}
 }

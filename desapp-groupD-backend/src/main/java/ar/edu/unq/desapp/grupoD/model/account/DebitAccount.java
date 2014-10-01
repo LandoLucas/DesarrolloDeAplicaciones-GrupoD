@@ -35,9 +35,9 @@ public class DebitAccount extends Account {
 		timeToCredit = operation.getPaymentType().getTimeToCredit();
 	}
 	
-	public void generateCredit() throws InvalidAmountException{
+	public Operation generateCredit() throws InvalidAmountException{
 		//Creates a new operation that register the Credit movement from the DebitAccount to the BankAccount 
-		new Operation( new DateTime(), this.getAmount(),
+		return new Operation( new DateTime(), this.getAmount(),
 					true, operation.getShift(), operation.getCategory(), operation.getSubCategory(),
 					operation.getConcept(), operation.getPaymentType());
 		//balance = balance - operation.getAmount(); 
