@@ -146,7 +146,10 @@
 							ng-class="{active:isActive('/consolidarCuentas')}"
 							ng-show="UserScope.inMainMenu" ng-href="#/consolidarCuentas">Consolidar cuentas</a>
 
-							
+						<a class="list-group-item"
+							ng-class="{active:isActive('/configurarCategorias')}"
+							ng-show="UserScope.inMainMenu" ng-href="#/configurarCategorias">Configurar categorías</a>
+                        
 							<a class="list-group-item"
 							ng-class="{active:isActive('/ingreso')}"
 							ng-click="setInNewIncome()"
