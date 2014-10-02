@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,10 +14,16 @@ import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 
 public class CategoryDaoTest {
 
+	private CategoryDao categoryDao;
+	
+	@Before
+	public void setUp(){
+		BeanFactory factory = new ClassPathXmlApplicationContext("spring-persistence-context.xml");
+		categoryDao = (CategoryDao)factory.getBean("categoryDao");
+	}
+	
 	@Test
 	public void saveAndLoadCategory(){
-		BeanFactory factory = new ClassPathXmlApplicationContext("spring-persistence-context.xml");
-		CategoryDao categoryDao = (CategoryDao)factory.getBean("categoryDao");
 		Category category = new Category("pagos");
 		
 		List<Category> categories = categoryDao.getAllCategories();
@@ -29,10 +36,22 @@ public class CategoryDaoTest {
 	}
 	
 	@Test
-	public void saveAndLoadSubcategory(){
-		BeanFactory factory = new ClassPathXmlApplicationContext("spring-persistence-context.xml");
-		CategoryDao categoryDao = (CategoryDao)factory.getBean("categoryDao");
+	public void removeCategory(){
+		categoryDao.saveOrUpdateCategory(new Category("pagos"));
+		categoryDao.saveOrUpdateCategory(new Category("sueldos"));
+
+		categoryDao.removeCategory("pagos");
 		
+		List<Category> categories = categoryDao.getAllCategories();
+		assertEquals( 1 , categories.size());
+		
+		categoryDao.removeCategory("sueldos");
+		categories = categoryDao.getAllCategories();
+		assertEquals( 0 , categories.size());
+	}
+	
+	@Test
+	public void saveAndLoadSubcategory(){
 		SubCategory subcategory = new SubCategory("pagos");
 		
 		List<SubCategory> subcategories = categoryDao.getAllSubCategories();
@@ -42,6 +61,5 @@ public class CategoryDaoTest {
 		subcategories = categoryDao.getAllSubCategories();
 		
 		assertEquals( 1 , subcategories.size());
-		
 	}
 }

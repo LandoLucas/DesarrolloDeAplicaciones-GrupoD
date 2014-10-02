@@ -92,6 +92,10 @@
 		class="ar.edu.unq.desapp.grupoD.persistence.SaveOrUpdateCategoryOperation">
 		<property name="manager" ref="hibernateManager" />
 	</bean>
+	<bean id="deleteCategoryOperation"
+		class="ar.edu.unq.desapp.grupoD.persistence.DeleteCategoryOperation">
+		<property name="manager" ref="hibernateManager" />
+	</bean>
 	<bean id="saveSubCategoryOperation"
 		class="ar.edu.unq.desapp.grupoD.persistence.SaveOrUpdateSubCategoryOperation">
 		<property name="manager" ref="hibernateManager" />
@@ -102,7 +106,8 @@
 	</bean>
 	<bean id="categoryDao" class="ar.edu.unq.desapp.grupoD.persistence.CategoryDao">
 		<property name="manager" ref="hibernateManager" />
-		<property name="categoryOperation" ref="saveCategoryOperation" />
+		<property name="saveCategoryOperation" ref="saveCategoryOperation" />
+		<property name="deleteCategoryOperation" ref="deleteCategoryOperation" />
 		<property name="subCategoryOperation" ref="saveSubCategoryOperation" />
 		<property name="getOperation" ref="getCategoriesOperation" />
 	</bean>

@@ -11,8 +11,9 @@ import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 public class CategoryDao {
 
 	private HibernateManager manager;
-	private SaveOrUpdateCategoryOperation categoryOperation;
+	private SaveOrUpdateCategoryOperation saveCategoryOperation;
 	private SaveOrUpdateSubCategoryOperation subCategoryOperation;
+	private DeleteCategoryOperation deleteCategoryOperation;
 	private GetCategoriesOperation getOperation;
 
 	public void setSubCategoryOperation(
@@ -20,9 +21,14 @@ public class CategoryDao {
 		this.subCategoryOperation = subCategoryOperation;
 	}
 
-	public void setCategoryOperation(
-			SaveOrUpdateCategoryOperation categoryOperation) {
-		this.categoryOperation = categoryOperation;
+	public void setDeleteCategoryOperation(
+			DeleteCategoryOperation deleteCategoryOperation) {
+		this.deleteCategoryOperation = deleteCategoryOperation;
+	}
+
+	public void setSaveCategoryOperation(
+			SaveOrUpdateCategoryOperation saveCategoryOperation) {
+		this.saveCategoryOperation = saveCategoryOperation;
 	}
 
 	public void setGetOperation(GetCategoriesOperation getOperation) {
@@ -43,8 +49,8 @@ public class CategoryDao {
 	}
 
 	public void saveOrUpdateCategory(Category category) {
-		categoryOperation.setCategory(category);
-		manager.executeWithTransaction(categoryOperation);
+		saveCategoryOperation.setCategory(category);
+		manager.executeWithTransaction(saveCategoryOperation);
 	}
 
 	public void saveOrUpdateSubCategory(SubCategory subcategory) {
@@ -53,8 +59,8 @@ public class CategoryDao {
 	}
 
 	public void removeCategory(String name) {
-		// TODO Auto-generated method stub
-
+		deleteCategoryOperation.setCategoryName(name);
+		manager.executeWithTransaction(deleteCategoryOperation);
 	}
 
 	public void removeSubCategory(String name) {
