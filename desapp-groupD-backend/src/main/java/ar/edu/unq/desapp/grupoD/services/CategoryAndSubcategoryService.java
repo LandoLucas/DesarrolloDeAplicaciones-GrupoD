@@ -32,6 +32,22 @@ public class CategoryAndSubcategoryService {
 		return categoryDao.getAllCategories();
     }
 	
+	@GET
+	@Path("/deleteCategory/{name}")
+	@Consumes("application/json")
+	public Response deleteCategory(@PathParam("name") String name){
+		categoryDao.removeCategory(name);
+		return Response.ok().build();
+	}
+	
+	@GET
+	@Path("/deleteSubcategory/{name}")
+	@Consumes("application/json")
+	public Response deleteSubcategory(@PathParam("name") String name){
+		categoryDao.removeSubCategory(name);
+		return Response.ok().build();
+	}
+	
 	
 	@GET
     @Path("/add/{name}")

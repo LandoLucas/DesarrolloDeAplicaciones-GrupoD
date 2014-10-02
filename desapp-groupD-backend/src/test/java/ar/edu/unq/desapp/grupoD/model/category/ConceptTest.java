@@ -13,9 +13,9 @@ public class ConceptTest {
 	public void getAndSetConcept(){
 		String conceptName = "Sells 01/20";
 		
-		Concept.setConceptName(conceptName);
+		Concept concept = new Concept(conceptName);
 	
-		assertEquals( conceptName , Concept.getConceptName());
+		assertEquals( conceptName , concept.getConceptName());
 	}
 	
 }

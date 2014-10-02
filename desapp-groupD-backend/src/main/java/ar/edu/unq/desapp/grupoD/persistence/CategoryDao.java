@@ -1,10 +1,6 @@
 package ar.edu.unq.desapp.grupoD.persistence;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import org.hibernate.Session;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
@@ -15,13 +11,20 @@ import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 public class CategoryDao {
 
 	private HibernateManager manager;
-	private SaveOrUpdateCategoryOperation operation;
+	private SaveOrUpdateCategoryOperation categoryOperation;
+	private SaveOrUpdateSubCategoryOperation subCategoryOperation;
 	private GetCategoriesOperation getOperation;
-	
-	public void setOperation(SaveOrUpdateCategoryOperation operation) {
-		this.operation = operation;
+
+	public void setSubCategoryOperation(
+			SaveOrUpdateSubCategoryOperation subCategoryOperation) {
+		this.subCategoryOperation = subCategoryOperation;
 	}
-	
+
+	public void setCategoryOperation(
+			SaveOrUpdateCategoryOperation categoryOperation) {
+		this.categoryOperation = categoryOperation;
+	}
+
 	public void setGetOperation(GetCategoriesOperation getOperation) {
 		this.getOperation = getOperation;
 	}
@@ -36,18 +39,27 @@ public class CategoryDao {
 	}
 
 	public List<SubCategory> getAllSubCategories() {
-		// TODO implement
-		return new ArrayList<SubCategory>();
+		return manager.getSession().createQuery("FROM SubCategory").list();
 	}
-	
+
 	public void saveOrUpdateCategory(Category category) {
-		operation.setCategory(category);
-		manager.executeWithTransaction(operation);
+		categoryOperation.setCategory(category);
+		manager.executeWithTransaction(categoryOperation);
 	}
-	
+
 	public void saveOrUpdateSubCategory(SubCategory subcategory) {
-		//TODO implement
+		subCategoryOperation.setSubCategory(subcategory);
+		manager.executeWithTransaction(subCategoryOperation);
 	}
-	
+
+	public void removeCategory(String name) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void removeSubCategory(String name) {
+		// TODO Auto-generated method stub
+
+	}
 
 }

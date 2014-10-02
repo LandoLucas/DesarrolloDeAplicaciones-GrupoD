@@ -24,14 +24,14 @@ public class Concept {
 	@GeneratedValue
 	private Integer id;
 	
-	private static String conceptName;
+	private String conceptName;
 
-	public static String getConceptName() {
+	public String getConceptName() {
 		return conceptName;
 	}
 
-	public static void setConceptName(String conceptName) {
-		Concept.conceptName = conceptName;
+	public void setConceptName(String conceptName) {
+		this.conceptName = conceptName;
 	}
 
 	public Concept(){};
