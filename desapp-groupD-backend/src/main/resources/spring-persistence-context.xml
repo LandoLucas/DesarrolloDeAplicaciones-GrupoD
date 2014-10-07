@@ -85,36 +85,16 @@
 	<!-- ________________________________________ -->
 	<!-- ________________________________________ -->
 
-	<bean id="hibernateManager" class="ar.edu.unq.desapp.grupoD.persistence.HibernateManager">
-		<property name="sessionFactory" ref="persistence.sessionFactory" />
-	</bean>
-	<bean id="saveCategoryOperation"
-		class="ar.edu.unq.desapp.grupoD.persistence.SaveOrUpdateCategoryOperation">
-		<property name="manager" ref="hibernateManager" />
-	</bean>
-	<bean id="deleteCategoryOperation"
-		class="ar.edu.unq.desapp.grupoD.persistence.DeleteCategoryOperation">
-		<property name="manager" ref="hibernateManager" />
-	</bean>
-	<bean id="saveSubCategoryOperation"
-		class="ar.edu.unq.desapp.grupoD.persistence.SaveOrUpdateSubCategoryOperation">
-		<property name="manager" ref="hibernateManager" />
-	</bean>
-	<bean id="getCategoriesOperation"
-		class="ar.edu.unq.desapp.grupoD.persistence.GetCategoriesOperation">
-		<property name="manager" ref="hibernateManager" />
+	<bean id="categoryAndSubcategoryService" class="ar.edu.unq.desapp.grupoD.services.CategoryAndSubcategoryService" >
+		<property name="categoryDao" ref="categoryDao"/>
+		<property name="subcategoryDao" ref="subcategoryDao"/>
 	</bean>
 	<bean id="categoryDao" class="ar.edu.unq.desapp.grupoD.persistence.CategoryDao">
-		<property name="manager" ref="hibernateManager" />
-		<property name="saveCategoryOperation" ref="saveCategoryOperation" />
-		<property name="deleteCategoryOperation" ref="deleteCategoryOperation" />
-		<property name="subCategoryOperation" ref="saveSubCategoryOperation" />
-		<property name="getOperation" ref="getCategoriesOperation" />
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="subcategoryDao" class="ar.edu.unq.desapp.grupoD.persistence.SubcategoryDao">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	
-	
-
-
-
 
 </beans>
