@@ -12,9 +12,10 @@ import ar.edu.unq.desapp.grupoD.model.category.Category;
 /**
  * @author Lucas
  */
-@SuppressWarnings("serial")
 public class CategoryDao extends HibernateGenericDAO<Category> implements
 		GenericRepository<Category> {
+
+	private static final long serialVersionUID = 1L;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void removeCategory(final String name) {

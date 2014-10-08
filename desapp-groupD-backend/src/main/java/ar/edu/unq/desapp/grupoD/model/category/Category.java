@@ -32,6 +32,10 @@ public class Category {
 	@OneToOne(cascade = CascadeType.ALL)
 	private SubCategory subcategory;
 
+	public Integer getId() {
+		return id;
+	}
+
 	public String getCategoryName() {
 		return categoryName;
 	}

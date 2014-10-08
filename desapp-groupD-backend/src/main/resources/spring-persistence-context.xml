@@ -8,7 +8,7 @@
 
 
 
-	<tx:annotation-driven transaction-manager="persistence.transactionManager"
+	<tx:annotation-driven transaction-manager="transactionManager"
 		proxy-target-class="true" />
 
 	<!-- ========================= GENERAL DEFINITIONS ========================= -->
@@ -52,7 +52,7 @@
 					<!-- Configuration generic properties. They are loaded from file hibernate.properties -->
 					<prop key="hibernate.show_sql">true</prop>
 					<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-					<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+					<prop key="hibernate.hbm2ddl.auto">update</prop>
 
 					<prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
 					<prop key="hibernate.connection.autocommit">false</prop>
@@ -65,7 +65,7 @@
 
 
 	<!-- Transaction manager for a single JDBC DataSource -->
-	<bean id="persistence.transactionManager"
+	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 		<property name="jdbcExceptionTranslator" ref="persistence.jdbcExceptionTranslator" />
@@ -85,16 +85,14 @@
 	<!-- ________________________________________ -->
 	<!-- ________________________________________ -->
 
-	<bean id="categoryAndSubcategoryService" class="ar.edu.unq.desapp.grupoD.services.CategoryAndSubcategoryService" >
-		<property name="categoryDao" ref="categoryDao"/>
-		<property name="subcategoryDao" ref="subcategoryDao"/>
-	</bean>
 	<bean id="categoryDao" class="ar.edu.unq.desapp.grupoD.persistence.CategoryDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
-	<bean id="subcategoryDao" class="ar.edu.unq.desapp.grupoD.persistence.SubcategoryDao">
-		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	<bean id="categoryService" class="ar.edu.unq.desapp.grupoD.services.CategoryService">
+		<property name="categoryDao" ref="categoryDao" />
+	</bean>
+	<bean id="categoryRest" class="ar.edu.unq.desapp.grupoD.rest.CategoryRest" >
+		<property name="categoryService" ref="categoryService"/>
 	</bean>
 	
-
 </beans>
