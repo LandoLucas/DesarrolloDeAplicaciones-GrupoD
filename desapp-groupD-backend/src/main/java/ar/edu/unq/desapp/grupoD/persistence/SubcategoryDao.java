@@ -10,4 +10,9 @@ public class SubcategoryDao extends HibernateGenericDAO<SubCategory> implements
 		return SubCategory.class;
 	}
 
+	public void removeSubcategoryByName(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -88,11 +88,22 @@
 	<bean id="categoryDao" class="ar.edu.unq.desapp.grupoD.persistence.CategoryDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+	<bean id="subcategoryDao" class="ar.edu.unq.desapp.grupoD.persistence.SubcategoryDao">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 	<bean id="categoryService" class="ar.edu.unq.desapp.grupoD.services.CategoryService">
 		<property name="categoryDao" ref="categoryDao" />
+	</bean>
+	<bean id="subcategoryService" class="ar.edu.unq.desapp.grupoD.services.SubCategoryService">
+		<property name="subcategoryDao" ref="subcategoryDao" />
 	</bean>
 	<bean id="categoryRest" class="ar.edu.unq.desapp.grupoD.rest.CategoryRest" >
 		<property name="categoryService" ref="categoryService"/>
 	</bean>
+	<bean id="subcategoryRest" class="ar.edu.unq.desapp.grupoD.rest.SubcategoryRest" >
+		<property name="subcategoryService" ref="subcategoryService"/>
+	</bean>
+	
+	
 	
 </beans>

@@ -59,4 +59,10 @@ public class SubCategory {
 	
 
 	public SubCategory(){}
+
+	public Integer getId() {
+		return id;
+	}
+
+	
 }
