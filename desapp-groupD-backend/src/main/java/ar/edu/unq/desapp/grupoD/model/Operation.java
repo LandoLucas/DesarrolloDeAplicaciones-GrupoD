@@ -1,5 +1,10 @@
 package ar.edu.unq.desapp.grupoD.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.joda.time.DateTime;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
@@ -9,9 +14,13 @@ import ar.edu.unq.desapp.grupoD.model.category.Concept;
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 
+@Entity
+@Table(name = "Operation")
 public class Operation {
 
 	private DateTime date;
+	@Id
+	@GeneratedValue
 	private int operationID;
 	private double amount;
 	private boolean isIncome;
