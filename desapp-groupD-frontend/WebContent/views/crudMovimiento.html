@@ -8,13 +8,7 @@
 		<div class="bs-example">
 			<form name="crudOperation" class="form-horizontal">
 
-				<div class="form-group">
-					<label for="inputCodigo" class="control-label col-xs-2">Código</label>
-					<div class="col-xs-10">
-						<input type="text" class="form-control" id="inputCode"
-							ng-model="inputCode" placeholder="Ingrese el código">
-					</div>
-				</div>
+				
 				<div class="form-group">
 					<label for="inputDate" class="control-label col-xs-2">Fecha</label>
 					<div class="col-xs-10">
@@ -107,7 +101,7 @@
 					<div class="col-xs-offset-2 col-xs-10">
 
 						<button type="submit" class="btn btn-success"
-							ng-show="modoRegistro()" ng-click="registerOperation()">Confirmar</button>
+							ng-show="modoRegistro()" ng-click="registerOperationTest()">Confirmar</button>
 
 						<button type="submit" class="btn btn-success"
 							ng-click="updateOperation()" ng-show="modoEdicion()">Actualizar</button>

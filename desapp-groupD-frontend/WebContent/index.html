@@ -158,29 +158,39 @@
 							ng-click="setInNewOutcome()"
 							ng-class="{active:isActive('/egreso')}"
 							ng-show="UserScope.inCargarDatos" ng-href="#/egreso">Cargar un Egreso</a>
+                        
 							<a class="list-group-item"
-							ng-class="{active:isActive('/comprobantes')}"
-							ng-show="UserScope.inCargarDatos" ng-href="#/comprobantes">Cargar un comprobante</a>
+                               ng-click="setInBills()"
+							ng-class="{active:isActive('/comprobantes')}" 
+							ng-show="UserScope.inCargarDatos" 
+                                style="cursor: pointer;">Cargar un comprobante</a>
+                        
 							<a class="list-group-item a"
-							ng-click="setPurchase()"
-							ng-show="UserScope.inBills" >Comprobante de compra</a>
+							ng-click="setInBillTypes()"
+							ng-show="UserScope.inBills" 
+                           >Comprobante de compra</a>
 							
 							<a class="list-group-item"
-							ng-click="setSale()"
-							ng-show="UserScope.inBills">Comprobante de venta</a>
+							ng-click="setInBillTypes()"
+							ng-show="UserScope.inBills"
+                              >Comprobante de venta</a>
 							
-							<button class="list-group-item"
+							<a class="list-group-item"
 							ng-click="setTypeA()"
-							ng-show="UserScope.inBill" >Tipo A</button>
-							<button class="list-group-item"
+							ng-show="UserScope.inBillTypes" 
+                               ng-href="#/newBill">Tipo A</a>
+							<a class="list-group-item"
 							ng-click="setTypeB()"
-							ng-show="UserScope.inBill">Tipo B</button>
-							<button class="list-group-item"
+							ng-show="UserScope.inBillTypes"
+                               ng-href="#/newBill">Tipo B</a>
+							<a class="list-group-item"
 							ng-click="setTypeC()"
-							ng-show="UserScope.inBill" >Tipo C</button>
-							<button class="list-group-item"
+							ng-show="UserScope.inBillTypes" 
+                               ng-href="#/newBill">Tipo C</a>
+							<a class="list-group-item"
 							ng-click="setTypeX()"
-							ng-show="UserScope.inBill" >Tipo X</button>
+							ng-show="UserScope.inBillTypes" 
+                               ng-href="#/newBill">Tipo X</a>
 
 
 						

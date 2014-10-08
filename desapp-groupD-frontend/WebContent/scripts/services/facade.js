@@ -77,6 +77,19 @@ function autenticar(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 }
 
 
+function invokeNewOperationTest(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+	var header = defaultHeader();
+	invokeRestService(cnxHttp, header, data, 'operation',
+			'newTest', handlerOnSuccess, handlerOnError);
+}
+
+
+function invokeNewCategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+	var header = defaultHeader();
+	invokeRestService(cnxHttp, header, data, 'category',
+			'add', handlerOnSuccess, handlerOnError);
+}
+
 
 
 // Usuarios

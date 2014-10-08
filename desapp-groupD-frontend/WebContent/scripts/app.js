@@ -33,6 +33,18 @@
                                 $window.history.back();
                             };
                             
+                            $scope.setInBills = function(){
+                                globalService.setInBills();
+                                $location.path('/comprobantes');
+
+                            };
+                            
+                             $scope.setInBillTypes = function(){
+                                globalService.setInBillTypes();
+                                $location.path('/comprobantes');
+
+                            };
+                            
 							$scope.inMainMenu = function(){
 								return localStorageService.get('userInMainMenu');
 							}; 
@@ -257,6 +269,9 @@
 			}).when('/cargarDatos', {
 				templateUrl : 'views/cargarDatos.html',
 				controller : 'CargarDatosCtrl'
+            }).when('/newBill', {
+				templateUrl : 'views/crudBill.html',
+				controller : 'CrudBillCtrl'    
 			}).otherwise({
 				redirectTo : '/'
 			});

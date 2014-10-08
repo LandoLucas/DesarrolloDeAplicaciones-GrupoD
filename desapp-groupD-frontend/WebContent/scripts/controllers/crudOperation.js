@@ -6,7 +6,7 @@
  * @description # MainCtrl Controller of the tp-dapp-eiroa-lando
  */
 var app = angular.module('tp-dapp-eiroa-lando');
-app.controller('CrudOperationCtrl', function($scope, $location, $http,
+app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		$rootScope, growl,globalService,dialogs) {
 	globalService.setInNewOperation();
 	if ($rootScope.editingOperation) {
@@ -74,6 +74,14 @@ app.controller('CrudOperationCtrl', function($scope, $location, $http,
 		};
 		return data;
 	}
+    
+    $scope.populateParamsTest = function(){
+        var data ={
+            amount: $scope.inputAmount
+        };
+        
+        return data;
+    }
 
 	$scope.registerOperation = function() {
 		var data = $scope.populateParams();
@@ -85,9 +93,21 @@ app.controller('CrudOperationCtrl', function($scope, $location, $http,
 		}
 		
 	}
+    
+    $scope.registerOperationTest = function() {
+        
+		var data = $scope.populateParamsTest();
+		if(validate()){
+			invokeNewOperationTest($http, data, $scope.registerOperationOk,
+					defaultHandlerOnError);
+		}else{
+			getErrorMessage();
+		}
+		
+	}
 	
 	function validate(){
-		if ($scope.inputCode == null || $scope.inputCode == ""){
+		if ($scope.inputAmount == null || $scope.inputAmount == ""){
 			return false;
 		}
 		return true;
@@ -95,8 +115,8 @@ app.controller('CrudOperationCtrl', function($scope, $location, $http,
 	
 	function getErrorMessage(){
 
-		if ($scope.inputCode == null || $scope.inputCode== ""){
-			growl.error("Código numérico requerido");
+		if ($scope.inputAmount == null || $scope.inputAmount== ""){
+			growl.error("Monto requerido");
 		}
 
 	}
@@ -114,7 +134,7 @@ app.controller('CrudOperationCtrl', function($scope, $location, $http,
 	}
 	
 	 $scope.dialogNewCategory = function() {
-	 	var dlg = dialogs.create('views/newCategory.html','NewCategoryCtrl',{},'lg');
+	 	var dlg = dialogs.create('views/newCategory.html','NewCategoryCtrl',function(){},'lg');
 		dlg.result.then(function(name){
 			alert('New category is ' +name);
 		},function(){
@@ -122,6 +142,8 @@ app.controller('CrudOperationCtrl', function($scope, $location, $http,
 				$scope.name = 'You did not enter in your name!';
 		});
 	 };
+	 
+
 	 
 	 $scope.dialogNewSubcategory = function() {
 		 	var dlg = dialogs.create('views/newSubcategory.html','NewSubcategoryCtrl',{},'lg');
