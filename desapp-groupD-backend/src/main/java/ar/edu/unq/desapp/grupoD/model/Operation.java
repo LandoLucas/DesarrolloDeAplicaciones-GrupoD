@@ -1,8 +1,10 @@
 package ar.edu.unq.desapp.grupoD.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.joda.time.DateTime;
@@ -25,9 +27,11 @@ public class Operation {
 	private double amount;
 	private boolean isIncome;
 	private String shift;
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	private Category category;
-	private SubCategory subCategory;
-	private Concept concept;
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private PaymentType paymentType;
 
 	private static int next_operation_id = 1;
@@ -55,23 +59,14 @@ public class Operation {
 		this.setAmount(amount);
 		this.setIncome(isIncome);
 		this.setShift(shift);
+		subCategory.setConcept(concept);
+		category.setSubcategory(subCategory);
 		this.setCategory(category);
-		this.setSubCategory(subCategory);
-		this.setConcept(concept);
 		this.setPaymentType(paymentType);
-		
 		setOperationID();
 		this.bill();
 	}
 	
-	public void setSubCategory(SubCategory subCategory) {
-		this.subCategory = subCategory;
-	}
-
-	public void setConcept(Concept concept) {
-		this.concept = concept;
-	}
-
 	/**
 	 * Intended to be used as an adjustment operation where you need to correct the balance of one of the accounts.
 	 * It is like a normal operation but it lacks some information such as the shift and it needs to know which account needs to be adjusted.
@@ -89,6 +84,14 @@ public class Operation {
 	
 	
 	
+	public Operation(DateTime date, double amount, boolean isIncome, String shift, Category category, PaymentType paymentType) throws InvalidAmountException {
+		this.setDate(date);
+		this.setAmount(amount);
+		this.setIncome(isIncome);
+		this.setCategory(category);
+		this.setPaymentType(paymentType);
+	}
+
 	public DateTime getDate() {
 		return date;
 	}
@@ -166,16 +169,8 @@ public class Operation {
 		this.paymentType.bill(this);
 	}
 
-	public SubCategory getSubCategory() {
-		return this.subCategory;
-	}
-
-	public Concept getConcept() {
-		return this.concept;
-	}
-	
 	public Operation deleteOperation() throws InvalidAmountException{
-		return new Operation(this.date, this.amount, !this.isIncome, this.shift, this.category, this.subCategory, this.concept, this.paymentType);
+		return new Operation(this.date, this.amount, !this.isIncome, this.shift, this.category, this.paymentType);
 	}
 
 }

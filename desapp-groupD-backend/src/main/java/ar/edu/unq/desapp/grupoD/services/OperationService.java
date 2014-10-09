@@ -67,9 +67,9 @@ public class OperationService {
 		operation.setDate(date);
 		operation.setAmount(amount);
 		operation.setIncome(isIncome);
+		subCategory.setConcept(concept);
+		category.setSubcategory(subCategory);
 		operation.setCategory(category);
-		operation.setSubCategory(subCategory);
-		operation.setConcept(concept);
 		operation.setPaymentType(paymentType);
 		
 		operationDao.saveOperation(operation);	
