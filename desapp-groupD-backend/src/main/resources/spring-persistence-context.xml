@@ -103,7 +103,12 @@
 	<bean id="subcategoryRest" class="ar.edu.unq.desapp.grupoD.rest.SubcategoryRest" >
 		<property name="subcategoryService" ref="subcategoryService"/>
 	</bean>
-	
-	
+    <bean id="databaseInitializer" class="ar.edu.unq.desapp.grupoD.persistence.DatabaseInitializer" init-method="populateDatabase">
+		<property name="categoryDao" ref="categoryDao" />
+		<property name="subcategoryDao" ref="subcategoryDao" />
+    </bean>
+    
+    
+
 	
 </beans>

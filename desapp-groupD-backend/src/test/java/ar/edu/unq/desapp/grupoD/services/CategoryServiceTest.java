@@ -30,4 +30,17 @@ public class CategoryServiceTest extends AbstractTransactionalJUnit4SpringContex
 		assertEquals( "ventas" , categories.get(0).getCategoryName());
 	}
 	
+	@Test
+	public void deleteCategory(){
+		Category category = new Category("ventas");
+		categoryService.save(category);
+		List<Category> categories = categoryService.findAll();
+		assertEquals( 1 , categories.size());
+		
+		categoryService.removeCategory("ventas");
+		
+		categories = categoryService.findAll();
+		assertEquals( 0 , categories.size());
+	}
+	
 }

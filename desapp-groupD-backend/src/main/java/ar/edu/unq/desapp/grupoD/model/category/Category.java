@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupoD.model.category;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,6 +28,7 @@ public class Category {
 	@GeneratedValue
 	private Integer id;
 
+	@Column
 	private String categoryName;
 
 	@OneToOne(cascade = CascadeType.ALL)
