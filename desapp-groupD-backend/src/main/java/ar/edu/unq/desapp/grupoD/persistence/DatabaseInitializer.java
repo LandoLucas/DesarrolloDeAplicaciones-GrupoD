@@ -20,9 +20,15 @@ public class DatabaseInitializer {
 	}
 
 	public void populateDatabase() {
+		loadCategories();
+		
 		System.out.println("==========================");
 		System.out.println("POPULATED");
 		System.out.println("==========================");
+	}
+
+	private void loadCategories() {
+		System.out.println("Loaded categories");
 	}
 
 }
