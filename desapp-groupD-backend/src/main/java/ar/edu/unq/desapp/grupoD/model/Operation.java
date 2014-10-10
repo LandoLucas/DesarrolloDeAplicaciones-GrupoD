@@ -1,12 +1,14 @@
 package ar.edu.unq.desapp.grupoD.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
@@ -20,12 +22,20 @@ import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 @Table(name = "Operation")
 public class Operation {
 
+	@Column
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime date;
+	
 	@Id
 	@GeneratedValue
 	private int operationID;
+	
+	@Column
 	private double amount;
+	@Column
 	private boolean isIncome;
+	
+	@Column
 	private String shift;
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -33,7 +43,6 @@ public class Operation {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private PaymentType paymentType;
-
 	private static int next_operation_id = 1;
 	/**
 	 * Returns an instance of a money operation and it saves the transaction details.

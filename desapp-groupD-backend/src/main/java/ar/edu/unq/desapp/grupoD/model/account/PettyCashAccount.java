@@ -24,6 +24,10 @@ public class PettyCashAccount extends Account {
 		setBalance(this.amount, operation);
 	}
 
+	public PettyCashAccount() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public static void setBalance(double newAmount, Operation operation) {
 		if (operation.isIncome())
 			balance = balance + newAmount;
