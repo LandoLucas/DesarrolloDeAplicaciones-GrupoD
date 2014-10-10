@@ -85,25 +85,43 @@
 	<!-- ________________________________________ -->
 	<!-- ________________________________________ -->
 
+	<!-- CATEGORY -->
 	<bean id="categoryDao" class="ar.edu.unq.desapp.grupoD.persistence.CategoryDao">
-		<property name="sessionFactory" ref="persistence.sessionFactory" />
-	</bean>
-	<bean id="subcategoryDao" class="ar.edu.unq.desapp.grupoD.persistence.SubcategoryDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	<bean id="categoryService" class="ar.edu.unq.desapp.grupoD.services.CategoryService">
 		<property name="categoryDao" ref="categoryDao" />
 	</bean>
-	<bean id="subcategoryService" class="ar.edu.unq.desapp.grupoD.services.SubCategoryService">
-		<property name="subcategoryDao" ref="subcategoryDao" />
-	</bean>
 	<bean id="categoryRest" class="ar.edu.unq.desapp.grupoD.rest.CategoryRest" >
 		<property name="categoryService" ref="categoryService"/>
+	</bean>
+	
+	<!-- SUBCATEGORY -->
+	<bean id="subcategoryDao" class="ar.edu.unq.desapp.grupoD.persistence.SubcategoryDao">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="subcategoryService" class="ar.edu.unq.desapp.grupoD.services.SubCategoryService">
+		<property name="subcategoryDao" ref="subcategoryDao" />
 	</bean>
 	<bean id="subcategoryRest" class="ar.edu.unq.desapp.grupoD.rest.SubcategoryRest" >
 		<property name="subcategoryService" ref="subcategoryService"/>
 	</bean>
-	
-	
-	
+    
+	<!-- OPERATIONS -->	
+	<bean id="operationDao" class="ar.edu.unq.desapp.grupoD.persistence.OperationDao">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="operationService" class="ar.edu.unq.desapp.grupoD.services.OperationService">
+		<property name="operationDao" ref="operationDao" />
+	</bean>
+	<bean id="operationsRest" class="ar.edu.unq.desapp.grupoD.rest.OperationsRest" >
+		<property name="operationService" ref="operationService"/>
+	</bean>
+    
+    <!-- DATABASE INITIALIZER -->
+    <bean id="databaseInitializer" class="ar.edu.unq.desapp.grupoD.persistence.DatabaseInitializer" init-method="populateDatabase">
+		<property name="categoryDao" ref="categoryDao" />
+		<property name="subcategoryDao" ref="subcategoryDao" />
+    </bean>
+    
 </beans>

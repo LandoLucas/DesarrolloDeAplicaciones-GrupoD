@@ -30,9 +30,9 @@ public class CategoryRest {
 	}
 
 	@GET
-	@Path("/all")
+	@Path("/{name}")
 	@Produces("application/json")
-	public List<Category> getAllCategories() {
+	public List<Category> getAllCategories(@PathParam("name") String name) {
 		return categoryService.findAll();
 	}
 

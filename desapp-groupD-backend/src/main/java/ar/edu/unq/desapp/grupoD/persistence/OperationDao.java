@@ -7,24 +7,29 @@ import org.joda.time.DateTime;
 import ar.edu.unq.desapp.grupoD.model.Operation;
 
 
-public class OperationDao {
+public class OperationDao extends HibernateGenericDAO<Operation> implements
+GenericRepository<Operation> {
 
 	public Operation getOperationById(int id) {
-		// Search and return in hibernate an operation with same id
-		return null;
+		return findById(id);
 	}
 
 	public List<Operation> getOperationSince(DateTime since) {
-		// returns all the operation since the given date
-		return null;
+		return getHibernateTemplate().find("from Operation where date > " +since);
 	}
 
 	public void saveOperation(Operation operation) {
-		// TODO Auto-generated method stub
+		save(operation);
 	}
 
 	public void deleteOperationByID(int id) {
-		// TODO Auto-generated method stub
+		Operation operation = findById(id);
+		getHibernateTemplate().delete(operation);
+	}
+
+	@Override
+	protected Class<Operation> getDomainClass() {
+		return Operation.class;
 	}
 
 }

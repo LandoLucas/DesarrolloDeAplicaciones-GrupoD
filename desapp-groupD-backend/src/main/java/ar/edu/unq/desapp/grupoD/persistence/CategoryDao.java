@@ -23,11 +23,8 @@ public class CategoryDao extends HibernateGenericDAO<Category> implements
 
 			@Override
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				
-				String hql = "delete from Category where categoryName= :name";
-				  Query query = session.createQuery(hql);
-				  query.setString("categoryName", name);
-				  query.executeUpdate();
+				Query query = session.createQuery("delete from Category where categoryName= :name").setParameter("name", name);
+				query.executeUpdate();
 				return null;
 			}
 			

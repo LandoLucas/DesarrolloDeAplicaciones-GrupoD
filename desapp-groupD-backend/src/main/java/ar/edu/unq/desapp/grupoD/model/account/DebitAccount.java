@@ -38,8 +38,8 @@ public class DebitAccount extends Account {
 	public Operation generateCredit() throws InvalidAmountException{
 		//Creates a new operation that register the Credit movement from the DebitAccount to the BankAccount 
 		return new Operation( new DateTime(), this.getAmount(),
-					true, operation.getShift(), operation.getCategory(), operation.getSubCategory(),
-					operation.getConcept(), operation.getPaymentType());
+					true, operation.getShift(), operation.getCategory(), operation.getCategory().getSubcategory(),
+					operation.getCategory().getSubcategory().getConcept(), operation.getPaymentType());
 		//balance = balance - operation.getAmount(); 
 	} 
 

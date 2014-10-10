@@ -1,10 +1,25 @@
 package ar.edu.unq.desapp.grupoD.model.payment;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
+
 import ar.edu.unq.desapp.grupoD.model.Operation;
 import ar.edu.unq.desapp.grupoD.model.account.Account;
 
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class PaymentType {
 
+	@Id
+	@GeneratedValue
+	private int id;
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	protected Account account;
 
 	protected Account getAccount() {
