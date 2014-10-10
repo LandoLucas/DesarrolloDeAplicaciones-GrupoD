@@ -3,7 +3,9 @@ package ar.edu.unq.desapp.grupoD.rest;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -44,10 +46,10 @@ public class CategoryRest {
 		return Response.ok().build();
 	}
 
-	@GET
-	@Path("/add/{name}")
-	@Consumes("application/json")
-	public Response saveOrUpdateCategory(@PathParam("name") String name) {
+	@POST
+	@Path("/add")
+	@Consumes("application/x-www-form-urlencoded")
+	public Response saveOrUpdateCategory(@FormParam("name") String name) {
 		Category category = new Category(name);
 		categoryService.save(category);
 		return Response.ok().build();
