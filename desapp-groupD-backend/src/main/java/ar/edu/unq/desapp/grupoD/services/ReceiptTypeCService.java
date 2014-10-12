@@ -40,7 +40,7 @@ public class ReceiptTypeCService {
 		
 		ReceiptTypeC receipt = new ReceiptTypeC(date, receiptNumber, clientOrLegalEntityName, firmName, cUIT,
 				address, telephoneNumber, finalImport);
-		receiptCDao.saveReceiptC(receipt);
+		receiptCDao.save(receipt);
 		return Response.ok().build();
 	}
 	
@@ -53,7 +53,7 @@ public class ReceiptTypeCService {
 		
 		ReceiptTypeC receipt = new ReceiptTypeC(date, receiptNumber, clientOrLegalEntityName, firmName, cUIT,
 				address, telephoneNumber, finalImport);
-		receiptCDao.updateReceiptC(receipt);
+		receiptCDao.save(receipt);
 		return Response.ok().build();
 	}
 }

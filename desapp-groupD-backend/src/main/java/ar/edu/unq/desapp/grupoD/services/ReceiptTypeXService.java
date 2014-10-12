@@ -40,7 +40,7 @@ public class ReceiptTypeXService {
 		
 		ReceiptTypeX receipt = new ReceiptTypeX(date, receiptNumber, clientOrLegalEntityName, firmName, cUIT,
 				address, telephoneNumber, finalImport);
-		receiptXDao.saveReceiptX(receipt);
+		receiptXDao.save(receipt);
 		return Response.ok().build();
 	}
 	
@@ -53,7 +53,7 @@ public class ReceiptTypeXService {
 		
 		ReceiptTypeX receipt = new ReceiptTypeX(date, receiptNumber, clientOrLegalEntityName, firmName, cUIT,
 				address, telephoneNumber, finalImport);
-		receiptXDao.updateReceiptX(receipt);
+		receiptXDao.save(receipt);
 		return Response.ok().build();
 	}
 }
