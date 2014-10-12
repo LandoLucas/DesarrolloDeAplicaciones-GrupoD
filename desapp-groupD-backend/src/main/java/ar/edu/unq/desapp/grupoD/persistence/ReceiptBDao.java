@@ -1,23 +1,24 @@
 package ar.edu.unq.desapp.grupoD.persistence;
 
-import ar.edu.unq.desapp.grupoD.model.receipt.Receipt;
+import java.util.List;
+
 import ar.edu.unq.desapp.grupoD.model.receipt.ReceiptTypeB;
 
-public class ReceiptBDao {
+public class ReceiptBDao extends HibernateGenericDAO<ReceiptTypeB> implements
+GenericRepository<ReceiptTypeB> {
 
-	public Receipt getReceiptByReceiptNumber(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public ReceiptTypeB getReceiptByReceiptNumber(int id) {
+		List<ReceiptTypeB> receipts = getHibernateTemplate().find("from ReceiptTypeB where operationID = " + id);
+		if( ! receipts.isEmpty()){
+			return receipts.get(0);
+		}else{
+			return null;
+		}
 	}
 
-	public void saveReceiptB(ReceiptTypeB receipt) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void updateReceiptB(ReceiptTypeB receipt) {
-		// TODO Auto-generated method stub
-		
+	@Override
+	protected Class<ReceiptTypeB> getDomainClass() {
+		return ReceiptTypeB.class;
 	}
 
 }

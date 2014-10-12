@@ -26,6 +26,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 			<ref bean="categoryRest" />
 			<ref bean="operationsRest" />
 			<ref bean="ReceiptTypeARest" />
+			<ref bean="ReceiptTypeBRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />
