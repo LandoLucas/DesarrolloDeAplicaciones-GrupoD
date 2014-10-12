@@ -18,7 +18,7 @@ public class BankAccount extends Account {
 		new BankAccount(operation);
 	}
 	
-	protected BankAccount(Operation operation) {
+	public BankAccount(Operation operation) {
 		this.operationID = operation.getOperationID();
 //		this.operation = operation;
 		this.amount = operation.getAmount();
@@ -48,4 +48,5 @@ public class BankAccount extends Account {
 		return operationID;
 	}
 
+	public BankAccount(){}
 }
