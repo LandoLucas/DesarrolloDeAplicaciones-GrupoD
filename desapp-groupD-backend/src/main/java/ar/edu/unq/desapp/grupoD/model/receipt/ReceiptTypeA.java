@@ -1,5 +1,7 @@
 package ar.edu.unq.desapp.grupoD.model.receipt;
 
+import javax.persistence.Entity;
+
 import org.joda.time.DateTime;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
@@ -7,6 +9,7 @@ import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
 /**
  * @author Lucas
  */
+@Entity
 public class ReceiptTypeA extends Receipt {
 
 	private double IVA;
