@@ -24,7 +24,8 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	<jaxrs:server id="restContainer" address="/"> 
 		<jaxrs:serviceBeans>
 			<ref bean="categoryRest" />
-			<ref bean="operationsRest" />			
+			<ref bean="operationsRest" />
+			<ref bean="ReceiptTypeARest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />

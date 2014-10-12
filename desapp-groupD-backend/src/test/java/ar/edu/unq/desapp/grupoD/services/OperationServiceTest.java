@@ -21,8 +21,6 @@ public class OperationServiceTest extends AbstractTransactionalJUnit4SpringConte
 	@Autowired
 	private OperationService operationService;
 	
-	
-	
 	@Test
 	public void saveOperation() throws InvalidAmountException{
 		DateTime date = new DateTime();

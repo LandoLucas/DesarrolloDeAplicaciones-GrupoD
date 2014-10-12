@@ -118,6 +118,17 @@
 		<property name="operationService" ref="operationService"/>
 	</bean>
     
+    <!-- RECEIPT TYPE A -->
+    <bean id="receiptADao" class="ar.edu.unq.desapp.grupoD.persistence.ReceiptADao">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="receiptTypeAService" class="ar.edu.unq.desapp.grupoD.services.ReceiptTypeAService">
+		<property name="receiptADao" ref="receiptADao" />
+	</bean>
+	<bean id="receiptTypeARest" class="ar.edu.unq.desapp.grupoD.rest.ReceiptTypeARest" >
+		<property name="receiptTypeAService" ref="receiptTypeAService"/>
+	</bean>
+    
     <!-- DATABASE INITIALIZER -->
     <bean id="databaseInitializer" class="ar.edu.unq.desapp.grupoD.persistence.DatabaseInitializer" init-method="populateDatabase">
 		<property name="categoryDao" ref="categoryDao" />

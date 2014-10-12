@@ -1,5 +1,12 @@
 package ar.edu.unq.desapp.grupoD.model.receipt;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
@@ -11,16 +18,29 @@ import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
  * 
  * @author Lucas
  */
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Receipt {
 
+	@Column
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	protected DateTime date;
+	@Column
 	protected int receiptNumber;
+	@Column
 	protected String clientOrLegalEntityName;
+	@Column
 	protected String firmName;
+	@Column
 	protected String CUIT;
+	@Column
 	protected String address;
+	@Column
 	protected int telephoneNumber;
+	@Column
 	protected double finalImport;
+
+	@Id
 	protected int operationID;
 
 	protected Receipt(DateTime date, int receiptNumber,

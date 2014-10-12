@@ -18,10 +18,6 @@ GenericRepository<Operation> {
 		return getHibernateTemplate().find("from Operation where date > " +since);
 	}
 
-	public void saveOperation(Operation operation) {
-		save(operation);
-	}
-
 	public void deleteOperationByID(int id) {
 		Operation operation = findById(id);
 		getHibernateTemplate().delete(operation);
