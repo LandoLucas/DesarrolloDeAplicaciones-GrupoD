@@ -52,7 +52,7 @@ public class CategoryRest {
 	public Response saveOrUpdateCategory(@FormParam("name") String name) {
 		Category category = new Category(name);
 		categoryService.save(category);
-		return Response.ok().build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 
 }

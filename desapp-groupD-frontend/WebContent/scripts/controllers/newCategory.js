@@ -25,17 +25,18 @@ angular.module('tp-dapp-eiroa-lando')
 		}; // end save
 		
 		$scope.registerCategoryOk = function(response) {
-			if (codigoOk(response)) {
-				growl.info("Categor registrada.");
+//			if (codigoOk(response)) {
+				growl.info("Categoria registrada.");
+				$modalInstance.close($scope.user.name);
 				$location.path('/cargarDatos');
-			} else {
-				var descripcion = response['desc'];
-				growl.error(descripcion);
-			}
+				
+//			} else {
+//				var descripcion = response['desc'];
+//				growl.error(descripcion);
+//			}
 		}
 		
 		 $scope.saveNewCategory = function() {
-			 //$modalInstance.close($scope.user.name);
 			 var data = {name: $scope.user.name};
 				if(validate()){
 					invokeNewCategory($http, data, $scope.registerCategoryOk,
