@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoD.persistence;
 
+import javax.annotation.PostConstruct;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
@@ -29,8 +30,6 @@ import ar.edu.unq.desapp.grupoD.services.ReceiptTypeBService;
  * 
  * @author Lucas
  */
-@Service
-@Path("/initDatabase")
 public class DatabaseInitializer  {
 
 	private CategoryService categoryService;
@@ -54,9 +53,8 @@ public class DatabaseInitializer  {
 		this.categoryService = categoryService;
 	}
 
-	@GET
-	@Path("/all")
-	public Response populateDatabase() throws InvalidAmountException, InvalidReceiptNumberException {
+	@PostConstruct
+	public void populateDatabase() throws InvalidAmountException, InvalidReceiptNumberException {
 		
 		loadOperations();
 		loadReceipts();
@@ -64,7 +62,6 @@ public class DatabaseInitializer  {
 		System.out.println("==========================");
 		System.out.println("POPULATED");
 		System.out.println("==========================");
-		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
 	private void loadReceipts() throws InvalidReceiptNumberException {
