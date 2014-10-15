@@ -125,7 +125,7 @@
 	<bean id="receiptTypeAService" class="ar.edu.unq.desapp.grupoD.services.ReceiptTypeAService">
 		<property name="receiptADao" ref="receiptADao" />
 	</bean>
-	<bean id="receiptTypeARest" class="ar.edu.unq.desapp.grupoD.services.ReceiptTypeARest">
+	<bean id="receiptTypeARest" class="ar.edu.unq.desapp.grupoD.rest.ReceiptTypeARest">
 		<property name="receiptTypeAService" ref="receiptTypeAService" />
 	</bean>
 	
@@ -137,7 +137,7 @@
 	<bean id="receiptTypeBService" class="ar.edu.unq.desapp.grupoD.services.ReceiptTypeBService">
 		<property name="receiptBDao" ref="receiptBDao" />
 	</bean>
-	<bean id="receiptTypeBRest" class="ar.edu.unq.desapp.grupoD.services.ReceiptTypeBRest">
+	<bean id="receiptTypeBRest" class="ar.edu.unq.desapp.grupoD.rest.ReceiptTypeBRest">
 		<property name="receiptTypeBService" ref="receiptTypeBService" />
 	</bean>
     
