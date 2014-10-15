@@ -9,7 +9,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.joda.time.DateTime;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
@@ -21,9 +20,12 @@ import ar.edu.unq.desapp.grupoD.services.ReceiptTypeAService;
 @Path("/ReceiptA")
 public class ReceiptTypeARest {
 
-	@Autowired
 	private ReceiptTypeAService receiptTypeAService;
-	
+
+	public void setReceiptTypeAService(ReceiptTypeAService receiptTypeAService) {
+		this.receiptTypeAService = receiptTypeAService;
+	}
+
 	@GET
     @Path("/{receiptNumber}")
     @Produces("application/json")
