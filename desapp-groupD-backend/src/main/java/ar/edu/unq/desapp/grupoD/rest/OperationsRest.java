@@ -48,14 +48,14 @@ public class OperationsRest {
 		
 		Operation operation = new Operation(date, amount, isIncome, shift, category, subCategory, concept, paymentType);
 		operationService.saveOperation(operation);
-		return Response.ok().build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
 	@POST
 	@Path("/remove/{id}")
 	public Response removeOperation(@PathParam("id") int id){
 		operationService.removeOperationByID(id);
-		return Response.ok().build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
 	@POST
@@ -75,7 +75,7 @@ public class OperationsRest {
 		operation.setPaymentType(paymentType);
 		
 		operationService.saveOperation(operation);	
-		return Response.ok().build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 
 	

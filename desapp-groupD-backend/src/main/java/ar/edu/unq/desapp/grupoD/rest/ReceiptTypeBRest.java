@@ -43,7 +43,7 @@ public class ReceiptTypeBRest {
 		ReceiptTypeB receipt = new ReceiptTypeB(date, receiptNumber, clientOrLegalEntityName, firmName, cUIT,
 				address, telephoneNumber, finalImport);
 		receiptTypeBService.save(receipt);
-		return Response.ok().build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
 	@POST
@@ -56,6 +56,6 @@ public class ReceiptTypeBRest {
 		ReceiptTypeB receipt = new ReceiptTypeB(date, receiptNumber, clientOrLegalEntityName, firmName, cUIT,
 				address, telephoneNumber, finalImport);
 		receiptTypeBService.save(receipt);
-		return Response.ok().build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 }

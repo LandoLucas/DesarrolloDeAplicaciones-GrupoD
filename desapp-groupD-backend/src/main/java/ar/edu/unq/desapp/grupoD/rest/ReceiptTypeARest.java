@@ -45,7 +45,7 @@ public class ReceiptTypeARest {
 			iVA, iIBB, gravado, noGravado);
 		receiptTypeAService.save(receipt);
 		
-		return Response.ok().build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
 	@POST
@@ -58,7 +58,7 @@ public class ReceiptTypeARest {
 		
 		ReceiptTypeA receiptToEdit = new ReceiptTypeA(date, receiptNumber, clientOrLegalEntityName, firmName, cUIT, address, telephoneNumber, iVA, iIBB, gravado, noGravado);
 		receiptTypeAService.save(receiptToEdit);
-		return Response.ok().build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
 }

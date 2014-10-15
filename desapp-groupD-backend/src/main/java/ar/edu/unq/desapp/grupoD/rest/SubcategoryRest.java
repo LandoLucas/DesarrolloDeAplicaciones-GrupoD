@@ -40,7 +40,7 @@ public class SubcategoryRest {
 	@Consumes("application/json")
 	public Response deleteSubcategory(@PathParam("name") String name) {
 		subcategoryService.removeSubcategoryByName(name);
-		return Response.ok().build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 
 	@GET
@@ -49,7 +49,7 @@ public class SubcategoryRest {
 	public Response saveOrUpdateSubcategory(@PathParam("name") String name) {
 		SubCategory subcategory = new SubCategory(name);
 		subcategoryService.save(subcategory);
-		return Response.ok().build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 
 }
