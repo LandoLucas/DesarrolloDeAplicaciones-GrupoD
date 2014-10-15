@@ -13,6 +13,8 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.stereotype.Service;
 
+import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
+import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.services.CategoryService;
 
@@ -26,7 +28,7 @@ import ar.edu.unq.desapp.grupoD.services.CategoryService;
 public class CategoryRest {
 
 	private CategoryService categoryService;
-	
+
 	public void setCategoryService(CategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
@@ -34,7 +36,7 @@ public class CategoryRest {
 	@GET
 	@Path("/all")
 	@Produces("application/json")
-	public List<Category> getAllCategories() {
+	public List<Category> getAllCategories() throws InvalidAmountException, InvalidReceiptNumberException {
 		return categoryService.findAll();
 	}
 

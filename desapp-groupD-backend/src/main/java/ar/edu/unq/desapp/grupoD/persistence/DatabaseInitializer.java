@@ -1,6 +1,11 @@
 package ar.edu.unq.desapp.grupoD.persistence;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
+
 import org.joda.time.DateTime;
+import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
@@ -13,6 +18,10 @@ import ar.edu.unq.desapp.grupoD.model.category.Concept;
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 import ar.edu.unq.desapp.grupoD.model.receipt.ReceiptTypeA;
 import ar.edu.unq.desapp.grupoD.model.receipt.ReceiptTypeB;
+import ar.edu.unq.desapp.grupoD.services.CategoryService;
+import ar.edu.unq.desapp.grupoD.services.OperationService;
+import ar.edu.unq.desapp.grupoD.services.ReceiptTypeAService;
+import ar.edu.unq.desapp.grupoD.services.ReceiptTypeBService;
 
 /**
  * This class is the responsible to populate the database with fake information
@@ -20,44 +29,50 @@ import ar.edu.unq.desapp.grupoD.model.receipt.ReceiptTypeB;
  * 
  * @author Lucas
  */
-public class DatabaseInitializer {
+@Service
+@Path("/initDatabase")
+public class DatabaseInitializer  {
 
-	private CategoryDao categoryDao;
-	private OperationDao operationDao;
-	private ReceiptADao receiptADao;
-	private ReceiptBDao receiptBDao;
-
-	public void setReceiptADao(ReceiptADao receiptADao) {
-		this.receiptADao = receiptADao;
+	private CategoryService categoryService;
+	private OperationService operationService;
+	private ReceiptTypeAService receiptTypeAService;
+	private ReceiptTypeBService receiptTypeBService;
+	
+	public void setReceiptTypeAService(ReceiptTypeAService receiptTypeAService) {
+		this.receiptTypeAService = receiptTypeAService;
 	}
 
-	public void setReceiptBDao(ReceiptBDao receiptBDao) {
-		this.receiptBDao = receiptBDao;
+	public void setReceiptTypeBService(ReceiptTypeBService receiptTypeBService) {
+		this.receiptTypeBService = receiptTypeBService;
 	}
 
-	public void setCategoryDao(CategoryDao categoryDao) {
-		this.categoryDao = categoryDao;
+	public void setOperationService(OperationService operationService) {
+		this.operationService = operationService;
 	}
 
-	public void setOperationDao(OperationDao operationDao) {
-		this.operationDao = operationDao;
+	public void setCategoryService(CategoryService categoryService) {
+		this.categoryService = categoryService;
 	}
 
-	public void populateDatabase() throws InvalidAmountException, InvalidReceiptNumberException {
+	@GET
+	@Path("/all")
+	public Response populateDatabase() throws InvalidAmountException, InvalidReceiptNumberException {
+		
 		loadOperations();
 		loadReceipts();
-
+		
 		System.out.println("==========================");
 		System.out.println("POPULATED");
 		System.out.println("==========================");
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
-
+	
 	private void loadReceipts() throws InvalidReceiptNumberException {
 		ReceiptTypeA receiptA = new ReceiptTypeA(new DateTime(), 1, "coca-cola", "The coca cola company", "30-123456-3", "cocalandia", 5555555, 21, 12, 2, 1);
 		ReceiptTypeB receiptB = new ReceiptTypeB(new DateTime(), 2, "La serenisima", "la serenisima", "30-987654321-3", "serenopolis", 12345678, 220);
 
-		receiptADao.save(receiptA);
-		receiptBDao.save(receiptB);
+		receiptTypeAService.save(receiptA);
+		receiptTypeBService.save(receiptB);
 	}
 
 	private void loadOperations() throws InvalidAmountException {
@@ -76,7 +91,8 @@ public class DatabaseInitializer {
 		category.setSubcategory(subcategory);
 		Operation operation = new Operation(date, 400, true, category, account);
 
-		operationDao.save(operation);
+		categoryService.save(category);
+		operationService.saveOperation(operation);
 	}
 
 }

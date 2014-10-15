@@ -55,7 +55,7 @@
 					<prop key="hibernate.hbm2ddl.auto">update</prop>
 
 					<prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
-					<prop key="hibernate.connection.autocommit">false</prop>
+					<prop key="hibernate.connection.autocommit">true</prop>
 					<prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory
 					</prop>
 				</props>
@@ -142,11 +142,11 @@
 	</bean>
     
 	<!-- DATABASE INITIALIZER -->
-    <bean id="databaseInitializer" class="ar.edu.unq.desapp.grupoD.persistence.DatabaseInitializer" init-method="populateDatabase">
-		<property name="categoryDao" ref="categoryDao" />
-		<property name="operationDao" ref="operationDao" />
-		<property name="receiptADao" ref="receiptADao" />
-		<property name="receiptBDao" ref="receiptBDao" />
+    <bean id="databaseInitializer" class="ar.edu.unq.desapp.grupoD.persistence.DatabaseInitializer">
+		<property name="categoryService" ref="categoryService" />
+		<property name="operationService" ref="operationService" />
+		<property name="receiptTypeAService" ref="receiptTypeAService" />
+		<property name="receiptTypeBService" ref="receiptTypeBService" />
     </bean>
     
 </beans>

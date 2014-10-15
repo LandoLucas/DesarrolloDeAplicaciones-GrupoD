@@ -29,7 +29,7 @@ public class SubcategoryRest {
 	}
 
 	@GET
-	@Path("/{name}")
+	@Path("/all")
 	@Produces("application/json")
 	public List<SubCategory> getAllSubCategories(@PathParam("name") String name) {
 		return subcategoryService.findAll();

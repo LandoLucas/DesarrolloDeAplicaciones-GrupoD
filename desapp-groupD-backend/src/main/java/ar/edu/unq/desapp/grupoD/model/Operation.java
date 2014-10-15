@@ -28,6 +28,8 @@ public class Operation {
 	
 	@Id
 	@GeneratedValue
+	private int ID;
+	
 	private int operationID;
 	
 	@Column
