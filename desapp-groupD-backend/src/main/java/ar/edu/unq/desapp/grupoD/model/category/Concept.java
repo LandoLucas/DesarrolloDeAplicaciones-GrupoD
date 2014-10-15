@@ -32,10 +32,6 @@ public class Concept {
 		return conceptName;
 	}
 
-	public void setConceptName(String conceptName) {
-		this.conceptName = conceptName;
-	}
-
 	public Concept(){};
 	
 	public Concept(String conceptName){

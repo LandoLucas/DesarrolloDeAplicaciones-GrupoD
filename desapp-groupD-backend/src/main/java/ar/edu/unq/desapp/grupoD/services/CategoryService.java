@@ -26,7 +26,7 @@ public class CategoryService {
 
 	@Transactional
 	public void removeCategory(String name) {
-		this.categoryDao.removeCategory(name);
+		this.categoryDao.removeCategoryByName(name);
 	}
 
 	@Transactional

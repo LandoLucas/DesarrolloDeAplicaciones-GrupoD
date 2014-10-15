@@ -1,9 +1,5 @@
 package ar.edu.unq.desapp.grupoD.persistence;
 
-import java.util.List;
-
-import org.joda.time.DateTime;
-
 import ar.edu.unq.desapp.grupoD.model.Operation;
 
 
@@ -12,10 +8,6 @@ GenericRepository<Operation> {
 
 	public Operation getOperationById(int id) {
 		return findById(id);
-	}
-
-	public List<Operation> getOperationSince(DateTime since) {
-		return getHibernateTemplate().find("from Operation where date > " +since);
 	}
 
 	public void deleteOperationByID(int id) {

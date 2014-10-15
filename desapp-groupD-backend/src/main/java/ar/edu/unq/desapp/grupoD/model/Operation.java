@@ -91,16 +91,6 @@ public class Operation {
 		account.bill( this);
 	}
 	
-	
-	
-	public Operation(DateTime date, double amount, boolean isIncome, String shift, Category category, PaymentType paymentType) throws InvalidAmountException {
-		this.setDate(date);
-		this.setAmount(amount);
-		this.setIncome(isIncome);
-		this.setCategory(category);
-		this.setPaymentType(paymentType);
-	}
-
 	public DateTime getDate() {
 		return date;
 	}
@@ -176,10 +166,6 @@ public class Operation {
 	 */
 	private void bill() {
 		this.paymentType.bill(this);
-	}
-
-	public Operation deleteOperation() throws InvalidAmountException{
-		return new Operation(this.date, this.amount, !this.isIncome, this.shift, this.category, this.paymentType);
 	}
 
 }

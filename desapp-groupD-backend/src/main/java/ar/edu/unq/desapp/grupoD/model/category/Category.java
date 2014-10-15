@@ -42,10 +42,6 @@ public class Category {
 		return categoryName;
 	}
 
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
-
 	public SubCategory getSubcategory() {
 		return subcategory;
 	}
@@ -54,11 +50,6 @@ public class Category {
 		this.subcategory = subcategory;
 	}
 
-	public Category(String name , SubCategory subCategory) {
-		categoryName = name;
-		this.subcategory = subCategory;
-	}
-	
 	public Category(String name) {
 		categoryName = name;
 	}
