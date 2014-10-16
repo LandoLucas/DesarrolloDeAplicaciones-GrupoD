@@ -54,6 +54,7 @@ function invokeGetRestService(cnxHttp, header, data, modulo, servicio,
 }
 
 function defaultHandlerOnError(response) {
+	alert('Error on callback!')
 	console.log(response);
 }
 

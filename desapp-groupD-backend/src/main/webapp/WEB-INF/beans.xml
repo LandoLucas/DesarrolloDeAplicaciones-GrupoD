@@ -14,6 +14,8 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+    <import resource="classpath:spring-persistence-context.xml" />
+	
 
 	<bean id="jaxbProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider" />
 
@@ -25,8 +27,8 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<jaxrs:serviceBeans>
 			<ref bean="categoryRest" />
 			<ref bean="operationsRest" />
-			<ref bean="ReceiptTypeARest" />
-			<ref bean="ReceiptTypeBRest" />
+			<ref bean="receiptTypeARest" />
+			<ref bean="receiptTypeBRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />

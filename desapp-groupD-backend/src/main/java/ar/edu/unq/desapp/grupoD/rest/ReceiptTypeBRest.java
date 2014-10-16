@@ -9,7 +9,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.joda.time.DateTime;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
@@ -21,9 +20,12 @@ import ar.edu.unq.desapp.grupoD.services.ReceiptTypeBService;
 @Path("/ReceiptB")
 public class ReceiptTypeBRest {
 
-	@Autowired
 	private ReceiptTypeBService receiptTypeBService;
-	
+
+	public void setReceiptTypeBService(ReceiptTypeBService receiptTypeBService) {
+		this.receiptTypeBService = receiptTypeBService;
+	}
+
 	@GET
     @Path("/{receiptNumber}")
     @Produces("application/json")
@@ -41,7 +43,7 @@ public class ReceiptTypeBRest {
 		ReceiptTypeB receipt = new ReceiptTypeB(date, receiptNumber, clientOrLegalEntityName, firmName, cUIT,
 				address, telephoneNumber, finalImport);
 		receiptTypeBService.save(receipt);
-		return Response.ok().build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
 	@POST
@@ -54,6 +56,6 @@ public class ReceiptTypeBRest {
 		ReceiptTypeB receipt = new ReceiptTypeB(date, receiptNumber, clientOrLegalEntityName, firmName, cUIT,
 				address, telephoneNumber, finalImport);
 		receiptTypeBService.save(receipt);
-		return Response.ok().build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 }

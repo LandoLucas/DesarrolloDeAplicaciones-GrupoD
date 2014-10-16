@@ -14,7 +14,7 @@
 			org.springframework.web.context.ContextLoaderListener		
 		</listener-class>
 	</listener>
-	
+
 	<!-- CXF --> 
 	<servlet>
 		<servlet-name>CXFServlet</servlet-name>

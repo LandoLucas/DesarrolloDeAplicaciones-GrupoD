@@ -38,20 +38,11 @@ public class SubCategory {
 		return subcategoryName;
 	}
 
-	public void setSubcategoryName(String subcategoryName) {
-		this.subcategoryName = subcategoryName;
-	}
-
 	public Concept getConcept() {
 		return concept;
 	}
 
 	public void setConcept(Concept concept) {
-		this.concept = concept;
-	}
-	
-	public SubCategory(String name , Concept concept){
-		this.subcategoryName = name;
 		this.concept = concept;
 	}
 	

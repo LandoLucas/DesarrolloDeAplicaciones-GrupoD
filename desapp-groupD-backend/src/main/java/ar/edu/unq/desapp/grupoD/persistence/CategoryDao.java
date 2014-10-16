@@ -18,7 +18,7 @@ public class CategoryDao extends HibernateGenericDAO<Category> implements
 	private static final long serialVersionUID = 1L;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void removeCategory(final String name) {
+	public void removeCategoryByName(final String name) {
 		this.getHibernateTemplate().execute(new HibernateCallback() {
 
 			@Override

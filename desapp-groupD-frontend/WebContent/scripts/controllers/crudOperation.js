@@ -8,7 +8,8 @@
 var app = angular.module('tp-dapp-eiroa-lando');
 app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		$rootScope, growl,globalService,dialogs) {
-	globalService.setInNewOperation();
+	globalService.setInNewOperation()
+
 	if ($rootScope.editingOperation) {
 		var operationToEdit = $rootScope.operationToEdit;
 		$scope.inputDate = operationToEdit.date;
@@ -136,10 +137,10 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 	 $scope.dialogNewCategory = function() {
 	 	var dlg = dialogs.create('views/newCategory.html','NewCategoryCtrl',function(){},'lg');
 		dlg.result.then(function(name){
-			alert('New category is ' +name);
+			growl.info('Nueva categoria: ' +name);
 		},function(){
 			if(angular.equals($scope.name,''))
-				$scope.name = 'You did not enter in your name!';
+				$scope.name = 'Category name Not entered!';
 		});
 	 };
 	 

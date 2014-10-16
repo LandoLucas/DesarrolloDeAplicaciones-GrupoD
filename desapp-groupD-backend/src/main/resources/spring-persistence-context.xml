@@ -55,7 +55,7 @@
 					<prop key="hibernate.hbm2ddl.auto">update</prop>
 
 					<prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
-					<prop key="hibernate.connection.autocommit">false</prop>
+					<prop key="hibernate.connection.autocommit">true</prop>
 					<prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory
 					</prop>
 				</props>
@@ -125,6 +125,10 @@
 	<bean id="receiptTypeAService" class="ar.edu.unq.desapp.grupoD.services.ReceiptTypeAService">
 		<property name="receiptADao" ref="receiptADao" />
 	</bean>
+	<bean id="receiptTypeARest" class="ar.edu.unq.desapp.grupoD.rest.ReceiptTypeARest">
+		<property name="receiptTypeAService" ref="receiptTypeAService" />
+	</bean>
+	
 	
 	<!-- RECEIPT TYPE B -->
     <bean id="receiptBDao" class="ar.edu.unq.desapp.grupoD.persistence.ReceiptBDao">
@@ -133,14 +137,16 @@
 	<bean id="receiptTypeBService" class="ar.edu.unq.desapp.grupoD.services.ReceiptTypeBService">
 		<property name="receiptBDao" ref="receiptBDao" />
 	</bean>
-	
+	<bean id="receiptTypeBRest" class="ar.edu.unq.desapp.grupoD.rest.ReceiptTypeBRest">
+		<property name="receiptTypeBService" ref="receiptTypeBService" />
+	</bean>
     
 	<!-- DATABASE INITIALIZER -->
-    <bean id="databaseInitializer" class="ar.edu.unq.desapp.grupoD.persistence.DatabaseInitializer" init-method="populateDatabase">
-		<property name="categoryDao" ref="categoryDao" />
-		<property name="operationDao" ref="operationDao" />
-		<property name="receiptADao" ref="receiptADao" />
-		<property name="receiptBDao" ref="receiptBDao" />
+    <bean id="databaseInitializer" class="ar.edu.unq.desapp.grupoD.persistence.DatabaseInitializer">
+		<property name="categoryService" ref="categoryService" />
+		<property name="operationService" ref="operationService" />
+		<property name="receiptTypeAService" ref="receiptTypeAService" />
+		<property name="receiptTypeBService" ref="receiptTypeBService" />
     </bean>
     
 </beans>
