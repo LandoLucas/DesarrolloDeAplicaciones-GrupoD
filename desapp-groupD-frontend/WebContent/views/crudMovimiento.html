@@ -10,7 +10,7 @@
 
 				
 				<div class="form-group">
-					<label for="inputDate" class="control-label col-xs-2">Fecha</label>
+					<label for="inputDate" class="control-label col-xs-2">{{ 'DATE' | translate}}</label>
 					<div class="col-xs-10">
 						<input type="date" class="form-control" id="inputDate"
 							ng-model="inputDate">
@@ -18,18 +18,17 @@
 				</div>
 
 				<div class="form-group">
-					<label for="inputAmount" class="control-label col-xs-2">Monto</label>
+					<label for="inputAmount" class="control-label col-xs-2">{{ 'AMOUNT' | translate}}</label>
 					<div class="col-xs-10">
 						<input type="number" class="form-control" id="inputAmount"
-							ng-model="inputAmount" placeholder="Ingrese el monto">
+							ng-model="inputAmount" placeholder="{{ 'TYPE_AMOUNT' | translate}}">
 					</div>
 				</div>
 				
 
 				
 				<div class="form-group">
-					<label for="selectCategory" class="control-label col-xs-2">Seleccione
-						la categoría</label>
+					<label for="selectCategory" class="control-label col-xs-2">{{ 'SELECT_CATEGORY' | translate}}</label>
 					<div class="col-xs-10">
 						<div class="form-inline">
 							<div class="form-group">
@@ -37,14 +36,14 @@
 									ng-options="cat as cat.description for cat in categories"
 									class="form-control"
 									style="width:200px;margin-left:15px;">
-									<option value="" label="Seleccione una opción"></option>
+									<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
 									
 								</select>
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-info form control"
 								style="padding:2px;margin-left:35px;"
-									ng-click="dialogNewCategory()">Nueva categoría</button>
+									ng-click="dialogNewCategory()">{{ 'NEW_CATEGORY' | translate}}</button>
 							</div>
 						</div>
 
@@ -53,8 +52,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="selectSubCategory" class="control-label col-xs-2">Seleccione
-						la sub categoría</label>
+					<label for="selectSubCategory" class="control-label col-xs-2">{{ 'SELECT_SUBCATEGORY' | translate}}</label>
 					<div class="col-xs-10">
 						<div class="form-inline ">
 							<div class="form-group">
@@ -62,13 +60,13 @@
 							ng-options="cat as catsub.description for catsub in subcategories"
 							class="form-control"
 							style="width:200px;margin-left:15px;">
-							<option value="" label="Seleccione una opción"></option>
+							<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
 						</select>
 						</div>
 							<div class="form-group">
 							<button type="submit" class="btn btn-info form control"
 								style="padding:2px;margin-left:35px;"
-									ng-click="dialogNewSubcategory()">Nueva sub-categoría</button>
+									ng-click="dialogNewSubcategory()">{{ 'NEW_SUBCATEGORY' | translate}}</button>
 							
 							</div>
 						</div>
@@ -77,23 +75,22 @@
 				</div>
 
 				<div class="form-group">
-					<label for="selectPaymentType" class="control-label col-xs-2">Seleccione
-						el tipo de pago</label>
+					<label for="selectPaymentType" class="control-label col-xs-2">{{ 'SELECT_PAYMENT_TYPE' | translate}}</label>
 					<div class="col-xs-10">
 						<select ng-model="selectPaymentType"
 							ng-options="ptype as ptype.name for ptype in ptypes"
 							class="form-control">
-							<option value="" label="Seleccione una opción"></option>
+							<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="selectConceptType" class="control-label col-xs-2">Concepto</label>
+					<label for="selectConceptType" class="control-label col-xs-2">{{ 'CONCEPT' | translate}}</label>
 					<div class="col-xs-10">
 						<select ng-model="selectConceptType"
 							ng-options="conceptType as conceptType.name for conceptType in conceptTypes"
 							class="form-control">
-							<option value="" label="Seleccione una opción"></option>
+							<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
 						</select>
 					</div>
 				</div>
@@ -101,12 +98,12 @@
 					<div class="col-xs-offset-2 col-xs-10">
 
 						<button type="submit" class="btn btn-success"
-							ng-show="modoRegistro()" ng-click="registerOperationTest()">Confirmar</button>
+							ng-show="modoRegistro()" ng-click="registerOperationTest()">{{ 'CONFIRM' | translate}}</button>
 
 						<button type="submit" class="btn btn-success"
-							ng-click="updateOperation()" ng-show="modoEdicion()">Actualizar</button>
+							ng-click="updateOperation()" ng-show="modoEdicion()">{{ 'UPDATE' | translate}}</button>
 
-						<a type="button" class="btn btn-default" ng-href="#cargarDatos">Cancelar</a>
+						<a type="button" class="btn btn-default" ng-href="#cargarDatos">{{ 'CANCEL' | translate}}</a>
 					</div>
 				</div>
 

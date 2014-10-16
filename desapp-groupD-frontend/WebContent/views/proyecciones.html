@@ -1,6 +1,6 @@
 <div class="col-sm-3 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<div class="jumbotron">
-		<h4>Empresas registradas</h4>
+		<h4>{{ 'REGISTERED_ENTERPRISES' | translate}}</h4>
 	</div>
 
 	<div class="container-fluid ">
@@ -9,50 +9,49 @@
 			<form class="form-inline">
 				<a type="submit" class="btn btn-primary" ng-click="nuevaEmpresa()"
 					ng-show="{{m('registrarEmpresa')}}"
-					title="Haga click para agregar una nueva empresa al sistema">Nueva</a>
+					title="{{ 'NEW_ENTERPRISES' | translate}}">{{ 'NEW' | translate}}</a>
 			</form>
 			<br />
 			<legend></legend>
 
 			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
-				<label for="inputBusquedaCodigo" class="col-xs-4">Código</label>
+				<label for="inputBusquedaCodigo" class="col-xs-4">{{ 'CODE' | translate}}</label>
 				<div class="col-xs-8">
 					<input type="text" class="form-control" id="inputBusquedaCodigo"
-						ng-model="inputBusquedaCodigo" placeholder="Ingrese el código">
+						ng-model="inputBusquedaCodigo" placeholder="{{ 'TYPE_CODE' | translate}}">
 				</div>
 			</div>
 
 			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
-				<label for="inputBusquedaDescripcion" class="col-xs-4">Descripción</label>
+				<label for="inputBusquedaDescripcion" class="col-xs-4">{{ 'DESCRIPTION' | translate}}</label>
 				<div class="col-xs-8">
 					<input type="text" class="form-control"
 						id="inputBusquedaDescripcion" ng-model="inputBusquedaDescripcion"
-						placeholder="Ingrese la descripción">
+						placeholder="{{ 'TYPE_DESCRIPTION' | translate}}">
 				</div>
 			</div>
 
 			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
-				<label for="inputBusquedaRazonSocial" class="col-xs-4">Razón
-					Social</label>
+				<label for="inputBusquedaRazonSocial" class="col-xs-4">{{ 'COMPANY_NAME' | translate}}</label>
 				<div class="col-xs-8">
 					<input type="text" class="form-control"
 						id="inputBusquedaRazonSocial" ng-model="inputBusquedaRazonSocial"
-						placeholder="Ingrese la razón social">
+						placeholder="{{ 'TYPE_COMPANY_NAME' | translate}}">
 				</div>
 			</div>
 
 			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
-				<label for="inputBusquedaDireccion" class="col-xs-4">Dirección</label>
+				<label for="inputBusquedaDireccion" class="col-xs-4">{{ 'ADDRESS' | translate}}</label>
 				<div class="col-xs-8">
 					<input type="text" class="form-control" id="inputBusquedaDireccion"
 						ng-model="inputBusquedaDireccion"
-						placeholder="Ingrese la dirección">
+						placeholder="{{ 'TYPE_ADDRESS' | translate}}">
 				</div>
 			</div>
 
 			<div class="form-group center-block">
 				<button type="submit" ng-click="activate()"
-					class="btn btn-primary col-xs-8 col-xs-offset-4 col-lg-3 col-lg-offset-4">Buscar</button>
+					class="btn btn-primary col-xs-8 col-xs-offset-4 col-lg-3 col-lg-offset-4">{{ 'SEARCH' | translate}}</button>
 			</div>
 		</form>
 	</div>
@@ -62,22 +61,22 @@
 		<table ng-table="tableParams" class="table ng-table-responsive"
 			show-filter="true">
 			<tr ng-repeat="empresa in resultadoEmpresas">
-				<td data-title="'Código'">{{empresa.codigo}}</td>
-				<td data-title="'Descripción'">{{empresa.descripcion}}</td>
-				<td data-title="'Dirección'">{{empresa.direccion}}</td>
-				<td data-title="'Razón Social'">{{empresa.razonSocial}}</td>
-				<td data-title="'Sucursales'">{{empresa.cantidadSucursales}}</td>
-				<td data-title="'Sectores'">{{empresa.cantidadSectores}}</td>
-				<td data-title="'Terminales'">{{empresa.cantidadTerminales}}</td>
-				<td data-title="'Acciones'"><button type="button"
+				<td data-title="{{ 'CODE' | translate}}">{{empresa.codigo}}</td>
+				<td data-title="{{ 'DESCRIPTION' | translate}}">{{empresa.descripcion}}</td>
+				<td data-title="{{ 'ADDRESS' | translate}}">{{empresa.direccion}}</td>
+				<td data-title="{{ 'COMPANY_NAME' | translate}}">{{empresa.razonSocial}}</td>
+				<td data-title="{{ 'SUBSIDIARY' | translate}}">{{empresa.cantidadSucursales}}</td>
+				<td data-title="{{ 'SECTOR' | translate}}">{{empresa.cantidadSectores}}</td>
+				<td data-title="{{ 'TERMINAL' | translate}}">{{empresa.cantidadTerminales}}</td>
+				<td data-title="{{ 'ACTIONS' | translate}}"><button type="button"
 						class="btn btn-warning"
 						ng-click="prepararEditarEmpresa(empresa.id)"
 						ng-show="{{m('actualizarEmpresa')}}"
-						title="Editar la empresa {{empresa.codigo}}">Editar</button>
+						title="{{ 'EDIT_ENTERPRISES' | translate}} {{empresa.codigo}}">{{ 'EDIT' | translate}}</button>
 					<button type="button" class="btn btn-danger"
 						ng-show="{{m('borrarEmpresa')}}"
 						ng-click="confirmacionBorrarEmpresa(empresa.id,empresa.razonSocial)"
-						title="Borrar la empresa {{empresa.codigo}}">Borrar</button></td>
+						title="{{ 'DELETE_ENTERPRISES' | translate}} {{empresa.codigo}}">{{ 'DELETE' | translate}}</button></td>
 			</tr>
 		</table>
 	</div>

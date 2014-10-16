@@ -3,7 +3,7 @@
 
 <div class="col-sm-3 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<div class="jumbotron">
-		<h4>Usuarios registrados</h4>
+		<h4>{{ 'REGISTERED_USERS' | translate}}</h4>
 	</div>
 
 	<div class="container-fluid">
@@ -11,61 +11,60 @@
 			<form class="form-inline">
 				<a type="submit" class="btn btn-primary" ng-click="nuevoUsuario()"
 					ng-show="{{m('registrarUsuario')}}"
-					title="Haga click para agregar un nuevo usuario al sistema">Nuevo</a>
+					title="{{ 'NEW_USER' | translate}}">{{ 'NEW' | translate}}</a>
 			</form>
 			<br />
 			<legend></legend>
 
 			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
-				<label for="inputBusquedaCodigo" class="col-xs-4">Código</label>
+				<label for="inputBusquedaCodigo" class="col-xs-4">{{ 'CODE' | translate}}</label>
 				<div class="col-xs-8">
 					<input type="text" class="form-control" id="inputBusquedaCodigo"
-						ng-model="inputBusquedaCodigo" placeholder="Ingrese el código">
+						ng-model="inputBusquedaCodigo" placeholder="{{ 'TYPE_CODE' | translate}}">
 				</div>
 			</div>
 			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
-				<label for="inputBusquedaLegajo" class="col-xs-4">Legajo</label>
+				<label for="inputBusquedaLegajo" class="col-xs-4">{{ 'FILE' | translate}}</label>
 				<div class="col-xs-8">
 					<input type="text" class="form-control" id="inputBusquedaLegajo"
-						ng-model="inputBusquedaLegajo" placeholder="Ingrese el lejago">
+						ng-model="inputBusquedaLegajo" placeholder="{{ 'TYPE_FILE' | translate}}">
 				</div>
 			</div>
 			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
-				<label for="inputBusquedaNickname" class="col-xs-4"">Nickname</label>
+				<label for="inputBusquedaNickname" class="col-xs-4"">{{ 'NICKNAME' | translate}}</label>
 				<div class="col-xs-8">
 					<input type="text" class="form-control" id="inputBusquedaNickname"
-						ng-model="inputBusquedaNickname" placeholder="Ingrese el nickname">
+						ng-model="inputBusquedaNickname" placeholder="{{ 'TYPE_NICKNAME' | translate}}">
 				</div>
 			</div>
 			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
-				<label for="inputBusquedaNombre" class="col-xs-4"">Nombre</label>
+				<label for="inputBusquedaNombre" class="col-xs-4"">{{ 'NAME' | translate}}</label>
 				<div class="col-xs-8">
 					<input type="text" class="form-control" id="inputBusquedaNombre"
-						ng-model="inputBusquedaNombre" placeholder="Ingrese el nombre">
+						ng-model="inputBusquedaNombre" placeholder="{{ 'TYPE_NAME' | translate}}">
 				</div>
 			</div>
 			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
-				<label for="inputBusquedaApellido" class="col-xs-4"">Apellido</label>
+				<label for="inputBusquedaApellido" class="col-xs-4"">{{ 'SURNAME' | translate}}</label>
 				<div class="col-xs-8">
 					<input type="text" class="form-control" id="inputBusquedaApellido"
-						ng-model="inputBusquedaApellido" placeholder="Ingrese el apellido">
+						ng-model="inputBusquedaApellido" placeholder="{{ 'TYPE_SURNAME' | translate}}">
 				</div>
 			</div>
 			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
-				<label for="selectBusquedaNivelDePermiso" class="col-xs-4">Niveles
-					de Permiso</label>
+				<label for="selectBusquedaNivelDePermiso" class="col-xs-4">{{ 'PERMISSION_LEVELS' | translate}}</label>
 				<div class="col-xs-8">
 					<select ng-model="selectBusquedaNivelDePermiso"
 						ng-options="nivel as nivel.description for nivel in nivelesDePermiso"
 						class="form-control">
-						<option value="" label="Seleccione una opción" />
+						<option value="" label="{{ 'SELECT_OPTION' | translate}}" />
 					</select>
 				</div>
 			</div>
 
 			<div class="form-group center-block">
 				<button type="submit" ng-click="buscarUsuarios()"
-					class="btn btn-primary col-xs-8 col-xs-offset-4 col-lg-3 col-lg-offset-4">Buscar</button>
+					class="btn btn-primary col-xs-8 col-xs-offset-4 col-lg-3 col-lg-offset-4">{{ 'SEARCH' | translate}}</button>
 			</div>
 
 		</form>
@@ -77,21 +76,21 @@
 		<table ng-table="tableParams" class="table ng-table-responsive"
 			show-filter="true">
 			<tr ng-repeat="usuario in resultadoUsuarios">
-				<td data-title="'Código'">{{usuario.codigo}}</td>
-				<td data-title="'Legajo'">{{usuario.legajo}}</td>
-				<td data-title="'Nickname'">{{usuario.nickname}}</td>
-				<td data-title="'Nombre'">{{usuario.nombre}}</td>
-				<td data-title="'Apellido'">{{usuario.apellido}}</td>
-				<td data-title="'NivelDePermiso'">{{usuario.nivelDePermiso}}</td>
-				<td data-title="'Acciones'"><button type="button"
+				<td data-title="{{ 'CODE' | translate}}">{{usuario.codigo}}</td>
+				<td data-title="{{ 'FILE' | translate}}">{{usuario.legajo}}</td>
+				<td data-title="{{ 'NICKNAME' | translate}}">{{usuario.nickname}}</td>
+				<td data-title="{{ 'NAME' | translate}}">{{usuario.nombre}}</td>
+				<td data-title="{{ 'SURNAME' | translate}}">{{usuario.apellido}}</td>
+				<td data-title="{{ 'PERMISSION_LEVELS' | translate}}">{{usuario.nivelDePermiso}}</td>
+				<td data-title="{{ 'ACTIONS' | translate}}"><button type="button"
 						class="btn btn-warning"
 						ng-click="prepararEditarUsuario(usuario.id)"
 						ng-show="{{m('actualizarUsuario')}}"
-						title="Editar Usuario {{usuario.nickname}}">Editar</button>
+						title="{{ 'EDIT_USER' | translate}}{{usuario.nickname}}">{{ 'EDIT' | translate}}</button>
 					<button type="button" class="btn btn-danger"
 						ng-show="{{m('borrarUsuario')}}"
 						ng-click="confirmacionBorrarUsuario(usuario.id, usuario.codigo)"
-						title="Eliminar usuario {{usuario.nickname}}">Borrar</button></td>
+						title="{{ 'DELETE_USER' | translate}} {{usuario.nickname}}">{{ 'DELETE' | translate}}</button></td>
 			</tr>
 		</table>
 	</div>

@@ -1,33 +1,33 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<div class="jumbotron">
-		<h3 class="page-header ">Login</h3>
+		<h3 class="page-header ">{{ 'LOGIN' | translate}}</h3>
 		<div>
-			<p>Debe autenticarse en el sistema para utilizarlo</p>
+			<p>{{ 'AUTHENTICATION' | translate}}</p>
 		</div>
 	</div>
 	<div class="container-fluid">
 		<form class="form-horizontal">
 			<div class="form-group">
-				<label for="inputUser" class="control-label col-xs-2">Usuario</label>
+				<label for="inputUser" class="control-label col-xs-2">{{ 'USERS' | translate}}</label>
 				<div class="col-xs-10">
 					<input type="text" class="form-control" id="inputUser"
-						ng-model="user" placeholder="Ingrese el usuario">
+						ng-model="user" placeholder="{{ 'TYPE_USER' | translate}}">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputPassword" class="control-label col-xs-2">Clave</label>
+				<label for="inputPassword" class="control-label col-xs-2">{{ 'PASSWORD' | translate}}</label>
 				<div class="col-xs-10">
 					<input type="password" class="form-control" id="inputPassword"
-						ng-model="pass" placeholder="Ingrese la contraseña">
+						ng-model="pass" placeholder="{{ 'TYPE_PASSWORD' | translate}}">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-xs-offset-2 col-xs-10">
-					<button type="submit" class="btn btn-primary" ng-click="login()">Ingresar</button>
+					<button type="submit" class="btn btn-primary" ng-click="login()">{{ 'lOG_IN' | translate}}</button>
 				</div>
 				<div class="col-xs-offset-2 col-xs-10">
 					<button type="submit" class="btn btn-danger" ng-click="login()"
-						ng-show="secretFunction()">Entrada oculta</button>
+						ng-show="secretFunction()">{{ 'HIDDEN_ENTRY' | translate}}</button>
 				</div>
 			</div>
 		</form>

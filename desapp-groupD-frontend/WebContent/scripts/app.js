@@ -159,29 +159,60 @@
 									dialogsProvider.useBackdrop('static');
 									dialogsProvider.useEscClose(true);
 									dialogsProvider.useCopy(false);
-									dialogsProvider.setSize('m');
+									dialogsProvider.setSize('m'); 
 
-									$translateProvider
-											.translations(
-													'es',
-													{
-														DIALOGS_ERROR : "Error",
-														DIALOGS_ERROR_MSG : "Se ha producido un error desconocido.",
-														DIALOGS_CLOSE : "Cerca",
-														DIALOGS_PLEASE_WAIT : "Espere por favor",
-														DIALOGS_PLEASE_WAIT_ELIPS : "Espere por favor...",
-														DIALOGS_PLEASE_WAIT_MSG : "Esperando en la operacion para completar.",
-														DIALOGS_PERCENT_COMPLETE : "% Completado",
-														DIALOGS_NOTIFICATION : "Notificacion",
-														DIALOGS_NOTIFICATION_MSG : "Notificación de aplicacion Desconocido.",
-														DIALOGS_CONFIRMATION : "Confirmación",
-														DIALOGS_CONFIRMATION_MSG : "Se requiere confirmación.",
-														DIALOGS_OK : "Aceptar",
-														DIALOGS_YES : "Aceptar",
-														DIALOGS_NO : "Cancelar"
-													});
-
+									
+//									$translateProvider
+//											.translations(
+//													'es',
+//													{
+//														DIALOGS_ERROR : "Error",
+//														DIALOGS_ERROR_MSG : "Se ha producido un error desconocido.",
+//														DIALOGS_CLOSE : "Cerca",
+//														DIALOGS_PLEASE_WAIT : "Espere por favor",
+//														DIALOGS_PLEASE_WAIT_ELIPS : "Espere por favor...",
+//														DIALOGS_PLEASE_WAIT_MSG : "Esperando en la operacion para completar.",
+//														DIALOGS_PERCENT_COMPLETE : "% Completado",
+//														DIALOGS_NOTIFICATION : "Notificacion",
+//														DIALOGS_NOTIFICATION_MSG : "Notificación de aplicacion Desconocido.",
+//														DIALOGS_CONFIRMATION : "Confirmación",
+//														DIALOGS_CONFIRMATION_MSG : "Se requiere confirmación.",
+//														DIALOGS_OK : "Aceptar",
+//														DIALOGS_YES : "Aceptar",
+//														DIALOGS_NO : "Cancelar",
+//														HEADLINE : "IMPLEMENTADO DESDE APP.JS"
+//													}) 
+//													
+//									.translations(
+//											'en',
+//											{
+//												DIALOGS_ERROR : "Error",
+//												DIALOGS_ERROR_MSG : "An unknown error has occurred.",
+//												DIALOGS_CLOSE : "Close",
+//												DIALOGS_PLEASE_WAIT : "Please wait",
+//												DIALOGS_PLEASE_WAIT_ELIPS : "Please wait...",
+//												DIALOGS_PLEASE_WAIT_MSG : "Waiting in the operation to complete.",
+//												DIALOGS_PERCENT_COMPLETE : "% Completed",
+//												DIALOGS_NOTIFICATION : "Notification",
+//												DIALOGS_NOTIFICATION_MSG : "Unknow application notification.",
+//												DIALOGS_CONFIRMATION : "Confirmation",
+//												DIALOGS_CONFIRMATION_MSG : "Confirmation required.",
+//												DIALOGS_OK : "Accept",
+//												DIALOGS_YES : "Accept",
+//												DIALOGS_NO : "Cancel",
+//												HEADLINE : "IMPLEMENTED FROM APP.JS"
+//											}); 
+									
+									$translateProvider.determinePreferredLanguage();
 									$translateProvider.preferredLanguage('es');
+									
+									$translateProvider
+											.useStaticFilesLoader({
+												  prefix: 'scripts/languages/',
+												  suffix: '.json'
+												});
+
+									
 								} ]);
 
 		app.factory('UserService', [ function() {

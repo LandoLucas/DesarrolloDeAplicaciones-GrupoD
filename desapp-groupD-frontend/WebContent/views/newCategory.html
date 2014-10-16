@@ -1,12 +1,12 @@
 <div class="container">
-<h4> Nueva Categoría</h4>
+<h4> {{ 'NEW_CATEGORY' | translate}}</h4>
 
-	<label for="name" class="control-label col-xs-2">Nombre</label>
+	<label for="name" class="control-label col-xs-2">{{ 'NAME' | translate}}</label>
 	<div class="col-xs-10">
 		<input type="text" class="form-control" id="name"
 			ng-model="user.name">
 	</div>
 
-<button class="btn btn-success" ng-click="saveNewCategory()"> Guardar</button>
-<button class="btn" ng-click="cancel()"> Cancelar</button>
+<button class="btn btn-success" ng-click="saveNewCategory()"> {{ 'SAVE' | translate}}</button>
+<button class="btn" ng-click="cancel()">{{ 'CANCEL' | translate}}</button>
 </div>
