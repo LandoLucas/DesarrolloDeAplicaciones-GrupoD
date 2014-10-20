@@ -151,6 +151,8 @@
 								return route === $location.path();
 							};
 							localStorageService.set('userInMainMenu', false);
+							
+							
 						})
 						
 				app.config(
@@ -163,7 +165,10 @@
 									dialogsProvider.useCopy(false);
 									dialogsProvider.setSize('m'); 
 
-									
+//									$translateProvider.useStaticFilesLoader({
+//										  prefix: 'scripts/languages/',
+//										  suffix: '.json'
+//										});
 									$translateProvider
 											.translations(
 													'es',
@@ -331,11 +336,7 @@
 //									$translateProvider.determinePreferredLanguage();
 									$translateProvider.preferredLanguage('en');
 									
-//									$translateProvider
-//											.useStaticFilesLoader({
-//												  prefix: 'scripts/languages/',
-//												  suffix: '.json'
-//												});
+									
 
 									
 								} ]);
