@@ -163,20 +163,19 @@
 									dialogsProvider.useBackdrop('static');
 									dialogsProvider.useEscClose(true);
 									dialogsProvider.useCopy(false);
-<<<<<<< HEAD
 									dialogsProvider.setSize('m'); 
 
 //									$translateProvider.useStaticFilesLoader({
 //										  prefix: 'scripts/languages/',
 //										  suffix: '.json'
 //										});
-=======
+
 									dialogsProvider.setSize('m');
 									
 									$translateProvider.determinePreferredLanguage();
 									$translateProvider.preferredLanguage('es');
 									
->>>>>>> branch 'master' of https://github.com/LucasLando/DesarrolloDeAplicaciones-GrupoD.git
+
 									$translateProvider
 											.translations(
 													'es',
