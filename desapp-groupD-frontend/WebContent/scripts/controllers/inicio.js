@@ -8,7 +8,7 @@
 var app = angular.module('tp-dapp-eiroa-lando');
 
 app.controller('InicioCtrl', function($http, $location, $scope, ngTableParams,
-		$filter, $window, $route, $rootScope, growl, dialogs,localStorageService,globalService) {
+		$filter, $window, $route, $rootScope, growl, dialogs,localStorageService,globalService,$translate) {
 	     globalService.setInMainMenu();
 
 	     $scope.date = Date.now();

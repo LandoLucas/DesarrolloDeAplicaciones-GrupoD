@@ -9,7 +9,7 @@
  */
 angular.module('tp-dapp-eiroa-lando')
   .controller('ComprobanteCtrl', function ($http, $location, $scope, ngTableParams,
-			$filter, $window, $route, $rootScope, growl, dialogs,globalService) {
+			$filter, $window, $route, $rootScope, growl, dialogs,globalService,$translate) {
     
     
 

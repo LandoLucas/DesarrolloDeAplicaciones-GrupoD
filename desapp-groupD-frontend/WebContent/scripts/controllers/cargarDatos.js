@@ -8,7 +8,7 @@
 var app = angular.module('tp-dapp-eiroa-lando');
 
 app.controller('CargarDatosCtrl', function($http, $location, $scope, ngTableParams,
-		$filter, $window, $route, $rootScope, growl, dialogs,globalService) {
+		$filter, $window, $route, $rootScope, growl, dialogs,globalService,$translate) {
 
 	$scope.paginaActual = 1;
 	$scope.registrosTotales = 0;

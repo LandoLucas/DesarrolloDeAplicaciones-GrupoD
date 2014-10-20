@@ -1,6 +1,6 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<div class="jumbotron">
-		<h4>{{titulo}}</h4>
+		<h4>{{'TITLE_NEW_INCOME' | translate}}</h4>
 	</div>
 
 	<div class="container-fluid">
@@ -10,7 +10,7 @@
 
 				
 				<div class="form-group">
-					<label for="inputDate" class="control-label col-xs-2">{{ 'DATE' | translate}}</label>
+					<label for="inputDate" class="control-label col-xs-2">{{ 'FORM_DATE' | translate}}</label>
 					<div class="col-xs-10">
 						<input type="date" class="form-control" id="inputDate"
 							ng-model="inputDate">
@@ -18,17 +18,17 @@
 				</div>
 
 				<div class="form-group">
-					<label for="inputAmount" class="control-label col-xs-2">{{ 'AMOUNT' | translate}}</label>
+					<label for="inputAmount" class="control-label col-xs-2">{{ 'FORM_AMOUNT' | translate}}</label>
 					<div class="col-xs-10">
 						<input type="number" class="form-control" id="inputAmount"
-							ng-model="inputAmount" placeholder="{{ 'TYPE_AMOUNT' | translate}}">
+							ng-model="inputAmount" placeholder="{{ 'FORM_AMOUNT' | translate}}">
 					</div>
 				</div>
 				
 
 				
 				<div class="form-group">
-					<label for="selectCategory" class="control-label col-xs-2">{{ 'SELECT_CATEGORY' | translate}}</label>
+					<label for="selectCategory" class="control-label col-xs-2">{{ 'FORM_SELECT_CATEGORY' | translate}}</label>
 					<div class="col-xs-10">
 						<div class="form-inline">
 							<div class="form-group">
@@ -43,7 +43,7 @@
 							<div class="form-group">
 								<button type="submit" class="btn btn-info form control"
 								style="padding:2px;margin-left:35px;"
-									ng-click="dialogNewCategory()">{{ 'NEW_CATEGORY' | translate}}</button>
+									ng-click="dialogNewCategory()">{{ 'FORM_NEW_CATEGORY' | translate}}</button>
 							</div>
 						</div>
 
@@ -52,7 +52,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="selectSubCategory" class="control-label col-xs-2">{{ 'SELECT_SUBCATEGORY' | translate}}</label>
+					<label for="selectSubCategory" class="control-label col-xs-2">{{ 'FORM_SELECT_SUBCATEGORY' | translate}}</label>
 					<div class="col-xs-10">
 						<div class="form-inline ">
 							<div class="form-group">
@@ -66,7 +66,7 @@
 							<div class="form-group">
 							<button type="submit" class="btn btn-info form control"
 								style="padding:2px;margin-left:35px;"
-									ng-click="dialogNewSubcategory()">{{ 'NEW_SUBCATEGORY' | translate}}</button>
+									ng-click="dialogNewSubcategory()">{{ 'FORM_NEW_SUBCATEGORY' | translate}}</button>
 							
 							</div>
 						</div>
@@ -75,7 +75,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="selectPaymentType" class="control-label col-xs-2">{{ 'SELECT_PAYMENT_TYPE' | translate}}</label>
+					<label for="selectPaymentType" class="control-label col-xs-2">{{ 'FORM_SELECT_PAYMENT_TYPE' | translate}}</label>
 					<div class="col-xs-10">
 						<select ng-model="selectPaymentType"
 							ng-options="ptype as ptype.name for ptype in ptypes"
@@ -85,7 +85,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="selectConceptType" class="control-label col-xs-2">{{ 'CONCEPT' | translate}}</label>
+					<label for="selectConceptType" class="control-label col-xs-2">{{ 'FORM_CONCEPT' | translate}}</label>
 					<div class="col-xs-10">
 						<select ng-model="selectConceptType"
 							ng-options="conceptType as conceptType.name for conceptType in conceptTypes"
@@ -98,12 +98,12 @@
 					<div class="col-xs-offset-2 col-xs-10">
 
 						<button type="submit" class="btn btn-success"
-							ng-show="modoRegistro()" ng-click="registerOperationTest()">{{ 'CONFIRM' | translate}}</button>
+							ng-show="modoRegistro()" ng-click="registerOperationTest()">{{ 'FORM_CONFIRM' | translate}}</button>
 
 						<button type="submit" class="btn btn-success"
-							ng-click="updateOperation()" ng-show="modoEdicion()">{{ 'UPDATE' | translate}}</button>
+							ng-click="updateOperation()" ng-show="modoEdicion()">{{ 'FORM_UPDATE' | translate}}</button>
 
-						<a type="button" class="btn btn-default" ng-href="#cargarDatos">{{ 'CANCEL' | translate}}</a>
+						<a type="button" class="btn btn-default" ng-href="#cargarDatos">{{ 'FORM_CANCEL' | translate}}</a>
 					</div>
 				</div>
 

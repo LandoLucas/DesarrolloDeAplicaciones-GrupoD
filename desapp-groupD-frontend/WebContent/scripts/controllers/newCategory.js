@@ -9,7 +9,7 @@
  */
 angular.module('tp-dapp-eiroa-lando')
   .controller('NewCategoryCtrl', function ($scope,$log,$http,$modalInstance,data,
-		  growl,globalService,dialogs,$location) {
+		  growl,globalService,dialogs,$location,$translate) {
 	//-- Variables --//
 
 	   $scope.user = {name : ''};

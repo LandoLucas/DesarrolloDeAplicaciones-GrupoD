@@ -7,7 +7,7 @@
  */
 var app = angular.module('tp-dapp-eiroa-lando');
 app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
-		$rootScope, growl,globalService,dialogs) {
+		$rootScope, growl,globalService,dialogs,$translate) {
 	globalService.setInNewOperation()
 
 	if ($rootScope.editingOperation) {
@@ -50,6 +50,19 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 			var descripcion = response['desc'];
 			growl.error(descripcion);
 		}
+	}
+	
+	$scope.getCategoriesOk = function(response) {
+		growl.info("Categorias obtenidas");
+	}
+	
+	$scope.inicializarVista = function() {
+		
+		invokeGetCategories($http, data, $scope.getCategoriesOk,
+				defaultHandlerOnError);
+		
+		
+		
 	}
 
 	$scope.updateOperationOk = function(response) {
@@ -155,6 +168,8 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 					$scope.name = 'You did not enter in your name!';
 			});
 		 };
+		 
+		 //$scope.inicializarVista();
 
 });
 

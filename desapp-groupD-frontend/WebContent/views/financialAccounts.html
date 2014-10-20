@@ -1,6 +1,6 @@
 <div class="col-sm-3 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<div class="jumbotron">
-		<h4>{{ 'REGISTERED_ACCOUNTS' | translate}}</h4>
+		<h4>{{ 'TITLE_ACCOUNTS' | translate}}</h4>
 	</div>
 
 	<div class="container-fluid ">
@@ -9,16 +9,16 @@
 			<form class="form-inline">
 				<a type="submit" class="btn btn-primary" ng-click="nuevaEmpresa()"
 					ng-show="{{m('registrarEmpresa')}}"
-					title="{{ 'NEW_ENTERPRISES' | translate}}">{{ 'REGISTER_NEW_ACCOUNT' | translate}}</a>
+					title="{{ 'REGISTER_NEW_ACCOUNT' | translate}}">{{ 'REGISTER_NEW_ACCOUNT' | translate}}</a>
 			</form>
 			<br />
 			<legend></legend>
 
 			<div class="form-group col-xs-12 col-sm-6 col-lg-6">
-				<label for="inputBusquedaCodigo" class="col-xs-4">{{ 'NAME' | translate}}</label>
+				<label for="inputBusquedaCodigo" class="col-xs-4">{{ 'FORM_NAME' | translate}}</label>
 				<div class="col-xs-8">
 					<input type="text" class="form-control" id="inputBusquedaCodigo"
-						ng-model="inputBusquedaCodigo" placeholder="{{ 'ENTER_CODE' | translate}}">
+						ng-model="inputBusquedaCodigo" placeholder="{{ 'FORM_NAME' | translate}}">
 				</div>
 			</div>
 
@@ -35,7 +35,7 @@
 
 			<div class="form-group center-block">
 				<button type="submit" ng-click="activate()"
-					class="btn btn-primary col-xs-8 col-xs-offset-4 col-lg-3 col-lg-offset-4">{{ 'SEARCH' | translate}}</button>
+					class="btn btn-primary col-xs-8 col-xs-offset-4 col-lg-3 col-lg-offset-4">{{ 'FORM_SEARCH' | translate}}</button>
 			</div>
 		</form>
 	</div>
@@ -45,16 +45,16 @@
 		<table ng-table="tableParams" class="table ng-table-responsive"
 			>
 			<tr ng-repeat="account in resultAccounts">
-				<td data-title="{{ 'NAME' | translate}}">{{account.name}}</td>
-				<td data-title="{{ 'BANK_ACCOUNT_BOOL' | translate}}">{{account.isBankAccount}}</td>
-				<td data-title="{{ 'ACTIONS' | translate}}"><button type="button"
+				<td data-title="'Nombre'">{{account.name}}</td>
+				<td data-title="'Cuenta Bancaria'">{{account.isBankAccount}}</td>
+				<td data-title="'Acciones'"><button type="button"
 						class="btn btn-warning"
 						ng-click="prepareEditAccount(account.id)"
 						
-						title="{{ 'EDIT_ACCOUNT' | translate}} {{account.name}}">{{ 'EDIT' | translate}}</button>
+						title="{{ 'FORM_EDIT' | translate}} {{account.name}}">{{ 'FORM_EDIT' | translate}}</button>
 					<button type="button" class="btn btn-danger"
 						ng-click="confirmDeleteAccount(account.id,account.name)"
-						title="{{ 'DELETE_ACCOUNT' | translate}} {{account.codigo}}">{{ 'DELETE' | translate}}</button></td>
+						title="{{ 'FORM_DELETE' | translate}} {{account.codigo}}">{{ 'FORM_DELETE' | translate}}</button></td>
 			</tr>
 		</table>
 	</div>

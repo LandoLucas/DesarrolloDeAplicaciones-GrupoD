@@ -7,7 +7,7 @@
  */
 var app = angular.module('tp-dapp-eiroa-lando');
 app.controller('CrudSucursalCtrl', function($scope, $location, $http,
-		$rootScope, growl, dialogs) {
+		$rootScope, growl, dialogs,$translate) {
 
 	$scope.inicializarVista = function() {
 		

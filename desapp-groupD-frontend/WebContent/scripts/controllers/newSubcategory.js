@@ -8,7 +8,7 @@
  * Controller of the tpDesapMockupsApp
  */
 angular.module('tp-dapp-eiroa-lando')
-  .controller('NewSubcategoryCtrl', function ($scope,$modalInstance,data) {
+  .controller('NewSubcategoryCtrl', function ($scope,$modalInstance,data,$translate) {
 	//-- Variables --//
 
 		$scope.user = {name : ''};

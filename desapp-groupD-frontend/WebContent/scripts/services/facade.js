@@ -25,7 +25,6 @@ function invokeRestService(cnxHttp, header, data, modulo, servicio,
 	});
 }
 
-
 function invokeGetRestService(cnxHttp, header, data, modulo, servicio,
 		handlerOnSuccess, handlerOnError) {
 	var respuesta = [];
@@ -77,21 +76,31 @@ function autenticar(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 
 }
 
-
 function invokeNewOperationTest(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 	var header = defaultHeader();
-	invokeRestService(cnxHttp, header, data, 'operation',
-			'newTest', handlerOnSuccess, handlerOnError);
+	invokeRestService(cnxHttp, header, data, 'operation', 'newTest',
+			handlerOnSuccess, handlerOnError);
 }
+
+function invokeGetCategories(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+	var header = defaultHeader();
+	invokeGetRestService(cnxHttp, header, data, 'category', 'all',
+			handlerOnSuccess, handlerOnError);
+}
+
 
 
 function invokeNewCategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 	var header = defaultHeader();
-	invokeRestService(cnxHttp, header, data, 'category',
-			'add', handlerOnSuccess, handlerOnError);
+	invokeRestService(cnxHttp, header, data, 'category', 'add',
+			handlerOnSuccess, handlerOnError);
 }
 
-
+function invokeNewCategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+	var header = defaultHeader();
+	invokeRestService(cnxHttp, header, data, 'category', 'add',
+			handlerOnSuccess, handlerOnError);
+}
 
 // Usuarios
 function invokeRegistrarUsuario(cnxHttp, data, handlerOnSuccess, handlerOnError) {
@@ -125,6 +134,3 @@ function invokeBorrarUsuario(cnxHttp, filtro, handlerOnSuccess, handlerOnError) 
 	invokeRestService(cnxHttp, header, filtro, 'configuracion',
 			'borrarUsuario', handlerOnSuccess, handlerOnError);
 }
-
-
-

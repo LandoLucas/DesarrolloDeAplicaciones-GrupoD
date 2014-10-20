@@ -10,7 +10,7 @@ angular
 		.module('tp-dapp-eiroa-lando')
 		.controller(
 				'AccionesCtrl',
-				function($scope, $location, $http, $rootScope, growl) {
+				function($scope, $location, $http, $rootScope, growl,$translate) {
 
 					// Inicializa los combos
 					$scope.inicializarVista = function() {
