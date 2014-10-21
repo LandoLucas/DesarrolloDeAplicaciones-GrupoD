@@ -53,32 +53,36 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 	}
 	
 	$scope.getCategoriesOk = function(response) {
-		growl.info("Categorias obtenidas");
+		//growl.info("Categorias obtenidas");
 		$scope.categories = response;
 	}
 	
 	$scope.selectCategory = function(category){
 		if(category != null){
 			growl.info(category.categoryName)
-			if(category.subcategory.length > 1){
+			if(category.subcategory == null){
+				$scope.subCategories= [];
+			}else {
+				if (category.subcategory.length > 1){
 				$scope.subCategories = category.subcategory;
-			}else{
-				$scope.subCategories = [category.subcategory];
+				}else{
+					$scope.subCategories = [category.subcategory];
+				}				
 			}
-			console.log($scope.subCategories);
+//			console.log($scope.subCategories);
 		}
 		
 	}
 	
 	$scope.selectSubcategory = function(subcat){
 		if(subcat != null){
-			if(subcat.length > 1){
+			if(subcat.concept != null || subcat.concept.length > 1){
 				$scope.concepts = subcat.concept;
 			}else{
 				$scope.concepts = [subcat.concept];
 			}
-			growl.info(subcat.subcategoryName)
-			console.log(subcat);
+//			growl.info(subcat.subcategoryName)
+//			console.log(subcat);
 		}
 		
 	}
@@ -152,11 +156,11 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 	}
 	
 	function getErrorMessage(){
-
 		if ($scope.inputAmount == null || $scope.inputAmount== ""){
-			growl.error("Monto requerido");
+			$translate('FORM_ERROR_AMOUNT_REQUIRED').then(function (text) {
+				growl.error(text);
+			});
 		}
-
 	}
 
 	$scope.updateOperation= function() {
@@ -174,23 +178,35 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 	 $scope.dialogNewCategory = function() {
 	 	var dlg = dialogs.create('views/newCategory.html','NewCategoryCtrl',function(){},'lg');
 		dlg.result.then(function(name){
-			growl.info('Nueva categoria: ' +name);
+			$translate('DIALOG_CATEGORY_REGISTER_SUCCESS').then(function (text) {
+				growl.info(text +name);
+			    });
+			
 		},function(){
-			if(angular.equals($scope.name,''))
-				$scope.name = 'Category name Not entered!';
+			if(angular.equals($scope.categoryName,''))
+				$scope.categoryName = 'Category name Not entered!';
 		});
 	 };
 	 
 
 	 
 	 $scope.dialogNewSubcategory = function() {
-		 	var dlg = dialogs.create('views/newSubcategory.html','NewSubcategoryCtrl',{},'lg');
-			dlg.result.then(function(name){
-				alert('New category is ' +name);
-			},function(){
-				if(angular.equals($scope.name,''))
-					$scope.name = 'You did not enter in your name!';
-			});
+		    if($scope.categorySelected != null){
+		    	var dlg = dialogs.create('views/newSubcategory.html','NewSubcategoryCtrl',{idCategory: $scope.categorySelected.id},'lg');
+				dlg.result.then(function(name){
+					$translate('DIALOG_SUBCATEGORY_REGISTER_SUCCESS').then(function (text) {
+						growl.info(text +name);
+					    });
+				},function(){
+					if(angular.equals($scope.subcategoryName,''))
+						$scope.subcategoryName = 'SubCategory name Not entered!';
+				});
+		    }else{
+		    	$translate('DIALOG_SUBCATEGORY_CATEGORY_NOTSELECTED').then(function (text) {
+		    		growl.error(text);
+				 });
+		    }
+		 	
 		 };
 		 
 		 $scope.inicializarVista();

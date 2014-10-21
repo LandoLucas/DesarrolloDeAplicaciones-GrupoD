@@ -12,7 +12,7 @@ angular.module('tp-dapp-eiroa-lando')
 		  growl,globalService,dialogs,$location,$translate) {
 	//-- Variables --//
 
-	   $scope.user = {name : ''};
+	   $scope.user = {categoryName : ''};
 
 		//-- Methods --//
 
@@ -21,23 +21,18 @@ angular.module('tp-dapp-eiroa-lando')
 		}; // end cancel
 
 		$scope.save = function(){
-			$modalInstance.close($scope.user.name);
+			$modalInstance.close($scope.user.categoryName);
 		}; // end save
 		
 		$scope.registerCategoryOk = function(response) {
-//			if (codigoOk(response)) {
-				growl.info("Categoria registrada.");
-				$modalInstance.close($scope.user.name);
+				//growl.info("Categoria registrada.");
+				$modalInstance.close($scope.user.categoryName);
 				$location.path('/cargarDatos');
 				
-//			} else {
-//				var descripcion = response['desc'];
-//				growl.error(descripcion);
-//			}
 		}
 		
 		 $scope.saveNewCategory = function() {
-			 var data = {name: $scope.user.name};
+			 var data = {name: $scope.user.categoryName};
 				if(validate()){
 					invokeNewCategory($http, data, $scope.registerCategoryOk,
 							defaultHandlerOnError);
@@ -47,7 +42,7 @@ angular.module('tp-dapp-eiroa-lando')
 		 };
 		 
 			function validate(){
-				if ($scope.user.name == null || $scope.user.name== ""){
+				if ($scope.user.categoryName == null || $scope.user.categoryName== ""){
 					return false;
 				}
 				return true;
@@ -55,8 +50,10 @@ angular.module('tp-dapp-eiroa-lando')
 			
 			function getErrorMessage(){
 
-				if ($scope.name == null || $scope.name== ""){
-					growl.error("Nombre requerido");
+				if ($scope.categoryName == null || $scope.categoryName== ""){
+					$translate('FORM_ERROR_NAME_REQUIRED').then(function (text) {
+						growl.error(text);
+					    });
 				}
 
 			}

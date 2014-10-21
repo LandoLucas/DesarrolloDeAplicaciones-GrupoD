@@ -245,6 +245,13 @@
 														FORM_SEARCH: "Buscar",
 														FORM_SAVE: "Guardar",
 														
+														FORM_ERROR_AMOUNT_REQUIRED: "Error, monto requerido",
+														FORM_ERROR_NAME_REQUIRED: "Error, Nombre requerido",
+														
+														DIALOG_CATEGORY_REGISTER_SUCCESS: "Categoría registrada: ",
+														DIALOG_SUBCATEGORY_REGISTER_SUCCESS: "Subcategoría registrada: ",
+														DIALOG_SUBCATEGORY_CATEGORY_NOTSELECTED: "Seleccione una categoría por favor ",
+														
 														DIALOGS_ERROR : "Error",
 														DIALOGS_ERROR_MSG : "Se ha producido un error desconocido.",
 														DIALOGS_CLOSE : "Cerrar",
@@ -328,6 +335,14 @@
 												FORM_ACTIONS: "Actions",
 												FORM_SEARCH: "Search",
 												FORM_SAVE: "Save",
+												
+												FORM_ERROR_AMOUNT_REQUIRED: "Error, amount required",
+												FORM_ERROR_NAME_REQUIRED: "Error, Name required",
+												
+												DIALOG_CATEGORY_REGISTER_SUCCESS: "Category registered: ",
+												DIALOG_SUBCATEGORY_REGISTER_SUCCESS: "Subcategory registered: ",
+												DIALOG_SUBCATEGORY_CATEGORY_NOTSELECTED: "Please select a category ",
+												
 												
 												DIALOGS_ERROR : "Error",
 												DIALOGS_ERROR_MSG : "An unknown error has occurred.",

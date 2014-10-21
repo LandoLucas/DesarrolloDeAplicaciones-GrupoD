@@ -90,9 +90,9 @@ function invokeNewCategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 			handlerOnSuccess, handlerOnError);
 }
 
-function invokeNewCategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+function invokeNewSubcategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 	var header = defaultHeader();
-	invokeRestService(cnxHttp, header, data, 'category', 'add',
+	invokeRestService(cnxHttp, header, data, 'subcategory', 'save',
 			handlerOnSuccess, handlerOnError);
 }
 
