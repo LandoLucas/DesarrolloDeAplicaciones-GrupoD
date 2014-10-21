@@ -36,8 +36,9 @@ public class CategoryRest {
 	@GET
 	@Path("/all")
 	@Produces("application/json")
-	public List<Category> getAllCategories() throws InvalidAmountException, InvalidReceiptNumberException {
-		return categoryService.findAll();
+	public Response getAllCategories() throws InvalidAmountException, InvalidReceiptNumberException {
+		List<Category> obs =  categoryService.findAll();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(obs).build();
 	}
 
 	@GET
