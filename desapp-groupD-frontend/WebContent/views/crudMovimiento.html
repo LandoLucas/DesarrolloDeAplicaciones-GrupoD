@@ -89,7 +89,7 @@
 				<div class="form-group">
 					<label for="selectConceptType" class="control-label col-xs-2">{{ 'FORM_CONCEPT' | translate}}</label>
 					<div class="col-xs-10">
-						<select ng-model="selectConceptType"
+						<select ng-model="conceptSelected"
 							ng-options="con as con.conceptName for con in concepts"
 							class="form-control">
 							<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>

@@ -76,16 +76,21 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 	
 	$scope.selectSubcategory = function(subcat){
 		if(subcat != null){
-			if(subcat.concept != null || subcat.concept.length > 1){
-				$scope.concepts = subcat.concept;
-			}else{
-				$scope.concepts = [subcat.concept];
+			if(subcat.concept == null)  {
+				$scope.concepts = [];
+			}else {
+				if(subcat.concept.length > 1){
+					$scope.concepts = subcat.concept;
+				}else{
+					$scope.concepts = [subcat.concept];
+				}
 			}
+		}	
+
 //			growl.info(subcat.subcategoryName)
-//			console.log(subcat);
+			console.log($scope.concepts );
 		}
-		
-	}
+
 	
 	$scope.inicializarVista = function() {
 		
