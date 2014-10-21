@@ -41,12 +41,12 @@ public class CategoryRest {
 		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(obs).build();
 	}
 
-	@GET
-	@Path("/deleteCategory/{name}")
-	@Consumes("application/json")
-	public Response deleteCategory(@PathParam("name") String name) {
+	@POST
+	@Path("/deleteCategory")
+	@Consumes("application/x-www-form-urlencoded")
+	public Response deleteCategory(@FormParam("name") String name) {
 		categoryService.removeCategory(name);
-		return Response.ok().build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 
 	@POST

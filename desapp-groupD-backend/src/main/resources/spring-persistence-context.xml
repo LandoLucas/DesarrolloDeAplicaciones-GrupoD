@@ -101,6 +101,7 @@
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	<bean id="subcategoryService" class="ar.edu.unq.desapp.grupoD.services.SubCategoryService">
+		<property name="categoryDao" ref="categoryDao" />
 		<property name="subcategoryDao" ref="subcategoryDao" />
 	</bean>
 	<bean id="subcategoryRest" class="ar.edu.unq.desapp.grupoD.rest.SubcategoryRest" >
