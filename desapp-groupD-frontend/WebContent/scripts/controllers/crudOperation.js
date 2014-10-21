@@ -54,15 +54,39 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 	
 	$scope.getCategoriesOk = function(response) {
 		growl.info("Categorias obtenidas");
+		$scope.categories = response;
+	}
+	
+	$scope.selectCategory = function(category){
+		if(category != null){
+			growl.info(category.categoryName)
+			if(category.subcategory.length > 1){
+				$scope.subCategories = category.subcategory;
+			}else{
+				$scope.subCategories = [category.subcategory];
+			}
+			console.log($scope.subCategories);
+		}
+		
+	}
+	
+	$scope.selectSubcategory = function(subcat){
+		if(subcat != null){
+			if(subcat.length > 1){
+				$scope.concepts = subcat.concept;
+			}else{
+				$scope.concepts = [subcat.concept];
+			}
+			growl.info(subcat.subcategoryName)
+			console.log(subcat);
+		}
+		
 	}
 	
 	$scope.inicializarVista = function() {
 		
-		invokeGetCategories($http, data, $scope.getCategoriesOk,
+		invokeGetCategories($http, {}, $scope.getCategoriesOk,
 				defaultHandlerOnError);
-		
-		
-		
 	}
 
 	$scope.updateOperationOk = function(response) {
@@ -169,7 +193,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 			});
 		 };
 		 
-		 //$scope.inicializarVista();
+		 $scope.inicializarVista();
 
 });
 

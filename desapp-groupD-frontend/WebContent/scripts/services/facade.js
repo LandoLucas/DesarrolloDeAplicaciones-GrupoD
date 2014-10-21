@@ -35,14 +35,8 @@ function invokeGetRestService(cnxHttp, header, data, modulo, servicio,
 				url : 'http://' + restHost + '/' + restContext + '/rest/'
 						+ modulo + '/' + servicio,
 				data : data,
-				headers : header,
-				transformRequest : function(obj) {
-					var str = [];
-					for ( var p in obj)
-						str.push(encodeURIComponent(p) + "="
-								+ encodeURIComponent(obj[p]));
-					return str.join("&");
-				}
+				headers : header
+				
 			}).success(function(response) {
 		handlerOnSuccess(response);
 
