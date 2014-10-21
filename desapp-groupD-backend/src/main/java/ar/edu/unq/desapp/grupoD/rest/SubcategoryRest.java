@@ -31,8 +31,9 @@ public class SubcategoryRest {
 	@GET
 	@Path("/all")
 	@Produces("application/json")
-	public List<SubCategory> getAllSubCategories(@PathParam("name") String name) {
-		return subcategoryService.findAll();
+	public Response getAllSubCategories() {
+		List<SubCategory>obs = subcategoryService.findAll();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(obs).build();
 	}
 
 	@GET
