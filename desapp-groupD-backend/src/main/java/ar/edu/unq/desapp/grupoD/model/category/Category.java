@@ -1,11 +1,13 @@
 package ar.edu.unq.desapp.grupoD.model.category;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -28,11 +30,11 @@ public class Category {
 	@GeneratedValue
 	private Integer id;
 
-	@Column
+	@Column(unique=false)
 	private String categoryName;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private SubCategory subcategory;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<SubCategory> subcategory;
 
 	public Integer getId() {
 		return id;
@@ -42,11 +44,11 @@ public class Category {
 		return categoryName;
 	}
 
-	public SubCategory getSubcategory() {
+	public List<SubCategory> getSubcategory() {
 		return subcategory;
 	}
 
-	public void setSubcategory(SubCategory subcategory) {
+	public void setSubcategory(List<SubCategory> subcategory) {
 		this.subcategory = subcategory;
 	}
 

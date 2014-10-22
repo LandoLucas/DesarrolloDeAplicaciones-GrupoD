@@ -1,5 +1,8 @@
 package ar.edu.unq.desapp.grupoD.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -70,8 +73,11 @@ public class Operation {
 		this.setAmount(amount);
 		this.setIncome(isIncome);
 		this.setShift(shift);
-		subCategory.setConcept(concept);
-		category.setSubcategory(subCategory);
+		List<Concept> concepts = new ArrayList<Concept>();
+		concepts.add(concept);
+		List<SubCategory> subcategories = new ArrayList<SubCategory>();
+		subCategory.setConcepts(concepts);
+		category.setSubcategory(subcategories);
 		this.setCategory(category);
 		this.setPaymentType(paymentType);
 		setOperationID();

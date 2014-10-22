@@ -1,9 +1,12 @@
 package ar.edu.unq.desapp.grupoD.model.category;
 
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
-import static org.mockito.Mockito.mock;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
+
 
 /**
  * @author Lucas
@@ -23,12 +26,14 @@ public class CategoryTest {
 	
 	@Test
 	public void getAndSetSubcategoryTest(){
-		SubCategory subcategory = mock(SubCategory.class);
+		SubCategory subcategory = new SubCategory();
 		Category category = new Category("categoryName");
 		
-		category.setSubcategory(subcategory);
+		List<SubCategory> subcategories = new ArrayList<SubCategory>();
+		subcategories.add(subcategory);
+		category.setSubcategory(subcategories);
 		
-		assertSame( subcategory , category.getSubcategory());
+		assertTrue(category.getSubcategory().contains(subcategory));
 	}
 	
 }

@@ -1,5 +1,8 @@
 package ar.edu.unq.desapp.grupoD.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -69,8 +72,12 @@ public class OperationsRest {
 		operation.setDate(date);
 		operation.setAmount(amount);
 		operation.setIncome(isIncome);
-		subCategory.setConcept(concept);
-		category.setSubcategory(subCategory);
+		List<Concept> concepts = new ArrayList<Concept>();
+		concepts.add(concept);
+		subCategory.setConcepts(concepts);
+		List<SubCategory> subcategories = new ArrayList<SubCategory>();
+		subcategories.add(subCategory);
+		category.setSubcategory(subcategories);
 		operation.setCategory(category);
 		operation.setPaymentType(paymentType);
 		

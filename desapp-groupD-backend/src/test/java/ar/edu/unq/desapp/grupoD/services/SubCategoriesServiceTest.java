@@ -1,6 +1,6 @@
 package ar.edu.unq.desapp.grupoD.services;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -19,13 +19,14 @@ public class SubCategoriesServiceTest extends AbstractTransactionalJUnit4SpringC
 	
 	@Test
 	public void saveAndLoadSubCategory(){
-		SubCategory subcategory = new SubCategory("ventas");
+		SubCategory subcategory = new SubCategory("ventas test");
 		
 		subcategoryService.save(subcategory);
 
 		List<SubCategory> subcategories = subcategoryService.findAll();
+		
 		assertEquals( 1 , subcategories.size());
-		assertEquals( "ventas" , subcategories.get(0).getSubcategoryName());
+		assertTrue(subcategories.contains(subcategory));
 	}
 	
 	

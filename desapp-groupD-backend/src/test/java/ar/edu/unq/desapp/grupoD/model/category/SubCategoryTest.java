@@ -1,10 +1,12 @@
 package ar.edu.unq.desapp.grupoD.model.category;
 
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
 
 /**
  * @author Lucas
@@ -23,12 +25,14 @@ public class SubCategoryTest {
 	
 	@Test
 	public void getAndSetConceptTest(){
-		Concept concept = mock(Concept.class);
+		Concept concept = new Concept();
 		SubCategory subcategory = new SubCategory("name");
+		List<Concept> concepts = new ArrayList<Concept>();
+		concepts.add(concept);
+
+		subcategory.setConcepts(concepts);
 		
-		subcategory.setConcept(concept);
-		
-		assertSame( concept , subcategory.getConcept());
+		assertTrue(subcategory.getConcepts().contains(concept));
 	}
 	
 }

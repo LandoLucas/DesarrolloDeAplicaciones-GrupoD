@@ -1,12 +1,11 @@
 package ar.edu.unq.desapp.grupoD.persistence;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.Response;
 
 import org.joda.time.DateTime;
-import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
@@ -73,19 +72,37 @@ public class DatabaseInitializer  {
 	}
 
 	private void loadOperations() throws InvalidAmountException {
-		loadOperation("Ventas", "Ventas 12-10-2014", "ventas tienda", new DateTime(), new PettyCashAccount(), 400, true);
-		loadOperation("Ventas", "Ventas 13-10-2014", "ventas tienda", new DateTime(), new PettyCashAccount(), 565, true);
-		loadOperation("Ventas", "Ventas 14-10-2014", "ventas tienda", new DateTime(), new PettyCashAccount(), 312, true);
-		loadOperation("Pagos", "Proveedores 12-10-2014", "proveedores", new DateTime(), new BankAccount(), 200, false);
-		loadOperation("Pagos", "Proveedores 05-10-2014", "proveedores", new DateTime(), new BankAccount(), 185, false);
-		loadOperation("Pagos", "Proveedores 19-10-2014", "proveedores", new DateTime(), new BankAccount(), 312, false);
+		List<SubCategory> subcategories = new ArrayList<SubCategory>();
+		SubCategory subcategory = new SubCategory("Ventas 12-10-2014");
+		SubCategory subcategory2 = new SubCategory("Ventas 13-10-2014");
+		SubCategory subcategory3 = new SubCategory("Ventas 14-10-2014");
+		Concept concept1 = new Concept("ventas tienda");
+		Concept concept2 = new Concept("ventas tienda");
+		Concept concept3 = new Concept("ventas tienda");
+		List<Concept> concepts = new ArrayList<Concept>();
+		List<Concept> concepts2 = new ArrayList<Concept>();
+		List<Concept> concepts3 = new ArrayList<Concept>();
+		concepts.add(concept1);
+		concepts2.add(concept2);
+		concepts3.add(concept3);
+		subcategory.setConcepts(concepts);
+		subcategory2.setConcepts(concepts2);
+		subcategory3.setConcepts(concepts3);
+		
+		subcategories.add(subcategory);
+		subcategories.add(subcategory2);
+		subcategories.add(subcategory3);
+		
+		loadOperation("Ventas", subcategories, new DateTime(), new PettyCashAccount(), 400, true);
+//		loadOperation("Pagos", "Proveedores 12-10-2014", "proveedores", new DateTime(), new BankAccount(), 200, false);
+//		loadOperation("Pagos", "Proveedores 05-10-2014", "proveedores", new DateTime(), new BankAccount(), 185, false);
+//		loadOperation("Pagos", "Proveedores 19-10-2014", "proveedores", new DateTime(), new BankAccount(), 312, false);
 	}
 
-	private void loadOperation(String categoryName, String subcategoryName, String conceptName, DateTime date, Account account, int amount, boolean isIncome) throws InvalidAmountException {
-		SubCategory subcategory = new SubCategory(subcategoryName);
-		subcategory.setConcept(new Concept(conceptName));
+	private void loadOperation(String categoryName, List<SubCategory> subcategories, DateTime date, Account account, int amount, boolean isIncome) throws InvalidAmountException {
+		
 		Category category = new Category(categoryName);
-		category.setSubcategory(subcategory);
+		category.setSubcategory(subcategories);
 		Operation operation = new Operation(date, 400, true, category, account);
 
 		categoryService.save(category);

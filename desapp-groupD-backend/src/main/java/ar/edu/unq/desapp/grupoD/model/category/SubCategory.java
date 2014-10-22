@@ -1,11 +1,13 @@
 package ar.edu.unq.desapp.grupoD.model.category;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
@@ -31,25 +33,24 @@ public class SubCategory {
 	@Column
 	private String subcategoryName;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private Concept concept;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Concept> concepts;
 
 	public String getSubcategoryName() {
 		return subcategoryName;
 	}
 
-	public Concept getConcept() {
-		return concept;
-	}
-
-	public void setConcept(Concept concept) {
-		this.concept = concept;
-	}
-	
 	public SubCategory(String name ){
 		this.subcategoryName = name;
 	}
 	
+	public List<Concept> getConcepts() {
+		return concepts;
+	}
+
+	public void setConcepts(List<Concept> concepts) {
+		this.concepts = concepts;
+	}
 
 	public SubCategory(){}
 
