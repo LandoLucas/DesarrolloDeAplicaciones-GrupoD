@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoD.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -18,13 +19,9 @@ public class SubCategoryService {
 		this.subcategoryDao = subcategoryDao;
 	}
 	
-	
-
 	public void setCategoryDao(CategoryDao categoryDao) {
 		this.categoryDao = categoryDao;
 	}
-
-
 
 	@Transactional(readOnly=true)
 	public List<SubCategory> findAll() {
@@ -39,7 +36,9 @@ public class SubCategoryService {
 	@Transactional
 	public void save(SubCategory subcategory, Integer idCategory) {
 		Category toUpdate = categoryDao.findById(idCategory);
-		toUpdate.setSubcategory(subcategory);
+		List<SubCategory> subcategories = new ArrayList<SubCategory>();
+		subcategories.add(subcategory);
+		toUpdate.setSubcategory(subcategories);
 		categoryDao.save(toUpdate);
 	}
 	
