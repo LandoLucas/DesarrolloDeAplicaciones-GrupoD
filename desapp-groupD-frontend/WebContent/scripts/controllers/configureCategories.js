@@ -6,7 +6,7 @@
  * @description # MainCtrl Controller of the tp-dapp-eiroa-lando
  */
 var app = angular.module('tp-dapp-eiroa-lando');
-app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
+app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $http,
 		$rootScope, growl,globalService,dialogs,$translate) {
 	globalService.setInNewOperation()
 
@@ -42,15 +42,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		return $rootScope.editingOperation == false;
 	}
 
-	$scope.registerOperationOk = function(response) {
-		if (codigoOk(response)) {
-			growl.info("Operacion registrada.");
-			$location.path('/cargarDatos');
-		} else {
-			var descripcion = response['desc'];
-			growl.error(descripcion);
-		}
-	}
+
 	
 	$scope.getCategoriesOk = function(response) {
 		//growl.info("Categorias obtenidas");
@@ -98,15 +90,6 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 				defaultHandlerOnError);
 	}
 
-	$scope.updateOperationOk = function(response) {
-		if (codigoOk(response)) {
-			growl.info("Operacion actualizada.");
-			$location.path('/cargarDatos');
-		} else {
-			var descripcion = response['desc'];
-			growl.error(descripcion);
-		}
-	}
 
 	$scope.populateParams = function() {
 		var data = {
@@ -121,36 +104,8 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		return data;
 	}
     
-    $scope.populateParamsTest = function(){
-        var data ={
-            amount: $scope.inputAmount
-        };
-        
-        return data;
-    }
 
-	$scope.registerOperation = function() {
-		var data = $scope.populateParams();
-		if(validate()){
-			invokeRegisterOperation($http, data, $scope.registerOperationOk,
-					defaultHandlerOnError);
-		}else{
-			getErrorMessage();
-		}
-		
-	}
-    
-    $scope.registerOperationTest = function() {
-        
-		var data = $scope.populateParamsTest();
-		if(validate()){
-			invokeNewOperationTest($http, data, $scope.registerOperationOk,
-					defaultHandlerOnError);
-		}else{
-			getErrorMessage();
-		}
-		
-	}
+
 	
 	function validate(){
 		if ($scope.inputAmount == null || $scope.inputAmount == ""){
@@ -167,17 +122,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		}
 	}
 
-	$scope.updateOperation= function() {
-		if(validate()){
-			var data = $scope.populateParams();
-			data.id = $rootScope.operationToEdit.id;
-			invokeUpdateOperation($http, data, $scope.updateOperationOk,
-					defaultHandlerOnError);
-		}else{
-			getErrorMessage();
-		
-		}
-	}
+
 	
 	 $scope.dialogNewCategory = function() {
 	 	var dlg = dialogs.create('views/newCategory.html','NewCategoryCtrl',function(){},'lg');

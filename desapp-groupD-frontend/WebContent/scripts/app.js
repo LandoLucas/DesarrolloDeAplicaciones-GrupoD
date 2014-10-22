@@ -224,6 +224,7 @@
 														TITLE_ACCOUNTS:"Cuentas registradas",
 														TITLE_NEW_CATEGORY: "Nueva categoría",
 														TITLE_NEW_SUBCATEGORY: "Nueva subcategoría",
+														TITLE_CONFIGURE_CATEGORIES: "Configuración de categorias",
 														
 														FORM_DATE: "Fecha",
 														FORM_AMOUNT: "Monto",
@@ -244,6 +245,7 @@
 														FORM_ACTIONS: "Acciones",
 														FORM_SEARCH: "Buscar",
 														FORM_SAVE: "Guardar",
+														FORM_SHIFT: "Turno",
 														
 														FORM_ERROR_AMOUNT_REQUIRED: "Error, monto requerido",
 														FORM_ERROR_NAME_REQUIRED: "Error, Nombre requerido",
@@ -315,6 +317,7 @@
 												TITLE_ACCOUNTS:"Registered accounts",
 												TITLE_NEW_CATEGORY: "New category",
 												TITLE_NEW_SUBCATEGORY: "New subcategory",
+												TITLE_CONFIGURE_CATEGORIES: "Categories",
 												
 												FORM_DATE: "Date",
 												FORM_AMOUNT: "Amount",
@@ -335,6 +338,7 @@
 												FORM_ACTIONS: "Actions",
 												FORM_SEARCH: "Search",
 												FORM_SAVE: "Save",
+												FORM_SHIFT: "Shift",
 												
 												FORM_ERROR_AMOUNT_REQUIRED: "Error, amount required",
 												FORM_ERROR_NAME_REQUIRED: "Error, Name required",
@@ -457,6 +461,9 @@
             }).when('/newBill', {
 				templateUrl : 'views/crudBill.html',
 				controller : 'CrudBillCtrl'    
+			}).when('/confCats', {
+				templateUrl : 'views/configureCategories.html',
+				controller : 'ConfigureCategoriesCtrl'    
 			}).otherwise({
 				redirectTo : '/'
 			});

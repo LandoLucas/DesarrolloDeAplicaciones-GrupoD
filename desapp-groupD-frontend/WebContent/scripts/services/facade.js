@@ -76,6 +76,12 @@ function invokeNewOperationTest(cnxHttp, data, handlerOnSuccess, handlerOnError)
 			handlerOnSuccess, handlerOnError);
 }
 
+function invokeNewOperation(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+	var header = defaultHeader();
+	invokeRestService(cnxHttp, header, data, 'operation', 'new',
+			handlerOnSuccess, handlerOnError);
+}
+
 function invokeGetCategories(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 	var header = defaultHeader();
 	invokeGetRestService(cnxHttp, header, data, 'category', 'all',

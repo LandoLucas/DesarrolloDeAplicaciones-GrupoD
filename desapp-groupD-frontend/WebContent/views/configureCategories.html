@@ -1,31 +1,12 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<div class="jumbotron">
-		<h4>{{'TITLE_NEW_INCOME' | translate}}</h4>
+		<h4>{{'TITLE_CONFIGURE_CATEGORIES' | translate}}</h4>
 	</div>
 
 	<div class="container-fluid">
 
 		<div class="bs-example">
 			<form name="crudOperation" class="form-horizontal">
-
-				
-				<div class="form-group">
-					<label for="inputDate" class="control-label col-xs-2">{{ 'FORM_DATE' | translate}}</label>
-					<div class="col-xs-10">
-						<input type="date" class="form-control" id="inputDate"
-							ng-model="inputDate">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="inputAmount" class="control-label col-xs-2">{{ 'FORM_AMOUNT' | translate}}</label>
-					<div class="col-xs-10">
-						<input type="number" class="form-control" id="inputAmount"
-							ng-model="inputAmount" placeholder="{{ 'FORM_AMOUNT' | translate}}">
-					</div>
-				</div>
-				
-
 				
 				<div class="form-group">
 					<label for="selectCategory" class="control-label col-xs-2">{{ 'FORM_SELECT_CATEGORY' | translate}}</label>
@@ -77,16 +58,6 @@
 				</div>
 
 				<div class="form-group">
-					<label for="selectPaymentType" class="control-label col-xs-2">{{ 'FORM_SELECT_PAYMENT_TYPE' | translate}}</label>
-					<div class="col-xs-10">
-						<select ng-model="selectPaymentType"
-							ng-options="ptype as ptype.name for ptype in ptypes"
-							class="form-control">
-							<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
-						</select>
-					</div>
-				</div>
-				<div class="form-group">
 					<label for="selectConceptType" class="control-label col-xs-2">{{ 'FORM_CONCEPT' | translate}}</label>
 					<div class="col-xs-10">
 						<select ng-model="conceptSelected"
@@ -97,13 +68,7 @@
 					</div>
 				</div>
 				
-				<div class="form-group">
-					<label for="inputShift" class="control-label col-xs-2">{{ 'FORM_AMOUNT' | translate}}</label>
-					<div class="col-xs-10">
-						<input type="text" class="form-control" id="inputShift"
-							ng-model="inputShift" placeholder="{{ 'FORM_SHIFT' | translate}}">
-					</div>
-				</div>
+				
 				
 				<div class="form-group">
 					<div class="col-xs-offset-2 col-xs-10">
