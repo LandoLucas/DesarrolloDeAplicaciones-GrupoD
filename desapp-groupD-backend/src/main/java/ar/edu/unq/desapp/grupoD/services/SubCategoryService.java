@@ -36,9 +36,8 @@ public class SubCategoryService {
 	@Transactional
 	public void save(SubCategory subcategory, Integer idCategory) {
 		Category toUpdate = categoryDao.findById(idCategory);
-		List<SubCategory> subcategories = new ArrayList<SubCategory>();
+		List<SubCategory> subcategories = toUpdate.getSubcategory();
 		subcategories.add(subcategory);
-		toUpdate.setSubcategory(subcategories);
 		categoryDao.save(toUpdate);
 	}
 	

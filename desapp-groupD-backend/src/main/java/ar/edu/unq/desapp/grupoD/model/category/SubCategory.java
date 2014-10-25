@@ -9,7 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Proxy;
 
 /**
@@ -21,9 +24,9 @@ import org.hibernate.annotations.Proxy;
  * @author Lucas
  * 
  */
+@XmlRootElement(name = "subcategory")
 @Entity
 @Table(name="SubCategory")
-@Proxy(lazy=true)
 public class SubCategory {
 
 	@Id
@@ -34,6 +37,7 @@ public class SubCategory {
 	private String subcategoryName;
 	
 	@OneToMany(cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Concept> concepts;
 
 	public String getSubcategoryName() {

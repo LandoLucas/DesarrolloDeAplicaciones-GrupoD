@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.annotations.Proxy;
 
@@ -16,6 +17,7 @@ import org.hibernate.annotations.Proxy;
  * @author Lucas
  *
  */
+@XmlRootElement(name = "concept")
 @Entity
 @Table(name="Concept")
 @Proxy(lazy=true)

@@ -63,10 +63,10 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 			if(category.subcategory == null){
 				$scope.subCategories= [];
 			}else {
-				if (category.subcategory.length > 1){
+				if (category.subcategory.length >= 1){
 				$scope.subCategories = category.subcategory;
 				}else{
-					$scope.subCategories = [category.subcategory];
+					$scope.subCategories = null;
 				}				
 			}
 //			console.log($scope.subCategories);
