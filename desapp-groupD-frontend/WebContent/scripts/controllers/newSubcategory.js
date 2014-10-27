@@ -20,14 +20,10 @@ angular.module('tp-dapp-eiroa-lando')
 			$modalInstance.dismiss('Canceled');
 		}; // end cancel
 
-		$scope.save = function(){
-			$modalInstance.close($scope.user.subcategoryName);
-		}; // end save
 		
 		$scope.registerSubcategoryOk = function(response) {
-			//growl.info("Subcategoria registrada.");
 			$modalInstance.close($scope.user.subcategoryName);
-			$location.path('/cargarDatos');
+			//$location.path('/cargarDatos');
 			
 	}
 	
@@ -58,8 +54,10 @@ angular.module('tp-dapp-eiroa-lando')
 
 		}
 
-//		$scope.hitEnter = function(evt){
-//			if(angular.equals(evt.keyCode,13) && !(angular.equals($scope.user.name,null) || angular.equals($scope.user.name,'')))
-//				$scope.save();
-//		};
+		$scope.hitEnter = function(evt){
+			if(angular.equals(evt.keyCode,13) && 
+					!(angular.equals($scope.user.subcategoryName,null) || 
+							angular.equals($scope.user.subcategoryName,'')))
+				$scope.saveNewSubcategory();
+		};
   });

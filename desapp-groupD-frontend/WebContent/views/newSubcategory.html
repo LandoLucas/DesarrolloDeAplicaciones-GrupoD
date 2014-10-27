@@ -4,7 +4,8 @@
 	<div class="form-group">
 		<label for="name" class="control-label col-xs-2">{{ 'FORM_NAME' | translate}}</label>
 		<div class="col-xs-10">
-			<input type="text" class="form-control" id="subcategoryName" ng-model="user.subcategoryName">
+			<input type="text" class="form-control" id="subcategoryName" 
+			ng-model="user.subcategoryName" ng-keyup="hitEnter($event)">
 		</div>
 	</div>
 	<div class="form-group">

@@ -59,7 +59,6 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 	
 	$scope.selectCategory = function(category){
 		if(category != null){
-			growl.info(category.categoryName)
 			if(category.subcategory == null){
 				$scope.subCategories= [];
 			}else {
@@ -69,7 +68,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 					$scope.subCategories = null;
 				}				
 			}
-//			console.log($scope.subCategories);
+			console.log($scope.subCategories);
 		}
 		
 	}
@@ -79,15 +78,13 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 			if(subcat.concept == null)  {
 				$scope.concepts = [];
 			}else {
-				if(subcat.concept.length > 1){
+				if(subcat.concept.length >= 1){
 					$scope.concepts = subcat.concept;
 				}else{
 					$scope.concepts = [subcat.concept];
 				}
 			}
 		}	
-
-//			growl.info(subcat.subcategoryName)
 			console.log($scope.concepts );
 		}
 
@@ -96,6 +93,12 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		
 		invokeGetCategories($http, {}, $scope.getCategoriesOk,
 				defaultHandlerOnError);
+		$scope.subCategories=null;
+		$scope.concepts=null;
+		$scope.categorySelected=null;
+		$scope.subcategorySelected=null;
+		$scope.conceptSelected=null;
+
 	}
 
 	$scope.updateOperationOk = function(response) {
@@ -140,17 +143,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		
 	}
     
-    $scope.registerOperationTest = function() {
-        
-		var data = $scope.populateParamsTest();
-		if(validate()){
-			invokeNewOperationTest($http, data, $scope.registerOperationOk,
-					defaultHandlerOnError);
-		}else{
-			getErrorMessage();
-		}
-		
-	}
+
 	
 	function validate(){
 		if ($scope.inputAmount == null || $scope.inputAmount == ""){
@@ -184,6 +177,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		dlg.result.then(function(name){
 			$translate('DIALOG_CATEGORY_REGISTER_SUCCESS').then(function (text) {
 				growl.info(text +name);
+				$scope.inicializarVista();
 			    });
 			
 		},function(){
@@ -200,6 +194,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 				dlg.result.then(function(name){
 					$translate('DIALOG_SUBCATEGORY_REGISTER_SUCCESS').then(function (text) {
 						growl.info(text +name);
+						$scope.inicializarVista();
 					    });
 				},function(){
 					if(angular.equals($scope.subcategoryName,''))

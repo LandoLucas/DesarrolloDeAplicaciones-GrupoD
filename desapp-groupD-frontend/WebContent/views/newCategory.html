@@ -4,7 +4,7 @@
 	<label for="name" class="control-label col-xs-2">{{ 'FORM_NAME' | translate}}</label>
 	<div class="col-xs-10">
 		<input type="text" class="form-control" id="categoryName"
-			ng-model="user.categoryName">
+			ng-model="user.categoryName" ng-keyup="hitEnter($event)">
 	</div>
 
 <button class="btn btn-success" ng-click="saveNewCategory()"> {{ 'FORM_SAVE' | translate}}</button>

@@ -20,16 +20,20 @@ angular.module('tp-dapp-eiroa-lando')
 			$modalInstance.dismiss('Canceled');
 		}; // end cancel
 
-		$scope.save = function(){
-			$modalInstance.close($scope.user.categoryName);
-		}; // end save
 		
 		$scope.registerCategoryOk = function(response) {
 				//growl.info("Categoria registrada.");
 				$modalInstance.close($scope.user.categoryName);
-				$location.path('/cargarDatos');
+				//$location.path('/cargarDatos');
 				
 		}
+		
+		$scope.hitEnter = function(evt){
+		    if(angular.equals(evt.keyCode,13) && 
+		    		!(angular.equals($scope.user.categoryName,null) || 
+		    				angular.equals($scope.user.categoryName,'')))
+						$scope.saveNewCategory();
+		  };
 		
 		 $scope.saveNewCategory = function() {
 			 var data = {name: $scope.user.categoryName};
