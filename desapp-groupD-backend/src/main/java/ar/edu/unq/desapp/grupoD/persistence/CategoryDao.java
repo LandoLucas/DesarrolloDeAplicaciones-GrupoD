@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupoD.persistence;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -19,16 +20,8 @@ public class CategoryDao extends HibernateGenericDAO<Category> implements
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void removeCategoryByName(final String name) {
-		this.getHibernateTemplate().execute(new HibernateCallback() {
-
-			@Override
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				Query query = session.createQuery("delete from Category where categoryName= :name").setParameter("name", name);
-				query.executeUpdate();
-				return null;
-			}
-			
-		});
+		List<Category> cats =  this.getHibernateTemplate().findByExample(new Category(name));
+		this.getHibernateTemplate().delete(cats.get(0));
 	}
 
 	@Override

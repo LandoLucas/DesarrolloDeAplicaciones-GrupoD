@@ -1,11 +1,6 @@
 package ar.edu.unq.desapp.grupoD.persistence;
 
-import java.sql.SQLException;
-
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.springframework.orm.hibernate3.HibernateCallback;
+import java.util.List;
 
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 
@@ -20,16 +15,8 @@ public class SubcategoryDao extends HibernateGenericDAO<SubCategory> implements
 	}
 
 	public void removeSubcategoryByName(final String name) {
-		this.getHibernateTemplate().execute(new HibernateCallback() {
-
-			@Override
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				Query query = session.createQuery("delete from SubCategory where subcategoryName= :name").setParameter("name", name);
-				query.executeUpdate();
-				return null;
-			}
-			
-		});
+		List<SubCategory> cats =  this.getHibernateTemplate().findByExample(new SubCategory(name));
+		this.getHibernateTemplate().delete(cats.get(0));
 	}
 
 }
