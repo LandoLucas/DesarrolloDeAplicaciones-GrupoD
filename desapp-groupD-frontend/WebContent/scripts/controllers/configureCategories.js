@@ -75,13 +75,13 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 	
 	$scope.selectSubcategory = function(subcat){
 		if(subcat != null){
-			if(subcat.concept == null)  {
+			if(subcat.concepts == null)  {
 				$scope.concepts = [];
 			}else {
-				if(subcat.concept.length >= 1){
-					$scope.concepts = subcat.concept;
+				if(subcat.concepts.length >= 1){
+					$scope.concepts = subcat.concepts;
 				}else{
-					$scope.concepts = [subcat.concept];
+					$scope.concepts = null;
 				}
 			}
 		}	
@@ -111,54 +111,8 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 		}
 	}
 
-	$scope.populateParams = function() {
-		var data = {
-			date : $scope.inputDate,
-			amount: $scope.inputAmount,
-			category : $scope.categorySelected.categoryName,
-			subCategory : $scope.subcategorySelected.subcategoryName,
-			concept: $scope.conceptSelected.conceptName,
-			paymentType : $scope.inputPaymentType,
-			shift : $scope.inputShift
-		};
-		return data;
-	}
-    
-    $scope.populateParamsTest = function(){
-        var data ={
-            amount: $scope.inputAmount
-        };
-        
-        return data;
-    }
 
-	$scope.registerOperation = function() {
-		var data = $scope.populateParams();
-		if(validate()){
-			invokeRegisterOperation($http, data, $scope.registerOperationOk,
-					defaultHandlerOnError);
-		}else{
-			getErrorMessage();
-		}
-		
-	}
-    
 
-	
-	function validate(){
-		if ($scope.inputAmount == null || $scope.inputAmount == ""){
-			return false;
-		}
-		return true;
-	}
-	
-	function getErrorMessage(){
-		if ($scope.inputAmount == null || $scope.inputAmount== ""){
-			$translate('FORM_ERROR_AMOUNT_REQUIRED').then(function (text) {
-				growl.error(text);
-			});
-		}
-	}
 
 	$scope.updateOperation= function() {
 		if(validate()){
@@ -191,12 +145,13 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 
 	 
 	 $scope.dialogNewSubcategory = function() {
-		 var extras = {
-				 title: 'TITLE_NEW_SUBCATEGORY',
-				 idCategory: $scope.categorySelected.id, //valor adicional
-				 serviceRest: 'subcategory',
-				 resourceRest: 'save'}
+		 
 		    if($scope.categorySelected != null){
+		    	var extras = {
+						 title: 'TITLE_NEW_SUBCATEGORY',
+						 idCategory: $scope.categorySelected.id, //valor adicional
+						 serviceRest: 'subcategory',
+						 resourceRest: 'save'}
 		    	var dlg = dialogs.create('views/newNameEntity.html','NewNameEntityCtrl',extras,'lg');
 				dlg.result.then(function(name){
 					$translate('DIALOG_SUBCATEGORY_REGISTER_SUCCESS').then(function (text) {
@@ -206,12 +161,37 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 				},function(){
 				});
 		    }else{
-		    	$translate('DIALOG_SUBCATEGORY_CATEGORY_NOTSELECTED').then(function (text) {
+		    	$translate('DIALOG_CATEGORY_NOTSELECTED').then(function (text) {
 		    		growl.error(text);
 				 });
 		    }
 		 	
 		 };
+		 
+		 $scope.dialogNewConcept = function() {
+			 
+			    if($scope.subcategorySelected != null){
+			    	var extras = {
+							 title: 'TITLE_NEW_CONCEPT',
+							 idCategory: $scope.categorySelected.id, //valor adicional
+							 idSubcategory: $scope.subcategorySelected.id,
+							 serviceRest: 'concept',
+							 resourceRest: 'save'}
+			    	var dlg = dialogs.create('views/newNameEntity.html','NewNameEntityCtrl',extras,'lg');
+					dlg.result.then(function(name){
+						$translate('DIALOG_CONCEPT_REGISTER_SUCCESS').then(function (text) {
+							growl.info(text +name);
+							$scope.inicializarVista();
+						    });
+					},function(){
+					});
+			    }else{
+			    	$translate('DIALOG_SUBCATEGORY_NOTSELECTED').then(function (text) {
+			    		growl.error(text);
+					 });
+			    }
+			 	
+			 };
 		 
 		 $scope.inicializarVista();
 

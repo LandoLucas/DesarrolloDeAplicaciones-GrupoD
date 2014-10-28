@@ -225,6 +225,7 @@
 														TITLE_ACCOUNTS:"Cuentas registradas",
 														TITLE_NEW_CATEGORY: "Nueva categoría",
 														TITLE_NEW_SUBCATEGORY: "Nueva subcategoría",
+														TITLE_NEW_CONCEPT: "Nuevo concepto",
 														TITLE_CONFIGURE_CATEGORIES: "Configuración de categorias",
 														
 														FORM_DATE: "Fecha",
@@ -261,7 +262,9 @@
 														
 														DIALOG_CATEGORY_REGISTER_SUCCESS: "Categoría registrada: ",
 														DIALOG_SUBCATEGORY_REGISTER_SUCCESS: "Subcategoría registrada: ",
-														DIALOG_SUBCATEGORY_CATEGORY_NOTSELECTED: "Seleccione una categoría por favor ",
+														DIALOG_CONCEPT_REGISTER_SUCCESS: "Concepto registrado: ",
+														DIALOG_CATEGORY_NOTSELECTED: "Seleccione una categoría por favor ",
+														DIALOG_SUBCATEGORY_NOTSELECTED: "Seleccione una subcategoría por favor ",
 														
 														DIALOGS_ERROR : "Error",
 														DIALOGS_ERROR_MSG : "Se ha producido un error desconocido.",
@@ -327,6 +330,7 @@
 												TITLE_ACCOUNTS:"Registered accounts",
 												TITLE_NEW_CATEGORY: "New category",
 												TITLE_NEW_SUBCATEGORY: "New subcategory",
+												TITLE_NEW_CONCEPT: "New concept",
 												TITLE_CONFIGURE_CATEGORIES: "Categories",
 												
 												FORM_DATE: "Date",
@@ -363,7 +367,9 @@
 												
 												DIALOG_CATEGORY_REGISTER_SUCCESS: "Category registered: ",
 												DIALOG_SUBCATEGORY_REGISTER_SUCCESS: "Subcategory registered: ",
-												DIALOG_SUBCATEGORY_CATEGORY_NOTSELECTED: "Please select a category ",
+												DIALOG_CONCEPT_REGISTER_SUCCESS: "Concept registered: ",
+												DIALOG_CATEGORY_NOTSELECTED: "Select one category please ",
+												DIALOG_SUBCATEGORY_NOTSELECTED: "Select one subcategory please",
 												
 												
 												DIALOGS_ERROR : "Error",
