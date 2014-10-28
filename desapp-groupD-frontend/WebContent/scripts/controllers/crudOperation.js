@@ -173,7 +173,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 	}
 	
 	 $scope.dialogNewCategory = function() {
-	 	var dlg = dialogs.create('views/newCategory.html','NewCategoryCtrl',function(){},'lg');
+	 	var dlg = dialogs.create('views/newCategory.html','NewCategoryCtrl',{ pepe: 'aaa' },'lg');
 		dlg.result.then(function(name){
 			$translate('DIALOG_CATEGORY_REGISTER_SUCCESS').then(function (text) {
 				growl.info(text +name);

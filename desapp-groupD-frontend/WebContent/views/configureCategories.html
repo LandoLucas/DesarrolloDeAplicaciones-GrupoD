@@ -7,25 +7,26 @@
 
 		<div class="bs-example">
 			<form name="crudOperation" class="form-horizontal">
-				
+
 				<div class="form-group">
-					<label for="selectCategory" class="control-label col-xs-2">{{ 'FORM_SELECT_CATEGORY' | translate}}</label>
+					<label for="selectCategory" class="control-label col-xs-2">{{
+						'FORM_SELECT_CATEGORY' | translate}}</label>
 					<div class="col-xs-10">
 						<div class="form-inline">
 							<div class="form-group">
 								<select ng-model="categorySelected"
 									ng-options="cat as cat.categoryName for cat in categories"
 									ng-change="selectCategory(categorySelected)"
-									class="form-control"
-									style="width:200px;margin-left:15px;">
+									class="form-control" style="width: 200px; margin-left: 15px;">
 									<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
-									
+
 								</select>
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-info form control"
-								style="padding:2px;margin-left:35px;"
-									ng-click="dialogNewCategory()">{{ 'FORM_NEW_CATEGORY' | translate}}</button>
+									style="padding: 2px; margin-left: 35px;"
+									ng-click="dialogNewCategory()">{{ 'FORM_NEW_CATEGORY'
+									| translate}}</button>
 							</div>
 						</div>
 
@@ -33,53 +34,187 @@
 					</div>
 				</div>
 
+				<div class="form-group" ng-show="categorySelected">
+					<label for="selectCategory" class="control-label col-xs-2">{{
+						'FORM_ACTIONS' | translate}}</label>
+					<div class="col-xs-10">
+						<div class="form-inline">
+							<div class="form-group">
+								<input type="text" ng-model="categorySelected.categoryName"
+									class="form-control" style="width: 200px; margin-left: 15px;"
+									disabled> </input>
+							</div>
+							<div class="form-group">
+								<button class="btn btn-warning"
+									style="padding: 2px; margin-left: 35px;"
+									ng-click="editCategory()">
+									<span class="glyphicon glyphicon-pencil"
+										style="padding: 5px; margin-left: 2px;"
+										tooltip-placement="top"
+										tooltip="{{ 'FORM_EDIT' |
+									translate}}"></span>
+								</button>
+
+
+							</div>
+							<div class="form-group">
+								<button class="btn btn-danger"
+									style="padding: 2px; margin-left: 35px;"
+									ng-click="deleteCategory()">
+									<span class="glyphicon glyphicon-trash"
+										style="padding: 5px; margin-left: 2px;"
+										tooltip-placement="top"
+										tooltip="{{ 'FORM_DELETE' |
+									translate}}"></span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
 				<div class="form-group">
-					<label for="selectSubCategory" class="control-label col-xs-2">{{ 'FORM_SELECT_SUBCATEGORY' | translate}}</label>
+					<label for="selectSubCategory" class="control-label col-xs-2">{{
+						'FORM_SELECT_SUBCATEGORY' | translate}}</label>
 					<div class="col-xs-10">
 						<div class="form-inline ">
 							<div class="form-group">
-							<select ng-model="subcategorySelected"
-							ng-options="sub as sub.subcategoryName for sub in subCategories"
-							ng-change="selectSubcategory(subcategorySelected)"
-							class="form-control"
-							style="width:200px;margin-left:15px;">
-							<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
-						</select>
-						</div>
+								<select ng-model="subcategorySelected"
+									ng-options="sub as sub.subcategoryName for sub in subCategories"
+									ng-change="selectSubcategory(subcategorySelected)"
+									class="form-control" style="width: 200px; margin-left: 15px;">
+									<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
+								</select>
+							</div>
 							<div class="form-group">
-							<button type="submit" class="btn btn-info form control"
-								style="padding:2px;margin-left:35px;"
-									ng-click="dialogNewSubcategory()">{{ 'FORM_NEW_SUBCATEGORY' | translate}}</button>
-							
+								<button type="submit" class="btn btn-info form control"
+									style="padding: 2px; margin-left: 35px;"
+									ng-click="dialogNewSubcategory()">{{
+									'FORM_NEW_SUBCATEGORY' | translate}}</button>
+
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label for="selectConceptType" class="control-label col-xs-2">{{ 'FORM_CONCEPT' | translate}}</label>
+				<div class="form-group" ng-show="subcategorySelected">
+					<label for="selectSubcategory" class="control-label col-xs-2">{{
+						'FORM_ACTIONS' | translate}}</label>
 					<div class="col-xs-10">
-						<select ng-model="conceptSelected"
-							ng-options="con as con.conceptName for con in concepts"
-							class="form-control">
-							<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
-						</select>
+						<div class="form-inline">
+							<div class="form-group">
+								<input type="text" ng-model="subcategorySelected.subcategoryName"
+									class="form-control" style="width: 200px; margin-left: 15px;"
+									disabled> </input>
+							</div>
+							
+							<div class="form-group">
+								<button class="btn btn-warning"
+									style="padding: 2px; margin-left: 35px;"
+									ng-click="editSubcategory()">
+									<span class="glyphicon glyphicon-pencil"
+										style="padding: 5px; margin-left: 2px;"
+										tooltip-placement="top"
+										tooltip="{{ 'FORM_EDIT' |
+									translate}}"></span>
+								</button>
+							</div>
+							
+							<div class="form-group">
+								<button class="btn btn-danger"
+									style="padding: 2px; margin-left: 35px;"
+									ng-click="deleteSubcategory()">
+									<span class="glyphicon glyphicon-trash"
+										style="padding: 5px; margin-left: 2px;"
+										tooltip-placement="top"
+										tooltip="{{ 'FORM_DELETE' |
+									translate}}"></span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label for="selectConcept" class="control-label col-xs-2">{{
+						'FORM_SELECT_CONCEPT' | translate}}</label>
+					<div class="col-xs-10">
+						<div class="form-inline ">
+							<div class="form-group">
+								<select ng-model="conceptSelected"
+									ng-options="con as con.conceptName for con in concepts"
+									ng-change="selectConcept(conceptSelected)" class="form-control"
+									style="width: 200px; margin-left: 15px;">
+									<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
+								</select>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-info form control"
+									style="padding: 2px; margin-left: 35px;"
+									ng-click="dialogNewConcept()">{{ 'FORM_NEW_CONCEPT' |
+									translate}}</button>
+
+							</div>
+						</div>
+
 					</div>
 				</div>
 				
-				
-				
+				<div class="form-group" ng-show="conceptSelected">
+					<label for="selectConcept" class="control-label col-xs-2">{{
+						'FORM_ACTIONS' | translate}}</label>
+					<div class="col-xs-10">
+						<div class="form-inline">
+							<div class="form-group">
+								<input type="text" ng-model="conceptSelected.conceptName"
+									class="form-control" style="width: 200px; margin-left: 15px;"
+									disabled> </input>
+							</div>
+							
+							<div class="form-group">
+								<button class="btn btn-warning"
+									style="padding: 2px; margin-left: 35px;"
+									ng-click="editConcept()">
+									<span class="glyphicon glyphicon-pencil"
+										style="padding: 5px; margin-left: 2px;"
+										tooltip-placement="top"
+										tooltip="{{ 'FORM_EDIT' |
+									translate}}"></span>
+								</button>
+							</div>
+							
+							<div class="form-group">
+								<button class="btn btn-danger"
+									style="padding: 2px; margin-left: 35px;"
+									ng-click="deleteConcept()">
+									<span class="glyphicon glyphicon-trash"
+										style="padding: 5px; margin-left: 2px;"
+										tooltip-placement="top"
+										tooltip="{{ 'FORM_DELETE' |
+									translate}}"></span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
 				<div class="form-group">
 					<div class="col-xs-offset-2 col-xs-10">
 
 						<button type="submit" class="btn btn-success"
-							ng-show="modoRegistro()" ng-click="registerOperationTest()">{{ 'FORM_CONFIRM' | translate}}</button>
+							ng-show="modoRegistro()" ng-click="registerOperationTest()">{{
+							'FORM_CONFIRM' | translate}}</button>
 
 						<button type="submit" class="btn btn-success"
-							ng-click="updateOperation()" ng-show="modoEdicion()">{{ 'FORM_UPDATE' | translate}}</button>
+							ng-click="updateOperation()" ng-show="modoEdicion()">{{
+							'FORM_UPDATE' | translate}}</button>
 
-						<a type="button" class="btn btn-default" ng-href="#cargarDatos">{{ 'FORM_CANCEL' | translate}}</a>
+						<a type="button" class="btn btn-default" ng-href="#">{{
+							'FORM_CANCEL' | translate}}</a>
 					</div>
 				</div>
 

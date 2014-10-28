@@ -1,0 +1,13 @@
+<div class="container">
+<h4> {{ title }}</h4>
+
+	<label for="name" class="control-label col-xs-2">{{ 'FORM_NAME' | translate}}</label>
+	<div class="col-xs-10">
+		<input type="text" class="form-control" id="name"
+			ng-model="user.name" ng-keyup="hitEnter($event)">
+	</div>
+
+<button class="btn btn-success" ng-click="save()"> {{ 'FORM_SAVE' | translate}}</button>
+<button class="btn" ng-click="cancel()">{{ 'FORM_CANCEL' | translate}}</button>
+<br/>
+</div>

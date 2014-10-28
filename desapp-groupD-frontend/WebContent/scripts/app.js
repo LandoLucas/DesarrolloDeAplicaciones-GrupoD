@@ -221,6 +221,7 @@
 														
 														TITLE_NEW_INCOME: "Nuevo ingreso",
 														TITLE_NEW_OUTCOME: "Nuevo egreso",
+														TITLE_NEW_MOVEMENT: "Nuevo Movimiento",
 														TITLE_ACCOUNTS:"Cuentas registradas",
 														TITLE_NEW_CATEGORY: "Nueva categoría",
 														TITLE_NEW_SUBCATEGORY: "Nueva subcategoría",
@@ -229,9 +230,17 @@
 														FORM_DATE: "Fecha",
 														FORM_AMOUNT: "Monto",
 														FORM_SELECT_CATEGORY: "Seleccionar categoría",
-														FORM_NEW_CATEGORY: "Nueva Categoría",
+														FORM_NEW_CATEGORY: "Nueva categoría",
+														FORM_EDIT_CATEGORY: "Editar categoría",
+														FORM_EDIT_SUBCATEGORY: "Editar subcategoría",
+														FORM_EDIT_CONCEPT: "Editar concepto",
+														FORM_DELETE_CATEGORY: "Delete category",
+														FORM_DELETE_SUBCATEGORY: "Delete subcategory",
+														FORM_DELETE_CONCEPT: "Delete concept",
 														FORM_SELECT_SUBCATEGORY: "Seleccionar subcategoría",
-														FORM_NEW_SUBCATEGORY: "Nueva Subcategoría",
+														FORM_SELECT_CONCEPT: "Seleccionar concepto",
+														FORM_NEW_SUBCATEGORY: "Nueva subcategoría",
+														FORM_NEW_CONCEPT: "Nuevo concepto",
 														FORM_SELECT_PAYMENT_TYPE: "Seleccione el tipo de pago",
 														FORM_CONCEPT: "Concepto",
 														FORM_CONFIRM:"Confirmar",
@@ -314,6 +323,7 @@
 												
 												TITLE_NEW_INCOME: "New income",
 												TITLE_NEW_OUTCOME: "New outcome",
+												TITLE_NEW_MOVEMENT: "New movement",
 												TITLE_ACCOUNTS:"Registered accounts",
 												TITLE_NEW_CATEGORY: "New category",
 												TITLE_NEW_SUBCATEGORY: "New subcategory",
@@ -325,6 +335,14 @@
 												FORM_NEW_CATEGORY: "New category",
 												FORM_SELECT_SUBCATEGORY: "Select subcategory",
 												FORM_NEW_SUBCATEGORY: "New subcategory",
+												FORM_NEW_CONCEPT: "New concept",
+												FORM_EDIT_CATEGORY: "Edit category",
+												FORM_EDIT_SUBCATEGORY: "Edit subcategory",
+												FORM_EDIT_CONCEPT: "Edit concept",
+												FORM_DELETE_CATEGORY: "Delete category",
+												FORM_DELETE_SUBCATEGORY: "Delete subcategory",
+												FORM_DELETE_CONCEPT: "Delete concept",
+												FORM_SELECT_CONCEPT: "Select concept",
 												FORM_SELECT_PAYMENT_TYPE: "Select payment type",
 												FORM_CONCEPT: "Concept",
 												FORM_CONFIRM:"Confirm",
@@ -366,7 +384,7 @@
 											}); 
 									
 //									$translateProvider.determinePreferredLanguage();
-									$translateProvider.preferredLanguage('en');
+									$translateProvider.preferredLanguage('es');
 									
 									
 
