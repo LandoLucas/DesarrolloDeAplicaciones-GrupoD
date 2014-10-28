@@ -33,4 +33,9 @@ public class CategoryService {
 	public void save(Category category) {
 		this.categoryDao.save(category);
 	}
+
+	public Category findByName(String categoryName) {
+		// Must be implemented in the dao
+		return null;
+	}
 }
