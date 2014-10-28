@@ -221,6 +221,7 @@
 														
 														TITLE_NEW_INCOME: "Nuevo ingreso",
 														TITLE_NEW_OUTCOME: "Nuevo egreso",
+														TITLE_NEW_MOVEMENT: "Nuevo Movimiento",
 														TITLE_ACCOUNTS:"Cuentas registradas",
 														TITLE_NEW_CATEGORY: "Nueva categoría",
 														TITLE_NEW_SUBCATEGORY: "Nueva subcategoría",
@@ -314,6 +315,7 @@
 												
 												TITLE_NEW_INCOME: "New income",
 												TITLE_NEW_OUTCOME: "New outcome",
+												TITLE_NEW_MOVEMENT: "New movement",
 												TITLE_ACCOUNTS:"Registered accounts",
 												TITLE_NEW_CATEGORY: "New category",
 												TITLE_NEW_SUBCATEGORY: "New subcategory",
@@ -366,7 +368,7 @@
 											}); 
 									
 //									$translateProvider.determinePreferredLanguage();
-									$translateProvider.preferredLanguage('en');
+									$translateProvider.preferredLanguage('es');
 									
 									
 

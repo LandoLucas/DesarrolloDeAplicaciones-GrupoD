@@ -46,4 +46,9 @@ public class SubCategoryService {
 		subcategoryDao.save(subcategory);
 	}
 
+	public SubCategory findByName(String subCategoryName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

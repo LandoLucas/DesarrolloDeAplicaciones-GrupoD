@@ -20,7 +20,9 @@ import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.category.Concept;
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
+import ar.edu.unq.desapp.grupoD.services.CategoryService;
 import ar.edu.unq.desapp.grupoD.services.OperationService;
+import ar.edu.unq.desapp.grupoD.services.SubCategoryService;
 
 /**
  * @author JulianV
@@ -30,6 +32,8 @@ import ar.edu.unq.desapp.grupoD.services.OperationService;
 public class OperationsRest {
 
 	private OperationService operationService;
+	private CategoryService categoryService;
+	private SubCategoryService subCategoryService;
 
 	public void setOperationService(OperationService operationService) {
 		this.operationService = operationService;
@@ -46,9 +50,13 @@ public class OperationsRest {
 	@Path("/new")
 	public Response addOperation(@FormParam("date") DateTime date, @FormParam("amount") double amount, 
 			@FormParam("isIncome") boolean isIncome, @FormParam("shift") String shift, 
-			@FormParam("category") Category category, @FormParam("subCategory") SubCategory subCategory,
-			@FormParam("concept") Concept concept, @FormParam("paymentType") PaymentType paymentType) throws InvalidAmountException{
+			@FormParam("category") String categoryName, @FormParam("subCategory") String subCategoryName,
+			@FormParam("concept") String conceptName, @FormParam("paymentType") PaymentType paymentType) throws InvalidAmountException{
 		
+		Category category = categoryService.findByName(categoryName);
+		SubCategory subCategory = subCategoryService.findByName(subCategoryName);
+		Concept concept = new Concept(conceptName);
+				
 		Operation operation = new Operation(date, amount, isIncome, shift, category, subCategory, concept, paymentType);
 		operationService.saveOperation(operation);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
@@ -65,8 +73,12 @@ public class OperationsRest {
 	@Path("/edit/{id}")
 	public Response editOperation(@PathParam("id") int id, @FormParam("date") DateTime date, @FormParam("amount") double amount, 
 			@FormParam("isIncome") boolean isIncome, @FormParam("shift") String shift, 
-			@FormParam("category") Category category, @FormParam("subCategory") SubCategory subCategory,
-			@FormParam("concept") Concept concept, @FormParam("paymentType") PaymentType paymentType) throws InvalidAmountException{
+			@FormParam("category") String categoryName, @FormParam("subCategory") String subCategoryName,
+			@FormParam("concept") String conceptName, @FormParam("paymentType") PaymentType paymentType) throws InvalidAmountException{
+		
+		Category category = categoryService.findByName(categoryName);
+		SubCategory subCategory = subCategoryService.findByName(subCategoryName);
+		Concept concept = new Concept(conceptName);
 		
 		Operation operation = operationService.getOperationByID(id);
 		operation.setDate(date);
