@@ -86,7 +86,41 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 			}
 		}	
 			console.log($scope.concepts );
-		}
+	}
+	
+	$scope.confirmDeleteCategory = function(name) {
+		var title;
+		var desc;
+		$translate('DIALOG_CATEGORY_DELETE_TITLE').then(function (text) {
+			 title = text;
+			 $translate('DIALOG_CATEGORY_DELETE_DESC').then(function (text) {
+				 desc = text;
+				 var dlg = dialogs.confirm(title + name + ' ?',desc);
+					dlg.result.then(function(btn) {
+						deleteCategory(name);
+					}, function(btn) {
+
+					});
+			    });
+		    });		
+		
+		
+	};
+	
+	function deleteCategory(name) {
+		var data = {
+			name : name,
+		};
+		invokeDeleteCategory($http, data, $scope.deleteOk,
+				defaultHandlerOnError);
+	}
+	
+	$scope.deleteOk = function(response) {
+		$translate('DIALOG_DELETE_SUCCESS').then(function (text) {
+			growl.info(text + name);
+			$scope.inicializarVista();
+		    });
+	}
 
 	
 	$scope.inicializarVista = function() {
@@ -99,31 +133,6 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 		$scope.subcategorySelected=null;
 		$scope.conceptSelected=null;
 
-	}
-
-	$scope.updateOperationOk = function(response) {
-		if (codigoOk(response)) {
-			growl.info("Operacion actualizada.");
-			$location.path('/cargarDatos');
-		} else {
-			var descripcion = response['desc'];
-			growl.error(descripcion);
-		}
-	}
-
-
-
-
-	$scope.updateOperation= function() {
-		if(validate()){
-			var data = $scope.populateParams();
-			data.id = $rootScope.operationToEdit.id;
-			invokeUpdateOperation($http, data, $scope.updateOperationOk,
-					defaultHandlerOnError);
-		}else{
-			getErrorMessage();
-		
-		}
 	}
 	
 	 $scope.dialogNewCategory = function() {

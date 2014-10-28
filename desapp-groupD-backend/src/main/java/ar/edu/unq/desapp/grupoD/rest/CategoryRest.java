@@ -42,7 +42,7 @@ public class CategoryRest {
 	}
 
 	@POST
-	@Path("/deleteCategory")
+	@Path("/delete")
 	@Consumes("application/x-www-form-urlencoded")
 	public Response deleteCategory(@FormParam("name") String name) {
 		categoryService.removeCategory(name);

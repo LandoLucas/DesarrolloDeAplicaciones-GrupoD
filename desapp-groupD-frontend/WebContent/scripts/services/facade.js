@@ -99,6 +99,8 @@ function invokeNewOperation(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 			handlerOnSuccess, handlerOnError);
 }
 
+
+// ===Rest categorias ===
 function invokeGetCategories(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 	var header = defaultHeader();
 	invokeGetRestService(cnxHttp, header, data, 'category', 'all',
@@ -106,12 +108,19 @@ function invokeGetCategories(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 }
 
 
-
 function invokeNewCategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 	var header = defaultHeader();
 	invokeRestService(cnxHttp, header, data, 'category', 'add',
 			handlerOnSuccess, handlerOnError);
 }
+
+function invokeDeleteCategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+	var header = defaultHeader();
+	invokeRestService(cnxHttp, header, data, 'category', 'delete',
+			handlerOnSuccess, handlerOnError);
+}
+
+//===Rest subcategorias===
 
 function invokeNewSubcategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 	var header = defaultHeader();
