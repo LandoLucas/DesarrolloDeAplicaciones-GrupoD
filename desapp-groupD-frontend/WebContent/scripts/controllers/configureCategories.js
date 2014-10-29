@@ -141,90 +141,33 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 
 	}
 	
+	 $scope.dialog = function(data, messageSuccess, extraMessage) {
+		 	var dlg = dialogs.create('views/newNameEntity.html','NewNameEntityCtrl',data,'lg');
+			dlg.result.then(function(name){
+				$translate(messageSuccess).then(function (text) {
+					growl.info(text + name + extraMessage);
+					$scope.inicializarVista();
+				    });
+				
+			});
+		 };
+	
 	 $scope.dialogNewCategory = function() {
 		 var extras = {
 				 title: 'TITLE_NEW_CATEGORY',//codigo de traduccion del titulo
 				 serviceRest: 'category',//Campos rest son obligatorios
 				 resourceRest: 'save'}
-	 	var dlg = dialogs.create('views/newNameEntity.html','NewNameEntityCtrl',extras,'lg');
-		dlg.result.then(function(name){
-			$translate('DIALOG_CATEGORY_REGISTER_SUCCESS').then(function (text) {
-				growl.info(text +name);
-				$scope.inicializarVista();
-			    });
-			
-		},function(){	
-		});
+	 	$scope.dialog(extras,'DIALOG_CATEGORY_REGISTER_SUCCESS','');
 	 };
-	 
-	 $scope.dialogEditCategory = function() {
-		 var extras = {
-				 title: 'DIALOG_CATEGORY_EDIT_TITLE',
-				 idCategory: $scope.categorySelected.id,
-				 serviceRest: 'category',
-				 resourceRest: 'update'}
-	 	var dlg = dialogs.create('views/newNameEntity.html','NewNameEntityCtrl',extras,'lg');
-		dlg.result.then(function(name){
-			$translate('DIALOG_EDIT_SUCCESS').then(function (text) {
-				growl.info(text + $scope.categorySelected.categoryName + " -> "+ name );
-				$scope.inicializarVista();
-			    });
-			
-		},function(){	
-		});
-	 };
-	 
-	 $scope.dialogEditSubcategory = function() {
-		 var extras = {
-				 title: 'DIALOG_SUBCATEGORY_EDIT_TITLE',
-				 idSubcategory: $scope.subcategorySelected.id,
-				 serviceRest: 'subcategory',
-				 resourceRest: 'update'}
-	 	var dlg = dialogs.create('views/newNameEntity.html','NewNameEntityCtrl',extras,'lg');
-		dlg.result.then(function(name){
-			$translate('DIALOG_EDIT_SUCCESS').then(function (text) {
-				growl.info(text + $scope.subcategorySelected.subcategoryName + " -> "+ name );
-				$scope.inicializarVista();
-			    });
-			
-		},function(){	
-		});
-	 };
-	 
-	 $scope.dialogEditConcept = function() {
-		 var extras = {
-				 title: 'DIALOG_CONCEPT_EDIT_TITLE',
-				 idConcept: $scope.conceptSelected.id,
-				 serviceRest: 'concept',
-				 resourceRest: 'update'}
-	 	var dlg = dialogs.create('views/newNameEntity.html','NewNameEntityCtrl',extras,'lg');
-		dlg.result.then(function(name){
-			$translate('DIALOG_EDIT_SUCCESS').then(function (text) {
-				growl.info(text + $scope.conceptSelected.conceptName + " -> "+ name );
-				$scope.inicializarVista();
-			    });
-			
-		},function(){	
-		});
-	 };
-
 	 
 	 $scope.dialogNewSubcategory = function() {
-		 
 		    if($scope.categorySelected != null){
 		    	var extras = {
 						 title: 'TITLE_NEW_SUBCATEGORY',
 						 idCategory: $scope.categorySelected.id, //valor adicional
 						 serviceRest: 'subcategory',
 						 resourceRest: 'save'}
-		    	var dlg = dialogs.create('views/newNameEntity.html','NewNameEntityCtrl',extras,'lg');
-				dlg.result.then(function(name){
-					$translate('DIALOG_SUBCATEGORY_REGISTER_SUCCESS').then(function (text) {
-						growl.info(text +name);
-						$scope.inicializarVista();
-					    });
-				},function(){
-				});
+		    	$scope.dialog(extras,'DIALOG_SUBCATEGORY_REGISTER_SUCCESS','');
 		    }else{
 		    	$translate('DIALOG_CATEGORY_NOTSELECTED').then(function (text) {
 		    		growl.error(text);
@@ -234,7 +177,6 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 		 };
 		 
 		 $scope.dialogNewConcept = function() {
-			 
 			    if($scope.subcategorySelected != null){
 			    	var extras = {
 							 title: 'TITLE_NEW_CONCEPT',
@@ -242,23 +184,42 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 							 idSubcategory: $scope.subcategorySelected.id,
 							 serviceRest: 'concept',
 							 resourceRest: 'save'}
-			    	var dlg = dialogs.create('views/newNameEntity.html','NewNameEntityCtrl',extras,'lg');
-					dlg.result.then(function(name){
-						$translate('DIALOG_CONCEPT_REGISTER_SUCCESS').then(function (text) {
-							growl.info(text +name);
-							$scope.inicializarVista();
-						    });
-					},function(){
-					});
+			    	$scope.dialog(extras,'DIALOG_CONCEPT_REGISTER_SUCCESS','');
 			    }else{
 			    	$translate('DIALOG_SUBCATEGORY_NOTSELECTED').then(function (text) {
 			    		growl.error(text);
 					 });
 			    }
-			 	
 			 };
-		 
-		 $scope.inicializarVista();
+	 
+	 $scope.dialogEditCategory = function() {
+		 var extras = {
+				 title: 'DIALOG_CATEGORY_EDIT_TITLE',
+				 idCategory: $scope.categorySelected.id,
+				 serviceRest: 'category',
+				 resourceRest: 'update'}
+	 	$scope.dialog(extras,'DIALOG_EDIT_SUCCESS', ' <- '+ $scope.categorySelected.categoryName)
+	 };
+	 
+	 
+	 $scope.dialogEditSubcategory = function() {
+		 var extras = {
+				 title: 'DIALOG_SUBCATEGORY_EDIT_TITLE',
+				 idSubcategory: $scope.subcategorySelected.id,
+				 serviceRest: 'subcategory',
+				 resourceRest: 'update'}
+	 	$scope.dialog(extras,'DIALOG_EDIT_SUCCESS',' <- '+$scope.subcategorySelected.subcategoryName)
+	 };
+	 
+	 $scope.dialogEditConcept = function() {
+		 var extras = {
+				 title: 'DIALOG_CONCEPT_EDIT_TITLE',
+				 idConcept: $scope.conceptSelected.id,
+				 serviceRest: 'concept',
+				 resourceRest: 'update'}
+	 	$scope.dialog(extras,'DIALOG_EDIT_SUCCESS',' <- '+$scope.conceptSelected.conceptName)
+	 };
 
+		 $scope.inicializarVista();
 });
 
