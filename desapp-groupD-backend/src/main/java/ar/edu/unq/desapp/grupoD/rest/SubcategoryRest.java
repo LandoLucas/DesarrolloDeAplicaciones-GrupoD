@@ -38,10 +38,11 @@ public class SubcategoryRest {
 	}
 
 	@POST
-	@Path("/deleteSubcategory")
+	@Path("/delete")
 	@Consumes("application/x-www-form-urlencoded")
-	public Response deleteSubcategory(@FormParam("name") String name) {
-		subcategoryService.removeSubcategoryByName(name);
+	public Response deleteSubcategory(@FormParam("name") String name,
+			@FormParam("idCategory") Integer idCat) throws Exception {
+		subcategoryService.removeSubcategoryByName(name,idCat);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 
@@ -52,6 +53,15 @@ public class SubcategoryRest {
 			@FormParam("idCategory") Integer idCategory) {
 		SubCategory subcategory = new SubCategory(name);
 		subcategoryService.save(subcategory, idCategory);
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+	}
+	
+	@POST
+	@Path("/update")
+	@Consumes("application/x-www-form-urlencoded")
+	public Response updateSubcategory(@FormParam("name") String name, 
+			@FormParam("idSubcategory") Integer idSub) {
+		subcategoryService.update(name, idSub);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 

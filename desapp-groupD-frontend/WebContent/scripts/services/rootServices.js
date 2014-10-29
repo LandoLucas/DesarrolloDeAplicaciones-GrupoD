@@ -9,7 +9,8 @@ rootServices.service('globalService', function () {
         inNewOperation: 'false',
         inNewBill: 'false',
         inBills: 'false',
-        inBillTypes: 'false'
+        inBillTypes: 'false',
+        inConfigureCategories: 'false'
     };
     this.getUserPosition= function () {
         return this.UserScope;
@@ -45,5 +46,8 @@ rootServices.service('globalService', function () {
     };
     this.setInBillTypes = function (){
     	this.anulateAllExcept('inBillTypes');
+    };
+    this.setInConfigureCategories = function (){
+    	this.anulateAllExcept('inConfiureCategories');
     };
 });

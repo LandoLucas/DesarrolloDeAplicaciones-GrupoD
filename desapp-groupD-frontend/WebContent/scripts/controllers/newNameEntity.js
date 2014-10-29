@@ -40,6 +40,8 @@ angular.module('tp-dapp-eiroa-lando')
 
 		 $scope.save = function(){
 			 data = mergeJSONs({name: $scope.user.name}, $scope.additionalData);
+			 delete data.serviceRest;
+			 delete data.resourceRest;
 			 console.log("Enviando: ",data);
 			 var header = defaultHeader();
 			 if(validate()){

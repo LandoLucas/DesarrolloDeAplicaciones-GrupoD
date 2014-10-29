@@ -33,9 +33,13 @@ public class CategoryService {
 	public void save(Category category) {
 		this.categoryDao.save(category);
 	}
+	
+	@Transactional
+	public void update(String name, Integer idCat) {
+		this.categoryDao.update(name, idCat);
+	}
 
 	public Category findByName(String categoryName) {
-		// Must be implemented in the dao
-		return null;
+		return this.categoryDao.getByName(categoryName);
 	}
 }

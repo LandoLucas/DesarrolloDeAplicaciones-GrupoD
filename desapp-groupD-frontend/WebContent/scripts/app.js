@@ -261,14 +261,23 @@
 														FORM_ERROR_NAME_REQUIRED: "Error, Nombre requerido",
 														
 														DIALOG_CATEGORY_REGISTER_SUCCESS: "Categoría registrada: ",
-														DIALOG_SUBCATEGORY_REGISTER_SUCCESS: "Subcategoría registrada: ",
-														DIALOG_CONCEPT_REGISTER_SUCCESS: "Concepto registrado: ",
-														DIALOG_CATEGORY_DELETE_TITLE: "Desea borrar la categoría ",
+														DIALOG_CATEGORY_DELETE_TITLE: "¿Desea borrar la categoría ",
 														DIALOG_CATEGORY_DELETE_DESC: " Junto con la categoría se borrarán las subcategorias y conceptos asociados",
 														DIALOG_CATEGORY_NOTSELECTED: "Seleccione una categoría por favor ",
+														DIALOG_CATEGORY_EDIT_TITLE: "Editar la categoría ",
+														
+														DIALOG_SUBCATEGORY_REGISTER_SUCCESS: "Subcategoría registrada: ",
+														DIALOG_SUBCATEGORY_DELETE_TITLE: "¿Desea borrar la subcategoría ",
+														DIALOG_SUBCATEGORY_DELETE_DESC: " Junto con la subcategoría se borrarán los conceptos asociados",
 														DIALOG_SUBCATEGORY_NOTSELECTED: "Seleccione una subcategoría por favor ",
+														DIALOG_SUBCATEGORY_EDIT_TITLE: "Editar la subcategoría",
+														
+														DIALOG_CONCEPT_REGISTER_SUCCESS: "Concepto registrado: ",
+														DIALOG_CONCEPT_DELETE_TITLE: "¿Desea borrar el concepto ",
+														DIALOG_CONCEPT_EDIT_TITLE: "Editar el concepto ",
+														
 														DIALOG_DELETE_SUCCESS: "Borrado exitoso!",
-														DIALOG_EDIT_SUCCESS: "Edición exitosa!",
+														DIALOG_EDIT_SUCCESS: "Edición exitosa! ",
 														
 														DIALOGS_ERROR : "Error",
 														DIALOGS_ERROR_MSG : "Se ha producido un error desconocido.",
@@ -372,12 +381,21 @@
 												DIALOG_CATEGORY_REGISTER_SUCCESS: "Category registered: ",
 												DIALOG_CATEGORY_DELETE_TITLE: "Do you want to delete category  ",
 												DIALOG_CATEGORY_DELETE_DESC: " Associated subcategories and concepts will be deleted as well",
-												DIALOG_SUBCATEGORY_REGISTER_SUCCESS: "Subcategory registered: ",
-												DIALOG_CONCEPT_REGISTER_SUCCESS: "Concept registered: ",
 												DIALOG_CATEGORY_NOTSELECTED: "Select one category please ",
+												DIALOG_CATEGORY_EDIT_TITLE: "Edit category ",
+												
+												DIALOG_SUBCATEGORY_DELETE_TITLE: "Do you want to delete subcategory ",
+												DIALOG_SUBCATEGORY_DELETE_DESC: " Associated concepts will be deleted as well",
 												DIALOG_SUBCATEGORY_NOTSELECTED: "Select one subcategory please",
-												DIALOG_DELETE_SUCCESS: "Succesfully deleted!",
-												DIALOG_EDIT_SUCCESS: "Succesfully edited",
+												DIALOG_SUBCATEGORY_REGISTER_SUCCESS: "Subcategory registered: ",
+												DIALOG_SUBCATEGORY_EDIT_TITLE: "Edit subcategory ",
+												
+												DIALOG_CONCEPT_REGISTER_SUCCESS: "Concept registered: ",
+												DIALOG_CONCEPT_DELETE_TITLE: "Do you want to delete concept ",
+												DIALOG_CONCEPT_EDIT_TITLE: "Edit concept ",
+												
+												DIALOG_DELETE_SUCCESS: "Succesfully deleted! ",
+												DIALOG_EDIT_SUCCESS: "Succesfully edited! ",
 												
 												
 												DIALOGS_ERROR : "Error",

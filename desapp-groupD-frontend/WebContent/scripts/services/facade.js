@@ -110,7 +110,7 @@ function invokeGetCategories(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 
 function invokeNewCategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 	var header = defaultHeader();
-	invokeRestService(cnxHttp, header, data, 'category', 'add',
+	invokeRestService(cnxHttp, header, data, 'category', 'save',
 			handlerOnSuccess, handlerOnError);
 }
 
@@ -121,12 +121,25 @@ function invokeDeleteCategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 }
 
 //===Rest subcategorias===
-
 function invokeNewSubcategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 	var header = defaultHeader();
 	invokeRestService(cnxHttp, header, data, 'subcategory', 'save',
 			handlerOnSuccess, handlerOnError);
 }
+
+function invokeDeleteSubcategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+	var header = defaultHeader();
+	invokeRestService(cnxHttp, header, data, 'subcategory', 'delete',
+			handlerOnSuccess, handlerOnError);
+}
+
+//==Rest Concept==\\
+function invokeDeleteConcept(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+	var header = defaultHeader();
+	invokeRestService(cnxHttp, header, data, 'concept', 'delete',
+			handlerOnSuccess, handlerOnError);
+}
+
 
 // Usuarios
 function invokeRegistrarUsuario(cnxHttp, data, handlerOnSuccess, handlerOnError) {

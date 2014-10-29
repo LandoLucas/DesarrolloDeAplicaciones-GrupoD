@@ -27,12 +27,22 @@ public class Concept {
 	@GeneratedValue
 	private Integer id;
 	
-	@Column
+	@Column(unique=true)
 	private String conceptName;
 
+	public Integer getId() {
+		return id;
+	}
+	
 	public String getConceptName() {
 		return conceptName;
 	}
+	
+
+	public void setConceptName(String conceptName) {
+		this.conceptName = conceptName;
+	}
+
 
 	public Concept(){};
 	

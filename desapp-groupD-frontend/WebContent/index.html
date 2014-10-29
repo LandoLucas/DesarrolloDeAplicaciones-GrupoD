@@ -85,6 +85,9 @@
 								<li class="divider"></li>
 								<li><a ng-href="#consolidarCuentas" ng-show="true"
 									ng-click="restrictedAction()">{{ 'INDEX_CONSOL_ACCOUNT' | translate}}</a></li>
+								<li class="divider"></li>
+								<li><a  ng-show="true"
+									 ng-href="#/confCats">{{ 'INDEX_CATEGORY_CONF' | translate}}</a></li>
 							</ul>
 						</li>
 						
@@ -168,7 +171,7 @@
 							ng-show="UserScope.inMainMenu" ng-href="#/consolidarCuentas">{{ 'INDEX_CONSOL_ACCOUNT' | translate}}</a>
 
 						<a class="list-group-item"
-							ng-class="{active:isActive('/configurarCategorias')}"
+							ng-class="{active:isActive('/confCats')}"
 							ng-show="UserScope.inMainMenu" ng-href="#/confCats">{{ 'INDEX_CATEGORY_CONF' | translate}}</a>
                         
 							<a class="list-group-item"

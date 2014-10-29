@@ -33,16 +33,22 @@ public class SubCategory {
 	@GeneratedValue
 	private Integer id;
 	
-	@Column
+	@Column(unique=true)
 	private String subcategoryName;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL,orphanRemoval=true)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Concept> concepts;
 
 	public String getSubcategoryName() {
 		return subcategoryName;
 	}
+	
+
+	public void setSubcategoryName(String subcategoryName) {
+		this.subcategoryName = subcategoryName;
+	}
+
 
 	public SubCategory(String name ){
 		this.subcategoryName = name;

@@ -32,10 +32,10 @@ public class Category {
 	@GeneratedValue
 	private Integer id;
 
-	@Column(unique=false)
+	@Column(unique=true)
 	private String categoryName;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL,orphanRemoval=true)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<SubCategory> subcategory;
 
@@ -45,6 +45,10 @@ public class Category {
 
 	public String getCategoryName() {
 		return categoryName;
+	}
+	
+	public void setCategoryName(String name){
+		this.categoryName = name;
 	}
 
 	public List<SubCategory> getSubcategory() {

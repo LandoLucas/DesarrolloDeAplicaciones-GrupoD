@@ -50,11 +50,19 @@ public class CategoryRest {
 	}
 
 	@POST
-	@Path("/add")
+	@Path("/save")
 	@Consumes("application/x-www-form-urlencoded")
 	public Response saveOrUpdateCategory(@FormParam("name") String name) {
 		Category category = new Category(name);
 		categoryService.save(category);
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+	}
+	
+	@POST
+	@Path("/update")
+	@Consumes("application/x-www-form-urlencoded")
+	public Response updateCategory(@FormParam("name") String name,@FormParam("idCategory") Integer idCat) {
+		categoryService.update(name,idCat);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 

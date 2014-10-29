@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 
 import ar.edu.unq.desapp.grupoD.model.category.Category;
+import ar.edu.unq.desapp.grupoD.model.category.Concept;
 
 /**
  * @author Lucas
@@ -20,13 +21,23 @@ public class CategoryDao extends HibernateGenericDAO<Category> implements
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void removeCategoryByName(final String name) {
-		List<Category> cats =  this.getHibernateTemplate().findByExample(new Category(name));
-		this.getHibernateTemplate().delete(cats.get(0));
+		this.getHibernateTemplate().delete(this.getByName(name));
+	}
+	
+	public Category getByName(String name){
+		List<Category> cats =this.getHibernateTemplate().findByExample(new Category(name));
+		return cats.get(0);
 	}
 
 	@Override
 	protected Class<Category> getDomainClass() {
 		return Category.class;
+	}
+	
+	public void update(String name, Integer idCat){
+		Category target = this.findById(idCat);
+		target.setCategoryName(name);
+		this.save(target);
 	}
 
 }

@@ -29,8 +29,15 @@ public class SubCategoryService {
 	}
 
 	@Transactional
-	public void removeSubcategoryByName(String name) {
-		subcategoryDao.removeSubcategoryByName(name);
+	public void removeSubcategoryByName(String name,Integer idCategory) throws Exception {
+		Category target =categoryDao.findById(idCategory);
+		List<SubCategory> subs = target.getSubcategory();
+		if(subs.remove(subcategoryDao.getByName(name))){
+			target.setSubcategory(subs);
+		}else{
+			throw new Exception("Removing subcategory failed");
+		}
+		categoryDao.save(target);
 	}
 
 	@Transactional
@@ -45,10 +52,14 @@ public class SubCategoryService {
 	public void save(SubCategory subcategory) {
 		subcategoryDao.save(subcategory);
 	}
+	
+	@Transactional
+	public void update(String name, Integer idSub) {
+		this.subcategoryDao.update(name, idSub);
+	}
 
 	public SubCategory findByName(String subCategoryName) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.subcategoryDao.getByName(subCategoryName);
 	}
 
 }

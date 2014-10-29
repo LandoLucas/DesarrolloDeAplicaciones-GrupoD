@@ -113,6 +113,7 @@
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	<bean id="conceptService" class="ar.edu.unq.desapp.grupoD.services.ConceptService">
+	    <property name="categoryDao" ref="categoryDao" />
 		<property name="subcategoryDao" ref="subcategoryDao" />
 		<property name="conceptDao" ref="conceptDao" />
 	</bean>

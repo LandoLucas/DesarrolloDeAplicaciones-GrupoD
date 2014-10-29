@@ -8,50 +8,8 @@
 var app = angular.module('tp-dapp-eiroa-lando');
 app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $http,
 		$rootScope, growl,globalService,dialogs,$translate) {
-	globalService.setInNewOperation()
+	//globalService.setInConfigureCategories()
 
-	if ($rootScope.editingOperation) {
-		var operationToEdit = $rootScope.operationToEdit;
-		$scope.inputDate = operationToEdit.date;
-		$scope.inputCode = operationToEdit.code;
-		$scope.inputAmount = operationToEdit.amount;
-		$scope.inputDescription = operationToEdit.description;
-		$scope.inputPaymentType = operationToEdit.paymentType;
-		$scope.inputCategory = operationToEdit.category;
-		$scope.inputSubCategory = operationToEdit.subCategory;
-		$scope.inputConcept = operationToEdit.concept;
-		if($rootScope.outcomeOperation){
-			$scope.titulo = "Editar egreso";
-		}else{
-			$scope.titulo = "Editar ingreso";
-		}
-	} else {
-		if($rootScope.outcomeOperation){
-			$scope.titulo = "Nuevo egreso";
-		}else{
-			$scope.titulo = "Nuevo ingreso";
-		}
-		
-	};
-
-	$scope.modoEdicion = function() {
-		return $rootScope.editingOperation;
-	}
-
-	$scope.modoRegistro = function() {
-		return $rootScope.editingOperation == false;
-	}
-
-	$scope.registerOperationOk = function(response) {
-		if (codigoOk(response)) {
-			growl.info("Operacion registrada.");
-			$location.path('/cargarDatos');
-		} else {
-			var descripcion = response['desc'];
-			growl.error(descripcion);
-		}
-	}
-	
 	$scope.getCategoriesOk = function(response) {
 		//growl.info("Categorias obtenidas");
 		$scope.categories = response;
@@ -102,16 +60,64 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 
 					});
 			    });
-		    });		
-		
-		
+		    });				
+	};
+	
+	$scope.confirmDeleteSubcategory = function(name) {
+		var title;
+		var desc;
+		$translate('DIALOG_SUBCATEGORY_DELETE_TITLE').then(function (text) {
+			 title = text;
+			 $translate('DIALOG_SUBCATEGORY_DELETE_DESC').then(function (text) {
+				 desc = text;
+				 var dlg = dialogs.confirm(title + name + ' ?',desc);
+					dlg.result.then(function(btn) {
+						deleteSubcategory(name,$scope.categorySelected.id);
+					}, function(btn) {
+
+					});
+			    });
+		    });				
+	};
+	
+	$scope.confirmDeleteConcept = function(name) {
+		var title;
+		var desc;
+		$translate('DIALOG_CONCEPT_DELETE_TITLE').then(function (text) {
+			 title = text;
+			 var dlg = dialogs.confirm(title + name + ' ?','');
+				dlg.result.then(function(btn) {
+					deleteConcept(name,$scope.categorySelected.id,$scope.subcategorySelected.id);
+				}, function(btn) {
+
+				});
+		    });				
 	};
 	
 	function deleteCategory(name) {
 		var data = {
-			name : name,
+			name : name
 		};
 		invokeDeleteCategory($http, data, $scope.deleteOk,
+				defaultHandlerOnError);
+	}
+	
+	function deleteSubcategory(name,idCat) {
+		var data = {
+			name : name,
+			idCategory: idCat
+		};
+		invokeDeleteSubcategory($http, data, $scope.deleteOk,
+				defaultHandlerOnError);
+	}
+	
+	function deleteConcept(name,idCat,idSub) {
+		var data = {
+			name : name,
+			idCategory: idCat,
+			idSubcategory: idSub
+		};
+		invokeDeleteConcept($http, data, $scope.deleteOk,
 				defaultHandlerOnError);
 	}
 	
@@ -139,7 +145,7 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 		 var extras = {
 				 title: 'TITLE_NEW_CATEGORY',//codigo de traduccion del titulo
 				 serviceRest: 'category',//Campos rest son obligatorios
-				 resourceRest: 'add'}
+				 resourceRest: 'save'}
 	 	var dlg = dialogs.create('views/newNameEntity.html','NewNameEntityCtrl',extras,'lg');
 		dlg.result.then(function(name){
 			$translate('DIALOG_CATEGORY_REGISTER_SUCCESS').then(function (text) {
@@ -151,6 +157,56 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 		});
 	 };
 	 
+	 $scope.dialogEditCategory = function() {
+		 var extras = {
+				 title: 'DIALOG_CATEGORY_EDIT_TITLE',
+				 idCategory: $scope.categorySelected.id,
+				 serviceRest: 'category',
+				 resourceRest: 'update'}
+	 	var dlg = dialogs.create('views/newNameEntity.html','NewNameEntityCtrl',extras,'lg');
+		dlg.result.then(function(name){
+			$translate('DIALOG_EDIT_SUCCESS').then(function (text) {
+				growl.info(text + $scope.categorySelected.categoryName + " -> "+ name );
+				$scope.inicializarVista();
+			    });
+			
+		},function(){	
+		});
+	 };
+	 
+	 $scope.dialogEditSubcategory = function() {
+		 var extras = {
+				 title: 'DIALOG_SUBCATEGORY_EDIT_TITLE',
+				 idSubcategory: $scope.subcategorySelected.id,
+				 serviceRest: 'subcategory',
+				 resourceRest: 'update'}
+	 	var dlg = dialogs.create('views/newNameEntity.html','NewNameEntityCtrl',extras,'lg');
+		dlg.result.then(function(name){
+			$translate('DIALOG_EDIT_SUCCESS').then(function (text) {
+				growl.info(text + $scope.subcategorySelected.subcategoryName + " -> "+ name );
+				$scope.inicializarVista();
+			    });
+			
+		},function(){	
+		});
+	 };
+	 
+	 $scope.dialogEditConcept = function() {
+		 var extras = {
+				 title: 'DIALOG_CONCEPT_EDIT_TITLE',
+				 idConcept: $scope.conceptSelected.id,
+				 serviceRest: 'concept',
+				 resourceRest: 'update'}
+	 	var dlg = dialogs.create('views/newNameEntity.html','NewNameEntityCtrl',extras,'lg');
+		dlg.result.then(function(name){
+			$translate('DIALOG_EDIT_SUCCESS').then(function (text) {
+				growl.info(text + $scope.conceptSelected.conceptName + " -> "+ name );
+				$scope.inicializarVista();
+			    });
+			
+		},function(){	
+		});
+	 };
 
 	 
 	 $scope.dialogNewSubcategory = function() {
