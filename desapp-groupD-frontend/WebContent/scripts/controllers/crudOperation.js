@@ -20,19 +20,30 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		$scope.inputCategory = operationToEdit.category;
 		$scope.inputSubCategory = operationToEdit.subCategory;
 		$scope.inputConcept = operationToEdit.concept;
-		if($rootScope.outcomeOperation){
+		if($rootScope.newOutcome){
 			$scope.titulo = "Editar egreso";
 		}else{
 			$scope.titulo = "Editar ingreso";
 		}
 	} else {
-		if($rootScope.outcomeOperation){
+		if($rootScope.newOutcome){
 			$scope.titulo = "Nuevo egreso";
 		}else{
 			$scope.titulo = "Nuevo ingreso";
 		}
 		
 	};
+	if($rootScope.newOutcome){
+		$translate('TITLE_NEW_OUTCOME').then(function (text) {
+			$scope.title = text;
+		    });
+		
+	}else{
+		$translate('TITLE_NEW_INCOME').then(function (text) {
+			$scope.title = text;
+		    });
+	}
+	
 
 	$scope.modoEdicion = function() {
 		return $rootScope.editingOperation;

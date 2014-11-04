@@ -46,19 +46,27 @@
 
                             };
                             
+                            $scope.setInNewOutcome = function(){
+                            	$rootScope.newOutcome = true;
+                            }
+                            
+                            $scope.setInNewIncome = function(){
+                            	$rootScope.newOutcome = false;
+                            }
+                            
 							$scope.inMainMenu = function(){
 								return localStorageService.get('userInMainMenu');
 							}; 
 
-							$scope.setInNewOutcome = function(){
-								$rootScope.editingOperation = false;
-								$rootScope.outcomeOperation =true;
-							};
-							
-							$scope.setInNewIncome = function(){
-								$rootScope.editingOperation = false;
-								$rootScope.outcomeOperation =false;
-							};
+//							$scope.setInNewOutcome = function(){
+//								$rootScope.editingOperation = false;
+//								$rootScope.outcomeOperation =true;
+//							};
+//							
+//							$scope.setInNewIncome = function(){
+//								$rootScope.editingOperation = false;
+//								$rootScope.outcomeOperation =false;
+//							};
 
 							$rootScope.inDatos = false;
 							$scope.usuarioLogueado = localStorageService
