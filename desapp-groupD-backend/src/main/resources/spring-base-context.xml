@@ -142,12 +142,4 @@
 		<property name="receiptTypeBService" ref="receiptTypeBService" />
 	</bean>
     
-<!-- 	 DATABASE INITIALIZER -->
-<!--     <bean id="databaseInitializer" class="ar.edu.unq.desapp.grupoD.persistence.DatabaseInitializer"> -->
-<!-- 		<property name="categoryService" ref="categoryService" /> -->
-<!-- 		<property name="operationService" ref="operationService" /> -->
-<!-- 		<property name="receiptTypeAService" ref="receiptTypeAService" /> -->
-<!-- 		<property name="receiptTypeBService" ref="receiptTypeBService" /> -->
-<!--     </bean> -->
-    
 </beans>

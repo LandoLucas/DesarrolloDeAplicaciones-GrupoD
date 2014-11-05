@@ -74,24 +74,12 @@ public class DatabaseInitializer  {
 	private void loadOperations() throws InvalidAmountException {
 		List<SubCategory> subcategories = new ArrayList<SubCategory>();
 		SubCategory subcategory = new SubCategory("Ventas 12-10-2014");
-		SubCategory subcategory2 = new SubCategory("Ventas 13-10-2014");
-		SubCategory subcategory3 = new SubCategory("Ventas 14-10-2014");
-		Concept concept1 = new Concept("ventas tienda");
-		Concept concept2 = new Concept("ventas tienda");
-		Concept concept3 = new Concept("ventas tienda");
+		Concept concept = new Concept("ventas tienda");
 		List<Concept> concepts = new ArrayList<Concept>();
-		List<Concept> concepts2 = new ArrayList<Concept>();
-		List<Concept> concepts3 = new ArrayList<Concept>();
-		concepts.add(concept1);
-		concepts2.add(concept2);
-		concepts3.add(concept3);
+		concepts.add(concept);
 		subcategory.setConcepts(concepts);
-		subcategory2.setConcepts(concepts2);
-		subcategory3.setConcepts(concepts3);
 		
 		subcategories.add(subcategory);
-		subcategories.add(subcategory2);
-		subcategories.add(subcategory3);
 		
 		loadOperation("Ventas", subcategories, new DateTime(), new PettyCashAccount(), 400, true);
 //		loadOperation("Pagos", "Proveedores 12-10-2014", "proveedores", new DateTime(), new BankAccount(), 200, false);
