@@ -26,6 +26,7 @@ public class OperationServiceTest extends AbstractTransactionalJUnit4SpringConte
 	
 	@Test
 	public void saveOperation() throws InvalidAmountException{
+		Operation.resetCounter();
 		DateTime date = new DateTime();
 		Category category = new Category("ventas1");
 		Account account = new PettyCashAccount();
@@ -34,11 +35,15 @@ public class OperationServiceTest extends AbstractTransactionalJUnit4SpringConte
 		operationService.saveOperation(operation);
 		
 		assertEquals( operation , operationService.getOperationByID(operation.getOperationID()));
+		PettyCashAccount.resetBalance();
+		Operation.resetCounter();
 	}
 	
 	@Test(expected = InvalidAmountException.class)
 	public void saveOperationInvalidAmountExceptionExpected() throws InvalidAmountException{
 		operationService.saveOperation(new DateTime(), -10, true, "afternoon", "Ventas", "Ventas Tarde", "ventas", new CreditCard(new BankAccount()));
+		PettyCashAccount.resetBalance();
+		Operation.resetCounter();
 	}
 	
 	
@@ -54,5 +59,7 @@ public class OperationServiceTest extends AbstractTransactionalJUnit4SpringConte
 		operationService.removeOperationByID(id);
 		
 		assertNull( operationService.getOperationByID(id));
+		PettyCashAccount.resetBalance();
+		Operation.resetCounter();
 	}
 }

@@ -123,7 +123,7 @@ public class Operation {
 	/**
 	 * To be used ONLY for unit test
 	 */
-	protected static void resetCounter(){
+	public static void resetCounter(){
 		next_operation_id = 1;
 	}
 
