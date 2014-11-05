@@ -17,7 +17,7 @@ import ar.edu.unq.desapp.grupoD.model.account.Account;
 import ar.edu.unq.desapp.grupoD.model.account.PettyCashAccount;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 
-@ContextConfiguration(locations = {"classpath:spring-persistence-context.xml"})
+@ContextConfiguration(locations = {"classpath:spring-base-context.xml"})
 public class OperationServiceTest extends AbstractTransactionalJUnit4SpringContextTests{
 
 	@Autowired

@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 
-@ContextConfiguration(locations = {"classpath:spring-persistence-context.xml"})
+@ContextConfiguration(locations = {"classpath:spring-base-context.xml"})
 public class SubCategoriesServiceTest extends AbstractTransactionalJUnit4SpringContextTests {
 
 	@Autowired

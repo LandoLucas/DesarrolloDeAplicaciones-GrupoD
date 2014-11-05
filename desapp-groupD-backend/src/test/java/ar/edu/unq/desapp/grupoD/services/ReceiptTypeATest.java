@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
 import ar.edu.unq.desapp.grupoD.model.receipt.ReceiptTypeA;
 
-@ContextConfiguration(locations = { "classpath:spring-persistence-context.xml" })
+@ContextConfiguration(locations = { "classpath:spring-base-context.xml" })
 public class ReceiptTypeATest extends AbstractTransactionalJUnit4SpringContextTests{
 
 	@Autowired
