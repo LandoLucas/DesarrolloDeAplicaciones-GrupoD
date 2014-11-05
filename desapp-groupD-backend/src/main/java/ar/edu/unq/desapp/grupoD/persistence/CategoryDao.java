@@ -1,15 +1,8 @@
 package ar.edu.unq.desapp.grupoD.persistence;
 
-import java.sql.SQLException;
 import java.util.List;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.springframework.orm.hibernate3.HibernateCallback;
-
 import ar.edu.unq.desapp.grupoD.model.category.Category;
-import ar.edu.unq.desapp.grupoD.model.category.Concept;
 
 /**
  * @author Lucas
@@ -25,8 +18,9 @@ public class CategoryDao extends HibernateGenericDAO<Category> implements
 	}
 	
 	public Category getByName(String name){
-		List<Category> cats =this.getHibernateTemplate().findByExample(new Category(name));
-		return cats.get(0);
+		List<Category> categories =this.getHibernateTemplate().findByExample(new Category(name));
+		if(categories.isEmpty())return null;
+		return categories.get(0);
 	}
 
 	@Override

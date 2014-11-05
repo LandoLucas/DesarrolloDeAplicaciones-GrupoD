@@ -2,7 +2,6 @@ package ar.edu.unq.desapp.grupoD.services;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
 import ar.edu.unq.desapp.grupoD.model.receipt.ReceiptTypeB;
 import ar.edu.unq.desapp.grupoD.persistence.ReceiptBDao;
 
@@ -27,8 +26,7 @@ public class ReceiptTypeBService {
 	}
 
 	@Transactional
-	public void editReceiptB(ReceiptTypeB receipt)
-			throws InvalidReceiptNumberException {
+	public void editReceiptB(ReceiptTypeB receipt){
 		receiptBDao.save(receipt);
 	}
 }

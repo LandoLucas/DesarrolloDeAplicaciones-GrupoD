@@ -2,7 +2,6 @@ package ar.edu.unq.desapp.grupoD.services;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 import org.joda.time.DateTime;
 import org.junit.Ignore;
@@ -14,8 +13,10 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.model.Operation;
 import ar.edu.unq.desapp.grupoD.model.account.Account;
+import ar.edu.unq.desapp.grupoD.model.account.BankAccount;
 import ar.edu.unq.desapp.grupoD.model.account.PettyCashAccount;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
+import ar.edu.unq.desapp.grupoD.model.payment.CreditCard;
 
 @ContextConfiguration(locations = {"classpath:spring-base-context.xml"})
 public class OperationServiceTest extends AbstractTransactionalJUnit4SpringContextTests{
@@ -34,6 +35,12 @@ public class OperationServiceTest extends AbstractTransactionalJUnit4SpringConte
 		
 		assertEquals( operation , operationService.getOperationByID(operation.getOperationID()));
 	}
+	
+	@Test(expected = InvalidAmountException.class)
+	public void saveOperationInvalidAmountExceptionExpected() throws InvalidAmountException{
+		operationService.saveOperation(new DateTime(), -10, true, "afternoon", "Ventas", "Ventas Tarde", "ventas", new CreditCard(new BankAccount()));
+	}
+	
 	
 	@Test @Ignore
 	public void removeOperation() throws InvalidAmountException{

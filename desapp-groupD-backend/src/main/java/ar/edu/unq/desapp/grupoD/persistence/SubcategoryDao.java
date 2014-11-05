@@ -2,7 +2,6 @@ package ar.edu.unq.desapp.grupoD.persistence;
 
 import java.util.List;
 
-import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 
 public class SubcategoryDao extends HibernateGenericDAO<SubCategory> implements
@@ -20,8 +19,9 @@ public class SubcategoryDao extends HibernateGenericDAO<SubCategory> implements
 	}
 	
 	public SubCategory getByName(String name){
-		List<SubCategory> subs =this.getHibernateTemplate().findByExample(new SubCategory(name));
-		return subs.get(0);
+		List<SubCategory> subcategories =this.getHibernateTemplate().findByExample(new SubCategory(name));
+		if(subcategories.isEmpty())return null;
+		return subcategories.get(0);
 	}
 	
 	public void update(String name, Integer idSub){

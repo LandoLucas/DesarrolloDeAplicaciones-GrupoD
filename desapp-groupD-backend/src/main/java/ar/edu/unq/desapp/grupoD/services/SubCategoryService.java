@@ -1,6 +1,5 @@
 package ar.edu.unq.desapp.grupoD.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;

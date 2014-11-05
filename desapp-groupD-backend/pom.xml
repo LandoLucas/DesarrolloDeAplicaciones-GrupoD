@@ -83,10 +83,6 @@
 				</exclusion>
 				<exclusion>
 					<groupId>org.springframework</groupId>
-					<artifactId>spring-aop</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
 					<artifactId>spring-support</artifactId>
 				</exclusion>
 				<exclusion>
@@ -166,12 +162,6 @@
 			</exclusions>
 		</dependency>
 
-		<!-- <dependency> -->
-		<!-- <groupId>org.log4jdbc</groupId> -->
-		<!-- <artifactId>log4jdbc</artifactId> -->
-		<!-- <version>4.1.2</version> -->
-		<!-- </dependency> -->
-
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
@@ -199,9 +189,6 @@
 			<artifactId>javassist</artifactId>
 			<version>3.12.1.GA</version>
 		</dependency>
-
-
-
 
 		<!-- CXF -->
 		<dependency>
@@ -254,7 +241,27 @@
 			<artifactId>jackson-xc</artifactId>
 			<version>1.8.2</version>
 		</dependency>
-		<!-- /Jackson -->
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.7.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjtools</artifactId>
+			<version>1.7.4</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>

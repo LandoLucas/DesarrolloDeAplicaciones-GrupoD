@@ -20,7 +20,7 @@ public class CategoryService {
 	}
 
 	@Transactional(readOnly=true)
-	public List<Category> findAll() {
+	public List<Category> findAll(){
 		return categoryDao.findAll();
 	}
 

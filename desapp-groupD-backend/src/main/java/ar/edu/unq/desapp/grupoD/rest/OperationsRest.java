@@ -53,12 +53,7 @@ public class OperationsRest {
 			@FormParam("category") String categoryName, @FormParam("subCategory") String subCategoryName,
 			@FormParam("concept") String conceptName, @FormParam("paymentType") PaymentType paymentType) throws InvalidAmountException{
 		
-		Category category = categoryService.findByName(categoryName);
-		SubCategory subCategory = subCategoryService.findByName(subCategoryName);
-		Concept concept = new Concept(conceptName);
-				
-		Operation operation = new Operation(date, amount, isIncome, shift, category, subCategory, concept, paymentType);
-		operationService.saveOperation(operation);
+		operationService.saveOperation(date , amount , isIncome , shift , categoryName , subCategoryName , conceptName , paymentType);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
@@ -76,24 +71,8 @@ public class OperationsRest {
 			@FormParam("category") String categoryName, @FormParam("subCategory") String subCategoryName,
 			@FormParam("concept") String conceptName, @FormParam("paymentType") PaymentType paymentType) throws InvalidAmountException{
 		
-		Category category = categoryService.findByName(categoryName);
-		SubCategory subCategory = subCategoryService.findByName(subCategoryName);
-		Concept concept = new Concept(conceptName);
+		operationService.saveOperation(id , date , amount , isIncome , shift, categoryName , subCategoryName , conceptName , paymentType );
 		
-		Operation operation = operationService.getOperationByID(id);
-		operation.setDate(date);
-		operation.setAmount(amount);
-		operation.setIncome(isIncome);
-		List<Concept> concepts = new ArrayList<Concept>();
-		concepts.add(concept);
-		subCategory.setConcepts(concepts);
-		List<SubCategory> subcategories = new ArrayList<SubCategory>();
-		subcategories.add(subCategory);
-		category.setSubcategory(subcategories);
-		operation.setCategory(category);
-		operation.setPaymentType(paymentType);
-		
-		operationService.saveOperation(operation);	
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 
