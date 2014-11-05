@@ -29,16 +29,4 @@ public class SubCategoriesServiceTest extends AbstractTransactionalJUnit4SpringC
 		assertTrue(subcategories.contains(subcategory));
 	}
 	
-	/*
-	 * El test no tiene sentido, no pueden existis subcategorias aisladas
-	@Test
-	public void deleteSubcategoryTest(){
-		SubCategory subcategory = new SubCategory("ventas");
-		subcategoryService.save(subcategory);
-
-		subcategoryService.removeSubcategoryByName("ventas");
-		assertEquals( 0 , subcategoryService.findAll().size());
-	}
-	*/
-	
 }
