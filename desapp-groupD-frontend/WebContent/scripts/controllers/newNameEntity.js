@@ -13,6 +13,7 @@ angular.module('tp-dapp-eiroa-lando')
 	//-- Variables --//
 	   $scope.user = {name : ''};
 	   $scope.additionalData= data;
+	   $scope.user.name = $scope.additionalData.previousName;
 	   console.log(data);
 	   
 	   //Traducimos el titulo

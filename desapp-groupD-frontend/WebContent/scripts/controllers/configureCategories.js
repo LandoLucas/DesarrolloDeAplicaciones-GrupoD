@@ -197,7 +197,8 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 				 title: 'DIALOG_CATEGORY_EDIT_TITLE',
 				 idCategory: $scope.categorySelected.id,
 				 serviceRest: 'category',
-				 resourceRest: 'update'}
+				 resourceRest: 'update',
+				 previousName: 	$scope.categorySelected.categoryName }
 	 	$scope.dialog(extras,'DIALOG_EDIT_SUCCESS', ' <- '+ $scope.categorySelected.categoryName)
 	 };
 	 
@@ -207,7 +208,8 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 				 title: 'DIALOG_SUBCATEGORY_EDIT_TITLE',
 				 idSubcategory: $scope.subcategorySelected.id,
 				 serviceRest: 'subcategory',
-				 resourceRest: 'update'}
+				 resourceRest: 'update',
+				 previousName: 	$scope.subcategorySelected.subcategoryName }
 	 	$scope.dialog(extras,'DIALOG_EDIT_SUCCESS',' <- '+$scope.subcategorySelected.subcategoryName)
 	 };
 	 
@@ -216,7 +218,8 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 				 title: 'DIALOG_CONCEPT_EDIT_TITLE',
 				 idConcept: $scope.conceptSelected.id,
 				 serviceRest: 'concept',
-				 resourceRest: 'update'}
+				 resourceRest: 'update',
+				 previousName: 	$scope.conceptSelected.conceptName }
 	 	$scope.dialog(extras,'DIALOG_EDIT_SUCCESS',' <- '+$scope.conceptSelected.conceptName)
 	 };
 
