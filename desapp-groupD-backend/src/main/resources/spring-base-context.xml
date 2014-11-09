@@ -11,8 +11,7 @@
 
     <aop:aspectj-autoproxy />
 
-	<tx:annotation-driven transaction-manager="transactionManager"
-		proxy-target-class="true" />
+	<tx:annotation-driven transaction-manager="transactionManager"	proxy-target-class="true" />
 
 	<!-- ========================= GENERAL DEFINITIONS ========================= -->
 	<!-- Configurer that replaces ${...} placeholders with values from properties 
@@ -83,10 +82,12 @@
 
 
 	<!-- ________________________________________ -->
+	<!-- ______________ Model Beans______________ -->
 	<!-- ________________________________________ -->
-	<!-- ___________ Beans de negocio___________ -->
-	<!-- ________________________________________ -->
-	<!-- ________________________________________ -->
+
+
+	<!-- ASPECTS -->
+    <bean id="logServiceExceptionAspect" class="ar.edu.unq.desapp.grupoD.aspects.LogServiceExceptionAspect"/>
 
 	<!-- CATEGORY -->
 	<bean id="categoryDao" class="ar.edu.unq.desapp.grupoD.persistence.CategoryDao">
@@ -147,10 +148,4 @@
 		<property name="receiptTypeBService" ref="receiptTypeBService" />
 	</bean>
 	
-	
-	<!-- ASPECTS -->
-<!--     <bean id="logServiceExceptionAspect" class="ar.edu.unq.desapp.grupoD.aspects.LogServiceExceptionAspect"/> -->
-    
-    
-    
 </beans>

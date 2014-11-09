@@ -13,7 +13,6 @@ import javax.ws.rs.core.Response;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoD.model.category.Concept;
-import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 import ar.edu.unq.desapp.grupoD.services.ConceptService;
 
 /**

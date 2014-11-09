@@ -46,7 +46,6 @@ public class OperationServiceTest extends AbstractTransactionalJUnit4SpringConte
 		Operation.resetCounter();
 	}
 	
-	
 	@Test @Ignore
 	public void removeOperation() throws InvalidAmountException{
 		DateTime date = new DateTime();

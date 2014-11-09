@@ -1,6 +1,6 @@
 package ar.edu.unq.desapp.grupoD.services;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.joda.time.DateTime;
 import org.junit.Test;
