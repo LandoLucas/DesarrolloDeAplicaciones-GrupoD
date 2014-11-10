@@ -58,7 +58,7 @@ public class OperationsRest {
 	@POST
 	@Path("/new")
 	public Response addOperation(@FormParam("date") String date, @FormParam("amount") double amount, 
-			@FormParam("isIncome") boolean isIncome, @FormParam("shift") String shift, 
+			@FormParam("isOutcome") boolean isOutcome, @FormParam("shift") String shift, 
 			@FormParam("category") String categoryName, @FormParam("subCategory") String subCategoryName,
 			@FormParam("concept") String conceptName, @FormParam("paymentCode") Integer paymentCode) throws InvalidAmountException{
 		
@@ -76,13 +76,13 @@ public class OperationsRest {
 		default: throw new RuntimeException();
 		}
 		
-		operationService.saveOperation(parsedDate , amount , isIncome , shift , categoryName , subCategoryName , conceptName , paymentType);
+		operationService.saveOperation(parsedDate , amount , isOutcome , shift , categoryName , subCategoryName , conceptName , paymentType);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
 	@POST
-	@Path("/remove/{id}")
-	public Response removeOperation(@PathParam("id") int id){
+	@Path("/remove")
+	public Response removeOperation(@FormParam("id") int id){
 		operationService.removeOperationByID(id);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}

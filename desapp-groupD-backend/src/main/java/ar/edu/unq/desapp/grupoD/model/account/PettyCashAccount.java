@@ -1,11 +1,14 @@
 package ar.edu.unq.desapp.grupoD.model.account;
 
+import javax.persistence.Entity;
+
 import ar.edu.unq.desapp.grupoD.model.Operation;
 
 /**
  * @author JulianV
  *
  */
+@Entity
 public class PettyCashAccount extends Account {
 	private static double balance = 0;
 

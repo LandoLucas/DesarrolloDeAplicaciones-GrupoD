@@ -53,14 +53,14 @@ public class OperationService {
 	}
 
 	@Transactional
-	public void saveOperation(DateTime date, double amount, boolean isIncome, String shift, String categoryName, String subCategoryName,
+	public void saveOperation(DateTime date, double amount, boolean isOutcome, String shift, String categoryName, String subCategoryName,
 			String conceptName, PaymentType paymentType) throws InvalidAmountException {
 		
 		Category category = categoryService.findByName(categoryName);
 		SubCategory subCategory = subCategoryService.findByName(subCategoryName);
 		Concept concept =conceptService.findByName(conceptName);
 				
-		Operation operation = new Operation(date, amount, isIncome, shift, category, subCategory, concept, paymentType);
+		Operation operation = new Operation(date, amount, isOutcome, shift, category, subCategory, concept, paymentType);
 		
 		operationDao.save(operation);
 	}

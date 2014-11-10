@@ -1,6 +1,9 @@
 package ar.edu.unq.desapp.grupoD.model.account;
 
+import javax.persistence.Entity;
+
 import org.joda.time.DateTime;
+
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.model.Operation;
 
@@ -9,13 +12,15 @@ import ar.edu.unq.desapp.grupoD.model.Operation;
  * @author JulianV
  *
  */
+@Entity
 public class DebitAccount extends Account {
 	private static double balance = 0;
 	
 	private double amount;
 	private int timeToCredit;
 	private int operationID;
-	private Operation operation;
+	
+//	private Operation operation;
 	
 	@Override
 	public void bill(Operation operation) {
@@ -25,13 +30,13 @@ public class DebitAccount extends Account {
 	
 	public DebitAccount(Operation operation) {
 		this.operationID = operation.getOperationID();
-		this.operation = operation;
+//		this.operation = operation;
 		this.amount = operation.getAmount();
 		setBalance(this.amount, operation);
-		this.setTimeToCredit();
+		this.setTimeToCredit(operation);
 	} 
 
-	private void setTimeToCredit() {
+	private void setTimeToCredit(Operation operation) {
 		timeToCredit = operation.getPaymentType().getTimeToCredit();
 	}
 	

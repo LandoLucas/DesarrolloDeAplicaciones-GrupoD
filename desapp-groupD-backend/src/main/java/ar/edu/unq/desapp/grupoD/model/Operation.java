@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
@@ -21,6 +23,7 @@ import ar.edu.unq.desapp.grupoD.model.category.Concept;
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 
+@XmlRootElement(name = "operation")
 @Entity
 @Table(name = "Operation")
 public class Operation {
@@ -54,6 +57,7 @@ public class Operation {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private PaymentType paymentType;
+	
 	private static int next_operation_id = 1;
 	/**
 	 * Returns an instance of a money operation and it saves the transaction details.
@@ -73,11 +77,11 @@ public class Operation {
 	 *            how the operation was payed
 	 * @throws InvalidAmountException if the amount is equal or below 0
 	 */
-	public Operation(DateTime date, double amount, boolean isIncome, String shift,
+	public Operation(DateTime date, double amount, boolean isOutcome, String shift,
 			Category category, SubCategory subCategory, Concept concept, PaymentType paymentType) throws InvalidAmountException {
 		this.setDate(date);
 		this.setAmount(amount);
-		this.setIncome(isIncome);
+		this.setIncome(!isOutcome);
 		this.setShift(shift);
 		this.setCategory(category);
 		this.setSubcategory(subCategory);
@@ -163,8 +167,9 @@ public class Operation {
 		this.category = category;
 	}
 
-	public PaymentType getPaymentType() {
-		return paymentType;
+	@XmlTransient
+	public PaymentType getPaymentType(){
+		return this.paymentType;
 	}
 
 	public void setPaymentType(PaymentType paymentType) {
@@ -196,5 +201,9 @@ public class Operation {
 	private void bill() {
 		this.paymentType.bill(this);
 	}
-
+	
+	
+	
+	public Operation(){
+	}
 }
