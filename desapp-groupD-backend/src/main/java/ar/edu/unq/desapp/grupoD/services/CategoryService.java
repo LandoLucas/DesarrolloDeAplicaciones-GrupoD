@@ -38,7 +38,7 @@ public class CategoryService {
 	public void update(String name, Integer idCat) {
 		this.categoryDao.update(name, idCat);
 	}
-
+	@Transactional
 	public Category findByName(String categoryName) {
 		return this.categoryDao.getByName(categoryName);
 	}

@@ -12,14 +12,23 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.ISODateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.model.Operation;
+import ar.edu.unq.desapp.grupoD.model.account.BankAccount;
+import ar.edu.unq.desapp.grupoD.model.account.DebitAccount;
+import ar.edu.unq.desapp.grupoD.model.account.PettyCashAccount;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.category.Concept;
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
+import ar.edu.unq.desapp.grupoD.model.payment.BankTransfer;
+import ar.edu.unq.desapp.grupoD.model.payment.CreditCard;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
+import ar.edu.unq.desapp.grupoD.model.payment.PettyCash;
 import ar.edu.unq.desapp.grupoD.services.CategoryService;
 import ar.edu.unq.desapp.grupoD.services.OperationService;
 import ar.edu.unq.desapp.grupoD.services.SubCategoryService;
@@ -48,12 +57,26 @@ public class OperationsRest {
 	
 	@POST
 	@Path("/new")
-	public Response addOperation(@FormParam("date") DateTime date, @FormParam("amount") double amount, 
+	public Response addOperation(@FormParam("date") String date, @FormParam("amount") double amount, 
 			@FormParam("isIncome") boolean isIncome, @FormParam("shift") String shift, 
 			@FormParam("category") String categoryName, @FormParam("subCategory") String subCategoryName,
-			@FormParam("concept") String conceptName, @FormParam("paymentType") PaymentType paymentType) throws InvalidAmountException{
+			@FormParam("concept") String conceptName, @FormParam("paymentCode") Integer paymentCode) throws InvalidAmountException{
 		
-		operationService.saveOperation(date , amount , isIncome , shift , categoryName , subCategoryName , conceptName , paymentType);
+		//Parse date
+		DateTimeFormatter dateDecoder = DateTimeFormat.forPattern("yyyy-MM-dd");		
+		DateTime parsedDate = dateDecoder.parseDateTime(date);
+		
+		//Parse payment Type
+		PaymentType paymentType;
+		switch (paymentCode) {
+		case 0: paymentType = new PettyCash(new PettyCashAccount()); break;
+		case 1: paymentType = new BankTransfer(new BankAccount()); break;
+		case 2: paymentType = new CreditCard(new DebitAccount()); break;
+
+		default: throw new RuntimeException();
+		}
+		
+		operationService.saveOperation(parsedDate , amount , isIncome , shift , categoryName , subCategoryName , conceptName , paymentType);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	

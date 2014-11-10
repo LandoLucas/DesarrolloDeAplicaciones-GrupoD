@@ -9,7 +9,7 @@ var app = angular.module('tp-dapp-eiroa-lando');
 app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		$rootScope, growl,globalService,dialogs,$translate) {
 	globalService.setInNewOperation()
-
+	$scope.isOutcome = $rootScope.newOutcome;
 	if ($rootScope.editingOperation) {
 		var operationToEdit = $rootScope.operationToEdit;
 		$scope.inputDate = operationToEdit.date;
@@ -26,14 +26,14 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 			$scope.titulo = "Editar ingreso";
 		}
 	} else {
-		if($rootScope.newOutcome){
+		if($scope.isOutcome){
 			$scope.titulo = "Nuevo egreso";
 		}else{
 			$scope.titulo = "Nuevo ingreso";
 		}
 		
 	};
-	if($rootScope.newOutcome){
+	if($scope.isOutcome){
 		$translate('TITLE_NEW_OUTCOME').then(function (text) {
 			$scope.title = text;
 		    });
@@ -44,7 +44,10 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		    });
 	}
 	
-
+	$scope.paymentTypes= [{code:0,name:"Efectivo"},
+	                      {code:1,name:"Tarjeta de crédito"},
+	                      {code:2,name:"Transferencia bancaria"}];
+	
 	$scope.modoEdicion = function() {
 		return $rootScope.editingOperation;
 	}
@@ -54,13 +57,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 	}
 
 	$scope.registerOperationOk = function(response) {
-		if (codigoOk(response)) {
 			growl.info("Operacion registrada.");
-			$location.path('/cargarDatos');
-		} else {
-			var descripcion = response['desc'];
-			growl.error(descripcion);
-		}
 	}
 	
 	$scope.getCategoriesOk = function(response) {
@@ -129,19 +126,13 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 			category : $scope.categorySelected.categoryName,
 			subCategory : $scope.subcategorySelected.subcategoryName,
 			concept: $scope.conceptSelected.conceptName,
-			paymentType : $scope.inputPaymentType,
-			shift : $scope.inputShift
+			paymentCode : $scope.paymentSelected.code,
+			shift : $scope.inputShift,
+			isIncome: $scope.isOutcome
 		};
 		return data;
 	}
     
-    $scope.populateParamsTest = function(){
-        var data ={
-            amount: $scope.inputAmount
-        };
-        
-        return data;
-    }
 
 	$scope.registerOperation = function() {
 		var data = $scope.populateParams();

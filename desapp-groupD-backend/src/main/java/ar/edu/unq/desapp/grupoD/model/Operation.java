@@ -31,7 +31,7 @@ public class Operation {
 	
 	@Id
 	@GeneratedValue
-	private int ID;
+	private Integer id;
 	
 	private int operationID;
 	
@@ -45,6 +45,12 @@ public class Operation {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Category category;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private SubCategory subcategory;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Concept concept;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private PaymentType paymentType;
@@ -73,12 +79,9 @@ public class Operation {
 		this.setAmount(amount);
 		this.setIncome(isIncome);
 		this.setShift(shift);
-		List<Concept> concepts = new ArrayList<Concept>();
-		concepts.add(concept);
-		List<SubCategory> subcategories = new ArrayList<SubCategory>();
-		subCategory.setConcepts(concepts);
-		category.setSubcategory(subcategories);
 		this.setCategory(category);
+		this.setSubcategory(subCategory);
+		this.setConcept(concept);
 		this.setPaymentType(paymentType);
 		setOperationID();
 		this.bill();
@@ -167,7 +170,25 @@ public class Operation {
 	public void setPaymentType(PaymentType paymentType) {
 		this.paymentType = paymentType;
 	}
+	
+	
 
+
+	public SubCategory getSubcategory() {
+		return subcategory;
+	}
+
+	public void setSubcategory(SubCategory subcategory) {
+		this.subcategory = subcategory;
+	}
+
+	public Concept getConcept() {
+		return concept;
+	}
+
+	public void setConcept(Concept concept) {
+		this.concept = concept;
+	}
 
 	/**
 	 * Delegates the billing to the correspondent payment type.

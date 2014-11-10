@@ -56,7 +56,7 @@ public class SubCategoryService {
 	public void update(String name, Integer idSub) {
 		this.subcategoryDao.update(name, idSub);
 	}
-
+	@Transactional
 	public SubCategory findByName(String subCategoryName) {
 		return this.subcategoryDao.getByName(subCategoryName);
 	}

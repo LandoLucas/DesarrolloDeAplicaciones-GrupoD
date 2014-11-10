@@ -104,8 +104,9 @@
 				<div class="form-group">
 					<label for="selectPaymentType" class="control-label col-xs-2">{{ 'FORM_SELECT_PAYMENT_TYPE' | translate}}</label>
 					<div class="col-xs-10">
-						<select ng-model="selectPaymentType"
-							ng-options="ptype as ptype.name for ptype in ptypes"
+						<select ng-model="paymentSelected"
+							ng-options="ptype as ptype.name for ptype in paymentTypes"
+							ng-change="selectPayment(paymentSelected)"
 							class="form-control">
 							<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
 						</select>
@@ -124,7 +125,7 @@
 					<div class="col-xs-offset-2 col-xs-10">
 
 						<button type="submit" class="btn btn-success"
-							ng-show="modoRegistro()" ng-click="registerOperationTest()">{{ 'FORM_CONFIRM' | translate}}</button>
+							ng-show="true" ng-click="registerOperation()">{{ 'FORM_CONFIRM' | translate}}</button>
 
 						<button type="submit" class="btn btn-success"
 							ng-click="updateOperation()" ng-show="modoEdicion()">{{ 'FORM_UPDATE' | translate}}</button>

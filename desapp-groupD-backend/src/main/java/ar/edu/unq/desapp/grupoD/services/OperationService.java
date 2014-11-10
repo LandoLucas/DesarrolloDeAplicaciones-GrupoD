@@ -22,6 +22,7 @@ public class OperationService {
 	private OperationDao operationDao;
 	private CategoryService categoryService;
 	private SubCategoryService subCategoryService;
+	private ConceptService conceptService;
 	
 	public void setOperationDao(OperationDao operationDao) {
 		this.operationDao = operationDao;
@@ -33,6 +34,12 @@ public class OperationService {
 
 	public void setCategoryService(CategoryService categoryService) {
 		this.categoryService = categoryService;
+	}
+	
+	
+
+	public void setConceptService(ConceptService conceptService) {
+		this.conceptService = conceptService;
 	}
 
 	@Transactional
@@ -51,7 +58,7 @@ public class OperationService {
 		
 		Category category = categoryService.findByName(categoryName);
 		SubCategory subCategory = subCategoryService.findByName(subCategoryName);
-		Concept concept = new Concept(conceptName);
+		Concept concept =conceptService.findByName(conceptName);
 				
 		Operation operation = new Operation(date, amount, isIncome, shift, category, subCategory, concept, paymentType);
 		
@@ -64,7 +71,7 @@ public class OperationService {
 
 		Category category = categoryService.findByName(categoryName);
 		SubCategory subCategory = subCategoryService.findByName(subCategoryName);
-		Concept concept = new Concept(conceptName);
+		Concept concept = conceptService.findByName(conceptName);
 		
 		Operation operation = getOperationByID(id);
 		operation.setDate(date);

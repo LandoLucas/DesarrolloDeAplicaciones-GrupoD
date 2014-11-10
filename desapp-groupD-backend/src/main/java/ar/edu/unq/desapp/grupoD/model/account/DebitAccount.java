@@ -23,7 +23,7 @@ public class DebitAccount extends Account {
 		
 	}
 	
-	protected DebitAccount(Operation operation) {
+	public DebitAccount(Operation operation) {
 		this.operationID = operation.getOperationID();
 		this.operation = operation;
 		this.amount = operation.getAmount();
@@ -67,6 +67,10 @@ public class DebitAccount extends Account {
 
 	public int getTimeToCredit() {
 		return timeToCredit;
+	}
+	
+	public DebitAccount(){
+		
 	}
 
 }

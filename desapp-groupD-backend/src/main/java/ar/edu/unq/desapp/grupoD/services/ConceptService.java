@@ -64,5 +64,10 @@ public class ConceptService {
 	public void update(String name, Integer idCon) {
 		this.conceptDao.update(name, idCon);
 	}
+	
+	@Transactional
+	public Concept findByName(String conceptName) {
+		return this.conceptDao.getByName(conceptName);
+	}
 
 }

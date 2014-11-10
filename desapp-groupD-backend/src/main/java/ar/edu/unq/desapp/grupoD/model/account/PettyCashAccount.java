@@ -25,7 +25,6 @@ public class PettyCashAccount extends Account {
 	}
 
 	public PettyCashAccount() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public static void setBalance(double newAmount, Operation operation) {
