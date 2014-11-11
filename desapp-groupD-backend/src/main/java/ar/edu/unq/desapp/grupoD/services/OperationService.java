@@ -93,6 +93,21 @@ public class OperationService {
 	public void saveOperation(Operation operation) {
 		operationDao.save(operation);
 	}
+	
+	@Transactional(readOnly=true)
+	public List<Operation> findAll(){
+		return operationDao.findAll();
+	}
+	
+	@Transactional(readOnly=true)
+	public List<Operation> findIncomes(){
+		return operationDao.findIncomes();
+	}
+	
+	@Transactional(readOnly=true)
+	public List<Operation> findOutcomes(){
+		return operationDao.findOutcomes();
+	}
 
 
 }

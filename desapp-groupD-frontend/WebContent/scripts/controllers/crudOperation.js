@@ -58,6 +58,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 
 	$scope.registerOperationOk = function(response) {
 			growl.info("Operacion registrada.");
+			$location.path('/cargarDatos');
 	}
 	
 	$scope.getCategoriesOk = function(response) {
@@ -128,7 +129,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 			concept: $scope.conceptSelected.conceptName,
 			paymentCode : $scope.paymentSelected.code,
 			shift : $scope.inputShift,
-			isIncome: $scope.isOutcome
+			isOutcome: $scope.isOutcome
 		};
 		return data;
 	}

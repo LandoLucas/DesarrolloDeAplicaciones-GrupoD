@@ -40,6 +40,8 @@ public class CategoryRest {
 		List<Category> obs =  categoryService.findAll();
 		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(obs).build();
 	}
+	
+
 
 	@POST
 	@Path("/delete")

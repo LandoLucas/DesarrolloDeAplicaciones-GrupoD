@@ -1,8 +1,8 @@
-function invokeRestService(cnxHttp, header, data, modulo, servicio,
+function invokeRestService(httpService, header, data, modulo, servicio,
 		handlerOnSuccess, handlerOnError) {
 	var respuesta = [];
 
-	cnxHttp(
+	httpService(
 			{
 				method : 'POST',
 				url : 'http://' + restHost + '/' + restContext + '/rest/'
@@ -25,11 +25,11 @@ function invokeRestService(cnxHttp, header, data, modulo, servicio,
 	});
 }
 
-function invokeGetRestService(cnxHttp, header, data, modulo, servicio,
+function invokeGetRestService(httpService, header, data, modulo, servicio,
 		handlerOnSuccess, handlerOnError) {
 	var respuesta = [];
 
-	cnxHttp(
+	httpService(
 			{
 				method : 'GET',
 				url : 'http://' + restHost + '/' + restContext + '/rest/'
@@ -87,13 +87,16 @@ function autenticar(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 
 }
 
+
+//==Rest Operations==\\
+
 function invokeNewOperationTest(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 	var header = defaultHeader();
 	invokeRestService(cnxHttp, header, data, 'operation', 'newTest',
 			handlerOnSuccess, handlerOnError);
 }
 
-function invokeNewOperation(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+function invokeRegisterOperation(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 	var header = defaultHeader();
 	invokeRestService(cnxHttp, header, data, 'operation', 'new',
 			handlerOnSuccess, handlerOnError);
@@ -139,6 +142,8 @@ function invokeDeleteConcept(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 	invokeRestService(cnxHttp, header, data, 'concept', 'delete',
 			handlerOnSuccess, handlerOnError);
 }
+
+
 
 
 // Usuarios
