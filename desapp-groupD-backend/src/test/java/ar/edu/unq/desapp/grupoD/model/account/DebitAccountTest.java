@@ -23,7 +23,7 @@ public class DebitAccountTest {
 		when(operation.getOperationID()).thenReturn(operationID);
 		when(operation.isIncome()).thenReturn(true);
 		when(operation.getAmount()).thenReturn(amount);
-		when(operation.getPaymentType()).thenReturn( paymentType );
+		when(operation.returnPaymentType()).thenReturn( paymentType );
 		when(paymentType.getTimeToCredit()).thenReturn( 0 );
 		
 		new DebitAccount(operation);
@@ -43,7 +43,7 @@ public class DebitAccountTest {
 		when(operation.isIncome()).thenReturn(false);
 		when(operation.getAmount()).thenReturn(amount);
 		PaymentType paymentType = mock(PaymentType.class);
-		when(operation.getPaymentType()).thenReturn( paymentType ); 
+		when(operation.returnPaymentType()).thenReturn( paymentType ); 
 		when(paymentType.getTimeToCredit()).thenReturn( 0 );
 		
 		new DebitAccount(operation);
@@ -59,7 +59,7 @@ public class DebitAccountTest {
 		double amount = 10;
 		Operation operation = mock(Operation.class);
 		PaymentType paymentType = mock(PaymentType.class);
-		when(operation.getPaymentType()).thenReturn(paymentType);
+		when(operation.returnPaymentType()).thenReturn(paymentType);
 		when(operation.getAmount()).thenReturn(amount);
 		when(paymentType.getTimeToCredit()).thenReturn(15);
 		
@@ -75,7 +75,7 @@ public class DebitAccountTest {
 		double amount = 10;
 		Operation operation = mock(Operation.class);
 		BankTransfer bankTransfer = mock(BankTransfer.class);
-		when(operation.getPaymentType()).thenReturn(bankTransfer);
+		when(operation.returnPaymentType()).thenReturn(bankTransfer);
 		when(operation.getAmount()).thenReturn(amount);
 		
 		DebitAccount debitAccount = new DebitAccount(operation);
@@ -91,7 +91,7 @@ public class DebitAccountTest {
 		Operation operation = mock(Operation.class);
 		PettyCash pettyCash = mock(PettyCash.class);
 		when(operation.getAmount()).thenReturn(amount);
-		when(operation.getPaymentType()).thenReturn(pettyCash);
+		when(operation.returnPaymentType()).thenReturn(pettyCash);
 		
 		DebitAccount debitAccount = new DebitAccount(operation);
 		
@@ -109,7 +109,7 @@ public class DebitAccountTest {
 		when(operation.getOperationID()).thenReturn(operationID);
 		when(operation.getAmount()).thenReturn(amount);
 		when(operation.isIncome()).thenReturn(true);
-		when(operation.getPaymentType()).thenReturn( paymentType );
+		when(operation.returnPaymentType()).thenReturn( paymentType );
 		when(operation.getAmount()).thenReturn(amount);
 		when(paymentType.getTimeToCredit()).thenReturn( 0 );
 		

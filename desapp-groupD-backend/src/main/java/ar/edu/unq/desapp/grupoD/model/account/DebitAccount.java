@@ -37,7 +37,7 @@ public class DebitAccount extends Account {
 	} 
 
 	private void setTimeToCredit(Operation operation) {
-		timeToCredit = operation.getPaymentType().getTimeToCredit();
+		timeToCredit = operation.returnPaymentType().getTimeToCredit();
 	}
 	
 //	public Operation generateCredit() throws InvalidAmountException{

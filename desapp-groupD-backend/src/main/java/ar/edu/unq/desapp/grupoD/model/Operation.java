@@ -106,8 +106,19 @@ public class Operation {
 		account.bill( this);
 	}
 	
+	
+	
+	public Integer getId() {
+		return id;
+	}
+
+	@XmlTransient
 	public DateTime getDate() {
 		return date;
+	}
+	
+	public String getParsedDate(){
+		return this.getDate().toString("YYYY-MM-dd");
 	}
 
 	public void setDate(DateTime date) {
@@ -159,17 +170,40 @@ public class Operation {
 		this.shift = shift;
 	}
 
-	public Category getCategory() {
-		return category;
+	public String getCategory() {
+		return category.getCategoryName();
 	}
 
 	public void setCategory(Category category) {
 		this.category = category;
 	}
 
-	@XmlTransient
-	public PaymentType getPaymentType(){
+	public PaymentType returnPaymentType(){
 		return this.paymentType;
+	}
+	
+
+	public String getPaymentType(){
+		String result;
+		if(paymentType != null){
+			result =this.paymentType.getClass().getSimpleName();
+		}else{
+			result = "No payment Type";
+		}
+		return result;
+	}
+	
+	public Integer getPaymentCode(){
+		switch (getPaymentType()) {
+		case "PettyCash":
+			return 0;
+		case "BankTransfer":
+			return 2;
+		case "CreditCard":
+			return 1;
+		default:
+			return -1;
+		}
 	}
 
 	public void setPaymentType(PaymentType paymentType) {
@@ -177,18 +211,30 @@ public class Operation {
 	}
 	
 	
-
-
-	public SubCategory getSubcategory() {
-		return subcategory;
+	
+	public String getSubcategory() {
+		String result;
+		if(subcategory != null){
+			result =this.subcategory.getSubcategoryName();
+		}else{
+			result = "No Subcategory";
+		}
+		return result;
 	}
 
 	public void setSubcategory(SubCategory subcategory) {
 		this.subcategory = subcategory;
 	}
 
-	public Concept getConcept() {
-		return concept;
+	
+	public String getConcept() {
+		String result;
+		if(concept != null){
+			result =this.concept.getConceptName();
+		}else{
+			result = "No Concept";
+		}
+		return result;
 	}
 
 	public void setConcept(Concept concept) {

@@ -22,6 +22,12 @@ public abstract class Account {
 	private int id;
 	
 	public abstract void bill(Operation operation);
+	
+	@Override
+	public String toString() {
+		
+		return this.getClass().getSimpleName();
+	}
 
 }
 

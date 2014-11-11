@@ -40,7 +40,7 @@ public class OperationTest {
 		assertSame(isIncome , operation.isIncome());
 		assertSame(shift , operation.getShift());
 		assertSame(category , operation.getCategory());
-		assertSame(paymentType , operation.getPaymentType());
+		assertSame(paymentType , operation.returnPaymentType());
 		
 		verify(paymentType).bill( operation);
 	}
