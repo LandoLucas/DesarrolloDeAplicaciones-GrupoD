@@ -39,7 +39,7 @@ public class OperationTest {
 		assertEquals(amount , operation.getAmount() , 1);
 		assertSame(isIncome , operation.isIncome());
 		assertSame(shift , operation.getShift());
-		assertSame(category , operation.getCategory());
+		assertSame(category.getCategoryName() , operation.getCategory());
 		assertSame(paymentType , operation.returnPaymentType());
 		
 		verify(paymentType).bill( operation);
@@ -58,7 +58,7 @@ public class OperationTest {
 		assertSame(date , operation.getDate());
 		assertEquals(amount , operation.getAmount() , 1);
 		assertSame(isIncome , operation.isIncome());
-		assertSame(category , operation.getCategory());
+		assertSame(category.getCategoryName() , operation.getCategory());
 		
 		verify(account).bill(operation);
 	}

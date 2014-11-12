@@ -26,6 +26,7 @@ GenericRepository<Concept> {
 	
 	public Concept getByName(String name){
 		List<Concept> subs =this.getHibernateTemplate().findByExample(new Concept(name));
+		if(subs.isEmpty())return null;
 		return subs.get(0);
 	}
 	

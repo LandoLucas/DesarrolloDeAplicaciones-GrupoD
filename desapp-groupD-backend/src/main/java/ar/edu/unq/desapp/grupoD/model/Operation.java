@@ -77,11 +77,11 @@ public class Operation {
 	 *            how the operation was payed
 	 * @throws InvalidAmountException if the amount is equal or below 0
 	 */
-	public Operation(DateTime date, double amount, boolean isOutcome, String shift,
+	public Operation(DateTime date, double amount, boolean isIncome, String shift,
 			Category category, SubCategory subCategory, Concept concept, PaymentType paymentType) throws InvalidAmountException {
 		this.setDate(date);
 		this.setAmount(amount);
-		this.setIncome(!isOutcome);
+		this.setIncome(isIncome);
 		this.setShift(shift);
 		this.setCategory(category);
 		this.setSubcategory(subCategory);
