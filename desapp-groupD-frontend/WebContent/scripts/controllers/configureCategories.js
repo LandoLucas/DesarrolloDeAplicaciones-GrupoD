@@ -7,7 +7,7 @@
  */
 var app = angular.module('tp-dapp-eiroa-lando');
 app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $http,
-		$rootScope, growl,globalService,dialogs,$translate) {
+		$rootScope, growl,globalService,dialogs,$translate,restServices) {
 	//globalService.setInConfigureCategories()
 
 	$scope.getCategoriesOk = function(response) {
@@ -98,8 +98,8 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 		var data = {
 			name : name
 		};
-		invokeDeleteCategory($http, data, $scope.deleteOk,
-				defaultHandlerOnError);
+		restServices.invokeDeleteCategory($http, data, $scope.deleteOk,
+				restServices.defaultHandlerOnError);
 	}
 	
 	function deleteSubcategory(name,idCat) {
@@ -107,8 +107,8 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 			name : name,
 			idCategory: idCat
 		};
-		invokeDeleteSubcategory($http, data, $scope.deleteOk,
-				defaultHandlerOnError);
+		restServices.invokeDeleteSubcategory($http, data, $scope.deleteOk,
+				restServices.defaultHandlerOnError);
 	}
 	
 	function deleteConcept(name,idCat,idSub) {
@@ -117,8 +117,8 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 			idCategory: idCat,
 			idSubcategory: idSub
 		};
-		invokeDeleteConcept($http, data, $scope.deleteOk,
-				defaultHandlerOnError);
+		restServices.invokeDeleteConcept($http, data, $scope.deleteOk,
+				restServices.defaultHandlerOnError);
 	}
 	
 	$scope.deleteOk = function(response) {
@@ -131,8 +131,8 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 	
 	$scope.inicializarVista = function() {
 		
-		invokeGetCategories($http, {}, $scope.getCategoriesOk,
-				defaultHandlerOnError);
+		restServices.invokeGetCategories($http, {}, $scope.getCategoriesOk,
+				restServices.defaultHandlerOnError);
 		$scope.subCategories=null;
 		$scope.concepts=null;
 		$scope.categorySelected=null;

@@ -9,16 +9,17 @@
 	 */
 	(function() {
 		var app = angular.module('tp-dapp-eiroa-lando', [ 'ngAnimate', 'ngCookies',
-				'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch',
+				'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch','facadeModule',
 				'angularFileUpload', 'ngTable', 'http-auth-interceptor',
 				'loginModule', 'contentModule', 'content-mocksModule',
 				'LocalStorageModule', 'ngRoute', 'checklist-model',
 				'angular-growl', 'ui.bootstrap', 'dialogs.main',
 				'pascalprecht.translate','tp-dapp-eiroa-lando.services' ]);
 
-
-
-
+		
+		app.config(['$httpProvider', function($httpProvider) {
+		    delete $httpProvider.defaults.headers.common["X-Requested-With"]
+		}]);
 		app.controller(
 						'IndexCtrl',
 						function($rootScope, $scope, $location, $http,
@@ -168,6 +169,7 @@
 								'dialogsProvider',
 								'$translateProvider',
 								function(dialogsProvider, $translateProvider) {
+									
 									dialogsProvider.useBackdrop('static');
 									dialogsProvider.useEscClose(true);
 									dialogsProvider.useCopy(false);
@@ -225,7 +227,7 @@
 														RECEIPT_SECTION: "Sección comprobantes",
 														RECEIPT_SELECT: "Seleccione el tipo de comprobante a ingresar",
 														
-														
+														DEFAULT_ERROR: "Se ha producido un error inesperado en la aplicación",
 														
 														TITLE_NEW_INCOME: "Nuevo ingreso",
 														TITLE_NEW_OUTCOME: "Nuevo egreso",
@@ -344,6 +346,8 @@
 												RECEIPT_SECTION: "Bills section",
 												RECEIPT_SELECT: "Select the type of bill to load",
 												
+												
+												DEFAULT_ERROR: "An unexpected error has ocurred",
 												
 												TITLE_NEW_INCOME: "New income",
 												TITLE_NEW_OUTCOME: "New outcome",

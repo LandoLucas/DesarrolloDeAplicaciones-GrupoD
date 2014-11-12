@@ -9,7 +9,7 @@
  */
 angular.module('tp-dapp-eiroa-lando')
   .controller('NewNameEntityCtrl', function ($scope,$log,$http,$modalInstance,data,
-		  growl,globalService,dialogs,$location,$translate) {
+		  growl,globalService,dialogs,$location,$translate,restServices) {
 	//-- Variables --//
 	   $scope.user = {name : ''};
 	   $scope.additionalData= data;
@@ -32,22 +32,29 @@ angular.module('tp-dapp-eiroa-lando')
 				$modalInstance.close($scope.user.name);			
 		}
 		
+		
 		$scope.hitEnter = function(evt){
 		    if(angular.equals(evt.keyCode,13) && 
 		    		!(angular.equals($scope.user.name,null) || 
 		    				angular.equals($scope.user.name,'')))
 						$scope.save();
 		  };
+		  
+		  function defHeader() {
+  			return {
+  				'Content-Type' : 'application/x-www-form-urlencoded;'
+  			};
+  		}
 
 		 $scope.save = function(){
-			 data = mergeJSONs({name: $scope.user.name}, $scope.additionalData);
+			 data = restServices.mergeJSONs({name: $scope.user.name}, $scope.additionalData);
 			 delete data.serviceRest;
 			 delete data.resourceRest;
+			 var header = defHeader();
 			 console.log("Enviando: ",data);
-			 var header = defaultHeader();
 			 if(validate()){
-				 invokeRestService($http, header, data, $scope.additionalData.serviceRest, 
-						 $scope.additionalData.resourceRest,$scope.registerOk, defaultHandlerOnError);
+				 restServices.invokeRestService($http, header, data, $scope.additionalData.serviceRest, 
+						 $scope.additionalData.resourceRest,$scope.registerOk, restServices.defaultHandlerOnError);
 			 }else{
 				 getErrorMessage();
 			 }
@@ -69,4 +76,7 @@ angular.module('tp-dapp-eiroa-lando')
 				}
 
 			}
+			
+			
+			
   });

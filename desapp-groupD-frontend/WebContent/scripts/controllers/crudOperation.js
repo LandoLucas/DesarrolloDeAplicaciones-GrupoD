@@ -7,7 +7,7 @@
  */
 var app = angular.module('tp-dapp-eiroa-lando');
 app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
-		$rootScope, growl,globalService,dialogs,$translate) {
+		$rootScope, growl,globalService,dialogs,$translate,restServices) {
 	globalService.setInNewOperation()
 	$scope.isOutcome = $rootScope.newOutcome;
 	if ($rootScope.editingOperation) {
@@ -100,8 +100,8 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 	
 	$scope.inicializarVista = function() {
 		
-		invokeGetCategories($http, {}, $scope.getCategoriesOk,
-				defaultHandlerOnError);
+		restServices.invokeGetCategories($http, {}, $scope.getCategoriesOk,
+				restServices.defaultHandlerOnError);
 		$scope.subCategories=null;
 		$scope.concepts=null;
 		$scope.categorySelected=null;
@@ -138,8 +138,8 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 	$scope.registerOperation = function() {
 		var data = $scope.populateParams();
 		if(validate()){
-			invokeRegisterOperation($http, data, $scope.registerOperationOk,
-					defaultHandlerOnError);
+			restServices.invokeRegisterOperation($http, data, $scope.registerOperationOk,
+					restServices.defaultHandlerOnError);
 		}else{
 			getErrorMessage();
 		}
@@ -167,8 +167,8 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		if(validate()){
 			var data = $scope.populateParams();
 			data.id = $rootScope.operationToEdit.id;
-			invokeUpdateOperation($http, data, $scope.updateOperationOk,
-					defaultHandlerOnError);
+			restServices.invokeUpdateOperation($http, data, $scope.updateOperationOk,
+					restServices.defaultHandlerOnError);
 		}else{
 			getErrorMessage();
 		
