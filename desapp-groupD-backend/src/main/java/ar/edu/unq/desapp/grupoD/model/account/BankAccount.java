@@ -14,16 +14,19 @@ public class BankAccount extends Account {
 
 	private double amount;
 	private int operationID;
-//	private Operation operation;
 	
 	@Override
 	public void bill(Operation operation) {
 		new BankAccount(operation);
 	}
 	
+	public BankAccount(double amount, int operationID) {
+		this.amount = amount;
+		this.operationID = operationID;
+	}
+
 	public BankAccount(Operation operation) {
 		this.operationID = operation.getOperationID();
-//		this.operation = operation;
 		this.amount = operation.getAmount();
 		setBalance(this.amount, operation);
 	}

@@ -46,11 +46,6 @@ GenericRepository<Operation> {
 		Query query = getHibernateTemplate().getSessionFactory()
 				.getCurrentSession().createQuery(hql);
 		return query.list();
-//		Criteria criteria = getHibernateTemplate().getSessionFactory()
-//				.getCurrentSession().createCriteria(Operation.class);
-//		criteria.add(Restrictions.like("isIncome",isIncome ));
-//		
-//		return criteria.list();
 	}
 
 }

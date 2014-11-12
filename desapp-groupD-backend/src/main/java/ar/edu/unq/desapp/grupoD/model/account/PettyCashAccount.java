@@ -18,9 +18,15 @@ public class PettyCashAccount extends Account {
 	@Override
 	public void bill(Operation operation) {
 		new PettyCashAccount(operation);
-		
 	}
-	
+
+	public PettyCashAccount(double amount, int operationID) {
+		this.amount = amount;
+		this.operationID = operationID;
+	}
+
+
+
 	protected PettyCashAccount (Operation operation) {
 		this.operationID = operation.getOperationID();
 		this.amount = operation.getAmount();

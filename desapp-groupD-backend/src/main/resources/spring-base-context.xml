@@ -163,4 +163,10 @@
 		<property name="receiptTypeBService" ref="receiptTypeBService" />
 	</bean>
 	
+	
+	<!-- OBJECT DAO -->
+	<bean id="objectDao" class="ar.edu.unq.desapp.grupoD.persistence.ObjectDao">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	
 </beans>

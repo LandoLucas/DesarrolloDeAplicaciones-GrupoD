@@ -248,8 +248,20 @@ public class Operation {
 		this.paymentType.bill(this);
 	}
 	
-	
-	
+	public Operation(DateTime date, int operationID, double amount,
+			boolean isIncome, String shift, Category category,
+			SubCategory subcategory, Concept concept, PaymentType paymentType) {
+		this.date = date;
+		this.operationID = operationID;
+		this.amount = amount;
+		this.isIncome = isIncome;
+		this.shift = shift;
+		this.category = category;
+		this.subcategory = subcategory;
+		this.concept = concept;
+		this.paymentType = paymentType;
+	}
+
 	public Operation(){
 	}
 }

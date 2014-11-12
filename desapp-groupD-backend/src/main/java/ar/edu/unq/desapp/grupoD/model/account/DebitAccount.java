@@ -20,8 +20,12 @@ public class DebitAccount extends Account {
 	private int timeToCredit;
 	private int operationID;
 	
-//	private Operation operation;
-	
+	public DebitAccount(double amount, int timeToCredit, int operationID) {
+		this.amount = amount;
+		this.timeToCredit = timeToCredit;
+		this.operationID = operationID;
+	}
+
 	@Override
 	public void bill(Operation operation) {
 		new DebitAccount(operation);
@@ -30,7 +34,6 @@ public class DebitAccount extends Account {
 	
 	public DebitAccount(Operation operation) {
 		this.operationID = operation.getOperationID();
-//		this.operation = operation;
 		this.amount = operation.getAmount();
 		setBalance(this.amount, operation);
 		this.setTimeToCredit(operation);
@@ -40,13 +43,6 @@ public class DebitAccount extends Account {
 		timeToCredit = operation.returnPaymentType().getTimeToCredit();
 	}
 	
-//	public Operation generateCredit() throws InvalidAmountException{
-//		//Creates a new operation that register the Credit movement from the DebitAccount to the BankAccount 
-//		return new Operation( new DateTime(), this.getAmount(),
-//					true, operation.getShift(), operation.getCategory() , operation.getPaymentType());
-//		//balance = balance - operation.getAmount(); 
-//	} 
-
 	public static void setBalance(double newAmount, Operation operation) {
 		if (operation.isIncome())
 			balance = balance + newAmount;
