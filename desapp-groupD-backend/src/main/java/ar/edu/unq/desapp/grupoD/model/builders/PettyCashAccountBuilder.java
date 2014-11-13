@@ -6,7 +6,7 @@ public class PettyCashAccountBuilder implements ArquitecturalTestBuilder<PettyCa
 
 	@Override
 	public PettyCashAccount any() {
-		return new PettyCashAccount(10, 2);
+		return new PettyCashAccount(10);
 	}
 
 	

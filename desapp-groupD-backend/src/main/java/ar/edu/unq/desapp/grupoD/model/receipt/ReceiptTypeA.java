@@ -1,6 +1,8 @@
 package ar.edu.unq.desapp.grupoD.model.receipt;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 import org.joda.time.DateTime;
 
@@ -16,6 +18,10 @@ public class ReceiptTypeA extends Receipt {
 	private double IIBB;
 	private double gravado;
 	private double noGravado;
+
+	@Id
+	@GeneratedValue
+	private int id;
 	
 	/**
 	 * A type A receipt whose final import is calculated based on its taxes

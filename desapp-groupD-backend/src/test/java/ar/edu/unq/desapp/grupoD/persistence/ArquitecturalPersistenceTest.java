@@ -40,6 +40,7 @@ public class ArquitecturalPersistenceTest extends AbstractTransactionalJUnit4Spr
 		this.dao = dao;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Test
 	public void testEntities() throws Exception {
 		Class[] entities = getClasses(ENTITIES_PACKAGE_NAME);
@@ -52,7 +53,6 @@ public class ArquitecturalPersistenceTest extends AbstractTransactionalJUnit4Spr
 	}
 	
 	private void checkPersistency(Object entity) throws Exception{
-		System.out.println(dao.findAll().size() + "¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿");
 		dao.save(entity);
 		List<Object> allEntities = dao.findAll(entity.getClass());
 		assertFalse(allEntities.isEmpty());

@@ -45,18 +45,4 @@ public class BankAccountTest {
 		BankAccount.resetBalance();
 	}
 	
-	@Test
-	public void TestGetOperationID(){
-		double amount = 10;
-		int operationID = 1;
-		Operation operation = mock(Operation.class);
-		when(operation.getOperationID()).thenReturn(operationID);
-		when(operation.getAmount()).thenReturn(amount);
-		
-		BankAccount bankAccount = new BankAccount(operation);
-		
-		assertSame(operationID , bankAccount.getOperationID());
-		
-		BankAccount.resetBalance();
-	}
 }

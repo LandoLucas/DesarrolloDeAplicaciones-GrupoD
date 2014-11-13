@@ -95,18 +95,6 @@ public class ReceiptsTest {
 
 	
 	@Test
-	public void getAndSetOperationID() throws InvalidReceiptNumberException{
-		ReceiptBuilder receiptBuilder = new ReceiptBuilder();
-		Receipt receipt = receiptBuilder.build();
-		int operationID = 12;
-		
-		receipt.setOperationID(operationID);
-		
-		assertEquals(operationID , receipt.getOperationID());
-		
-	}
-	
-	@Test
 	public void newReceiptTypeATest() throws InvalidReceiptNumberException{
 		DateTime date = new DateTime();
 		int receiptNumber = 1;

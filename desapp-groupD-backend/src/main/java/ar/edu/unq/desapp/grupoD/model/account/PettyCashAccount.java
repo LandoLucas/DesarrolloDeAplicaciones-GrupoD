@@ -1,6 +1,9 @@
 package ar.edu.unq.desapp.grupoD.model.account;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 import ar.edu.unq.desapp.grupoD.model.Operation;
 
@@ -13,22 +16,23 @@ public class PettyCashAccount extends Account {
 	private static double balance = 0;
 
 	private double amount;
-	private int operationID;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	private int id;
 	
 	@Override
 	public void bill(Operation operation) {
 		new PettyCashAccount(operation);
 	}
 
-	public PettyCashAccount(double amount, int operationID) {
+	public PettyCashAccount(double amount) {
 		this.amount = amount;
-		this.operationID = operationID;
 	}
 
 
 
 	protected PettyCashAccount (Operation operation) {
-		this.operationID = operation.getOperationID();
 		this.amount = operation.getAmount();
 		setBalance(this.amount, operation);
 	}
@@ -55,7 +59,4 @@ public class PettyCashAccount extends Account {
 		return amount;
 	}
 
-	public int getOperationID() {
-		return operationID;
-	}
 }

@@ -1,6 +1,8 @@
 package ar.edu.unq.desapp.grupoD.model.receipt;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 import org.joda.time.DateTime;
 
@@ -12,6 +14,10 @@ import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
 @Entity
 public class ReceiptTypeB extends Receipt {
 
+	@Id
+	@GeneratedValue
+	private int id;
+	
 	/**
 	 * Return a Type B receipt.
 	 * 

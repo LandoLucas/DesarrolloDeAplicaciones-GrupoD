@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -55,7 +56,7 @@ public class Operation {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Concept concept;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@Transient
 	private PaymentType paymentType;
 	
 	private static int next_operation_id = 1;
@@ -250,10 +251,10 @@ public class Operation {
 	
 	public Operation(DateTime date, int operationID, double amount,
 			boolean isIncome, String shift, Category category,
-			SubCategory subcategory, Concept concept, PaymentType paymentType) {
+			SubCategory subcategory, Concept concept, PaymentType paymentType) throws InvalidAmountException {
 		this.date = date;
 		this.operationID = operationID;
-		this.amount = amount;
+		this.setAmount(amount);
 		this.isIncome = isIncome;
 		this.shift = shift;
 		this.category = category;

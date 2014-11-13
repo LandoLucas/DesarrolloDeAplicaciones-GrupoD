@@ -47,19 +47,4 @@ public class PettyCashAccountTest {
 		PettyCashAccount.resetBalance();
 	}
 	
-	@Test
-	public void TestGetOperationID(){
-		double amount = 10;
-		int operationID = 1;
-		Operation operation = mock(Operation.class);
-		when(operation.getOperationID()).thenReturn(operationID);
-		when(operation.getAmount()).thenReturn(amount);
-		
-		PettyCashAccount pettyCashAccount = new PettyCashAccount(operation);
-		
-		assertSame(operationID , pettyCashAccount.getOperationID());
-		
-		PettyCashAccount.resetBalance();
-		
-	}
 }

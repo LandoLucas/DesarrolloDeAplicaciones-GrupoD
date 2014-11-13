@@ -1,7 +1,6 @@
 package ar.edu.unq.desapp.grupoD.services;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 import org.joda.time.DateTime;
 import org.junit.Ignore;
@@ -34,7 +33,7 @@ public class OperationServiceTest extends AbstractTransactionalJUnit4SpringConte
 	
 		operationService.saveOperation(operation);
 		
-		assertEquals( operation , operationService.getOperationByID(operation.getOperationID()));
+		assertTrue( operationService.findAll().contains(operation));
 		PettyCashAccount.resetBalance();
 		Operation.resetCounter();
 	}

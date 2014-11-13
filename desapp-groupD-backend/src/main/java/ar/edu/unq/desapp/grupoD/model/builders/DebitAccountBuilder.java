@@ -6,7 +6,7 @@ public class DebitAccountBuilder implements ArquitecturalTestBuilder<DebitAccoun
 
 	@Override
 	public DebitAccount any() {
-		return new DebitAccount(10 , 2 , 1);
+		return new DebitAccount(10);
 	}
 
 }

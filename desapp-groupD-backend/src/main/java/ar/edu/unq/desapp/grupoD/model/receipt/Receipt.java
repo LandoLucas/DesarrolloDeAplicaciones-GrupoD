@@ -1,7 +1,7 @@
 package ar.edu.unq.desapp.grupoD.model.receipt;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -18,8 +18,7 @@ import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
  * 
  * @author Lucas
  */
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Receipt {
 
 	@Column
@@ -40,9 +39,6 @@ public abstract class Receipt {
 	@Column
 	private double finalImport;
 
-	@Id
-	private int operationID;
-
 	public Receipt(DateTime date, int receiptNumber,
 			String clientOrLegalEntityName, String firmName, String cUIT,
 			String address, int telephoneNumber, double finalImport)
@@ -58,17 +54,6 @@ public abstract class Receipt {
 		this.setFinalImport(finalImport);
 	}
 
-	public int getOperationID() {
-		return operationID;
-	}
-
-	/**
-	 * Sets an optional operationID to correspond this receipt with an operation on the system
-	 * @param operationID
-	 */
-	public void setOperationID(int operationID) {
-		this.operationID = operationID;
-	}
 
 	public DateTime getDate() {
 		return date;
