@@ -47,6 +47,18 @@
 
                             };
                             
+                            $scope.setInBuyingBillTypes = function(){
+                                globalService.setInSellingBillTypes();
+                                $location.path('/comprobantes');
+
+                            };
+                            
+                            $scope.setInSellingBillTypes = function(){
+                                globalService.setInBuyingBillTypes();
+                                $location.path('/comprobantes');
+
+                            };
+                            
                             $scope.setInNewOutcome = function(){
                             	$rootScope.newOutcome = true;
                             }
@@ -58,6 +70,19 @@
 							$scope.inMainMenu = function(){
 								return localStorageService.get('userInMainMenu');
 							}; 
+							
+							$scope.setInABill = function(){
+								globalService.setInABill();
+							}
+							$scope.setInBBill = function(){
+								globalService.setInBBill();
+							}
+							$scope.setInCBill = function(){
+								globalService.setInCBill();
+							}
+							$scope.setInXBill = function(){
+								globalService.setInXBill();
+							}
 
 //							$scope.setInNewOutcome = function(){
 //								$rootScope.editingOperation = false;

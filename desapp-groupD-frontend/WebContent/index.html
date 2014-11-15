@@ -189,30 +189,30 @@
 							ng-show="UserScope.inCargarDatos" 
                                 style="cursor: pointer;">{{ 'INDEX_LOAD_RECEIPT' | translate}}</a>
                         
-							<a class="list-group-item a"
-							ng-click="setInBillTypes()"
+							<a class="list-group-item a"  style="cursor: pointer;"
+							ng-click="setInBuyingBillTypes()"
 							ng-show="UserScope.inBills" 
                            >{{ 'INDEX_BUYING_RECEIPT' | translate}}</a>
 							
-							<a class="list-group-item"
-							ng-click="setInBillTypes()"
+							<a class="list-group-item"  style="cursor: pointer;"
+							ng-click="setInSellingBillTypes()"
 							ng-show="UserScope.inBills"
                               >{{ 'INDEX_SELLING_RECEIPT' | translate}}</a>
 							
 							<a class="list-group-item"
-							ng-click="setTypeA()"
+							ng-click="setInABill()"
 							ng-show="UserScope.inBillTypes" 
                                ng-href="#/newBill">{{ 'INDEX_TYPE_A' | translate}}</a>
 							<a class="list-group-item"
-							ng-click="setTypeB()"
+							ng-click="setInBBill()"
 							ng-show="UserScope.inBillTypes"
                                ng-href="#/newBill">{{ 'INDEX_TYPE_B' | translate}}</a>
 							<a class="list-group-item"
-							ng-click="setTypeC()"
+							ng-click="setInCBill()"
 							ng-show="UserScope.inBillTypes" 
                                ng-href="#/newBill">{{ 'INDEX_TYPE_C' | translate}}</a>
 							<a class="list-group-item"
-							ng-click="setTypeX()"
+							ng-click="setInXBill()"
 							ng-show="UserScope.inBillTypes" 
                                ng-href="#/newBill">{{ 'INDEX_TYPE_X' | translate}}</a>
 
@@ -306,6 +306,7 @@
 	<script src="scripts/controllers/accounts.js"></script>
 	<script src="scripts/controllers/newNameEntity.js"></script>
 	<script src="scripts/controllers/bills.js"></script>
+		<script src="scripts/controllers/crudBill.js"></script>
 	<script src="scripts/controllers/configureCategories.js"></script>
 		<script src="scripts/controllers/crudOperation.js"></script>
 	<script src="scripts/modules/login_module.js"></script>

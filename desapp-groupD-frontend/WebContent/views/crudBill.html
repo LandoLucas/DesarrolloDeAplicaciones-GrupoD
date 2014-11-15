@@ -1,11 +1,167 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<div class="jumbotron">
-		<h4>{{titulo}}</h4>
+		<p class="text-center">{{billType()}}</p>
+		<p class="text-center">{{letter()}}</p>
 	</div>
-	<div class="container-fluid">
-	
-	<label class="control-label">{{ 'UNDER_CONSTRUCTION' | translate}}</label>
 
+	<div class="container-fluid">
+
+		<div class="bs-example">
+			<form name="crudOperation" class="form-horizontal">
+
+
+				<div class="form-group col-xs-6 col-sm-3 col-lg-3">
+					<label for="inputDate" class="control-label col-xs-3">{{'FORM_DATE'
+						| translate}}</label>
+					<div class="col-xs-9">
+						<input type="date" class="form-control" id="inputDate"
+							ng-model="inputDate" style="width:110%">
+					</div>
+				</div>
+				<div class="pull-right form-group col-xs-12 col-sm-4 col-lg-4">
+					<label for="inputNumFc" class="control-label col-xs-3">N°</label>
+					<div class="col-xs-8 ">
+						<input type="number" class="form-control" id="inputNumFc"
+							ng-model="inputNumFc" placeholder="YYYYYYYY">
+					</div>
+				</div>
+				<div class="pull-right form-group col-xs-12 col-sm-3 col-lg-3">
+					<label for="inputSerie" class="control-label col-xs-3">Serie</label>
+					<div class="col-xs-7 ">
+						<input type="number" class="form-control" id="inputSerie"
+							ng-model="inputSerie" placeholder="XXXX">
+					</div>
+				</div>
+
+	<br/>
+<br/>
+
+				<div class="form-group col-xs-12 col-sm-12 col-lg-12">
+					<label for="inputAmount" class="control-label col-xs-2">{{
+						'FORM_AMOUNT' | translate}}</label>
+					<div class="col-xs-8">
+						<input type="number" class="form-control" id="inputAmount"
+							ng-model="inputAmount"
+							placeholder="{{ 'FORM_AMOUNT' | translate}}" disabled>
+					</div>
+				</div>
+
+
+				<div class="form-group ">
+					<label for="selectCategory" class="control-label col-xs-2">{{
+						'FORM_SELECT_CATEGORY' | translate}}</label>
+					<div class="col-xs-10">
+						<div class="form-inline">
+							<div class="form-group">
+								<select ng-model="categorySelected"
+									ng-options="cat as cat.categoryName for cat in categories"
+									ng-change="selectCategory(categorySelected)"
+									class="form-control" style="width: 200px; margin-left: 15px;">
+									<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
+
+								</select>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-info form control"
+									style="padding: 2px; margin-left: 35px;"
+									ng-click="dialogNewCategory()">{{ 'FORM_NEW_CATEGORY'
+									| translate}}</button>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+
+				<div class="form-group ">
+					<label for="selectSubCategory" class="control-label col-xs-2">{{
+						'FORM_SELECT_SUBCATEGORY' | translate}}</label>
+					<div class="col-xs-10">
+						<div class="form-inline ">
+							<div class="form-group">
+								<select ng-model="subcategorySelected"
+									ng-options="sub as sub.subcategoryName for sub in subCategories"
+									ng-change="selectSubcategory(subcategorySelected)"
+									class="form-control" style="width: 200px; margin-left: 15px;">
+									<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
+								</select>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-info form control"
+									style="padding: 2px; margin-left: 35px;"
+									ng-click="dialogNewSubcategory()">{{
+									'FORM_NEW_SUBCATEGORY' | translate}}</button>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="form-group ">
+					<label for="selectConcept" class="control-label col-xs-2">{{
+						'FORM_SELECT_CONCEPT' | translate}}</label>
+					<div class="col-xs-10">
+						<div class="form-inline ">
+							<div class="form-group">
+								<select ng-model="conceptSelected"
+									ng-options="con as con.conceptName for con in concepts"
+									ng-change="selectConcept(conceptSelected)" class="form-control"
+									style="width: 200px; margin-left: 15px;">
+									<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
+								</select>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-info form control"
+									style="padding: 2px; margin-left: 35px;"
+									ng-click="dialogNewConcept()">{{ 'FORM_NEW_CONCEPT' |
+									translate}}</button>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="selectPaymentType" class="control-label col-xs-2">{{
+						'FORM_SELECT_PAYMENT_TYPE' | translate}}</label>
+					<div class="col-xs-3">
+						<select ng-model="paymentSelected"
+							ng-options="ptype as ptype.name for ptype in paymentTypes"
+							ng-change="selectPayment(paymentSelected)" class="form-control">
+							<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="inputShift" class="control-label col-xs-2">{{
+						'FORM_SHIFT' | translate}}</label>
+					<div class="col-xs-3">
+						<input type="text" class="form-control" id="inputShift"
+							ng-model="inputShift" placeholder="{{ 'FORM_SHIFT' | translate}}">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-xs-offset-2 col-xs-10">
+
+						<button type="submit" class="btn btn-success" ng-show="true"
+							ng-click="registerOperation()">{{ 'FORM_CONFIRM' |
+							translate}}</button>
+
+						<button type="submit" class="btn btn-success"
+							ng-click="updateOperation()" ng-show="modoEdicion()">{{
+							'FORM_UPDATE' | translate}}</button>
+
+						<a type="button" class="btn btn-default" ng-href="#cargarDatos">{{
+							'FORM_CANCEL' | translate}}</a>
+					</div>
+				</div>
+
+			</form>
+		</div>
 	</div>
 </div>
 
