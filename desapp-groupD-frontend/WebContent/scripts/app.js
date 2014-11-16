@@ -14,7 +14,7 @@
 				'loginModule', 'contentModule', 'content-mocksModule',
 				'LocalStorageModule', 'ngRoute', 'checklist-model',
 				'angular-growl', 'ui.bootstrap', 'dialogs.main',
-				'pascalprecht.translate','tp-dapp-eiroa-lando.services' ]);
+				'pascalprecht.translate','tp-dapp-eiroa-lando.services','percentage' ]);
 
 		
 		app.config(['$httpProvider', function($httpProvider) {

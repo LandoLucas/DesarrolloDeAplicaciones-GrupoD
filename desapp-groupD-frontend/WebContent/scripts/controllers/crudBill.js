@@ -9,7 +9,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 		'CrudBillCtrl',
 		function($http, $location, $scope, ngTableParams, $filter, $window,
 				$route, $rootScope, growl, dialogs, globalService, $translate,
-				restServices) {
+				restServices,$timeout) {
 
 			$scope.billType = function() {
 				if (globalService.inSellingBillType()) {
@@ -150,6 +150,77 @@ angular.module('tp-dapp-eiroa-lando').controller(
 
 			}
 			
-			$scope.inicializarVista();
+			
+			
+//			$scope.datasets = [1,2];
+//		    $scope.dataset =1;
+		    var billElements = [
+		                {name: "Item", cant: 1,price:0,iva:0.21,total:0}
+		                ];
+		    
 
+		    
+//		    var getData = function() {
+//		        return $scope.dataset === 1 ? data1 : data2;
+//		    };
+		    $scope.addElement = function(){
+		    	var obj = {name:"Item",cant:1,price:0,iva:0.21,total:0};
+		    	billElements.push(obj);
+		    	reloadTable();
+		    }
+		    
+		    
+		    function reloadTable(){
+		    	$timeout( // Advertencia, fix sucio con timeout, se debe a error en ng-table en tableParams.reload
+		    		  function(){
+		    			    $scope.$watch("dataset", function () {
+		    			        $scope.tableParams.reload();
+		    			    });     
+		    		  },
+		    		  0
+		    		);
+		    	$scope.totalAmount = billElements.sum();
+		    }
+		    $scope.removeItem = function(item) { 
+		    	  var index = billElements.indexOf(item)
+		    	  billElements.splice(index, 1);     
+		    	  reloadTable();
+		    	}
+		    
+		    $scope.updateItem = function(item){
+		    	item.$edit = false
+		    	item.total = (item.price * (item.iva +1) ) * item.cant ;
+		    	reloadTable();
+		    }
+		    
+		    
+		    $scope.tableParams = new ngTableParams({
+		        page: 1,            // show first page
+		        count: 10,          // count per page
+		        sorting: {
+		            name: 'asc'     // initial sorting
+		        }
+		    }, {
+		        total: function () { return getData().length; }, // length of data
+		        getData: function($defer, params) {
+		            var filteredData = billElements;
+		            var orderedData = params.sorting() ?
+		                                $filter('orderBy')(filteredData, params.orderBy()) :
+		                                filteredData;
+
+		            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+		        },
+		        $scope: { $data: {} }
+		    });
+		    
+		    Array.prototype.sum = function () {
+		        var total = 0
+		        for ( var i = 0, _len = this.length; i < _len; i++ ) {
+		            total +=  (this[i].price * (this[i].iva +1) ) * this[i].cant  
+		        }
+		        return total
+		    }
+			
+		    $scope.inicializarVista();
+			reloadTable();
 		});

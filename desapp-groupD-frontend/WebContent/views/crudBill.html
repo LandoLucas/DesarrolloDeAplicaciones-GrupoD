@@ -15,7 +15,7 @@
 						| translate}}</label>
 					<div class="col-xs-9">
 						<input type="date" class="form-control" id="inputDate"
-							ng-model="inputDate" style="width:110%">
+							ng-model="inputDate" style="width: 120%">
 					</div>
 				</div>
 				<div class="pull-right form-group col-xs-12 col-sm-4 col-lg-4">
@@ -33,24 +33,13 @@
 					</div>
 				</div>
 
-	<br/>
-<br/>
+				<br /> <br />
+	<legend></legend>
 
-				<div class="form-group col-xs-12 col-sm-12 col-lg-12">
-					<label for="inputAmount" class="control-label col-xs-2">{{
-						'FORM_AMOUNT' | translate}}</label>
-					<div class="col-xs-8">
-						<input type="number" class="form-control" id="inputAmount"
-							ng-model="inputAmount"
-							placeholder="{{ 'FORM_AMOUNT' | translate}}" disabled>
-					</div>
-				</div>
-
-
-				<div class="form-group ">
-					<label for="selectCategory" class="control-label col-xs-2">{{
+				<div class="form-group  col-xs-12 col-sm-12 col-lg-12">
+					<label for="selectCategory" class="control-label col-xs-3">{{
 						'FORM_SELECT_CATEGORY' | translate}}</label>
-					<div class="col-xs-10">
+					<div class="col-xs-8">
 						<div class="form-inline">
 							<div class="form-group">
 								<select ng-model="categorySelected"
@@ -73,10 +62,10 @@
 					</div>
 				</div>
 
-				<div class="form-group ">
-					<label for="selectSubCategory" class="control-label col-xs-2">{{
+				<div class="form-group  col-xs-12 col-sm-12 col-lg-12">
+					<label for="selectSubCategory" class="control-label col-xs-3">{{
 						'FORM_SELECT_SUBCATEGORY' | translate}}</label>
-					<div class="col-xs-10">
+					<div class="col-xs-8">
 						<div class="form-inline ">
 							<div class="form-group">
 								<select ng-model="subcategorySelected"
@@ -98,10 +87,10 @@
 					</div>
 				</div>
 
-				<div class="form-group ">
-					<label for="selectConcept" class="control-label col-xs-2">{{
+				<div class="form-group  col-xs-12 col-sm-12 col-lg-12">
+					<label for="selectConcept" class="control-label col-xs-3">{{
 						'FORM_SELECT_CONCEPT' | translate}}</label>
-					<div class="col-xs-10">
+					<div class="col-xs-8">
 						<div class="form-inline ">
 							<div class="form-group">
 								<select ng-model="conceptSelected"
@@ -123,8 +112,8 @@
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label for="selectPaymentType" class="control-label col-xs-2">{{
+				<div class="form-group col-xs-12 col-sm-12 col-lg-12">
+					<label for="selectPaymentType" class="control-label col-xs-3">{{
 						'FORM_SELECT_PAYMENT_TYPE' | translate}}</label>
 					<div class="col-xs-3">
 						<select ng-model="paymentSelected"
@@ -135,13 +124,65 @@
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label for="inputShift" class="control-label col-xs-2">{{
+				<div class="form-group col-xs-12 col-sm-12 col-lg-12">
+					<label for="inputShift" class="control-label col-xs-3">{{
 						'FORM_SHIFT' | translate}}</label>
 					<div class="col-xs-3">
 						<input type="text" class="form-control" id="inputShift"
 							ng-model="inputShift" placeholder="{{ 'FORM_SHIFT' | translate}}">
 					</div>
+				</div>
+
+				<button type="submit" class="btn btn-success" ng-show="true"
+					ng-click="addElement()" style="margin-bottom: 10px;">
+					<span class="glyphicon glyphicon-plus-sign"></span> Add Item
+				</button>
+
+				<br />
+
+				<table ng-table="tableParams" class="table">
+					<tr ng-repeat="item in $data">
+						<td data-title="'Name'" sortable="'name'"><span
+							ng-if="!item.$edit">{{item.name}}</span>
+							<div ng-if="item.$edit">
+								<input class="form-control" type="text" ng-model="item.name" />
+							</div></td>
+						<td data-title="'Quantity'" width="200" sortable="'quantity'"><span
+							ng-if="!item.$edit">{{item.cant}}</span>
+							<div ng-if="item.$edit">
+								<input class="form-control" type="number" ng-model="item.cant" />
+							</div></td>
+
+						<td data-title="'Price'" width="200" sortable="'price'"><span
+							ng-if="!item.$edit">{{item.price}}</span>
+							<div ng-if="item.$edit">
+								<input class="form-control" type="number" ng-model="item.price" />
+							</div></td>
+
+						<td data-title="'Iva'" width="200" sortable="'iva'"><span
+							ng-if="!item.$edit">{{item.iva | percentage}}</span>
+							<div ng-if="item.$edit">
+								<input class="form-control" type="number" ng-model="item.iva" />
+							</div></td>
+
+						<td data-title="'Total'" width="200" sortable="'total'"><span>{{item.total | currency}}</span>
+						</td>
+						<td data-title="'Actions'" width="200"><a ng-if="!item.$edit"
+							href="" class="btn btn-default btn-xs"
+							ng-click="item.$edit = true">Edit</a> <a ng-if="item.$edit"
+							href="" class="btn btn-primary btn-xs"
+							ng-click=" updateItem(item)">Save</a> <a href=""
+							class="btn btn-danger btn-xs" ng-click="removeItem(item)">Delete</a>
+						</td>
+					</tr>
+				</table>
+
+				<div class="form-group col-xs-12 col-sm-12 col-lg-12">
+					<label for="totalAmount" class="control-label col-xs-2" style="margin-top: 7px;font-size:large;">Total:  </label>
+					<div class="jumbotron" >
+						 <span style="font-size:large; padding: 50px;margin-bottom: 10px;">{{totalAmount | currency}}</span>
+					</div>
+					
 				</div>
 
 				<div class="form-group">

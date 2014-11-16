@@ -26,7 +26,8 @@
 
 <!-- endbuild -->
 </head>
-<body ng-app="tp-dapp-eiroa-lando" class="intelliAuth waiting-for-angular">
+<body ng-app="tp-dapp-eiroa-lando"
+	class="intelliAuth waiting-for-angular">
 
 	<div ng-controller="IndexCtrl" class="content-outer">
 		<!--[if lt IE 7]>
@@ -47,59 +48,60 @@
 							class="icon-bar"></span>
 					</button>
 					<!-- <a class="navbar-brand" href="#">Sistema de gestión</a> -->
-					<a class="navbar-brand" href="#">{{ 'INDEX_APP_NAME' | translate }}</a>
+					<a class="navbar-brand" href="#">{{ 'INDEX_APP_NAME' |
+						translate }}</a>
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right ">
-						<li class="dropdown">
-							<a href=""
-								data-toggle="dropdown" class="dropdown-toggle"
-								title="{{ 'INDEX_SELECT_LANGUAGE' | translate}}">{{ 'INDEX_SELECT_LANGUAGE' | translate}}<b
-									class="caret"></b>
-							</a>
-						  <ul class="dropdown-menu">
-							 <li><a  style="cursor: pointer;" 
-									ng-click="changeLanguage('es')">{{ 'INDEX_SELECT_SPANISH' | translate}}</a>
-							 </li>
-							 <li>
-							 <a style="cursor: pointer;" 
-									ng-click="changeLanguage('en')">{{ 'INDEX_SELECT_ENGLISH' | translate}}</a>
-							 </li>
-						  </ul>
-						</li>
-					
-						<li class="dropdown" ng-show="true">
-							<a href=""
-								data-toggle="dropdown" class="dropdown-toggle"
-								title="{{ 'INDEX_SECTIONS' | translate}}">{{ 'INDEX_SECTIONS' | translate}}<b
-									class="caret"></b>
-							</a>
+						<li class="dropdown"><a href="" data-toggle="dropdown"
+							class="dropdown-toggle"
+							title="{{ 'INDEX_SELECT_LANGUAGE' | translate}}">{{
+								'INDEX_SELECT_LANGUAGE' | translate}}<b class="caret"></b>
+						</a>
 							<ul class="dropdown-menu">
-							<li><a ng-href="#cuentas" ng-show="true"
-									ng-click="restrictedAction()">{{ 'INDEX_ACCOUNTS' | translate}}</a></li>
-							<li class="divider"></li>
+								<li><a style="cursor: pointer;"
+									ng-click="changeLanguage('es')">{{ 'INDEX_SELECT_SPANISH' |
+										translate}}</a></li>
+								<li><a style="cursor: pointer;"
+									ng-click="changeLanguage('en')">{{ 'INDEX_SELECT_ENGLISH' |
+										translate}}</a></li>
+							</ul></li>
+
+						<li class="dropdown" ng-show="true"><a href=""
+							data-toggle="dropdown" class="dropdown-toggle"
+							title="{{ 'INDEX_SECTIONS' | translate}}">{{ 'INDEX_SECTIONS'
+								| translate}}<b class="caret"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a ng-href="#cuentas" ng-show="true"
+									ng-click="restrictedAction()">{{ 'INDEX_ACCOUNTS' |
+										translate}}</a></li>
+								<li class="divider"></li>
 								<li><a ng-href="#cargarDatos" ng-show="true"
-									ng-click="restrictedAction()">{{ 'INDEX_LOAD_DATA' | translate}}</a></li>
+									ng-click="restrictedAction()">{{ 'INDEX_LOAD_DATA' |
+										translate}}</a></li>
 								<li><a ng-href="#sectores" ng-show="true"
-									ng-click="restrictedAction()">{{ 'INDEX_EXPENSES_PROJECTIONS' | translate}}</a></li>							
+									ng-click="restrictedAction()">{{
+										'INDEX_EXPENSES_PROJECTIONS' | translate}}</a></li>
 								<li class="divider"></li>
 								<li><a ng-href="#consolidarCuentas" ng-show="true"
-									ng-click="restrictedAction()">{{ 'INDEX_CONSOL_ACCOUNT' | translate}}</a></li>
+									ng-click="restrictedAction()">{{ 'INDEX_CONSOL_ACCOUNT' |
+										translate}}</a></li>
 								<li class="divider"></li>
-								<li><a  ng-show="true"
-									 ng-href="#/confCats">{{ 'INDEX_CATEGORY_CONF' | translate}}</a></li>
-							</ul>
-						</li>
-						
-						<li><a ng-href="#" ng-click="restrictedAction()"
-							ng-if="true">{{ 'INDEX_HOME' | translate}}</a></li>
+								<li><a ng-show="true" ng-href="#/confCats">{{
+										'INDEX_CATEGORY_CONF' | translate}}</a></li>
+							</ul></li>
+
+						<li><a ng-href="#" ng-click="restrictedAction()" ng-if="true">{{
+								'INDEX_HOME' | translate}}</a></li>
 						<li><a ng-href="#" ng-click="restrictedAction()"
 							ng-hide="true">{{ 'INDEX_LOGIN' | translate}}</a></li>
 						<li><b class="text"
 							style="display: block; padding-top: 15px; color: white;">{{getUsuario()}}</b></li>
 
 						<li class="divider"></li>
-						<li><a href="#" ng-click="launch('confirm')">{{ 'INDEX_LOG_OFF' | translate}}</a></li>
+						<li><a href="#" ng-click="launch('confirm')">{{
+								'INDEX_LOG_OFF' | translate}}</a></li>
 
 
 					</ul>
@@ -112,7 +114,7 @@
 		<div growl></div>
 
 
-		<div class="container"  ng-hide="true">
+		<div class="container" ng-hide="true">
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 					<div class="row clearfix">
@@ -130,9 +132,11 @@
 														</center>
 														<form class="form-signin" ng-submit="submitLogin()">
 															<input type="text" class="form-control" ng-model="user"
-																placeholder="{{ 'NICKNAME' | translate}}" required autofocus> <input
-																type="password" class="form-control"
-																placeholder="{{ 'PASSWORD' | translate}}" ng-model="pass" required>
+																placeholder="{{ 'NICKNAME' | translate}}" required
+																autofocus> <input type="password"
+																class="form-control"
+																placeholder="{{ 'PASSWORD' | translate}}"
+																ng-model="pass" required>
 															<button class="btn btn-lg btn-primary btn-block"
 																type="submit">{{ 'INDEX_lOGIN' | translate}}</button>
 														</form>
@@ -155,73 +159,59 @@
 				<div class="col-sm-3 col-md-2 sidebar">
 
 					<div class="list-group" ng-controller="IndexCtrl">
-                     <span class="glyphicon glyphicon-circle-arrow-left" style="font-size:45px;cursor: pointer;padding: 5px;" 
-                           tooltip-placement="right" tooltip="{{ 'INDEX_GO_BACK' | translate}}" ng-click="goBack()"></span>       
-					<a class="list-group-item"
+						<span class="glyphicon glyphicon-circle-arrow-left"
+							style="font-size: 45px; cursor: pointer; padding: 5px;"
+							tooltip-placement="right"
+							tooltip="{{ 'INDEX_GO_BACK' | translate}}" ng-click="goBack()"></span>
+						<a class="list-group-item"
 							ng-class="{active:isActive('/cuentas')}"
-							ng-show="UserScope.inMainMenu" ng-href="#/cuentas">{{ 'INDEX_ACCOUNTS' | translate}}</a>
-						<a class="list-group-item" ng-show="UserScope.inMainMenu"
-							ng-class="{active:isActive('/cargarDatos')}" ng-href="#/cargarDatos">{{ 'INDEX_LOAD_OUTCOME_INCOME' | translate}}</a>						
-						<a class="list-group-item"
+							ng-show="UserScope.inMainMenu" ng-href="#/cuentas">{{
+							'INDEX_ACCOUNTS' | translate}}</a> <a class="list-group-item"
+							ng-show="UserScope.inMainMenu"
+							ng-class="{active:isActive('/cargarDatos')}"
+							ng-href="#/cargarDatos">{{ 'INDEX_LOAD_OUTCOME_INCOME' |
+							translate}}</a> <a class="list-group-item"
 							ng-class="{active:isActive('/gastosYProyecciones')}"
-							ng-show="UserScope.inMainMenu" ng-href="#/gastosYProyecciones"> {{ 'INDEX_VIEW_EXPENSES_PROJECTIONS' | translate}}</a>
-							
-						<a class="list-group-item"
+							ng-show="UserScope.inMainMenu" ng-href="#/gastosYProyecciones">
+							{{ 'INDEX_VIEW_EXPENSES_PROJECTIONS' | translate}}</a> <a
+							class="list-group-item"
 							ng-class="{active:isActive('/consolidarCuentas')}"
-							ng-show="UserScope.inMainMenu" ng-href="#/consolidarCuentas">{{ 'INDEX_CONSOL_ACCOUNT' | translate}}</a>
-
-						<a class="list-group-item"
+							ng-show="UserScope.inMainMenu" ng-href="#/consolidarCuentas">{{
+							'INDEX_CONSOL_ACCOUNT' | translate}}</a> <a class="list-group-item"
 							ng-class="{active:isActive('/confCats')}"
-							ng-show="UserScope.inMainMenu" ng-href="#/confCats">{{ 'INDEX_CATEGORY_CONF' | translate}}</a>
-                        
-							<a class="list-group-item"
+							ng-show="UserScope.inMainMenu" ng-href="#/confCats">{{
+							'INDEX_CATEGORY_CONF' | translate}}</a> <a class="list-group-item"
 							ng-class="{active:isActive('/ingreso')}"
-							ng-click="setInNewIncome()"
-							ng-show="UserScope.inCargarDatos" ng-href="#/ingreso">{{ 'INDEX_LOAD_INCOME' | translate}}</a>
-							<a class="list-group-item"
-							ng-click="setInNewOutcome()"
+							ng-click="setInNewIncome()" ng-show="UserScope.inCargarDatos"
+							ng-href="#/ingreso">{{ 'INDEX_LOAD_INCOME' | translate}}</a> <a
+							class="list-group-item" ng-click="setInNewOutcome()"
 							ng-class="{active:isActive('/egreso')}"
-							ng-show="UserScope.inCargarDatos" ng-href="#/egreso">{{ 'INDEX_LOAD_OUTCOME' | translate}}</a>
-                        
-							<a class="list-group-item"
-                               ng-click="setInBills()"
-							ng-class="{active:isActive('/comprobantes')}" 
-							ng-show="UserScope.inCargarDatos" 
-                                style="cursor: pointer;">{{ 'INDEX_LOAD_RECEIPT' | translate}}</a>
-                        
-							<a class="list-group-item a"  style="cursor: pointer;"
-							ng-click="setInBuyingBillTypes()"
-							ng-show="UserScope.inBills" 
-                           >{{ 'INDEX_BUYING_RECEIPT' | translate}}</a>
-							
-							<a class="list-group-item"  style="cursor: pointer;"
-							ng-click="setInSellingBillTypes()"
-							ng-show="UserScope.inBills"
-                              >{{ 'INDEX_SELLING_RECEIPT' | translate}}</a>
-							
-							<a class="list-group-item"
-							ng-click="setInABill()"
-							ng-show="UserScope.inBillTypes" 
-                               ng-href="#/newBill">{{ 'INDEX_TYPE_A' | translate}}</a>
-							<a class="list-group-item"
-							ng-click="setInBBill()"
-							ng-show="UserScope.inBillTypes"
-                               ng-href="#/newBill">{{ 'INDEX_TYPE_B' | translate}}</a>
-							<a class="list-group-item"
-							ng-click="setInCBill()"
-							ng-show="UserScope.inBillTypes" 
-                               ng-href="#/newBill">{{ 'INDEX_TYPE_C' | translate}}</a>
-							<a class="list-group-item"
-							ng-click="setInXBill()"
-							ng-show="UserScope.inBillTypes" 
-                               ng-href="#/newBill">{{ 'INDEX_TYPE_X' | translate}}</a>
-
-
-						
-					    <a class="list-group-item"
+							ng-show="UserScope.inCargarDatos" ng-href="#/egreso">{{
+							'INDEX_LOAD_OUTCOME' | translate}}</a> <a class="list-group-item"
+							ng-click="setInBills()"
+							ng-class="{active:isActive('/comprobantes')}"
+							ng-show="UserScope.inCargarDatos" style="cursor: pointer;">{{
+							'INDEX_LOAD_RECEIPT' | translate}}</a> <a class="list-group-item a"
+							style="cursor: pointer;" ng-click="setInBuyingBillTypes()"
+							ng-show="UserScope.inBills">{{
+							'INDEX_BUYING_RECEIPT' | translate}}</a> <a class="list-group-item"
+							style="cursor: pointer;" ng-click="setInSellingBillTypes()"
+							ng-show="UserScope.inBills">{{
+							'INDEX_SELLING_RECEIPT' | translate}}</a> <a class="list-group-item"
+							ng-click="setInABill()" ng-show="UserScope.inBillTypes"
+							ng-href="#/newBill">{{ 'INDEX_TYPE_A' | translate}}</a> <a
+							class="list-group-item" ng-click="setInBBill()"
+							ng-show="UserScope.inBillTypes" ng-href="#/newBill">{{
+							'INDEX_TYPE_B' | translate}}</a> <a class="list-group-item"
+							ng-click="setInCBill()" ng-show="UserScope.inBillTypes"
+							ng-href="#/newBill">{{ 'INDEX_TYPE_C' | translate}}</a> <a
+							class="list-group-item" ng-click="setInXBill()"
+							ng-show="UserScope.inBillTypes" ng-href="#/newBill">{{
+							'INDEX_TYPE_X' | translate}}</a> <a class="list-group-item"
 							ng-class="{active:isActive('/usuarios')}"
-							ng-show="{{m('mod_usuarios')}}" ng-href="#/usuarios">{{ 'INDEX_USERS' | translate}}</a>
-						
+							ng-show="{{m('mod_usuarios')}}" ng-href="#/usuarios">{{
+							'INDEX_USERS' | translate}}</a>
+
 
 					</div>
 				</div>
@@ -261,10 +251,11 @@
 	<script src="vendor/angular-resource/angular-resource.js"></script>
 	<script src="vendor/angular-mocks/angular-mocks.js"></script>
 	<script src="vendor/angular-translate/angular-translate.min.js"></script>
-	
+
 	<!-- <script src="https://rawgithub.com/PascalPrecht/bower-angular-translate-loader-static-files/master/angular-translate-loader-static-files.js"></script> -->
-	<script src="vendor/angular-translate/angular-translate-loader-static-files.min.js"></script>
-	
+	<script
+		src="vendor/angular-translate/angular-translate-loader-static-files.min.js"></script>
+
 	<script src="vendor/angular-cookies/angular-cookies.js"></script>
 	<script src="vendor/angular-sanitize/angular-sanitize.js"></script>
 	<script src="vendor/angular-animate/angular-animate.js"></script>
@@ -287,7 +278,7 @@
 	<script src="vendor/angular-dialog-service/dialogs.js"></script>
 	<script
 		src="vendor/angular-dialog-service/dialogs-default-translations.min.js"></script>
-
+	<script src="vendor/angular-percentage-filter/percentage.js"></script>
 
 
 
@@ -306,13 +297,14 @@
 	<script src="scripts/controllers/accounts.js"></script>
 	<script src="scripts/controllers/newNameEntity.js"></script>
 	<script src="scripts/controllers/bills.js"></script>
-		<script src="scripts/controllers/crudBill.js"></script>
+	<script src="scripts/controllers/crudBill.js"></script>
 	<script src="scripts/controllers/configureCategories.js"></script>
-		<script src="scripts/controllers/crudOperation.js"></script>
+	<script src="scripts/controllers/crudOperation.js"></script>
 	<script src="scripts/modules/login_module.js"></script>
 	<script src="scripts/modules/content_module.js"></script>
 	<script src="scripts/modules/content-mocks_module.js"></script>
 	<script src="scripts/controllers/inicio.js"></script>
+
 
 
 </body>
