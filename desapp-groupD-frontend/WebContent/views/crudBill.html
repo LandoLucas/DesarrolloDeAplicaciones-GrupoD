@@ -34,7 +34,48 @@
 				</div>
 
 				<br /> <br />
-	<legend></legend>
+				<legend></legend>
+
+				<div class="form-group col-xs-12 col-sm-6 col-lg-6">
+					<label for="inputClientSeller" ng-if="isOutcome"
+						class="control-label col-xs-3">{{'FORM_CLIENT' |
+						translate}}</label> <label for="inputClientSeller" ng-if="!isOutcome"
+						class="control-label col-xs-3">{{'FORM_SELLER' |
+						translate}}</label>
+					<div class="col-xs-6">
+						<input type="text" class="form-control" id="inputClientSeller"
+							ng-model="inputClientSeller" placeholder="">
+					</div>
+				</div>
+				
+				<div class="pull-right form-group col-xs-12 col-sm-6 col-lg-6">
+					<label for="inputCuit" class="control-label col-xs-3">CUIT</label>
+					<div class="col-xs-6 ">
+						<input type="number" class="form-control" id="inputCuit"
+							ng-model="inputCuit" placeholder="CUIT">
+					</div>
+				</div>
+				
+				<div class="pull-right form-group col-xs-12 col-sm-6 col-lg-6">
+					<label for="inputPhone" class="control-label col-xs-3">{{'FORM_PHONE' |
+						translate}}</label>
+					<div class="col-xs-6 ">
+						<input type="number" class="form-control" id="inputPhone"
+							ng-model="inputPhone" placeholder="{{'FORM_PHONE' |
+						translate}}">
+					</div>
+				</div>
+				
+				<div class="form-group col-xs-12 col-sm-6 col-lg-6">
+					<label for="inputAddress" class="control-label col-xs-3">{{'FORM_ADDRESS'
+						| translate}}</label>
+					<div class="col-xs-6">
+						<input type="text" style="width: 150%" class="form-control" id="inputAddress"
+							ng-model="inputAddress"
+							placeholder="{{'FORM_ADDRESS'
+						| translate}}">
+					</div>
+				</div>
 
 				<div class="form-group  col-xs-12 col-sm-12 col-lg-12">
 					<label for="selectCategory" class="control-label col-xs-3">{{
@@ -142,18 +183,18 @@
 
 				<table ng-table="tableParams" class="table">
 					<tr ng-repeat="item in $data">
-						<td data-title="'Name'" sortable="'name'"><span
+						<td data-title="'Name'" sortable="'name'" width="300"><span
 							ng-if="!item.$edit">{{item.name}}</span>
 							<div ng-if="item.$edit">
 								<input class="form-control" type="text" ng-model="item.name" />
 							</div></td>
-						<td data-title="'Quantity'" width="200" sortable="'quantity'"><span
+						<td data-title="'Quantity'" sortable="'quantity'"><span
 							ng-if="!item.$edit">{{item.cant}}</span>
 							<div ng-if="item.$edit">
 								<input class="form-control" type="number" ng-model="item.cant" />
 							</div></td>
 
-						<td data-title="'Price'" width="200" sortable="'price'"><span
+						<td data-title="'Price'" width="100" sortable="'price'"><span
 							ng-if="!item.$edit">{{item.price}}</span>
 							<div ng-if="item.$edit">
 								<input class="form-control" type="number" ng-model="item.price" />
@@ -165,8 +206,8 @@
 								<input class="form-control" type="number" ng-model="item.iva" />
 							</div></td>
 
-						<td data-title="'Total'" width="200" sortable="'total'"><span>{{item.total | currency}}</span>
-						</td>
+						<td data-title="'Total'" width="200" sortable="'total'"><span>{{item.total
+								| currency}}</span></td>
 						<td data-title="'Actions'" width="200"><a ng-if="!item.$edit"
 							href="" class="btn btn-default btn-xs"
 							ng-click="item.$edit = true">Edit</a> <a ng-if="item.$edit"
@@ -178,22 +219,32 @@
 				</table>
 
 				<div class="form-group col-xs-12 col-sm-12 col-lg-12">
-					<label for="totalAmount" class="control-label col-xs-2" style="margin-top: 7px;font-size:large;">Total:  </label>
-					<div class="jumbotron" >
-						 <span style="font-size:large; padding: 50px;margin-bottom: 10px;">{{totalAmount | currency}}</span>
+				<label for="totalAmount" class="control-label col-xs-2"
+						style="margin-top: 7px; font-size: large;">Neto: </label>
+					<div class="jumbotron">
+						<span
+							style="font-size: large; padding: 50px; margin-bottom: 10px;">{{totalAmountNoTaxes
+							| currency}}</span>
 					</div>
-					
+					<label for="totalAmount" class="control-label col-xs-2"
+						style="margin-top: 7px; font-size: large;">Total Con IVA: </label>
+					<div class="jumbotron">
+						<span
+							style="font-size: large; padding: 50px; margin-bottom: 10px;">{{totalAmount
+							| currency}}</span>
+					</div>
+
 				</div>
 
 				<div class="form-group">
 					<div class="col-xs-offset-2 col-xs-10">
 
 						<button type="submit" class="btn btn-success" ng-show="true"
-							ng-click="registerOperation()">{{ 'FORM_CONFIRM' |
+							ng-click="registerBill()">{{ 'FORM_CONFIRM' |
 							translate}}</button>
 
 						<button type="submit" class="btn btn-success"
-							ng-click="updateOperation()" ng-show="modoEdicion()">{{
+							ng-click="updateBill()" ng-show="modoEdicion()">{{
 							'FORM_UPDATE' | translate}}</button>
 
 						<a type="button" class="btn btn-default" ng-href="#cargarDatos">{{

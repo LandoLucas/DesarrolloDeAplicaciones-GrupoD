@@ -114,6 +114,13 @@
 		        			invokeRestService(cnxHttp, header, data, 'operation', 'new',
 		        					handlerOnSuccess, handlerOnError);
 		        		}
+		        		
+		        		//==Rest Bills==\\
+		        		function invokeRegisterBill(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+		        			var header = defaultHeader();
+		        			invokeRestService(cnxHttp, header, data, 'bill', 'new',
+		        					handlerOnSuccess, handlerOnError);
+		        		}
 
 
 		        		// ===Rest categorias ===
@@ -207,7 +214,8 @@
 		                 invokeNewSubcategory: invokeNewSubcategory,
 		                 invokeDeleteSubcategory: invokeDeleteSubcategory,
 		                 invokeDeleteConcept: invokeDeleteConcept,
-		                 invokeRegistrarUsuario: invokeRegistrarUsuario
+		                 invokeRegistrarUsuario: invokeRegistrarUsuario,
+		                 invokeRegisterBill: invokeRegisterBill
 		                 
 		               };
 		             }

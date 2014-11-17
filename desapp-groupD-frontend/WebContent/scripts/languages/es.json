@@ -48,6 +48,8 @@
 														
 														"FORM_DATE": "Fecha",
 														"FORM_CODE": "Código",
+														"FORM_ADDRESS": "Dirección",
+														"FORM_PHONE": "Teléfono",
 														"FORM_NICK": "Nick",
 														"FORM_SURNAME": "Apellido",
 														"FORM_AMOUNT": "Monto",
@@ -72,9 +74,12 @@
 														"FORM_SEARCH": "Buscar",
 														"FORM_SAVE": "Guardar",
 														"FORM_SHIFT": "Turno",
+														"FORM_CLIENT": "Cliente",
+											 	        "FORM_SELLER": "Vendedor",
 														
 														"FORM_ERROR_AMOUNT_REQUIRED": "Error, monto requerido",
 														"FORM_ERROR_NAME_REQUIRED": "Error, Nombre requerido",
+														"FORM_ERROR_DATE_REQUIRED": "Error, Fecha requerida",
 														
 														"DIALOG_CATEGORY_REGISTER_SUCCESS": "Categoría registrada: ",
 														"DIALOG_CATEGORY_DELETE_TITLE": "¿Desea borrar la categoría ",

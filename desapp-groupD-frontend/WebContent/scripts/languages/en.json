@@ -46,6 +46,8 @@
 												"TITLE_USERS": "Users",
 												
 												"FORM_DATE": "Date",
+												"FORM_ADDRESS": "Address",
+												"FORM_PHONE": "Phone",
 												"FORM_CODE": "Code",
 												"FORM_NICK": "Nick",
 												"FORM_SURNAME": "Surname",
@@ -71,11 +73,14 @@
 												"FORM_SEARCH": "Search",
 												"FORM_SAVE": "Save",
 												"FORM_SHIFT": "Shift",
+												"FORM_CLIENT": "Client",
+												"FORM_SELLER": "Seller",
 												
 												
 												"DEFAULT_ERROR": "An unexpected error has ocurred",
 												"FORM_ERROR_AMOUNT_REQUIRED": "Error, amount required",
 												"FORM_ERROR_NAME_REQUIRED": "Error, Name required",
+												"FORM_ERROR_DATE_REQUIRED": "Error, Date Required",
 												
 												"DIALOG_CATEGORY_REGISTER_SUCCESS": "Category registered",
 												

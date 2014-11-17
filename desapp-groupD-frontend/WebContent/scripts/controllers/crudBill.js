@@ -13,11 +13,16 @@ angular.module('tp-dapp-eiroa-lando').controller(
 
 			$scope.billType = function() {
 				if (globalService.inSellingBillType()) {
+					$scope.isOutcome =false;
 					return 'Comprobante de Compra';
 				} else {
+					
+					$scope.isOutcome =true;
 					return 'Comprobante de Venta';
 				}
 			}
+			
+		  
 
 			$scope.paymentTypes = [ {
 				code : 0,
@@ -31,14 +36,10 @@ angular.module('tp-dapp-eiroa-lando').controller(
 			} ];
 
 			$scope.letter = function() {
-				if (globalService.UserScope.inABill)
-					return 'A';
-				if (globalService.UserScope.inBBill)
-					return 'B';
-				if (globalService.UserScope.inCBill)
-					return 'C';
-				if (globalService.UserScope.inXBill)
-					return 'X';
+				if (globalService.UserScope.inABill){$scope.billLetter = 'a';return 'A';;}
+				if (globalService.UserScope.inBBill){$scope.billLetter = 'b';return 'B';}
+				if (globalService.UserScope.inCBill){$scope.billLetter = 'c';return 'C';}
+				if (globalService.UserScope.inXBill){$scope.billLetter = 'x';return 'X';}
 			}
 			$scope.dialog = function(data, messageSuccess, extraMessage) {
 				var dlg = dialogs.create('views/newNameEntity.html',
@@ -152,17 +153,12 @@ angular.module('tp-dapp-eiroa-lando').controller(
 			
 			
 			
-//			$scope.datasets = [1,2];
-//		    $scope.dataset =1;
 		    var billElements = [
 		                {name: "Item", cant: 1,price:0,iva:0.21,total:0}
 		                ];
 		    
 
 		    
-//		    var getData = function() {
-//		        return $scope.dataset === 1 ? data1 : data2;
-//		    };
 		    $scope.addElement = function(){
 		    	var obj = {name:"Item",cant:1,price:0,iva:0.21,total:0};
 		    	billElements.push(obj);
@@ -179,7 +175,8 @@ angular.module('tp-dapp-eiroa-lando').controller(
 		    		  },
 		    		  0
 		    		);
-		    	$scope.totalAmount = billElements.sum();
+		    	$scope.totalAmount = billElements.sumTotal();
+		    	$scope.totalAmountNoTaxes = billElements.sumTotalNoTaxes();
 		    }
 		    $scope.removeItem = function(item) { 
 		    	  var index = billElements.indexOf(item)
@@ -213,13 +210,93 @@ angular.module('tp-dapp-eiroa-lando').controller(
 		        $scope: { $data: {} }
 		    });
 		    
-		    Array.prototype.sum = function () {
+		    Array.prototype.sumTotal = function () {
 		        var total = 0
 		        for ( var i = 0, _len = this.length; i < _len; i++ ) {
 		            total +=  (this[i].price * (this[i].iva +1) ) * this[i].cant  
 		        }
 		        return total
 		    }
+		    Array.prototype.sumTotalNoTaxes = function () {
+		        var total = 0
+		        for ( var i = 0, _len = this.length; i < _len; i++ ) {
+		            total +=  this[i].price   * this[i].cant  
+		        }
+		        return total
+		    }
+		    
+		    $scope.registerBill = function() {
+				var data = $scope.populateParams();
+				if(validate()){
+					restServices.invokeRegisterBill($http, data, $scope.registerBillOk,
+							restServices.defaultHandlerOnError);
+				}else{
+					getErrorMessage();
+				}
+				
+			}
+
+			$scope.updateBillOk = function(response) {
+					growl.info("Operacion actualizada.");
+					$location.path('/cargarDatos');
+			}
+
+			$scope.populateParams = function() {
+				var data = {
+					letter: $scope.billLetter,
+					date : $scope.inputDate,
+					serie: $scope.inputSerie,
+					billNumber: $scope.inputBillNumber,
+					client_seller: $scope.inputClientSeller,
+					phone: $scope.inputPhone,
+					cuit: $scope.inputCuit,
+					totalNoTaxes: $scope.totalAmountNoTaxes,
+					total: $scope.totalAmount,
+					category : $scope.categorySelected.categoryName,
+					subCategory : $scope.subcategorySelected.subcategoryName,
+					concept: $scope.conceptSelected.conceptName,
+					paymentCode : $scope.paymentSelected.code,
+					shift : $scope.inputShift,
+					isOutcome: $scope.isOutcome,
+					address: $scope.inputAddress,
+					items: billElements
+				};
+				return data;
+			}
+		    
+
+
+		    
+
+			
+			function validate(){
+				if ($scope.inputDate == null || $scope.inputDate== ""){
+					return false;
+				}
+				return true;
+			}
+			
+			function getErrorMessage(){
+				if ($scope.inputDate == null || $scope.inputDate== ""){
+					$translate('FORM_ERROR_DATE_REQUIRED').then(function (text) {
+						growl.error(text);
+					});
+				}
+			}
+
+			$scope.updateBill= function() {
+				if(validate()){
+					var data = $scope.populateParams();
+					data.id = $rootScope.BillToEdit.id;
+					restServices.invokeUpdateBill($http, data, $scope.updateBillOk,
+							restServices.defaultHandlerOnError);
+				}else{
+					getErrorMessage();
+				
+				}
+			}
+
+
 			
 		    $scope.inicializarVista();
 			reloadTable();
