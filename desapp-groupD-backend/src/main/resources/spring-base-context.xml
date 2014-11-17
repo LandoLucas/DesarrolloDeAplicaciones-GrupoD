@@ -140,6 +140,15 @@
 		<property name="operationService" ref="operationService"/>
 	</bean>
     
+	
+	<!-- Bill rest -->
+	
+	<bean id="billRest" class="ar.edu.unq.desapp.grupoD.rest.BillRest">
+		<property name="receiptTypeAService" ref="receiptTypeAService" />
+		<property name="receiptTypeBService" ref="receiptTypeBService" />
+		<property name="receiptTypeCService" ref="receiptTypeCService" />
+		<property name="receiptTypeXService" ref="receiptTypeXService" />
+	</bean>
     <!-- RECEIPT TYPE A -->
     <bean id="receiptADao" class="ar.edu.unq.desapp.grupoD.persistence.ReceiptADao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
@@ -163,6 +172,21 @@
 		<property name="receiptTypeBService" ref="receiptTypeBService" />
 	</bean>
 	
+		<!-- RECEIPT TYPE C -->
+    <bean id="receiptCDao" class="ar.edu.unq.desapp.grupoD.persistence.ReceiptCDao">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="receiptTypeCService" class="ar.edu.unq.desapp.grupoD.services.ReceiptTypeCService">
+		<property name="receiptCDao" ref="receiptCDao" />
+	</bean>
+
+			<!-- RECEIPT TYPE X -->
+    <bean id="receiptXDao" class="ar.edu.unq.desapp.grupoD.persistence.ReceiptXDao">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="receiptTypeXService" class="ar.edu.unq.desapp.grupoD.services.ReceiptTypeXService">
+		<property name="receiptXDao" ref="receiptXDao" />
+	</bean>
 	
 	<!-- OBJECT DAO -->
 	<bean id="objectDao" class="ar.edu.unq.desapp.grupoD.persistence.ObjectDao">

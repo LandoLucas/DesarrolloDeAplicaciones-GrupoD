@@ -30,6 +30,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 			<ref bean="subcategoryRest" />
 			<ref bean="operationsRest" />
 			<ref bean="receiptTypeARest" />
+			<ref bean="billRest" />
 			<ref bean="receiptTypeBRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
