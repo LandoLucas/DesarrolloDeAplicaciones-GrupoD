@@ -7,6 +7,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
@@ -53,7 +55,7 @@ public class BillRest {
 	@POST
 	@Path("/new")
 	public Response newBill(@FormParam("letter") String letter,
-			@FormParam("date") DateTime date, 
+			@FormParam("date") String dateReceived, 
 			@FormParam("serie") String serie,
 			@FormParam("billNumber") int billNumber,
 			@FormParam("client_seller") String clientSeller,
@@ -67,7 +69,9 @@ public class BillRest {
 			@FormParam("totalNoTaxes") double totalSinImpuestos,
 			@FormParam("noGravado") double noGravado)
 			throws InvalidReceiptNumberException {
-
+		//Parse date
+				DateTimeFormatter dateDecoder = DateTimeFormat.forPattern("yyyy-MM-dd");		
+				DateTime date = dateDecoder.parseDateTime(dateReceived);
 		Receipt bill;
 		switch (letter) {
 		case "a":
