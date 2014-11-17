@@ -274,6 +274,11 @@
 				}
 			};
 		} ]);
+		app.filter('numberFixedLen', function () {
+		    return function(a,b){
+		        return(1e8+a+"").slice(-b)
+		    }
+		});
 
 		app.config(function($routeProvider) {
 

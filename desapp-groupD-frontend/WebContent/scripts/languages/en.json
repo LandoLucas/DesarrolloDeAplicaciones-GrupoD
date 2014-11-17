@@ -44,6 +44,8 @@
 												"TITLE_NEW_SUBCATEGORY": "New subcategory",
 												"TITLE_CONFIGURE_CATEGORIES": "Categories",
 												"TITLE_USERS": "Users",
+												"TITLE_INCOME_BILL": "Income Bill",
+												"TITLE_OUTCOME_BILL":"Outcome Bill",
 												
 												"FORM_DATE": "Date",
 												"FORM_ADDRESS": "Address",
@@ -75,12 +77,20 @@
 												"FORM_SHIFT": "Shift",
 												"FORM_CLIENT": "Client",
 												"FORM_SELLER": "Seller",
+												"FORM_QUANTITY": "Quantity",
+												"FORM_PRICE": "Price",
+												"FORM_ADDITEM": "Add item",
 												
 												
 												"DEFAULT_ERROR": "An unexpected error has ocurred",
 												"FORM_ERROR_AMOUNT_REQUIRED": "Error, amount required",
 												"FORM_ERROR_NAME_REQUIRED": "Error, Name required",
 												"FORM_ERROR_DATE_REQUIRED": "Error, Date Required",
+												"FORM_ERROR_BILLNUM_REQUIRED": "Error, Bill number required",
+												"FORM_ERROR_SERIE_REQUIRED": "Error, Bill number serie required",
+												"FORM_ERROR_ITEM_REQUIRED": "Error, at least 1 item is required",
+												"FORM_ERROR_CATEGORY_REQUIRED": "Error, selecting a category is required",
+												"FORM_ERROR_PAYMENTTYPE_REQUIRED": "Error, payment type required",
 												
 												"DIALOG_CATEGORY_REGISTER_SUCCESS": "Category registered",
 												

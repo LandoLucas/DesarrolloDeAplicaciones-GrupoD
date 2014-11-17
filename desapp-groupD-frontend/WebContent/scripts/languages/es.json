@@ -45,6 +45,8 @@
 														"TITLE_NEW_SUBCATEGORY": "Nueva subcategoría",
 														"TITLE_CONFIGURE_CATEGORIES": "Configuración de categorias",
 														"TITLE_USERS": "Usuarios",
+														"TITLE_INCOME_BILL": "Comprobante de Venta",
+														"TITLE_OUTCOME_BILL":"Comprobante de Compra",
 														
 														"FORM_DATE": "Fecha",
 														"FORM_CODE": "Código",
@@ -76,10 +78,18 @@
 														"FORM_SHIFT": "Turno",
 														"FORM_CLIENT": "Cliente",
 											 	        "FORM_SELLER": "Vendedor",
+											 	        "FORM_QUANTITY": "Cantidad",
+														"FORM_PRICE": "Precio",
+														"FORM_ADDITEM": "Agregar item",
 														
 														"FORM_ERROR_AMOUNT_REQUIRED": "Error, monto requerido",
 														"FORM_ERROR_NAME_REQUIRED": "Error, Nombre requerido",
 														"FORM_ERROR_DATE_REQUIRED": "Error, Fecha requerida",
+														"FORM_ERROR_BILLNUM_REQUIRED": "Error, número de comprobante requerido",
+														"FORM_ERROR_SERIE_REQUIRED": "Error, número de serie requerido",
+														"FORM_ERROR_ITEM_REQUIRED": "Error, el comprobante debe tener al menos 1 item",
+														"FORM_ERROR_CATEGORY_REQUIRED": "Error, se requiere asociar a una categoría",
+														"FORM_ERROR_PAYMENTTYPE_REQUIRED": "Error, se requiere una forma de pago",
 														
 														"DIALOG_CATEGORY_REGISTER_SUCCESS": "Categoría registrada: ",
 														"DIALOG_CATEGORY_DELETE_TITLE": "¿Desea borrar la categoría ",

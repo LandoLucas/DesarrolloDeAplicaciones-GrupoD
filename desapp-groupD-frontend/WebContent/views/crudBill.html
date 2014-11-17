@@ -1,7 +1,8 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<div class="jumbotron">
-		<p class="text-center">{{billType()}}</p>
-		<p class="text-center">{{letter()}}</p>
+		<p class="text-center" ng-if="isOutcome">{{'TITLE_INCOME_BILL'| translate}}</p>
+		<p class="text-center" ng-if="!isOutcome">{{'TITLE_OUTCOME_BILL'| translate}}</p>
+		<p class="text-center" style="color: blue; font-size: x-large; font-family:initial; font-weight: bold;">{{letter()}}</p>
 	</div>
 
 	<div class="container-fluid">
@@ -44,14 +45,14 @@
 						translate}}</label>
 					<div class="col-xs-6">
 						<input type="text" class="form-control" id="inputClientSeller"
-							ng-model="inputClientSeller" placeholder="">
+							ng-model="inputClientSeller" placeholder="ENTERPRISE SRL">
 					</div>
 				</div>
 				
 				<div class="pull-right form-group col-xs-12 col-sm-6 col-lg-6">
 					<label for="inputCuit" class="control-label col-xs-3">CUIT</label>
 					<div class="col-xs-6 ">
-						<input type="number" class="form-control" id="inputCuit"
+						<input type="number" ng-pattern="/^[0-9]+$/" class="form-control" id="inputCuit"
 							ng-model="inputCuit" placeholder="CUIT">
 					</div>
 				</div>
@@ -113,7 +114,7 @@
 									ng-options="sub as sub.subcategoryName for sub in subCategories"
 									ng-change="selectSubcategory(subcategorySelected)"
 									class="form-control" style="width: 200px; margin-left: 15px;">
-									<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
+									<option value="" label="{{'SELECT_OPTION' | translate}}"></option>
 								</select>
 							</div>
 							<div class="form-group">
@@ -176,44 +177,44 @@
 
 				<button type="submit" class="btn btn-success" ng-show="true"
 					ng-click="addElement()" style="margin-bottom: 10px;">
-					<span class="glyphicon glyphicon-plus-sign"></span> Add Item
+					<span class="glyphicon glyphicon-plus-sign"></span> {{ 'FORM_ADDITEM' | translate}}
 				</button>
 
 				<br />
 
 				<table ng-table="tableParams" class="table">
 					<tr ng-repeat="item in $data">
-						<td data-title="'Name'" sortable="'name'" width="300"><span
+						<td data-title="tableColumns['item']" sortable="'name'" width="300"><span
 							ng-if="!item.$edit">{{item.name}}</span>
 							<div ng-if="item.$edit">
 								<input class="form-control" type="text" ng-model="item.name" />
 							</div></td>
-						<td data-title="'Quantity'" sortable="'quantity'"><span
+						<td data-title="tableColumns['cant']" sortable="'quantity'"><span
 							ng-if="!item.$edit">{{item.cant}}</span>
 							<div ng-if="item.$edit">
 								<input class="form-control" type="number" ng-model="item.cant" />
 							</div></td>
 
-						<td data-title="'Price'" width="100" sortable="'price'"><span
+						<td data-title="tableColumns['price']" width="100" sortable="'price'"><span
 							ng-if="!item.$edit">{{item.price}}</span>
 							<div ng-if="item.$edit">
 								<input class="form-control" type="number" ng-model="item.price" />
 							</div></td>
 
-						<td data-title="'Iva'" width="200" sortable="'iva'"><span
+						<td data-title="tableColumns['iva']" width="200" sortable="'iva'"><span
 							ng-if="!item.$edit">{{item.iva | percentage}}</span>
 							<div ng-if="item.$edit">
 								<input class="form-control" type="number" ng-model="item.iva" />
 							</div></td>
 
-						<td data-title="'Total'" width="200" sortable="'total'"><span>{{item.total
+						<td data-title="tableColumns['total']" width="200" sortable="'total'"><span>{{item.total
 								| currency}}</span></td>
-						<td data-title="'Actions'" width="200"><a ng-if="!item.$edit"
+						<td data-title="tableColumns['actions']" width="200"><a ng-if="!item.$edit"
 							href="" class="btn btn-default btn-xs"
-							ng-click="item.$edit = true">Edit</a> <a ng-if="item.$edit"
+							ng-click="item.$edit = true">{{'FORM_EDIT' | translate}}</a> <a ng-if="item.$edit"
 							href="" class="btn btn-primary btn-xs"
-							ng-click=" updateItem(item)">Save</a> <a href=""
-							class="btn btn-danger btn-xs" ng-click="removeItem(item)">Delete</a>
+							ng-click=" updateItem(item)">{{'FORM_SAVE' | translate}}</a> <a href=""
+							class="btn btn-danger btn-xs" ng-click="removeItem(item)">{{'FORM_DELETE' | translate}}</a>
 						</td>
 					</tr>
 				</table>
