@@ -235,6 +235,11 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				}
 				
 			}
+		    
+			$scope.registerBillOk = function(response) {
+				growl.info("Comprobante registrado.");
+				$location.path('/cargarDatos');
+		    }
 
 			$scope.updateBillOk = function(response) {
 					growl.info("Operacion actualizada.");
@@ -248,10 +253,13 @@ angular.module('tp-dapp-eiroa-lando').controller(
 					serie: $scope.inputSerie,
 					billNumber: $scope.inputBillNumber,
 					client_seller: $scope.inputClientSeller,
+					iibb: $scope.inputIIBB,
 					phone: $scope.inputPhone,
 					cuit: $scope.inputCuit,
 					totalNoTaxes: $scope.totalAmountNoTaxes,
 					total: $scope.totalAmount,
+					gravado: $scope.totalAmount,
+					noGravado: $scope.totalAmountNoTaxes,
 					category : $scope.categorySelected.categoryName,
 					subCategory : $scope.subcategorySelected.subcategoryName,
 					concept: $scope.conceptSelected.conceptName,
