@@ -49,6 +49,10 @@ public class BankAccount extends Account {
 	public static void resetBalance(){
 		balance = 0;
 	}
+	
+	public Integer getId() {
+		return id;
+	}
 
 	public double getAmount() {
 		return amount;

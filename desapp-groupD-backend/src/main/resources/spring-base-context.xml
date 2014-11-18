@@ -85,7 +85,28 @@
 	<!-- ______________ Model Beans______________ -->
 	<!-- ________________________________________ -->
 
-
+	
+	<!-- ACCOUNT -->
+	<bean id="accountDao" class="ar.edu.unq.desapp.grupoD.persistence.AccountDao">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="accountService" class="ar.edu.unq.desapp.grupoD.services.AccountService">
+		<property name="accountDao" ref="accountDao" />
+	</bean>
+	<bean id="accountRest" class="ar.edu.unq.desapp.grupoD.rest.AccountRest" >
+		<property name="accountService" ref="accountService"/>
+	</bean>
+	<!-- PAYMENTTYPE -->
+	<bean id="paymentTypeDao" class="ar.edu.unq.desapp.grupoD.persistence.PaymentTypeDao">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="paymentTypeService" class="ar.edu.unq.desapp.grupoD.services.PaymentTypeService">
+		<property name="paymentTypeDao" ref="paymentTypeDao" />
+	</bean>
+	<bean id="paymentTypeRest" class="ar.edu.unq.desapp.grupoD.rest.PaymentTypeRest" >
+		<property name="paymentTypeService" ref="paymentTypeService"/>
+	</bean>
+	
 	<!-- ASPECTS -->
     <bean id="logServiceExceptionAspect" class="ar.edu.unq.desapp.grupoD.aspects.LogServiceExceptionAspect"/>
 

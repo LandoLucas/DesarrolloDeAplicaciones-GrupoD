@@ -1,8 +1,13 @@
 package ar.edu.unq.desapp.grupoD.model.payment;
 
+import javax.persistence.Inheritance;
+
+import javax.persistence.InheritanceType;
+
 import ar.edu.unq.desapp.grupoD.model.Operation;
 import ar.edu.unq.desapp.grupoD.model.account.Account;
 
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class PaymentType {
 
 	protected Account account;

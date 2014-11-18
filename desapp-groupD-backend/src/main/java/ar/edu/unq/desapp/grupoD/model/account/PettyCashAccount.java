@@ -47,6 +47,10 @@ public class PettyCashAccount extends Account {
 			balance = balance - newAmount;
 	}
 	
+	public Integer getId() {
+		return id;
+	}
+	
 	public static double getBalance(){
 		return balance;
 	}

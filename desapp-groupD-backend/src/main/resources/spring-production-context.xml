@@ -13,6 +13,8 @@
 
 	    <!-- 	 DATABASE INITIALIZER -->
     <bean id="databaseInitializer" class="ar.edu.unq.desapp.grupoD.persistence.DatabaseInitializer">
+        <property name="accountService" ref="accountService" />
+        <property name="paymentTypeService" ref="paymentTypeService" />
 		<property name="categoryService" ref="categoryService" />
 		<property name="operationService" ref="operationService" />
 		<property name="receiptTypeAService" ref="receiptTypeAService" />

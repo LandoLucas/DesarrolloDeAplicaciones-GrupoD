@@ -61,7 +61,7 @@ public class BillRest {
 			@FormParam("client_seller") String clientSeller,
 			@FormParam("address") String address,
 			@FormParam("cuit") String cUIT,
-			@FormParam("telephoneNumber") int telephoneNumber,
+			@FormParam("phone") int telephoneNumber,
 			@FormParam("iva") double iVA, 
 			@FormParam("iibb") double iIBB,
 			@FormParam("gravado") double gravado,
