@@ -91,6 +91,8 @@
 												"FORM_ERROR_ITEM_REQUIRED": "Error, at least 1 item is required",
 												"FORM_ERROR_CATEGORY_REQUIRED": "Error, selecting a category is required",
 												"FORM_ERROR_PAYMENTTYPE_REQUIRED": "Error, payment type required",
+												"FORM_ERROR_CLIENT_REQUIRED": "Error, client required",
+												"FORM_ERROR_SELLER_REQUIRED": "Error, seller required",
 												
 												"DIALOG_CATEGORY_REGISTER_SUCCESS": "Category registered",
 												

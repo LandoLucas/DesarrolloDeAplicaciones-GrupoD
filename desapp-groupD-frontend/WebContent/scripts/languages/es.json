@@ -90,6 +90,8 @@
 														"FORM_ERROR_ITEM_REQUIRED": "Error, el comprobante debe tener al menos 1 item",
 														"FORM_ERROR_CATEGORY_REQUIRED": "Error, se requiere asociar a una categoría",
 														"FORM_ERROR_PAYMENTTYPE_REQUIRED": "Error, se requiere una forma de pago",
+														"FORM_ERROR_CLIENT_REQUIRED": "Error, cliente requerido",
+														"FORM_ERROR_SELLER_REQUIRED": "Error, vendedor requerido",
 														
 														"DIALOG_CATEGORY_REGISTER_SUCCESS": "Categoría registrada: ",
 														"DIALOG_CATEGORY_DELETE_TITLE": "¿Desea borrar la categoría ",

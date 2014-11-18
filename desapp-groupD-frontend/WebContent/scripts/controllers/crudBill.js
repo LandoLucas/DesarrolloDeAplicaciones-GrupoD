@@ -314,21 +314,42 @@ angular.module('tp-dapp-eiroa-lando').controller(
 			$scope.populateParams = function() {
 				var sub = "";
 				var con = "";
+				var iibb = 0;
+				var cuit = 0;
+				var add = "";
+				var phone = 0;
+				var shift = "";
 				if ($scope.subcategorySelected) {
 					var sub = $scope.subcategorySelected.subcategoryName;
 				}
 				if ($scope.conceptSelected) {
 					var con = $scope.conceptSelected.conceptName;
 				}
+				if ($scope.inputIIBB) {
+					var iibb = $scope.inputIIBB;
+				}
+				if ($scope.inputPhone) {
+					var phone = $scope.inputPhone;
+				}
+				if ($scope.inputCuit) {
+					var cuit = $scope.inputCuit;
+				}
+				if ($scope.inputAddress) {
+					var add = $scope.inputAddress;
+				}
+				if ($scope.inputShift) {
+					var shift = $scope.inputShift;
+				}
+				
 				var data = {
 					letter : $scope.billLetter,
 					date : $scope.inputDate,
 					serie : $scope.inputSerie,
 					billNumber : $scope.inputBillNumber,
 					client_seller : $scope.inputClientSeller,
-					iibb : $scope.inputIIBB,
-					phone : $scope.inputPhone,
-					cuit : $scope.inputCuit,
+					iibb : iibb,
+					phone : phone,
+					cuit : cuit,
 					totalNoTaxes : $scope.totalAmountNoTaxes,
 					total : $scope.totalAmount,
 					gravado : $scope.totalAmount,
@@ -337,9 +358,10 @@ angular.module('tp-dapp-eiroa-lando').controller(
 					subCategory : sub,
 					concept : con,
 					paymentCode : $scope.paymentSelected.code,
-					shift : $scope.inputShift,
+					shift : shift,
 					isOutcome : $scope.isOutcome,
-					address : $scope.inputAddress,
+					address : add,
+					iva: 21,
 					items : billElements
 				};
 				return data;
@@ -364,8 +386,8 @@ angular.module('tp-dapp-eiroa-lando').controller(
 						|| $scope.categorySelected == "") {
 					return false;
 				}
-				if ($scope.$scope.paymentSelected == null
-						|| $scope.$scope.paymentSelected == "") {
+				if ($scope.paymentSelected == null
+						|| $scope.paymentSelected == "") {
 					return false;
 				}
 				return true;
@@ -394,12 +416,12 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				if ($scope.inputClientSeller == null
 						|| $scope.inputClientSeller == "") {
 					if (globalService.inSellingBillType()) {
-						$translate('FORM_ERROR_CLIENT_REQUIRED').then(
+						$translate('FORM_ERROR_SELLER_REQUIRED').then(
 								function(text) {
 									growl.error(text);
 								});
 					} else {
-						$translate('FORM_ERROR_SELLER_REQUIRED').then(
+						$translate('FORM_ERROR_CLIENT_REQUIRED').then(
 								function(text) {
 									growl.error(text);
 								});
