@@ -35,5 +35,4 @@ public class CategoryTest {
 		
 		assertTrue(category.getSubcategory().contains(subcategory));
 	}
-	
 }

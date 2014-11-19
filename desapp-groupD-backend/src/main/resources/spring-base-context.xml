@@ -214,4 +214,15 @@
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	
+	<!-- PROVIDERS -->
+	<bean id="providerDao" class="ar.edu.unq.desapp.grupoD.persistence.ProviderDao">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="providerService" class="ar.edu.unq.desapp.grupoD.services.ProviderService">
+		<property name="providerDao" ref="providerDao" />
+	</bean>
+	<!-- <bean id="providerRest" class="ar.edu.unq.desapp.grupoD.rest.ProviderRest">
+		<property name="providerRest" ref="providerRest" />
+	</bean> -->
+	
 </beans>
