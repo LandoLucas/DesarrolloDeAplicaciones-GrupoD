@@ -9,6 +9,7 @@
 												"INDEX_LOAD_DATA": "Load Data",
 												"INDEX_EXPENSES_PROJECTIONS": "Expenses and projections",
 												"INDEX_CONSOL_ACCOUNT": "Consolidate accounts",
+												"INDEX_LIST_TRANSACTION" : "Operations list",
 												"INDEX_HOME": "Home",
 												"INDEX_LOGIN": "Login",
 												"INDEX_LOG_OFF": "Logout",
@@ -42,6 +43,7 @@
 												"TITLE_ACCOUNTS":"Registered accounts",
 												"TITLE_NEW_CATEGORY": "New category",
 												"TITLE_NEW_SUBCATEGORY": "New subcategory",
+												"TITLE_NEW_CONCEPT": "New concept",
 												"TITLE_CONFIGURE_CATEGORIES": "Categories",
 												"TITLE_USERS": "Users",
 												"TITLE_INCOME_BILL": "Income Bill",
@@ -80,7 +82,8 @@
 												"FORM_QUANTITY": "Quantity",
 												"FORM_PRICE": "Price",
 												"FORM_ADDITEM": "Add item",
-												
+												"FORM_ENABLE_DETAIL_MODE": "Enable detailed mode",
+												"FORM_DISABLE_DETAIL_MODE": "Disable detailed mode",
 												
 												"DEFAULT_ERROR": "An unexpected error has ocurred",
 												"FORM_ERROR_AMOUNT_REQUIRED": "Error, amount required",
@@ -128,5 +131,11 @@
 												"DIALOGS_OK": "Accept",
 												"DIALOGS_YES": "Accept",
 												"DIALOGS_NO": "Cancel",
-												"HEADLINE": "IMPLEMENTED FROM APP.JS"
+												"HEADLINE": "IMPLEMENTED FROM APP.JS",
+												
+												"CATEGORY": "Category",
+												"SUBCATEGORY": "Subcategory",
+												"CONCEPT": "Concept",
+												
+												"OPERATIONS_LIST_TITLE": "Operations list"
 											}

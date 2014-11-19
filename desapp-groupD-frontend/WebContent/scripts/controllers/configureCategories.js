@@ -145,7 +145,7 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 		 	var dlg = dialogs.create('views/newNameEntity.html','NewNameEntityCtrl',data,'lg');
 			dlg.result.then(function(name){
 				$translate(messageSuccess).then(function (text) {
-					growl.info(text + name + extraMessage);
+					growl.info(text+' ' + name + extraMessage);
 					$scope.inicializarVista();
 				    });
 				

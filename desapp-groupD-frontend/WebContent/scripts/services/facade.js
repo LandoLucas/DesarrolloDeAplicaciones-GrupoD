@@ -104,7 +104,21 @@
 		        					handlerOnSuccess, handlerOnError);
 
 		        		}
-
+		        		
+		        		//==Rest Account==\\
+		        		function invokeGetAccounts(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+		        			var header = defaultHeader();
+		        			invokeGetRestService(cnxHttp, header, data, 'account', 'all',
+		        					handlerOnSuccess, handlerOnError);
+		        		}
+		        		
+		        		function invokeRegisterAccount(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+		        			var header = defaultHeader();
+		        			invokeRestService(cnxHttp, header, data, 'account', 'new',
+		        					handlerOnSuccess, handlerOnError);
+		        		}		
+		        		
+		        		//==Rest PaymentTypes==\\
 
 		        		//==Rest Operations==\\
 
@@ -114,6 +128,13 @@
 		        			invokeRestService(cnxHttp, header, data, 'operation', 'new',
 		        					handlerOnSuccess, handlerOnError);
 		        		}
+		        		
+		        		function invokeGetAllOperations(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+		        			var header = defaultHeader();
+		        			invokeGetRestService(cnxHttp, header, data, 'operation', 'all',
+		        					handlerOnSuccess, handlerOnError);
+		        		}
+		        		
 		        		
 		        		//==Rest Bills==\\
 		        		function invokeRegisterBill(cnxHttp, data, handlerOnSuccess, handlerOnError) {
@@ -142,6 +163,7 @@
 		        			invokeRestService(cnxHttp, header, data, 'category', 'delete',
 		        					handlerOnSuccess, handlerOnError);
 		        		}
+		        		
 
 		        		//===Rest subcategorias===
 		        		function invokeNewSubcategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
@@ -201,6 +223,7 @@
 		            	 
 		               return {
 		                 invokeGetCategories: invokeGetCategories,
+		                 invokeGetAllOperations : invokeGetAllOperations,
 		                 defaultHandlerOnError: defaultHandlerOnError,
 		                 invokeRestService: invokeRestService,
 		                 invokeGetRestService: invokeGetRestService,

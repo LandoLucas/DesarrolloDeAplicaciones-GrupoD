@@ -11,22 +11,20 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				$route, $rootScope, growl, dialogs, globalService, $translate,
 				restServices, $timeout) {
 
-//			$scope.billType = function() {
-//				var result;
-//				if (globalService.inSellingBillType()) {
-//					$scope.isOutcome = false;
-//					$translate('TITLE_INCOME_BILL').then(function(text) {
-//						result= text;
-//					});
-//				} else {
-//					$scope.isOutcome = true;
-//					
-//					$translate('TITLE_OUTCOME_BILL').then(function(text) {
-//						result = text;
-//					});
-//				}
-//				return result;
-//			}}
+			$scope.detailMode = false;
+			
+			$scope.enableDetailMode = function(){
+				$scope.detailMode = true;
+//				$scope.pages= [10,20,50];
+//				reloadTable();
+			}
+			
+			$scope.disableDetailMode = function(){
+				$scope.detailMode = false;
+//				$scope.pages= [];
+//				reloadTable();
+			}
+			
 			Array.prototype.sumTotal = function() {
 				var total = 0
 				for (var i = 0, _len = this.length; i < _len; i++) {
@@ -69,8 +67,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				cant : "cant",
 				price : "price",
 				iva : "Iva",
-				total : "Total",
-				actions : "actions"
+				total : "Total"
 			};
 			translateTableColumns();
 			$rootScope.$on('$translateChangeSuccess', function() {
@@ -265,12 +262,13 @@ angular.module('tp-dapp-eiroa-lando').controller(
 
 			$scope.tableParams = new ngTableParams({
 				page : 1, // show first page
-				count : 10, // count per page
+				count : 30, // count per page
 				sorting : {
 					name : 'asc' // initial sorting
 				}
 			}, {
-				total : function() {
+				counts: [],
+				total: function() {
 					return getData().length;
 				}, // length of data
 				getData : function($defer, params) {
