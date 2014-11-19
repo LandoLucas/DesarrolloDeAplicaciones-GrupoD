@@ -87,4 +87,17 @@ public class ProviderServiceTest  extends AbstractTransactionalJUnit4SpringConte
 		assertEquals("Cambio de Nombre", providerEdited.getName());
 		
 	}
+	
+	@Test
+	public void removeProviderTest(){
+		Integer entero = 1;
+		Provider provider = new Provider(1);
+		providerService.save(provider);
+		
+		assertEquals(provider, providerService.findByProviderId(entero));
+		
+		providerService.removeProviderByProviderId(entero);
+		
+		assertEquals(null, providerService.findByProviderId(entero));	
+	}
 }

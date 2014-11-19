@@ -61,4 +61,11 @@ public class ProviderRest {
 	public Provider getProviderByProviderId(@PathParam("providerId") Integer id){
 		return providerService.findByProviderId(id);
 	}
+	
+	@POST
+	@Path("/remove/{providerId}")
+	public Response removepROVIDER(@PathParam("providerId") Integer id){
+		providerService.removeProviderByProviderId(id);
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+	}
 }

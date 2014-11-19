@@ -48,5 +48,11 @@ public class ProviderService {
 		
 		providerDao.save(provider);
 	}
+	
+	@Transactional
+	public void removeProviderByProviderId(int id){
+		List<Provider> providerToDelete = providerDao.findByExample(new Provider(id));
+		providerDao.delete(providerToDelete.get(0));
+	}
 
 }
