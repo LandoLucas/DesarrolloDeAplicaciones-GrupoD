@@ -60,6 +60,11 @@ public class OperationsRest {
 	@Path("/all")
 	@Produces("application/json")
 	public Response getAllOperations() throws InvalidAmountException, InvalidReceiptNumberException {
+		
+		System.out.println("==================");
+		System.out.println("GET ALL OPERATIONS");
+		System.out.println("==================");
+		
 		List<Operation> obs =  operationService.findAll();
 		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(obs).build();
 	}

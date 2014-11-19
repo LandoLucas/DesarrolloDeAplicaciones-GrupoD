@@ -9,6 +9,7 @@
 												"INDEX_LOAD_DATA": "Load Data",
 												"INDEX_EXPENSES_PROJECTIONS": "Expenses and projections",
 												"INDEX_CONSOL_ACCOUNT": "Consolidate accounts",
+												"INDEX_LIST_TRANSACTION" : "Operations list",
 												"INDEX_HOME": "Home",
 												"INDEX_LOGIN": "Login",
 												"INDEX_LOG_OFF": "Logout",
@@ -128,5 +129,11 @@
 												"DIALOGS_OK": "Accept",
 												"DIALOGS_YES": "Accept",
 												"DIALOGS_NO": "Cancel",
-												"HEADLINE": "IMPLEMENTED FROM APP.JS"
+												"HEADLINE": "IMPLEMENTED FROM APP.JS",
+												
+												"CATEGORY": "Category",
+												"SUBCATEGORY": "Subcategory",
+												"CONCEPT": "Concept",
+												
+												"OPERATIONS_LIST_TITLE": "Operations list"
 											}

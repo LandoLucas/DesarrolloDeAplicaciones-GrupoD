@@ -9,6 +9,7 @@
 														"INDEX_LOAD_DATA": "Cargar Datos",
 														"INDEX_EXPENSES_PROJECTIONS": "Proyecciones",
 														"INDEX_CONSOL_ACCOUNT": "Consolidar cuentas",
+														"INDEX_LIST_TRANSACTION" : "Listado de operaciones",
 														"INDEX_HOME": "Inicio",
 														"INDEX_LOGIN": "Login",
 														"INDEX_LOG_OFF": "Desconectarse",
@@ -130,5 +131,12 @@
 														"DIALOGS_OK": "Aceptar",
 														"DIALOGS_YES": "Aceptar",
 														"DIALOGS_NO": "Cancelar",
-														"HEADLINE": "IMPLEMENTADO DESDE APP.JS"
+														"HEADLINE": "IMPLEMENTADO DESDE APP.JS",
+														
+														"CATEGORY": "Categoria",
+														"SUBCATEGORY": "Subcategoria",
+														"CONCEPT": "Concepto",
+														
+														"OPERATIONS_LIST_TITLE": "Listado de operaciones"
+														
 													}
