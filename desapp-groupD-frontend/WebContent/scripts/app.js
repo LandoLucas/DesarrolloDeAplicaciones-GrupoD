@@ -306,6 +306,9 @@
 			}).when('/cargarDatos', {
 				templateUrl : 'views/cargarDatos.html',
 				controller : 'CargarDatosCtrl'
+            }).when('/listadoTransacciones', {
+				templateUrl : 'views/listadoTransacciones.html',
+				controller : 'ListadoTransaccionesCtrl'
             }).when('/newBill', {
 				templateUrl : 'views/crudBill.html',
 				controller : 'CrudBillCtrl'    
