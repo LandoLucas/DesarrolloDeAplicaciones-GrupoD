@@ -44,6 +44,7 @@ public class Provider {
 		this.setTradeName(tradeName);
 
 	}
+	public Provider (){}
 	
 	public Provider(Integer providerId) {
 		this.providerId = providerId;

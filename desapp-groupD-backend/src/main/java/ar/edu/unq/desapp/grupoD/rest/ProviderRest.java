@@ -51,7 +51,7 @@ public class ProviderRest {
 	public Response editProvider(@FormParam("providerId") Integer providerId, @FormParam("name") String name,@FormParam("tradeName") String tradeName,
 			@FormParam("direction") String direction, @FormParam("cuit") Integer cuit,
 			@FormParam("telephone") Integer telephone){
-		providerService.saveProvider(providerId, name, tradeName, direction, cuit, telephone); 
+		providerService.editProvider(providerId, name, tradeName, direction, cuit, telephone); 
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
