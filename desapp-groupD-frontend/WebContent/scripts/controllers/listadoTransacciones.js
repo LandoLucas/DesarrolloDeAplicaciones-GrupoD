@@ -18,15 +18,17 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 		restServices.invokeGetAllOperations($http, {}, $scope.operacionesOk , restServices.defaultHandlerOnError);
 	}
 	
-	getAllOperations()
+	getAllOperations();
 	
 	
 	$scope.tableColumns = {
-		date : "date",
-		category: "category",
-		subcategory: "subcategory",
-		concept: "concept",	
-		shift: "shift"	
+		date : "Date",
+		category: "Category",
+		subcategory: "Subcategory",
+		concept: "Concept",	
+		shift: "Shift",
+		cash: "Cash",
+		debit: "Debit"
 	};
 
 	translateTableColumns();
@@ -50,14 +52,17 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 		$translate('FORM_SHIFT').then(function(text) {
 			$scope.tableColumns.shift = text;
 		});
+		$translate('FORM_CASH').then(function(text) {
+			$scope.tableColumns.cash = text;
+		});
+		$translate('FORM_DEBIT').then(function(text) {
+			$scope.tableColumns.debit = text;
+		});
+		$translate('FORM_CREDIT').then(function(text) {
+			$scope.tableColumns.credit = text;
+		});
 		
 		
-//		$translate('FORM_PRICE').then(function(text) {
-//			$scope.tableColumns.price = text;
-//		});
-//		$translate('FORM_ACTIONS').then(function(text) {
-//			$scope.tableColumns.actions = text;
-//		});
 	}
 
 	

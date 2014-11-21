@@ -95,8 +95,12 @@ public class DatabaseInitializer {
 	}
 
 	private void loadOperations() throws InvalidAmountException {
+		Category category = new Category("Ventas");
+		
 		List<SubCategory> subcategories = new ArrayList<SubCategory>();
 		SubCategory subcategory = new SubCategory("Ventas 12-10-2014");
+		SubCategory subcategory2 = new SubCategory("Ventas 13-10-2014");
+		
 		Concept concept = new Concept("ventas tienda");
 		List<Concept> concepts = new ArrayList<Concept>();
 		concepts.add(concept);
@@ -112,11 +116,17 @@ public class DatabaseInitializer {
 		paymentTypes.add(new CreditCard(300));
 		paymentTypes.add(new DebitCard(500));
 		
-		loadOperation("Ventas", subcategory, concept , new DateTime(), paymentTypes , true, "tarde");
+		List<PaymentType> paymentTypes2 = new ArrayList<PaymentType>();
+		paymentTypes2.add(new PettyCash(1200));
+		paymentTypes2.add(new CreditCard(1300));
+		paymentTypes2.add(new DebitCard(1500));
+		
+		loadOperation(category, subcategory, concept , new DateTime(), paymentTypes , true, "tarde");
+		loadOperation(category, subcategory2, concept , new DateTime(), paymentTypes2 , true, "tarde");
+		
 	}
 
-	private void loadOperation(String categoryName, SubCategory subcategory, Concept concept , DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift) throws InvalidAmountException {
-		Category category = new Category(categoryName);
+	private void loadOperation(Category category, SubCategory subcategory, Concept concept , DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift) throws InvalidAmountException {
 		
 		Operation operation = new Operation(date, paymentTypes , isIncome, shift, category, subcategory, concept);
 

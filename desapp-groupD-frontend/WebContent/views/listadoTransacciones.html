@@ -21,12 +21,11 @@
 				<td data-title="tableColumns['subcategory']">{{operacion.subcategory}}</td>
 				<td data-title="tableColumns['concept']">{{operacion.concept}}</td>
 				<td data-title="tableColumns['shift']">{{operacion.shift}}</td>
-			
-				<td data-title="Efectivo">{{operacion.shift}}</td>
+				<td data-title="tableColumns['cash']">{{operacion.paymentTypes[0].amount}}</td>
+				<td data-title="tableColumns['debit']">{{operacion.paymentTypes[1].amount}}</td>
+				<td data-title="tableColumns['credit']">{{operacion.paymentTypes[2].amount}}</td>
 
 
-				<td data-title="CC">{{operacion.shift}}</td>
-				<td data-title="Banco">{{operacion.shift}}</td>
 				
 				<td data-title="Total_Efectivo">{{operacion.shift}}</td>
 				<td data-title="Total_CC">{{operacion.shift}}</td>

@@ -85,6 +85,9 @@
 														"FORM_ADDITEM": "Agregar item",
 														"FORM_ENABLE_DETAIL_MODE": "Activar modo detallado",
 														"FORM_DISABLE_DETAIL_MODE": "Desactivar modo detallado",
+														"FORM_CASH": "Efectivo",
+														"FORM_DEBIT": "Debito",
+														"FORM_CREDIT": "Credito",
 														
 														"FORM_ERROR_AMOUNT_REQUIRED": "Error, monto requerido",
 														"FORM_ERROR_NAME_REQUIRED": "Error, Nombre requerido",

@@ -85,6 +85,9 @@
 												"FORM_ADDITEM": "Add item",
 												"FORM_ENABLE_DETAIL_MODE": "Enable detailed mode",
 												"FORM_DISABLE_DETAIL_MODE": "Disable detailed mode",
+												"FORM_CASH": "Cash",
+												"FORM_DEBIT": "Debit",
+												"FORM_CREDIT": "Credit",
 												
 												"DEFAULT_ERROR": "An unexpected error has ocurred",
 												"FORM_ERROR_AMOUNT_REQUIRED": "Error, amount required",
