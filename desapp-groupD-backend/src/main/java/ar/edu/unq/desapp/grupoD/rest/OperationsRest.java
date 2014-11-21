@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.joda.time.DateTime;
@@ -15,6 +17,8 @@ import org.joda.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
+import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
+import ar.edu.unq.desapp.grupoD.model.Operation;
 import ar.edu.unq.desapp.grupoD.model.payment.BankTransfer;
 import ar.edu.unq.desapp.grupoD.model.payment.CreditCard;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
@@ -41,13 +45,13 @@ public class OperationsRest {
 //		return operationService.getOperationByID(id);
 //	}
 	
-//	@GET
-//	@Path("/all")
-//	@Produces("application/json")
-//	public Response getAllOperations() throws InvalidAmountException, InvalidReceiptNumberException {
-//		List<Operation> obs =  operationService.findAll();
-//		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(obs).build();
-//	}
+	@GET
+	@Path("/all")
+	@Produces("application/json")
+	public Response getAllOperations() throws InvalidAmountException, InvalidReceiptNumberException {
+		List<Operation> obs =  operationService.findAll();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(obs).build();
+	}
 	
 //	@GET
 //	@Path("/incomes")
