@@ -12,7 +12,7 @@ public class BankTransferTest {
 	
 	@Test(expected = InvalidAmountException.class)
 	public void invalidAmountException() throws InvalidAmountException{
-		new BankTransfer(-100);
+		new DebitCard(-100);
 	}
 
 //	@Test

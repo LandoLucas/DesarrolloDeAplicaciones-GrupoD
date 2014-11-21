@@ -21,11 +21,11 @@ public abstract class PaymentType {
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id;
 	
-	protected double getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	protected void setAmount(double amount) throws InvalidAmountException {
+	public void setAmount(double amount) throws InvalidAmountException {
 		if(amount <= 0) throw new InvalidAmountException();
 		this.amount = amount;
 	}

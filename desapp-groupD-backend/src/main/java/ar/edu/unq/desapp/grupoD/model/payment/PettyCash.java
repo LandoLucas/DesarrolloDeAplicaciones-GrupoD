@@ -15,4 +15,6 @@ public class PettyCash extends PaymentType{
 		this.setAmount(amount);
 	}
 	
+	public PettyCash(){};
+	
 }

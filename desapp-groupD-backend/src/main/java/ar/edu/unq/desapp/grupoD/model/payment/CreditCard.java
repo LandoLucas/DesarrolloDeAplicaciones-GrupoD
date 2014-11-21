@@ -13,5 +13,7 @@ public class CreditCard extends PaymentType {
 	public CreditCard( double amount ) throws InvalidAmountException {
 		this.setAmount(amount);
 	}
+	
+	public CreditCard(){};
 
 }

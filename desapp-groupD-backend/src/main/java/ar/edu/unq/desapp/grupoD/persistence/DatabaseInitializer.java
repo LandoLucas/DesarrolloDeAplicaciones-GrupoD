@@ -15,6 +15,8 @@ import ar.edu.unq.desapp.grupoD.model.account.PettyCashAccount;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.category.Concept;
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
+import ar.edu.unq.desapp.grupoD.model.payment.CreditCard;
+import ar.edu.unq.desapp.grupoD.model.payment.DebitCard;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 import ar.edu.unq.desapp.grupoD.model.payment.PettyCash;
 import ar.edu.unq.desapp.grupoD.model.receipt.ReceiptTypeA;
@@ -106,6 +108,10 @@ public class DatabaseInitializer {
 		accountService.save(pettyCash);
 		paymentTypeService.save(cash);
 		List<PaymentType> paymentTypes = new ArrayList<PaymentType>();
+		paymentTypes.add(new PettyCash(200));
+		paymentTypes.add(new CreditCard(300));
+		paymentTypes.add(new DebitCard(500));
+		
 		loadOperation("Ventas", subcategory, concept , new DateTime(), paymentTypes , true, "tarde");
 	}
 

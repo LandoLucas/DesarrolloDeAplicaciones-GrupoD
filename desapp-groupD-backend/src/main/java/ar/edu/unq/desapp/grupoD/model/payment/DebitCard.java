@@ -5,10 +5,12 @@ import javax.persistence.Entity;
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 
 @Entity
-public class BankTransfer extends PaymentType{
+public class DebitCard extends PaymentType{
 	
-	public BankTransfer( double amount  ) throws InvalidAmountException{
+	public DebitCard( double amount  ) throws InvalidAmountException{
 		this.setAmount(amount);
 	}
+	
+	public DebitCard(){};
 	
 }

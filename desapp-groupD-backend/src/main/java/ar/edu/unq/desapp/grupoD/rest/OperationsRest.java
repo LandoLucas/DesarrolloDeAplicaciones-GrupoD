@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
 import ar.edu.unq.desapp.grupoD.model.Operation;
-import ar.edu.unq.desapp.grupoD.model.payment.BankTransfer;
+import ar.edu.unq.desapp.grupoD.model.payment.DebitCard;
 import ar.edu.unq.desapp.grupoD.model.payment.CreditCard;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 import ar.edu.unq.desapp.grupoD.model.payment.PettyCash;
@@ -94,7 +94,7 @@ public class OperationsRest {
 		for( Integer paymentCode : payments.keySet()){
 			switch (paymentCode) {
 			case 0: paymentTypes.add( new PettyCash(payments.get(paymentCode)) ); break;
-			case 1: paymentTypes.add( new BankTransfer(payments.get(paymentCode)) ); break;
+			case 1: paymentTypes.add( new DebitCard(payments.get(paymentCode)) ); break;
 			case 2: paymentTypes.add( new CreditCard(payments.get(paymentCode)) ); break;
 
 			default: throw new RuntimeException("Payment type not set");
