@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.desapp.grupoD.model.account.Account;
 import ar.edu.unq.desapp.grupoD.persistence.AccountDao;
-import ar.edu.unq.desapp.grupoD.persistence.AccountDao;
 
 public class AccountService {
 

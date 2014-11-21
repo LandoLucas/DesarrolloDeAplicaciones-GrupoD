@@ -13,7 +13,7 @@ public class SubcategoryDao extends HibernateGenericDAO<SubCategory> implements
 	protected Class<SubCategory> getDomainClass() {
 		return SubCategory.class;
 	}
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+
 	public void removeSubcategoryByName(final String name, Integer categoryId) {
 		this.getHibernateTemplate().delete(this.getByName(name));
 	}

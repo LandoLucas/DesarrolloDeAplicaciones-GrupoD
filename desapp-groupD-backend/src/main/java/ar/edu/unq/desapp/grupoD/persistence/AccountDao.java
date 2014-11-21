@@ -1,7 +1,6 @@
 package ar.edu.unq.desapp.grupoD.persistence;
 
 import ar.edu.unq.desapp.grupoD.model.account.Account;
-import ar.edu.unq.desapp.grupoD.model.category.Category;
 
 /**
  * 

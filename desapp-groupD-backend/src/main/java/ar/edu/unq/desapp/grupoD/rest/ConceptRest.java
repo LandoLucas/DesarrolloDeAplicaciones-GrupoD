@@ -41,9 +41,8 @@ public class ConceptRest {
 	@POST
 	@Path("/delete")
 	@Consumes("application/x-www-form-urlencoded")
-	public Response deleteConcept(@FormParam("name") String name,@FormParam("idCategory") Integer idCat,
-			@FormParam("idSubcategory") Integer idSub) throws Exception {
-		conceptService.removeConceptByName(name,idCat,idSub);
+	public Response deleteConcept(@FormParam("name") String name, @FormParam("idSubcategory") Integer idSub){
+		conceptService.removeConceptByName(name,idSub);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 

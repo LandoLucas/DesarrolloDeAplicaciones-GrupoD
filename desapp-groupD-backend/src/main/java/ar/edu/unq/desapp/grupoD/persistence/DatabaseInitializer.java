@@ -11,7 +11,6 @@ import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
 import ar.edu.unq.desapp.grupoD.model.Operation;
 import ar.edu.unq.desapp.grupoD.model.account.Account;
-import ar.edu.unq.desapp.grupoD.model.account.BankAccount;
 import ar.edu.unq.desapp.grupoD.model.account.PettyCashAccount;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.category.Concept;
@@ -70,6 +69,9 @@ public class DatabaseInitializer {
 	public void populateDatabase() throws InvalidAmountException,
 			InvalidReceiptNumberException {
 
+		//TODO initialize bank accounts
+		
+		
 		loadOperations();
 		loadReceipts();
 
@@ -100,26 +102,17 @@ public class DatabaseInitializer {
 
 		subcategories.add(subcategory);
 		Account pettyCash = new PettyCashAccount();
-		PaymentType cash = new PettyCash();
+		PaymentType cash = new PettyCash(100);
 		accountService.save(pettyCash);
 		paymentTypeService.save(cash);
-		loadOperation("Ventas", subcategories, new DateTime(),
-				pettyCash, 400, true);
-		// loadOperation("Pagos", "Proveedores 12-10-2014", "proveedores", new
-		// DateTime(), new BankAccount(), 200, false);
-		// loadOperation("Pagos", "Proveedores 05-10-2014", "proveedores", new
-		// DateTime(), new BankAccount(), 185, false);
-		// loadOperation("Pagos", "Proveedores 19-10-2014", "proveedores", new
-		// DateTime(), new BankAccount(), 312, false);
+		List<PaymentType> paymentTypes = new ArrayList<PaymentType>();
+		loadOperation("Ventas", subcategory, concept , new DateTime(), paymentTypes , true, "tarde");
 	}
 
-	private void loadOperation(String categoryName,
-			List<SubCategory> subcategories, DateTime date, Account account,
-			int amount, boolean isIncome) throws InvalidAmountException {
-
+	private void loadOperation(String categoryName, SubCategory subcategory, Concept concept , DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift) throws InvalidAmountException {
 		Category category = new Category(categoryName);
-		category.setSubcategory(subcategories);
-		Operation operation = new Operation(date, 400, true, category, account);
+		
+		Operation operation = new Operation(date, paymentTypes , isIncome, shift, category, subcategory, concept);
 
 		categoryService.save(category);
 		operationService.saveOperation(operation);

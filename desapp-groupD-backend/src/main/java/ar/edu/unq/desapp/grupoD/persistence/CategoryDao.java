@@ -12,13 +12,12 @@ public class CategoryDao extends HibernateGenericDAO<Category> implements
 
 	private static final long serialVersionUID = 1L;
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void removeCategoryByName(final String name) {
 		this.getHibernateTemplate().delete(this.getByName(name));
 	}
 	
 	public Category getByName(String name){
-		List<Category> categories =this.getHibernateTemplate().findByExample(new Category(name));
+		List<Category> categories = this.getHibernateTemplate().findByExample(new Category(name));
 		if(categories.isEmpty())return null;
 		return categories.get(0);
 	}

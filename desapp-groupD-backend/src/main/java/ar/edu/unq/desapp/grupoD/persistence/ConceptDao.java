@@ -2,9 +2,7 @@ package ar.edu.unq.desapp.grupoD.persistence;
 
 import java.util.List;
 
-import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.category.Concept;
-import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 
 
 public class ConceptDao extends HibernateGenericDAO<Concept> implements
@@ -19,7 +17,7 @@ GenericRepository<Concept> {
 	protected Class<Concept> getDomainClass() {
 		return Concept.class;
 	}
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+
 	public void removeConceptByName(final String name, Integer categoryId) {
 		this.getHibernateTemplate().delete(this.getByName(name));
 	}
@@ -30,8 +28,8 @@ GenericRepository<Concept> {
 		return subs.get(0);
 	}
 	
-	public void update(String name, Integer idCon){
-		Concept target = this.findById(idCon);
+	public void update(String name, int id){
+		Concept target = this.findById(id);
 		target.setConceptName(name);
 		this.save(target);
 	}

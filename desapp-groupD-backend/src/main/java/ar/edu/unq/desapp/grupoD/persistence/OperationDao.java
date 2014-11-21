@@ -2,9 +2,7 @@ package ar.edu.unq.desapp.grupoD.persistence;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
-import org.hibernate.criterion.Restrictions;
 
 import ar.edu.unq.desapp.grupoD.model.Operation;
 

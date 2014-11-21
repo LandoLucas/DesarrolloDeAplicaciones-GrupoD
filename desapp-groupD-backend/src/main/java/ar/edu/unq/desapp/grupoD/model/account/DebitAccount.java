@@ -5,11 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.joda.time.DateTime;
-
-import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
-import ar.edu.unq.desapp.grupoD.model.Operation;
-
 
 /**
  * @author JulianV
@@ -17,7 +12,7 @@ import ar.edu.unq.desapp.grupoD.model.Operation;
  */
 @Entity
 public class DebitAccount extends Account {
-	private static double balance = 0;
+//	private static double balance = 0;
 	
 	private double amount;
 
@@ -29,30 +24,30 @@ public class DebitAccount extends Account {
 		this.amount = amount;
 	}
 
-	@Override
-	public void bill(Operation operation) {
-		new DebitAccount(operation);
-	}
+//	@Override
+//	public void bill(Operation operation) {
+//		new DebitAccount(operation);
+//	}
 	
-	public DebitAccount(Operation operation) {
-		this.amount = operation.getAmount();
-		setBalance(this.amount, operation);
-	} 
+//	public DebitAccount(Operation operation) {
+//		this.amount = operation.getAmount();
+//		setBalance(this.amount, operation);
+//	} 
 
-	public static void setBalance(double newAmount, Operation operation) {
-		if (operation.isIncome())
-			balance = balance + newAmount;
-		else
-			balance = balance - newAmount;
-	}
+//	public static void setBalance(double newAmount, Operation operation) {
+//		if (operation.isIncome())
+//			balance = balance + newAmount;
+//		else
+//			balance = balance - newAmount;
+//	}
+//	
+//	public static double getBalance(){
+//		return balance;
+//	}
 	
-	public static double getBalance(){
-		return balance;
-	}
-	
-	public static void resetBalance(){
-		balance = 0;
-	}
+//	public static void resetBalance(){
+//		balance = 0;
+//	}
 	
 	public Integer getId() {
 		return id;

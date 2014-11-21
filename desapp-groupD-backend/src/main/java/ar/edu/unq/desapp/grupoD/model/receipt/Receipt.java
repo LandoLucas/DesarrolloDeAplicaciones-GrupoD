@@ -1,8 +1,6 @@
 package ar.edu.unq.desapp.grupoD.model.receipt;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 

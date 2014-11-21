@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupoD.model.builders;
 
-import static org.mockito.Mockito.mock;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.joda.time.DateTime;
 
@@ -10,8 +11,6 @@ import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.category.Concept;
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
-import ar.edu.unq.desapp.grupoD.model.payment.PettyCash;
-import ar.edu.unq.desapp.grupoD.persistence.ArquitecturalPersistenceTest;
 
 /**
  * A Builder to construct Operation instances. It eases the reading of the tests.
@@ -20,22 +19,15 @@ import ar.edu.unq.desapp.grupoD.persistence.ArquitecturalPersistenceTest;
 public class OperationBuilder implements ArquitecturalTestBuilder<Operation>{
 
 	private DateTime date = new DateTime();
-	private double amount = 100;
 	private boolean isIncome = true;
 	private String shift = "tarde";
 	private Category category = new Category("test category");
 	private SubCategory subCategory = new SubCategory("test subcategory");
 	private Concept concept = new Concept("test concept");
-	private PaymentType paymentType = new PettyCash();
-	private int operationID = 1;
+	private List<PaymentType> paymentTypes = new ArrayList<PaymentType>();
 
 	public Operation build() throws InvalidAmountException{
-		return new Operation(date, operationID  , amount, isIncome, shift, category, subCategory, concept, paymentType);
-	}
-
-	public OperationBuilder withAmount(double amount){
-		this.amount = amount;
-		return this;
+		return new Operation(date , paymentTypes , isIncome, shift, category, subCategory, concept);
 	}
 
 	@Override
@@ -47,4 +39,5 @@ public class OperationBuilder implements ArquitecturalTestBuilder<Operation>{
 		}
 		return operation;
 	}
+	
 }

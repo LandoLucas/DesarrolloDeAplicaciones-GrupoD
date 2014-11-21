@@ -13,29 +13,25 @@ public class SubCategoryService {
 
 	private SubcategoryDao subcategoryDao;
 	private CategoryDao categoryDao;
-	
+
 	public void setSubcategoryDao(SubcategoryDao subcategoryDao) {
 		this.subcategoryDao = subcategoryDao;
 	}
-	
+
 	public void setCategoryDao(CategoryDao categoryDao) {
 		this.categoryDao = categoryDao;
 	}
 
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public List<SubCategory> findAll() {
 		return subcategoryDao.findAll();
 	}
 
 	@Transactional
-	public void removeSubcategoryByName(String name,Integer idCategory) throws Exception {
-		Category target =categoryDao.findById(idCategory);
-		List<SubCategory> subs = target.getSubcategory();
-		if(subs.remove(subcategoryDao.getByName(name))){
-			target.setSubcategory(subs);
-		}else{
-			throw new Exception("Removing subcategory failed");
-		}
+	public void removeSubcategoryByName(String name, Integer idCategory){
+		Category target = categoryDao.findById(idCategory);
+		SubCategory subcategory = subcategoryDao.getByName(name);
+		target.getSubcategory().remove(subcategory);
 		categoryDao.save(target);
 	}
 
@@ -46,16 +42,17 @@ public class SubCategoryService {
 		subcategories.add(subcategory);
 		categoryDao.save(toUpdate);
 	}
-	
+
 	@Transactional
 	public void save(SubCategory subcategory) {
 		subcategoryDao.save(subcategory);
 	}
-	
+
 	@Transactional
-	public void update(String name, Integer idSub) {
-		this.subcategoryDao.update(name, idSub);
+	public void update(String newName, Integer idSub) {
+		this.subcategoryDao.update(newName, idSub);
 	}
+
 	@Transactional
 	public SubCategory findByName(String subCategoryName) {
 		return this.subcategoryDao.getByName(subCategoryName);

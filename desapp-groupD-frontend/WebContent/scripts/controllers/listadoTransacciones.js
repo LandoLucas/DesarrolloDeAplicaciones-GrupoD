@@ -23,8 +23,12 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 	
 	$scope.tableColumns = {
 		date : "date",
-		category: "category"
+		category: "category",
+		subcategory: "subcategory",
+		concept: "concept",	
+		shift: "shift"	
 	};
+
 	translateTableColumns();
 	$rootScope.$on('$translateChangeSuccess', function() {
 		translateTableColumns();
@@ -37,6 +41,17 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 		$translate('CATEGORY').then(function(text) {
 			$scope.tableColumns.category = text;
 		});
+		$translate('SUBCATEGORY').then(function(text) {
+			$scope.tableColumns.subcategory = text;
+		});
+		$translate('CONCEPT').then(function(text) {
+			$scope.tableColumns.concept = text;
+		});
+		$translate('FORM_SHIFT').then(function(text) {
+			$scope.tableColumns.shift = text;
+		});
+		
+		
 //		$translate('FORM_PRICE').then(function(text) {
 //			$scope.tableColumns.price = text;
 //		});

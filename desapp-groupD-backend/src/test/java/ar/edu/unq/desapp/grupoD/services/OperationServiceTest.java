@@ -1,9 +1,11 @@
 package ar.edu.unq.desapp.grupoD.services;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.joda.time.DateTime;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -11,11 +13,8 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.model.Operation;
-import ar.edu.unq.desapp.grupoD.model.account.Account;
-import ar.edu.unq.desapp.grupoD.model.account.BankAccount;
-import ar.edu.unq.desapp.grupoD.model.account.PettyCashAccount;
-import ar.edu.unq.desapp.grupoD.model.category.Category;
-import ar.edu.unq.desapp.grupoD.model.payment.CreditCard;
+import ar.edu.unq.desapp.grupoD.model.builders.OperationBuilder;
+import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 
 @ContextConfiguration(locations = {"classpath:spring-base-context.xml"})
 public class OperationServiceTest extends AbstractTransactionalJUnit4SpringContextTests{
@@ -25,39 +24,43 @@ public class OperationServiceTest extends AbstractTransactionalJUnit4SpringConte
 	
 	@Test
 	public void saveOperation() throws InvalidAmountException{
-		Operation.resetCounter();
-		DateTime date = new DateTime();
-		Category category = new Category("ventas1");
-		Account account = new PettyCashAccount();
-		Operation operation = new Operation(date, 400, true, category, account);
-	
+		OperationBuilder builder = new OperationBuilder();
+		Operation operation = builder.any();
+		
 		operationService.saveOperation(operation);
 		
 		assertTrue( operationService.findAll().contains(operation));
-		PettyCashAccount.resetBalance();
-		Operation.resetCounter();
 	}
 	
-	@Test(expected = InvalidAmountException.class)
-	public void saveOperationInvalidAmountExceptionExpected() throws InvalidAmountException{
-		operationService.saveOperation(new DateTime(), -10, true, "afternoon", "Ventas", "Ventas Tarde", "ventas", new CreditCard(new BankAccount()));
-		PettyCashAccount.resetBalance();
-		Operation.resetCounter();
-	}
-	
-	@Test @Ignore
-	public void removeOperation() throws InvalidAmountException{
+	@Test
+	public void saveOperationWithParameters() throws InvalidAmountException{
 		DateTime date = new DateTime();
-		Category category = new Category("Compras");
-		Account account = new PettyCashAccount();
-		Operation operation = new Operation(date, 400, true, category, account);
-		operationService.saveOperation(operation);
-		int id = operation.getOperationID();
+		boolean isIncome = true;
+		String shift = "mañana";
+		String categoryName = "category";
+		String subCategoryName = "subcategory";
+		String conceptName = "concept";
+		List<PaymentType> payments = new ArrayList<PaymentType>();
 		
-		operationService.removeOperationByID(id);
-		
-		assertNull( operationService.getOperationByID(id));
-		PettyCashAccount.resetBalance();
-		Operation.resetCounter();
+		operationService.saveOperation(date, payments, isIncome, shift, categoryName, subCategoryName, conceptName);
+	
+		assertTrue( operationService.findAll().get(0).getShift() == shift  );
+		assertTrue( operationService.findAll().get(0).getDate() == date  );
 	}
+	
+//	@Test
+//	public void removeOperation() throws InvalidAmountException{
+//		OperationBuilder builder = new OperationBuilder();
+//		Operation operation = builder.any();
+//		
+//		operationService.saveOperation(operation);
+//		int id = operation.getOperationID();
+//		
+//		operationService.removeOperationByID(id);
+//		
+//		
+//		assertNull( operationService.getOperationByID(id));
+//		PettyCashAccount.resetBalance();
+//		Operation.resetCounter();
+//	}
 }

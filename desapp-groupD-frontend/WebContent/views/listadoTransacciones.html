@@ -18,10 +18,13 @@
 			<tr ng-repeat="operacion in operaciones">
 				<td data-title="tableColumns['date']">{{operacion.parsedDate}}</td>
 				<td data-title="tableColumns['category']">{{operacion.category}}</td>
-<!-- 				<td data-title="{{ 'SUBCATEGORY' | translate}}">{{operacion.subcategory}}</td> -->
-<!-- 				<td data-title="{{ 'CONCEPT' | translate}}">{{operacion.concept}}</td> -->
-<!-- 				<td data-title="{{ 'FORM_SHIFT' | translate}}">{{operacion.shift}}</td> -->
+				<td data-title="tableColumns['subcategory']">{{operacion.subcategory}}</td>
+				<td data-title="tableColumns['concept']">{{operacion.concept}}</td>
+				<td data-title="tableColumns['shift']">{{operacion.shift}}</td>
+			
 				<td data-title="Efectivo">{{operacion.shift}}</td>
+
+
 				<td data-title="CC">{{operacion.shift}}</td>
 				<td data-title="Banco">{{operacion.shift}}</td>
 				

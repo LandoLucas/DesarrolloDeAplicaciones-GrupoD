@@ -1,6 +1,5 @@
 package ar.edu.unq.desapp.grupoD.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -42,71 +41,75 @@ public class OperationService {
 		this.conceptService = conceptService;
 	}
 
-	@Transactional
-	public Operation getOperationByID(int id) {
-		return operationDao.getOperationById(id);
-	}
+//	@Transactional
+//	public Operation getOperationByID(int id) {
+//		return operationDao.getOperationById(id);
+//	}
+//
+//	@Transactional
+//	public void removeOperationByID(int id) {
+//		operationDao.deleteOperationByID(id);
+//	}
 
 	@Transactional
-	public void removeOperationByID(int id) {
-		operationDao.deleteOperationByID(id);
-	}
-
-	@Transactional
-	public void saveOperation(DateTime date, double amount, boolean isOutcome, String shift, String categoryName, String subCategoryName,
-			String conceptName, PaymentType paymentType) throws InvalidAmountException {
+	public void saveOperation(DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift, String categoryName, String subCategoryName, String conceptName) throws InvalidAmountException {
 		
-		Category category = categoryService.findByName(categoryName);
-		SubCategory subCategory = subCategoryService.findByName(subCategoryName);
-		Concept concept =conceptService.findByName(conceptName);
-				
-		Operation operation = new Operation(date, amount, isOutcome, shift, category, subCategory, concept, paymentType);
-		
-		operationDao.save(operation);
-	}
-
-	@Transactional
-	public void saveOperation(int id, DateTime date, double amount, boolean isIncome, String shift, String categoryName,
-			String subCategoryName, String conceptName, PaymentType paymentType) throws InvalidAmountException {
-
 		Category category = categoryService.findByName(categoryName);
 		SubCategory subCategory = subCategoryService.findByName(subCategoryName);
 		Concept concept = conceptService.findByName(conceptName);
-		
-		Operation operation = getOperationByID(id);
-		operation.setDate(date);
-		operation.setAmount(amount);
-		operation.setIncome(isIncome);
-		List<Concept> concepts = new ArrayList<Concept>();
-		concepts.add(concept);
-		subCategory.setConcepts(concepts);
-		List<SubCategory> subcategories = new ArrayList<SubCategory>();
-		subcategories.add(subCategory);
-		category.setSubcategory(subcategories);
-		operation.setCategory(category);
-		operation.setPaymentType(paymentType);
+				
+		Operation operation = new Operation(date, paymentTypes, isIncome, shift, category, subCategory, concept);
 		
 		operationDao.save(operation);
 	}
 
-	@Transactional
-	public void saveOperation(Operation operation) {
-		operationDao.save(operation);
-	}
+//	@Transactional
+//	public void saveOperation(int id, DateTime date, double amount, boolean isIncome, String shift, String categoryName,
+//			String subCategoryName, String conceptName, PaymentType paymentType) throws InvalidAmountException {
+//
+//		Category category = categoryService.findByName(categoryName);
+//		SubCategory subCategory = subCategoryService.findByName(subCategoryName);
+//		Concept concept = conceptService.findByName(conceptName);
+//		
+//		Operation operation = getOperationByID(id);
+//		operation.setDate(date);
+//		operation.setAmount(amount);
+//		operation.setIncome(isIncome);
+//		List<Concept> concepts = new ArrayList<Concept>();
+//		concepts.add(concept);
+//		subCategory.setConcepts(concepts);
+//		List<SubCategory> subcategories = new ArrayList<SubCategory>();
+//		subcategories.add(subCategory);
+//		category.setSubcategory(subcategories);
+//		operation.setCategory(category);
+//		operation.setPaymentType(paymentType);
+//		
+//		operationDao.save(operation);
+//	}
+
+//	@Transactional
+//	public void saveOperation(Operation operation) {
+//		operationDao.save(operation);
+//	}
 	
 	@Transactional(readOnly=true)
 	public List<Operation> findAll(){
 		return operationDao.findAll();
 	}
 	
-	@Transactional(readOnly=true)
-	public List<Operation> findIncomes(){
-		return operationDao.findIncomes();
-	}
-	
-	@Transactional(readOnly=true)
-	public List<Operation> findOutcomes(){
-		return operationDao.findOutcomes();
+//	@Transactional(readOnly=true)
+//	public List<Operation> findIncomes(){
+//		return operationDao.findIncomes();
+//	}
+//	
+//	@Transactional(readOnly=true)
+//	public List<Operation> findOutcomes(){
+//		return operationDao.findOutcomes();
+//	}
+
+	@Transactional
+	public void saveOperation(Operation operation) {
+		operationDao.save(operation);
 	}
 
 
