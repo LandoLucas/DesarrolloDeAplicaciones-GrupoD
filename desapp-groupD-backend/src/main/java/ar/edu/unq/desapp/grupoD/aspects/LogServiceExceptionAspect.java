@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class LogServiceExceptionAspect {
 	
-	Logger logger;
+	private Logger logger;
 	
 	@AfterThrowing(pointcut = "execution(  * ar.edu.unq.desapp.grupoD.services..*(..)   )",throwing = "exception")
 	public void logServiceException(JoinPoint jp,Exception exception) throws Throwable { 

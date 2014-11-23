@@ -52,7 +52,7 @@
 			<property name="hibernateProperties">
 				<props>
 					<!-- Configuration generic properties. They are loaded from file hibernate.properties -->
-					<prop key="hibernate.show_sql">true</prop>
+					<prop key="hibernate.show_sql">false</prop>
 					<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
 					<prop key="hibernate.hbm2ddl.auto">update</prop>
 
@@ -85,17 +85,22 @@
 	<!-- ______________ Model Beans______________ -->
 	<!-- ________________________________________ -->
 
-	
 	<!-- ACCOUNT -->
-	<bean id="accountDao" class="ar.edu.unq.desapp.grupoD.persistence.AccountDao">
+	<bean id="pettyCashAccountDao" class="ar.edu.unq.desapp.grupoD.persistence.PettyCashAccountDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+	<bean id="bankAccountDao" class="ar.edu.unq.desapp.grupoD.persistence.BankAccountDao">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	
 	<bean id="accountService" class="ar.edu.unq.desapp.grupoD.services.AccountService">
-		<property name="accountDao" ref="accountDao" />
+		<property name="pettyCashAccountDao" ref="pettyCashAccountDao" />
+		<property name="bankAccountDao" ref="bankAccountDao" />
 	</bean>
 	<bean id="accountRest" class="ar.edu.unq.desapp.grupoD.rest.AccountRest" >
 		<property name="accountService" ref="accountService"/>
 	</bean>
+	
 	<!-- PAYMENTTYPE -->
 	<bean id="paymentTypeDao" class="ar.edu.unq.desapp.grupoD.persistence.PaymentTypeDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
@@ -155,6 +160,8 @@
 		<property name="categoryService" ref="categoryService" />
 		<property name="subCategoryService" ref="subcategoryService" />
 		<property name="conceptService" ref="conceptService" />
+		<property name="pettyCashAccountDao" ref="pettyCashAccountDao" />
+		<property name="bankAccountDao" ref="bankAccountDao" />
 	</bean>
 	<bean id="operationsRest" class="ar.edu.unq.desapp.grupoD.rest.OperationsRest" >
 		<property name="operationService" ref="operationService"/>

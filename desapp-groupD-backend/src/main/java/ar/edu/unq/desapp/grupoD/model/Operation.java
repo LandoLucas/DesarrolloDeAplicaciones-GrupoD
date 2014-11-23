@@ -17,12 +17,15 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.category.Concept;
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
+import ar.edu.unq.desapp.grupoD.services.AccountService;
 
 @XmlRootElement(name = "operation")
 @Entity
@@ -58,6 +61,12 @@ public class Operation {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<PaymentType> paymentTypes;
 	
+	@Column
+	private double totalInPettyCash;
+	
+	@Column
+	private double totalInBank;
+	
 //	private static int next_operation_id = 1;
 	/**
 	 * Returns an instance of a money operation and it saves the transaction details.
@@ -77,7 +86,7 @@ public class Operation {
 	 *            how the operation was payed
 	 * @throws InvalidAmountException if the amount is equal or below 0
 	 */
-	public Operation(DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift, Category category, SubCategory subCategory, Concept concept){
+	public Operation(DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift, Category category, SubCategory subCategory, Concept concept, double totalInPettyCash , double totalInBank){
 		setDate(date);
 		setPaymentTypes(paymentTypes);
 		setIncome(isIncome);
@@ -85,23 +94,26 @@ public class Operation {
 		setCategory(category);
 		setSubcategory(subCategory);
 		setConcept(concept);
-//		setOperationID();
+		setTotalInPettyCash(totalInPettyCash);
+		setTotalInBank(totalInBank);
 	}
 	
-//	/**
-//	 * Intended to be used as an adjustment operation where you need to correct the balance of one of the accounts.
-//	 * It is like a normal operation but it lacks some information such as the shift and it needs to know which account needs to be adjusted.
-//	 */
-//	public Operation(DateTime date, double amount, boolean isIncome,
-//			 Category category, Account account) throws InvalidAmountException {
-//		this.setDate(date);
-//		this.setIncome(isIncome);
-//		this.setCategory(category);
-//		
-//		setOperationID();
-//		account.bill( this);
-//	}
-	
+	public double getTotalInBank() {
+		return totalInBank;
+	}
+
+	public void setTotalInBank(double totalInBank) {
+		this.totalInBank = totalInBank;
+	}
+
+	public double getTotalInPettyCash() {
+		return totalInPettyCash;
+	}
+
+	public void setTotalInPettyCash(double totalInPettyCash) {
+		this.totalInPettyCash = totalInPettyCash;
+	}
+
 	public List<PaymentType> getPaymentTypes() {
 		return paymentTypes;
 	}

@@ -9,8 +9,7 @@ import org.joda.time.DateTime;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
-import ar.edu.unq.desapp.grupoD.model.Operation;
-import ar.edu.unq.desapp.grupoD.model.account.Account;
+import ar.edu.unq.desapp.grupoD.model.account.BankAccount;
 import ar.edu.unq.desapp.grupoD.model.account.PettyCashAccount;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.category.Concept;
@@ -73,13 +72,21 @@ public class DatabaseInitializer {
 
 		//TODO initialize bank accounts
 		
-		
+		loadAccounts();
 		loadOperations();
 		loadReceipts();
 
 		System.out.println("==========================");
 		System.out.println("POPULATED");
 		System.out.println("==========================");
+	}
+
+	private void loadAccounts() {
+		PettyCashAccount pettyCashAccount = new PettyCashAccount(0);
+		BankAccount bankAccount = new BankAccount(0);
+		
+		accountService.save(bankAccount); 
+		accountService.save(pettyCashAccount);
 	}
 
 	private void loadReceipts() throws InvalidReceiptNumberException {
@@ -107,7 +114,7 @@ public class DatabaseInitializer {
 		subcategory.setConcepts(concepts);
 
 		subcategories.add(subcategory);
-		Account pettyCash = new PettyCashAccount();
+		PettyCashAccount pettyCash = new PettyCashAccount();
 		PaymentType cash = new PettyCash(100);
 		accountService.save(pettyCash);
 		paymentTypeService.save(cash);
@@ -127,11 +134,8 @@ public class DatabaseInitializer {
 	}
 
 	private void loadOperation(Category category, SubCategory subcategory, Concept concept , DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift) throws InvalidAmountException {
-		
-		Operation operation = new Operation(date, paymentTypes , isIncome, shift, category, subcategory, concept);
-
 		categoryService.save(category);
-		operationService.saveOperation(operation);
+		operationService.saveOperation(date, paymentTypes , isIncome, shift, category.getCategoryName(), subcategory.getSubcategoryName(), concept.getConceptName());
 	}
 
 }

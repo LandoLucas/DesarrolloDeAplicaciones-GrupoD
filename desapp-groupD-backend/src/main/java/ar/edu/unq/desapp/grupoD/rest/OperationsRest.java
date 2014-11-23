@@ -38,13 +38,6 @@ public class OperationsRest {
 		this.operationService = operationService;
 	}
 
-//	@GET
-//	@Path("/{id}")
-//	@Produces("application/json")
-//	public Operation getOperationByID(@PathParam("id") int id) {
-//		return operationService.getOperationByID(id);
-//	}
-	
 	@GET
 	@Path("/all")
 	@Produces("application/json")
@@ -52,22 +45,6 @@ public class OperationsRest {
 		List<Operation> obs =  operationService.findAll();
 		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(obs).build();
 	}
-	
-//	@GET
-//	@Path("/incomes")
-//	@Produces("application/json")
-//	public Response getAllIncomes() throws InvalidAmountException, InvalidReceiptNumberException {
-//		List<Operation> obs =  operationService.findIncomes();
-//		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(obs).build();
-//	}
-//	
-//	@GET
-//	@Path("/outcomes")
-//	@Produces("application/json")
-//	public Response getAllOutcomes() throws InvalidAmountException, InvalidReceiptNumberException {
-//		List<Operation> obs =  operationService.findOutcomes();
-//		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(obs).build();
-//	}
 	
 	@POST
 	@Path("/new")
@@ -86,8 +63,7 @@ public class OperationsRest {
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 
-	private List<PaymentType> parsePayments(Map<Integer, Double> payments)
-			throws InvalidAmountException {
+	private List<PaymentType> parsePayments(Map<Integer, Double> payments) throws InvalidAmountException {
 		List<PaymentType> paymentTypes = new ArrayList<PaymentType>();
 		
 		//Parse payment Type
@@ -104,13 +80,6 @@ public class OperationsRest {
 		return paymentTypes;
 	}
 	
-//	@POST
-//	@Path("/remove")
-//	public Response removeOperation(@FormParam("id") int id){
-//		operationService.removeOperationByID(id);
-//		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
-//	}
-	
 	@POST
 	@Path("/edit/{id}")
 	public Response editOperation(@FormParam("date") DateTime date,  @FormParam("paymentTypes") Map<Integer,Double> payments, 
@@ -124,7 +93,5 @@ public class OperationsRest {
 		
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
-
-	
 
 }

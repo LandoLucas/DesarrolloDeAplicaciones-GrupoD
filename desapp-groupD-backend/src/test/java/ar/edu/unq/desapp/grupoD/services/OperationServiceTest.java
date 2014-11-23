@@ -12,8 +12,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
-import ar.edu.unq.desapp.grupoD.model.Operation;
-import ar.edu.unq.desapp.grupoD.model.builders.OperationBuilder;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 
 @ContextConfiguration(locations = {"classpath:spring-base-context.xml"})
@@ -21,16 +19,6 @@ public class OperationServiceTest extends AbstractTransactionalJUnit4SpringConte
 
 	@Autowired
 	private OperationService operationService;
-	
-	@Test
-	public void saveOperation() throws InvalidAmountException{
-		OperationBuilder builder = new OperationBuilder();
-		Operation operation = builder.any();
-		
-		operationService.saveOperation(operation);
-		
-		assertTrue( operationService.findAll().contains(operation));
-	}
 	
 	@Test
 	public void saveOperationWithParameters() throws InvalidAmountException{
@@ -48,19 +36,4 @@ public class OperationServiceTest extends AbstractTransactionalJUnit4SpringConte
 		assertTrue( operationService.findAll().get(0).getDate() == date  );
 	}
 	
-//	@Test
-//	public void removeOperation() throws InvalidAmountException{
-//		OperationBuilder builder = new OperationBuilder();
-//		Operation operation = builder.any();
-//		
-//		operationService.saveOperation(operation);
-//		int id = operation.getOperationID();
-//		
-//		operationService.removeOperationByID(id);
-//		
-//		
-//		assertNull( operationService.getOperationByID(id));
-//		PettyCashAccount.resetBalance();
-//		Operation.resetCounter();
-//	}
 }

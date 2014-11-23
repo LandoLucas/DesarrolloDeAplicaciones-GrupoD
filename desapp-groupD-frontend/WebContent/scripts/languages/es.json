@@ -88,6 +88,8 @@
 														"FORM_CASH": "Efectivo",
 														"FORM_DEBIT": "Debito",
 														"FORM_CREDIT": "Credito",
+														"FORM_TOTAL_CASH": "Total en efectivo",
+														"FORM_TOTAL_BANK": "Total en banco",
 														
 														"FORM_ERROR_AMOUNT_REQUIRED": "Error, monto requerido",
 														"FORM_ERROR_NAME_REQUIRED": "Error, Nombre requerido",

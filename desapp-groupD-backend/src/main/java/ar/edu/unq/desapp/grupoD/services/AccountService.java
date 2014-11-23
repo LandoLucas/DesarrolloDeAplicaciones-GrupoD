@@ -1,41 +1,52 @@
 package ar.edu.unq.desapp.grupoD.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.desapp.grupoD.model.account.Account;
-import ar.edu.unq.desapp.grupoD.persistence.AccountDao;
+import ar.edu.unq.desapp.grupoD.model.account.BankAccount;
+import ar.edu.unq.desapp.grupoD.model.account.PettyCashAccount;
+import ar.edu.unq.desapp.grupoD.persistence.BankAccountDao;
+import ar.edu.unq.desapp.grupoD.persistence.PettyCashAccountDao;
 
 public class AccountService {
 
-	private AccountDao accountDao;
+	private PettyCashAccountDao pettyCashAccountDao;
+	private BankAccountDao bankAccountDao;
 
-	public void setAccountDao(AccountDao accountDao) {
-		this.accountDao = accountDao;
+	public void setPettyCashAccountDao(PettyCashAccountDao pettyCashAccountDao) {
+		this.pettyCashAccountDao = pettyCashAccountDao;
+	}
+
+	public void setBankAccountDao(BankAccountDao bankAccountDao) {
+		this.bankAccountDao = bankAccountDao;
 	}
 
 	@Transactional(readOnly=true)
 	public List<Account> findAll(){
-		return accountDao.findAll();
+		List<Account> allAccounts = new ArrayList<Account>();
+//		allAccounts.addAll( pettyCashAccountDao.findAll() );
+//		allAccounts.addAll( bankAccountDao.findAll() );
+		
+		return allAccounts;
 	}
-
-//	@Transactional
-//	public void removeAccount(String name) {
-//		this.accountDao.removeAccountByName(name);
-//	}
 
 	@Transactional
-	public void save(Account account) {
-		this.accountDao.save(account);
+	public void save(PettyCashAccount account) {
+		this.pettyCashAccountDao.save(account);
 	}
 	
-//	@Transactional
-//	public void update(String name, Integer idCat) {
-//		this.accountDao.update(name, idCat);
-//	}
-//	@Transactional
-//	public Account findByName(String categoryName) {
-//		return this.accountDao.getByName(categoryName);
-//	}
+	@Transactional
+	public void save(BankAccount account) {
+		this.bankAccountDao.save(account);
+	}
+	
+	@Transactional
+	public double getPettyCashTotal(){
+		this.pettyCashAccountDao.findAll();
+//		return account.getAmount();
+		return 2;
+	}
 }

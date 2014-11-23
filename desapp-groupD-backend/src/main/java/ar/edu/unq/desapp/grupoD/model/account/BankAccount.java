@@ -59,6 +59,10 @@ public class BankAccount extends Account {
 	}
 
 	public BankAccount(){}
+
+	public void setAmount(double totalInBankAccount) {
+		amount = totalInBankAccount;
+	}
 	
 
 }

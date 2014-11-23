@@ -22,27 +22,10 @@
 				<td data-title="tableColumns['concept']">{{operacion.concept}}</td>
 				<td data-title="tableColumns['shift']">{{operacion.shift}}</td>
 				<td data-title="tableColumns['cash']">{{operacion.paymentTypes[0].amount}}</td>
-				<td data-title="tableColumns['debit']">{{operacion.paymentTypes[1].amount}}</td>
-				<td data-title="tableColumns['credit']">{{operacion.paymentTypes[2].amount}}</td>
-
-
-				
-				<td data-title="Total_Efectivo">{{operacion.shift}}</td>
-				<td data-title="Total_CC">{{operacion.shift}}</td>
-				<td data-title="Total_Banco">{{operacion.shift}}</td>
-				
-
-<!-- 				<td data-title="{{ 'SURNAME' | translate}}">{{usuario.apellido}}</td> -->
-<!-- 				<td data-title="{{ 'PERMISSION_LEVELS' | translate}}">{{usuario.nivelDePermiso}}</td> -->
-<!-- 				<td data-title="{{ 'ACTIONS' | translate}}"><button type="button" -->
-<!-- 						class="btn btn-warning" -->
-<!-- 						ng-click="prepararEditarUsuario(usuario.id)" -->
-<!-- 						ng-show="{{m('actualizarUsuario')}}" -->
-<!-- 						title="{{ 'EDIT_USER' | translate}}{{usuario.nickname}}">{{ 'EDIT' | translate}}</button> -->
-<!-- 					<button type="button" class="btn btn-danger" -->
-<!-- 						ng-show="{{m('borrarUsuario')}}" -->
-<!-- 						ng-click="confirmacionBorrarUsuario(usuario.id, usuario.codigo)" -->
-<!-- 						title="{{ 'DELETE_USER' | translate}} {{usuario.nickname}}">{{ 'DELETE' | translate}}</button></td> -->
+				<td data-title="tableColumns['credit']">{{operacion.paymentTypes[1].amount}}</td>
+				<td data-title="tableColumns['debit']">{{operacion.paymentTypes[2].amount}}</td>
+				<td data-title="tableColumns['totalCash']">{{operacion.totalInPettyCash}}</td>
+				<td data-title="tableColumns['totalBank']">{{operacion.totalInBank}}</td>
 			</tr>
 		</table>
 

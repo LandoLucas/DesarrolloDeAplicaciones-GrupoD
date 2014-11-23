@@ -10,7 +10,5 @@ import javax.persistence.InheritanceType;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Account { 
 
-//	public abstract void bill(Operation operation);
-	
 }
 

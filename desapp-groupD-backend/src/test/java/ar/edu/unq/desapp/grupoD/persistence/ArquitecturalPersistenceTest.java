@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -21,7 +22,7 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 
 /**
  * This test class verifies that all the application entities are well
- * configured so they can be saved, retrieved, and delete from the database.
+ * configured so they can be saved, retrieved, and deleted from the database.
  * It's generic enough so it doesn't rely on modifications for every new entity.
  * 
  * @author Lucas
@@ -100,7 +101,8 @@ public class ArquitecturalPersistenceTest extends AbstractTransactionalJUnit4Spr
 					   !file.getName().endsWith("Builder.class") &&
 					   !file.getName().contains("BankTransfer.class") &&
 					   !file.getName().contains("CreditCard.class") &&
-					   !file.getName().contains("PettyCash.class")
+					   !file.getName().contains("PettyCash.class") &&
+					   !file.getName().contains("DebitCard.class")
 					   
 					) {
 				classes.add(Class.forName(packageName + '.' + file.getName().substring(0, file.getName().length() - 6)));

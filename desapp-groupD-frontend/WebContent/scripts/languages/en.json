@@ -88,6 +88,9 @@
 												"FORM_CASH": "Cash",
 												"FORM_DEBIT": "Debit",
 												"FORM_CREDIT": "Credit",
+												"FORM_TOTAL_CASH": "Total in cash",
+												"FORM_TOTAL_BANK": "Total in bank",
+												
 												
 												"DEFAULT_ERROR": "An unexpected error has ocurred",
 												"FORM_ERROR_AMOUNT_REQUIRED": "Error, amount required",

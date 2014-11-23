@@ -21,7 +21,6 @@ import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 public class OperationTest {
 
 	
-	//Verifies that the operation constructor sets all the variables and delegates the bill method to the payment type.
 	@Test
 	public void newOperationTest() throws InvalidAmountException{
 		DateTime date = new DateTime();
@@ -32,49 +31,12 @@ public class OperationTest {
 		Concept concept = mock(Concept.class);
 		List<PaymentType> paymentTypes = new ArrayList<PaymentType>();
 		
-		Operation operation = new Operation(date, paymentTypes, isIncome, shift, category, subCategory, concept);
+		Operation operation = new Operation(date, paymentTypes, isIncome, shift, category, subCategory, concept , 340 , 430);
 		
 		assertSame(date , operation.getDate());
 		assertSame(isIncome , operation.isIncome());
 		assertSame(shift , operation.getShift());
 		assertSame(category.getCategoryName() , operation.getCategory());
-		
-//		verify(paymentType).bill( operation);
 	}
 
-//	@Test
-//	public void newAdjustmentOperationTest() throws InvalidAmountException{
-//		DateTime date = new DateTime();
-//		double amount = 100;
-//		boolean isIncome = true;
-//		Category category = mock(Category.class);
-//		Account account = mock(Account.class);
-//		
-//		Operation operation = new Operation(date, amount, isIncome, category, account);
-//		
-//		assertSame(date , operation.getDate());
-//		assertEquals(amount , operation.getAmount() , 1);
-//		assertSame(isIncome , operation.isIncome());
-//		assertSame(category.getCategoryName() , operation.getCategory());
-//		
-//		verify(account).bill(operation);
-//	}
-	
-//	@Test
-//	public void getOperationIDTest() throws InvalidAmountException{
-//		DateTime date = new DateTime();
-//		double amount = 100;
-//		boolean isIncome = true;
-//		Category category = mock(Category.class);
-//		Account account = mock(Account.class);
-//		Operation.resetCounter();
-//		
-//		Operation operation = new Operation(date, amount, isIncome, category, account);
-//		assertEquals( 1 , operation.getOperationID());
-//	
-//		Operation operation2 = new Operation(date, amount, isIncome, category, account);
-//		assertEquals( 2 , operation2.getOperationID());
-//	}
-	
-	
 }

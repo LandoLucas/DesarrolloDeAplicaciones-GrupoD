@@ -25,9 +25,12 @@ public class OperationBuilder implements ArquitecturalTestBuilder<Operation>{
 	private SubCategory subCategory = new SubCategory("test subcategory");
 	private Concept concept = new Concept("test concept");
 	private List<PaymentType> paymentTypes = new ArrayList<PaymentType>();
-
+	private double totalInPettyCash = 100;
+	private double totalInBankAccount = 200;
+	
+	
 	public Operation build() throws InvalidAmountException{
-		return new Operation(date , paymentTypes , isIncome, shift, category, subCategory, concept);
+		return new Operation(date , paymentTypes , isIncome, shift, category, subCategory, concept , totalInPettyCash , totalInBankAccount);
 	}
 
 	@Override

@@ -12,7 +12,7 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 
 	$scope.operacionesOk = function(response) {
 		$scope.operaciones = response;
-	}
+	};
 	
 	function getAllOperations(){
 		restServices.invokeGetAllOperations($http, {}, $scope.operacionesOk , restServices.defaultHandlerOnError);
@@ -28,7 +28,10 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 		concept: "Concept",	
 		shift: "Shift",
 		cash: "Cash",
-		debit: "Debit"
+		debit: "Debit",
+		credir: "Credit",
+		totalCash: "Total Cash",
+		totalBank: "Total in Bank"
 	};
 
 	translateTableColumns();
@@ -61,6 +64,13 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 		$translate('FORM_CREDIT').then(function(text) {
 			$scope.tableColumns.credit = text;
 		});
+		$translate('FORM_TOTAL_CASH').then(function(text) {
+			$scope.tableColumns.totalCash = text;
+		});
+		$translate('FORM_TOTAL_BANK').then(function(text) {
+			$scope.tableColumns.totalBank = text;
+		});
+		
 		
 		
 	}
