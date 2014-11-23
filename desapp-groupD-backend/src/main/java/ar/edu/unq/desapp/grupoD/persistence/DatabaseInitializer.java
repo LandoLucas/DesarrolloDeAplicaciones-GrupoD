@@ -83,7 +83,7 @@ public class DatabaseInitializer {
 
 	private void loadAccounts() {
 		PettyCashAccount pettyCashAccount = new PettyCashAccount(0);
-		BankAccount bankAccount = new BankAccount(0,0);
+		BankAccount bankAccount = new BankAccount(0,0,0);
 		
 		accountService.save(bankAccount); 
 		accountService.save(pettyCashAccount);

@@ -32,7 +32,8 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 		credir: "Credit",
 		totalCash: "Total Cash",
 		totalBank: "Total in Bank",
-		available: "Available"
+		available: "Available",
+		devengado: "Devengado"
 	};
 
 	translateTableColumns();
@@ -74,6 +75,10 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 		$translate('FORM_AVAILABLE').then(function(text) {
 			$scope.tableColumns.available = text;
 		});
+		$translate('DEVENGADO').then(function(text) {
+			$scope.tableColumns.devengado = text;
+		});
+		
 		
 	}
 

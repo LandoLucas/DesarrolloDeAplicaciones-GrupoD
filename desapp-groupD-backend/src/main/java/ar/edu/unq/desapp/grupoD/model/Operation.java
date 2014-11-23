@@ -17,15 +17,12 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.category.Concept;
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
-import ar.edu.unq.desapp.grupoD.services.AccountService;
 
 @XmlRootElement(name = "operation")
 @Entity
@@ -39,8 +36,6 @@ public class Operation {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	
-//	private int operationID;
 	
 	@Column
 	private boolean isIncome;
@@ -70,7 +65,9 @@ public class Operation {
 	@Column
 	private double available;
 	
-//	private static int next_operation_id = 1;
+	@Column
+	private double devengado; //TODO encontrar traduccion 
+	
 	/**
 	 * Returns an instance of a money operation and it saves the transaction details.
 	 * It is intended to be used when the transaction has already been done.  
@@ -89,7 +86,9 @@ public class Operation {
 	 *            how the operation was payed
 	 * @throws InvalidAmountException if the amount is equal or below 0
 	 */
-	public Operation(DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift, Category category, SubCategory subCategory, Concept concept, double totalInPettyCash , double totalInBank , double available){
+	public Operation(DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift, 
+					 Category category, SubCategory subCategory, Concept concept, double totalInPettyCash , 
+					 double totalInBank , double available , double devengado){
 		setDate(date);
 		setPaymentTypes(paymentTypes);
 		setIncome(isIncome);
@@ -100,8 +99,17 @@ public class Operation {
 		setTotalInPettyCash(totalInPettyCash);
 		setTotalInBank(totalInBank);
 		setAvailable(available);
+		setDevengado(devengado);
 	}
 	
+	public double getDevengado() {
+		return devengado;
+	}
+
+	public void setDevengado(double devengado) {
+		this.devengado = devengado;
+	}
+
 	public double getAvailable() {
 		return available;
 	}

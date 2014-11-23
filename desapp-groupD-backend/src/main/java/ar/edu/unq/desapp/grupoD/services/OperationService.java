@@ -2,7 +2,6 @@ package ar.edu.unq.desapp.grupoD.services;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,6 +62,7 @@ public class OperationService {
 		double totalInPettyCash = pettyCashAccountDao.getAmount();
 		double totalInBankAccount = bankAccountDao.getAmmount();
 		double available = bankAccountDao.getAvailableAmount();
+		double devengado = bankAccountDao.getDevengado();
 		
 		//TODO esto es una negrada, lo se, pero quiero resolverlo rapido, tambien hay que extraerlo a un metodo
 		for( PaymentType paymentType : paymentTypes){
@@ -76,13 +76,14 @@ public class OperationService {
 					bankAccountDao.updateAvailable(available);
 				}else{
 					totalInBankAccount += paymentType.getAmount();
-					//TODO devengado va aca
+					devengado += paymentType.getAmount();
+					bankAccountDao.updateDevengado(devengado);
 				}
 				bankAccountDao.newAmmount(totalInBankAccount);
 			}
 		}
 		
-		Operation operation = new Operation(date, paymentTypes, isIncome, shift, category, subCategory, concept, totalInPettyCash , totalInBankAccount , available);
+		Operation operation = new Operation(date, paymentTypes, isIncome, shift, category, subCategory, concept, totalInPettyCash , totalInBankAccount , available , devengado);
 		operationDao.save(operation);
 	}
 

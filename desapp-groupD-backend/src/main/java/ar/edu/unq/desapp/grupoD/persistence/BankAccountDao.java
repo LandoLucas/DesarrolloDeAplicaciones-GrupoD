@@ -17,7 +17,7 @@ GenericRepository<BankAccount>{
 		//If the account was not yet created do it and return 0
 		List<BankAccount> accounts = this.findAll();
 		if ( accounts.isEmpty() ){
-			this.save(new BankAccount(0 , 0));
+			this.save(new BankAccount(0 , 0 , 0));
 			return 0;
 		}
 		return accounts.get(0).getAmount();
@@ -26,7 +26,7 @@ GenericRepository<BankAccount>{
 	public double getAvailableAmount(){
 		List<BankAccount> accounts = this.findAll();
 		if ( accounts.isEmpty() ){
-			this.save(new BankAccount(0, 0));
+			this.save(new BankAccount(0, 0, 0));
 			return 0;
 		}
 		return accounts.get(0).getAvailable();
@@ -43,5 +43,20 @@ GenericRepository<BankAccount>{
 		account.setAvailable(available);
 		save(account);
 	}
-	
+
+	public double getDevengado() {
+		List<BankAccount> accounts = this.findAll();
+		if ( accounts.isEmpty() ){
+			this.save(new BankAccount(0, 0, 0));
+			return 0;
+		}
+		return accounts.get(0).getDevengado();
+	}
+
+	public void updateDevengado(double devengado) {
+		BankAccount account = findAll().get(0);
+		account.setDevengado(devengado);
+		save(account);
+	}
+
 }

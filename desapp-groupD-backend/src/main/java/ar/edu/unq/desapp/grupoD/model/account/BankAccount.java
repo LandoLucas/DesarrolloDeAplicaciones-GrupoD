@@ -19,13 +19,17 @@ public class BankAccount extends Account {
 	@Column 
 	private double available;
 	
+	@Column
+	private double devengado;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id;
 	
-	public BankAccount(double amount, double available) {
+	public BankAccount(double amount, double available, double devengado) {
 		this.amount = amount;
 		this.available = available;
+		this.devengado = devengado;
 	}
 	
 	public double getAvailable() {
@@ -48,6 +52,14 @@ public class BankAccount extends Account {
 
 	public void setAmount(double totalInBankAccount) {
 		amount = totalInBankAccount;
+	}
+
+	public double getDevengado() {
+		return devengado;
+	}
+
+	public void setDevengado(double devengado) {
+		this.devengado = devengado;
 	}
 
 }
