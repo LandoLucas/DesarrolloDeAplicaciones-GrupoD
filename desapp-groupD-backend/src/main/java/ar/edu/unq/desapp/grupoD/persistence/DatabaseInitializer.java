@@ -26,6 +26,7 @@ import ar.edu.unq.desapp.grupoD.services.OperationService;
 import ar.edu.unq.desapp.grupoD.services.PaymentTypeService;
 import ar.edu.unq.desapp.grupoD.services.ReceiptTypeAService;
 import ar.edu.unq.desapp.grupoD.services.ReceiptTypeBService;
+import ar.edu.unq.desapp.grupoD.services.SubCategoryService;
 
 /**
  * This class is the responsible to populate the database with fake information
@@ -38,9 +39,14 @@ public class DatabaseInitializer {
 	private AccountService accountService;
 	private PaymentTypeService paymentTypeService;
 	private CategoryService categoryService;
+	private SubCategoryService subcategoryService;
 	private OperationService operationService;
 	private ReceiptTypeAService receiptTypeAService;
 	private ReceiptTypeBService receiptTypeBService;
+
+	public void setSubcategoryService(SubCategoryService subcategoryService) {
+		this.subcategoryService = subcategoryService;
+	}
 
 	public void setReceiptTypeAService(ReceiptTypeAService receiptTypeAService) {
 		this.receiptTypeAService = receiptTypeAService;
@@ -135,6 +141,7 @@ public class DatabaseInitializer {
 
 	private void loadOperation(Category category, SubCategory subcategory, Concept concept , DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift) throws InvalidAmountException {
 		categoryService.save(category);
+		subcategoryService.save(subcategory);
 		operationService.saveOperation(date, paymentTypes , isIncome, shift, category.getCategoryName(), subcategory.getSubcategoryName(), concept.getConceptName());
 	}
 
