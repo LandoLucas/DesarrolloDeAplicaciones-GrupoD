@@ -12,44 +12,30 @@ import javax.persistence.Id;
  */
 @Entity
 public class BankAccount extends Account {
-//	private static double balance = 0;
 
 	@Column
 	private double amount;
+	
+	@Column 
+	private double available;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id;
 	
-//	@Override
-//	public void bill(Operation operation) {
-//		new BankAccount(operation);
-//	}
-	
-	public BankAccount(double amount) {
+	public BankAccount(double amount, double available) {
 		this.amount = amount;
+		this.available = available;
+	}
+	
+	public double getAvailable() {
+		return available;
 	}
 
-//	public BankAccount(Operation operation) {
-//		this.amount = operation.getAmount();
-//		setBalance(this.amount, operation);
-//	}
+	public void setAvailable(double available) {
+		this.available = available;
+	}
 
-//	public static void setBalance(double newAmount, Operation operation) {
-//		if (operation.isIncome())
-//			balance = balance + newAmount;
-//		else
-//			balance = balance - newAmount;
-//	}
-//	
-//	public static double getBalance(){
-//		return balance;
-//	}
-//	
-//	public static void resetBalance(){
-//		balance = 0;
-//	}
-	
 	public Integer getId() {
 		return id;
 	}
@@ -63,6 +49,5 @@ public class BankAccount extends Account {
 	public void setAmount(double totalInBankAccount) {
 		amount = totalInBankAccount;
 	}
-	
 
 }

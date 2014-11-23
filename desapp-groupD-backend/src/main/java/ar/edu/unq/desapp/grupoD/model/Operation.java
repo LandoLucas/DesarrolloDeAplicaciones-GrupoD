@@ -67,6 +67,9 @@ public class Operation {
 	@Column
 	private double totalInBank;
 	
+	@Column
+	private double available;
+	
 //	private static int next_operation_id = 1;
 	/**
 	 * Returns an instance of a money operation and it saves the transaction details.
@@ -86,7 +89,7 @@ public class Operation {
 	 *            how the operation was payed
 	 * @throws InvalidAmountException if the amount is equal or below 0
 	 */
-	public Operation(DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift, Category category, SubCategory subCategory, Concept concept, double totalInPettyCash , double totalInBank){
+	public Operation(DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift, Category category, SubCategory subCategory, Concept concept, double totalInPettyCash , double totalInBank , double available){
 		setDate(date);
 		setPaymentTypes(paymentTypes);
 		setIncome(isIncome);
@@ -96,8 +99,17 @@ public class Operation {
 		setConcept(concept);
 		setTotalInPettyCash(totalInPettyCash);
 		setTotalInBank(totalInBank);
+		setAvailable(available);
 	}
 	
+	public double getAvailable() {
+		return available;
+	}
+
+	public void setAvailable(double available) {
+		this.available = available;
+	}
+
 	public double getTotalInBank() {
 		return totalInBank;
 	}
@@ -138,26 +150,6 @@ public class Operation {
 	public void setDate(DateTime date) {
 		this.date = date;
 	}
-
-//	public int getOperationID() {
-//		return operationID;
-//	}
-
-//	/**
-//	 * Sets automatically the operation ID
-//	 */
-//	private synchronized void setOperationID(){
-//		this.operationID = next_operation_id;
-//		next_operation_id = next_operation_id + 1;
-//		//TODO once we have the database we might want to consider to retrieve the last operation ID from it since any restart will make the counter to reset.
-//	}
-//	
-//	/**
-//	 * To be used ONLY for unit test
-//	 */
-//	public static void resetCounter(){
-//		next_operation_id = 1;
-//	}
 
 	public boolean isIncome() {
 		return isIncome;
@@ -211,17 +203,6 @@ public class Operation {
 	public void setConcept(Concept concept) {
 		this.concept = concept;
 	}
-
-//	public Operation(DateTime date, int operationID, boolean isIncome, String shift, Category category,
-//					 SubCategory subcategory, Concept concept) throws InvalidAmountException {
-//		this.date = date;
-//		this.operationID = operationID;
-//		this.isIncome = isIncome;
-//		this.shift = shift;
-//		this.category = category;
-//		this.subcategory = subcategory;
-//		this.concept = concept;
-//	}
 
 	/**
 	 * Needed for frameworks - Do not delete.

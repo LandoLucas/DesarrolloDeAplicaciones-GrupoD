@@ -62,24 +62,27 @@ public class OperationService {
 		
 		double totalInPettyCash = pettyCashAccountDao.getAmount();
 		double totalInBankAccount = bankAccountDao.getAmmount();
+		double available = bankAccountDao.getAvailableAmount();
 		
-		//TODO esto es una negrada, lo se, pero quiero resolverlo rapido
+		//TODO esto es una negrada, lo se, pero quiero resolverlo rapido, tambien hay que extraerlo a un metodo
 		for( PaymentType paymentType : paymentTypes){
 			if( paymentType instanceof PettyCash ){
 				totalInPettyCash += paymentType.getAmount();
+				pettyCashAccountDao.newAmmount(totalInPettyCash);
 			}else{
 				if( paymentType instanceof DebitCard ){
-					System.out.println("if from debit card, amount is: " + paymentType.getAmount());
 					totalInBankAccount += paymentType.getAmount();
+					available += paymentType.getAmount();
+					bankAccountDao.updateAvailable(available);
+				}else{
+					totalInBankAccount += paymentType.getAmount();
+					//TODO devengado va aca
 				}
+				bankAccountDao.newAmmount(totalInBankAccount);
 			}
 		}
 		
-		pettyCashAccountDao.newAmmount(totalInPettyCash);
-		bankAccountDao.newAmmount(totalInBankAccount);
-		
-		Operation operation = new Operation(date, paymentTypes, isIncome, shift, category, subCategory, concept, totalInPettyCash , totalInBankAccount);
-		
+		Operation operation = new Operation(date, paymentTypes, isIncome, shift, category, subCategory, concept, totalInPettyCash , totalInBankAccount , available);
 		operationDao.save(operation);
 	}
 

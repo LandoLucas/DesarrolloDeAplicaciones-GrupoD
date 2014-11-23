@@ -27,10 +27,11 @@ public class OperationBuilder implements ArquitecturalTestBuilder<Operation>{
 	private List<PaymentType> paymentTypes = new ArrayList<PaymentType>();
 	private double totalInPettyCash = 100;
 	private double totalInBankAccount = 200;
+	private double available = 200;
 	
 	
 	public Operation build() throws InvalidAmountException{
-		return new Operation(date , paymentTypes , isIncome, shift, category, subCategory, concept , totalInPettyCash , totalInBankAccount);
+		return new Operation(date , paymentTypes , isIncome, shift, category, subCategory, concept , totalInPettyCash , totalInBankAccount, available);
 	}
 
 	@Override
