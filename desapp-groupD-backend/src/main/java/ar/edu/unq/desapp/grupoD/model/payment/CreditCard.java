@@ -14,6 +14,8 @@ public class CreditCard extends PaymentType {
 		this.setAmount(amount);
 	}
 	
+	
+	
 	public CreditCard(){};
 
 }

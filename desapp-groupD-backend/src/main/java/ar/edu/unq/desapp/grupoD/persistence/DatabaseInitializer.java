@@ -93,6 +93,7 @@ public class DatabaseInitializer {
 		
 		accountService.save(bankAccount); 
 		accountService.save(pettyCashAccount);
+		System.out.println("Loaded Accounts");
 	}
 
 	private void loadReceipts() throws InvalidReceiptNumberException {
@@ -105,6 +106,8 @@ public class DatabaseInitializer {
 
 		receiptTypeAService.save(receiptA);
 		receiptTypeBService.save(receiptB);
+		
+		
 	}
 
 	private void loadOperations() throws InvalidAmountException {
@@ -118,12 +121,19 @@ public class DatabaseInitializer {
 		List<Concept> concepts = new ArrayList<Concept>();
 		concepts.add(concept);
 		subcategory.setConcepts(concepts);
-
+		
+		
 		subcategories.add(subcategory);
+		subcategories.add(subcategory2);
+		
+		category.setSubcategory(subcategories);
+		
+		categoryService.save(category);
+		
 		PettyCashAccount pettyCash = new PettyCashAccount();
-		PaymentType cash = new PettyCash(100);
+//		PaymentType cash = new PettyCash(100);
 		accountService.save(pettyCash);
-		paymentTypeService.save(cash);
+//		paymentTypeService.save(cash);
 		List<PaymentType> paymentTypes = new ArrayList<PaymentType>();
 		paymentTypes.add(new PettyCash(200));
 		paymentTypes.add(new CreditCard(300));
@@ -134,14 +144,14 @@ public class DatabaseInitializer {
 		paymentTypes2.add(new CreditCard(1300));
 		paymentTypes2.add(new DebitCard(1500));
 		
+		
 		loadOperation(category, subcategory, concept , new DateTime(), paymentTypes , true, "tarde");
 		loadOperation(category, subcategory2, concept , new DateTime(), paymentTypes2 , true, "tarde");
 		
 	}
 
 	private void loadOperation(Category category, SubCategory subcategory, Concept concept , DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift) throws InvalidAmountException {
-		categoryService.save(category);
-		subcategoryService.save(subcategory);
+		
 		operationService.saveOperation(date, paymentTypes , isIncome, shift, category.getCategoryName(), subcategory.getSubcategoryName(), concept.getConceptName());
 	}
 

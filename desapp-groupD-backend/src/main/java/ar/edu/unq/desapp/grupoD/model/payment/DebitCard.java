@@ -11,6 +11,8 @@ public class DebitCard extends PaymentType{
 		this.setAmount(amount);
 	}
 	
+	
+	
 	public DebitCard(){};
 	
 }

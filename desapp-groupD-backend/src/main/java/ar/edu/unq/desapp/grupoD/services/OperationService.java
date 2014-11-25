@@ -66,6 +66,7 @@ public class OperationService {
 		
 		//TODO esto es una negrada, lo se, pero quiero resolverlo rapido, tambien hay que extraerlo a un metodo
 		for( PaymentType paymentType : paymentTypes){
+			
 			if( paymentType instanceof PettyCash ){
 				totalInPettyCash += paymentType.getAmount();
 				pettyCashAccountDao.newAmmount(totalInPettyCash);
@@ -84,6 +85,7 @@ public class OperationService {
 		}
 		
 		Operation operation = new Operation(date, paymentTypes, isIncome, shift, category, subCategory, concept, totalInPettyCash , totalInBankAccount , available , devengado);
+
 		operationDao.save(operation);
 	}
 

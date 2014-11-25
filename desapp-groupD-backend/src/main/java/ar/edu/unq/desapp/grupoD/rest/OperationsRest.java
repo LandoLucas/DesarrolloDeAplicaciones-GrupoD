@@ -4,13 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
+import org.codehaus.jackson.annotate.JsonAutoDetect;
+import org.codehaus.jackson.map.util.JSONPObject;
+import org.codehaus.jettison.json.JSONObject;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -46,9 +54,12 @@ public class OperationsRest {
 		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(obs).build();
 	}
 	
+	
 	@POST
 	@Path("/new")
-	public Response addOperation(@FormParam("date") String date, @FormParam("paymentTypes") Map<Integer,Double> payments, 
+	@Consumes("application/x-www-form-urlencoded")
+	public Response addOperation(@FormParam("date") String date, @FormParam("cash") Integer cash,
+			@FormParam("credit") Integer credit, @FormParam("debit") Integer debit,  
 			@FormParam("isOutcome") boolean isOutcome, @FormParam("shift") String shift, 
 			@FormParam("category") String categoryName, @FormParam("subCategory") String subCategoryName,
 			@FormParam("concept") String conceptName) throws InvalidAmountException{
@@ -57,37 +68,34 @@ public class OperationsRest {
 		DateTimeFormatter dateDecoder = DateTimeFormat.forPattern("yyyy-MM-dd");		
 		DateTime parsedDate = dateDecoder.parseDateTime(date);
 		
-		List<PaymentType> paymentTypes = parsePayments(payments);
+		List<PaymentType> paymentTypes = parsePayments(cash,credit,debit);
 				
 		operationService.saveOperation(parsedDate , paymentTypes , isOutcome , shift , categoryName , subCategoryName , conceptName);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 
-	private List<PaymentType> parsePayments(Map<Integer, Double> payments) throws InvalidAmountException {
+	private List<PaymentType> parsePayments(Integer cash, Integer credit, Integer debit) throws InvalidAmountException {
 		List<PaymentType> paymentTypes = new ArrayList<PaymentType>();
 		
 		//Parse payment Type
-		for( Integer paymentCode : payments.keySet()){
-			switch (paymentCode) {
-			case 0: paymentTypes.add( new PettyCash(payments.get(paymentCode)) ); break;
-			case 1: paymentTypes.add( new DebitCard(payments.get(paymentCode)) ); break;
-			case 2: paymentTypes.add( new CreditCard(payments.get(paymentCode)) ); break;
-
-			default: throw new RuntimeException("Payment type not set");
-			}
-
-		}
+		if(cash>0) paymentTypes.add( new PettyCash(cash));
+	    if(credit>0) paymentTypes.add( new CreditCard(cash));
+	    if(debit>0) paymentTypes.add( new DebitCard(cash));
+			
+		if( cash <= 0 && credit <=0 && debit <= 0)throw new RuntimeException("Payment type not set");
+		
 		return paymentTypes;
 	}
 	
 	@POST
 	@Path("/edit/{id}")
-	public Response editOperation(@FormParam("date") DateTime date,  @FormParam("paymentTypes") Map<Integer,Double> payments, 
+	public Response editOperation(@FormParam("date") DateTime date,  @FormParam("cash") Integer cash,
+			@FormParam("credit") Integer credit, @FormParam("debit") Integer debit, 
 			@FormParam("isIncome") boolean isIncome, @FormParam("shift") String shift, 
 			@FormParam("category") String categoryName, @FormParam("subCategory") String subCategoryName,
 			@FormParam("concept") String conceptName) throws InvalidAmountException{
 		
-		List<PaymentType> paymentTypes = parsePayments(payments);
+		List<PaymentType> paymentTypes = parsePayments(cash,credit,debit);
 		
 		operationService.saveOperation(date , paymentTypes , isIncome , shift, categoryName , subCategoryName , conceptName);
 		

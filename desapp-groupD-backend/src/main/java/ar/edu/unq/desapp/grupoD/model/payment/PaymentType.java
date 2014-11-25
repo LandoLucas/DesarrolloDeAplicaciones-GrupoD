@@ -7,8 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
+import ar.edu.unq.desapp.grupoD.model.Operation;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -16,6 +18,7 @@ public abstract class PaymentType {
 
 	@Column
 	protected double amount;
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
@@ -29,6 +32,13 @@ public abstract class PaymentType {
 		if(amount <= 0) throw new InvalidAmountException();
 		this.amount = amount;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	
+	
 
 	
 //	/**
