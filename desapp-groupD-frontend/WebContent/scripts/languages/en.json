@@ -50,6 +50,10 @@
 												"TITLE_INCOME_BILL": "Income Bill",
 												"TITLE_OUTCOME_BILL":"Outcome Bill",
 												
+												"FORM_CASH_ENABLED":"Cash payment enabled",
+												"FORM_CREDIT_ENABLED":"Credit payment enabled",
+												"FORM_DEBIT_ENABLED":"Debit payment enabled",
+												
 												"FORM_DATE": "Date",
 												"FORM_ADDRESS": "Address",
 												"FORM_PHONE": "Phone",

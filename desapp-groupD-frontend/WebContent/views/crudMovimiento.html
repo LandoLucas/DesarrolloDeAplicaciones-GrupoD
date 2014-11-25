@@ -18,16 +18,6 @@
 				</div>
 
 				<div class="form-group">
-					<label for="inputAmount" class="control-label col-xs-2">{{ 'FORM_AMOUNT' | translate}}</label>
-					<div class="col-xs-10">
-						<input type="number" class="form-control" id="inputAmount"
-							ng-model="inputAmount" placeholder="{{ 'FORM_AMOUNT' | translate}}">
-					</div>
-				</div>
-				
-
-				
-				<div class="form-group">
 					<label for="selectCategory" class="control-label col-xs-2">{{ 'FORM_SELECT_CATEGORY' | translate}}</label>
 					<div class="col-xs-10">
 						<div class="form-inline">
@@ -113,6 +103,60 @@
 					</div>
 				</div>
 				
+			
+				
+				<div class="form-group">
+				<div ng-show="inputCashEnabled">
+				
+					<label for="inputCash" class="control-label col-xs-2">{{ 'FORM_CASH' | translate}}</label>
+					<div class="col-xs-4">
+						<input type="number" step='any'class="form-control" id="inputCash"
+							ng-model="inputCash" placeholder="{{ 'FORM_CASH' | translate}}">
+					</div>
+					</div>
+					<label for="inputCashEnabled" class="col-xs-3">{{ formCashEnabled}}</label>
+					<div class="col-xs-3">
+					<input type="checkbox" class="checkbox"
+						id="inputCashEnabled" ng-model="inputCashEnabled"
+						>
+					</div>
+			 </div>
+				
+
+				
+				<div class="form-group">
+				 <div ng-show="inputCreditEnabled">
+					<label for="inputCredit" class="control-label col-xs-2">{{ 'FORM_CREDIT' | translate}}</label>
+					<div class="col-xs-4">
+						<input type="number" step='any' class="form-control" id="inputCredit"
+							ng-model="inputCredit" placeholder="{{ 'FORM_CREDIT' | translate}}">
+					</div>
+				 </div>
+				 <label for="inputCreditEnabled" class="col-xs-3">{{ formCreditEnabled}}</label>
+					<div class="col-xs-3">
+					<input type="checkbox" class="checkbox"
+						id="inputCreditEnabled" ng-model="inputCreditEnabled"
+						>
+					</div>
+				</div>
+				
+				<div class="form-group">
+				 <div ng-show="inputDebitEnabled">
+					<label for="inputDebit" class="control-label col-xs-2">{{ 'FORM_DEBIT' | translate}}</label>
+					<div class="col-xs-4">
+						<input type="number" step='any' class="form-control" id="inputDebit"
+							ng-model="inputDebit" placeholder="{{ 'FORM_DEBIT' | translate}}">
+					</div>
+				 </div>
+				 <label for="inputDebitEnabled" class="col-xs-3">{{formDebitEnabled}}</label>
+					<div class="col-xs-3">
+					<input type="checkbox" class="checkbox"
+						id="inputDebitEnabled" ng-model="inputDebitEnabled"
+						>
+					</div>
+				</div>
+				
+				
 				<div class="form-group">
 					<label for="shiftSelected" class="control-label col-xs-2">{{ 'FORM_SHIFT' | translate}}</label>
 					<div class="col-xs-10">
@@ -124,6 +168,7 @@
 						</select>
 					</div>
 				</div>
+				
 				
 				<div class="form-group">
 					<div class="col-xs-offset-2 col-xs-10">

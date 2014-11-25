@@ -50,6 +50,10 @@
 														"TITLE_INCOME_BILL": "Comprobante de Venta",
 														"TITLE_OUTCOME_BILL":"Comprobante de Compra",
 														
+														"FORM_CASH_ENABLED":   "Pago en efectivo activado",
+														"FORM_CREDIT_ENABLED": "Pago con crédito activado",
+														"FORM_DEBIT_ENABLED":  "Pago con débito activado",
+														
 														"FORM_DATE": "Fecha",
 														"FORM_CODE": "Código",
 														"FORM_ADDRESS": "Dirección",
