@@ -48,6 +48,10 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 	                      {code:1,name:"Tarjeta de crédito"},
 	                      {code:2,name:"Transferencia bancaria"}];
 	
+	$scope.shifts= [{name:"Mañana"},
+	                      {name:"Tarde"},
+	                      {name:"Noche"}];
+	
 	$scope.modoEdicion = function() {
 		return $rootScope.editingOperation;
 	}
@@ -143,7 +147,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 				if(subcat.concepts.length >= 1){
 					$scope.concepts = subcat.concepts;
 				}else{
-					$scope.concepts = [subcat.concepts];
+					$scope.concepts = null;
 				}
 			}
 		}	
@@ -192,7 +196,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 			subCategory : $scope.subcategorySelected.subcategoryName,
 			concept: $scope.conceptSelected.conceptName,
 			paymentCode : $scope.paymentSelected.code,
-			shift : $scope.inputShift,
+			shift : $scope.shiftSelected.name,
 			isOutcome: $scope.isOutcome
 		};
 		return data;

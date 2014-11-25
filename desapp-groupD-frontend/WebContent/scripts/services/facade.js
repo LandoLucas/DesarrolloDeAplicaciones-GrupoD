@@ -91,7 +91,8 @@
 
 		        		function defaultHeader() {
 		        			return {
-		        				'Content-Type' : 'application/x-www-form-urlencoded;'
+		        				'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8',
+		        				'Accept-Charset':'charset=utf-8',
 		        			};
 		        		}
 

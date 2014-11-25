@@ -114,10 +114,14 @@
 				</div>
 				
 				<div class="form-group">
-					<label for="inputShift" class="control-label col-xs-2">{{ 'FORM_SHIFT' | translate}}</label>
+					<label for="shiftSelected" class="control-label col-xs-2">{{ 'FORM_SHIFT' | translate}}</label>
 					<div class="col-xs-10">
-						<input type="text" class="form-control" id="inputShift"
-							ng-model="inputShift" placeholder="{{ 'FORM_SHIFT' | translate}}">
+						<select ng-model="shiftSelected"
+							ng-options="shift as shift.name for shift in shifts"
+							ng-change="selectShift(shiftSelected)"
+							class="form-control">
+							<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
+						</select>
 					</div>
 				</div>
 				
