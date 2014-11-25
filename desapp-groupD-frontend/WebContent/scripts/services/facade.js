@@ -40,6 +40,26 @@
 		        				handlerOnError(response);
 		        			});
 		        		}
+		         		
+		         		function invokeRestService_Json(httpService, header, data, modulo, servicio,
+		        				handlerOnSuccess, handlerOnError) {
+		        			var respuesta = [];
+
+		        			httpService(
+		        					{
+		        						method : 'POST',
+		        						url : 'http://' + restHost + '/' + restContext + '/rest/'
+		        								+ modulo + '/' + servicio,
+		        						data : data,
+		        						headers: header
+		        					}).success(function(response) {
+		        				handlerOnSuccess(response);
+
+		        			}).error(function(response) {
+		        				console.log(response)
+		        				handlerOnError(response);
+		        			});
+		        		}
 
 		        		function invokeGetRestService(httpService, header, data, modulo, servicio,
 		        				handlerOnSuccess, handlerOnError) {
@@ -125,7 +145,7 @@
 
 		        		function invokeRegisterOperation(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 		        			var header = defaultHeader();
-		        			invokeRestService(cnxHttp, header, data, 'operation', 'new',
+		        			invokeRestService_Json(cnxHttp, header, data, 'operation', 'new',
 		        					handlerOnSuccess, handlerOnError);
 		        		}
 		        		

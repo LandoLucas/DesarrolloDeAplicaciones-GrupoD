@@ -11,7 +11,7 @@ angular
 		.controller(
 				'AccountCtrl',
 				function($scope, $location, $http, $rootScope, 
-						growl,dialogs,globalService,$translate,restServices) {
+						growl,dialogs,globalService,$translate,restServices,ngTableParams) {
 
 					// Inicializa los combos
 					$scope.inicializarVista = function() {
