@@ -91,8 +91,7 @@
 
 		        		function defaultHeader() {
 		        			return {
-		        				'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8',
-		        				'Accept-Charset':'charset=utf-8',
+		        				'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8'
 		        			};
 		        		}
 
@@ -146,7 +145,7 @@
 
 		        		function invokeRegisterOperation(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 		        			var header = defaultHeader();
-		        			invokeRestService_Json(cnxHttp, header, data, 'operation', 'new',
+		        			invokeRestService(cnxHttp, header, data, 'operation', 'new',
 		        					handlerOnSuccess, handlerOnError);
 		        		}
 		        		
