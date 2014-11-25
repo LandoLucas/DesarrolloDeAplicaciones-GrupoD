@@ -241,6 +241,12 @@
 		        			invokeRestService(cnxHttp, header, filtro, 'configuracion',
 		        					'borrarUsuario', handlerOnSuccess, handlerOnError);
 		        		}
+		        		
+		        		function invokeConsolidateAccounts(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+		        			var header = defaultHeader();
+		        			
+		        			invokeGetRestService(cnxHttp, header, data, 'consolidate', 'consolidate', handlerOnSuccess, handlerOnError);
+		        		}
 		            	 
 		               return {
 		                 invokeGetCategories: invokeGetCategories,
@@ -248,6 +254,7 @@
 		                 defaultHandlerOnError: defaultHandlerOnError,
 		                 invokeRestService: invokeRestService,
 		                 invokeGetRestService: invokeGetRestService,
+		                 invokeConsolidateAccounts : invokeConsolidateAccounts, 
 		                 defaultHeader: defaultHeader,
 		                 jsonHeader: jsonHeader,
 		                 mergeJSONs: mergeJSONs,

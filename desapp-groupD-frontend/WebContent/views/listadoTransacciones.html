@@ -2,12 +2,13 @@
 	<div class="jumbotron">
 		<h4>{{ 'OPERATIONS_LIST_TITLE' | translate}}</h4>
 	</div>
-	
-<!-- 	<div>{{operaciones}}</div> -->
-	
+
+	<!-- 	<div>{{operaciones}}</div> -->
+
 	<div class="table-responsive">
 
-		<table ng-table="tableParams" class="table ng-table-responsive" show-filter="true">
+		<table ng-table="tableParams" class="table ng-table-responsive"
+			show-filter="true">
 			<tr ng-repeat="operacion in operaciones">
 				<td data-title="tableColumns['date']">{{operacion.parsedDate}}</td>
 				<td data-title="tableColumns['category']">{{operacion.category}}</td>
@@ -24,4 +25,11 @@
 			</tr>
 		</table>
 
-</div>
+
+		<div class="form-group">
+			<button type="submit" class="btn btn-info form control"
+				style="padding: 2px; margin-left: 35px;"
+				ng-click="consolidateAccounts()">{{ 'CONSOLIDATE' | translate}}</button>
+		</div>
+
+	</div>

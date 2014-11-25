@@ -31,7 +31,7 @@ public class OperationTest {
 		Concept concept = mock(Concept.class);
 		List<PaymentType> paymentTypes = new ArrayList<PaymentType>();
 		
-		Operation operation = new Operation(date, paymentTypes, isIncome, shift, category, subCategory, concept , 340 , 430, 0, 0);
+		Operation operation = new Operation(date, paymentTypes, isIncome, shift, category, subCategory, concept , 340 , 430, 0, 0, true);
 		
 		assertSame(date , operation.getDate());
 		assertSame(isIncome , operation.isIncome());

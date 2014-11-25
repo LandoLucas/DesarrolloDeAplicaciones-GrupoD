@@ -18,7 +18,6 @@
 	<!-- CXF --> 
 	<servlet>
 		<servlet-name>CXFServlet</servlet-name>
-<!-- 		<display-name>CXF Servlet</display-name> -->
 		<servlet-class>
 			org.apache.cxf.transport.servlet.CXFServlet
 		</servlet-class>

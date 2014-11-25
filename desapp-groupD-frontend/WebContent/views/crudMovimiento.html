@@ -91,20 +91,7 @@
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label for="selectPaymentType" class="control-label col-xs-2">{{ 'FORM_SELECT_PAYMENT_TYPE' | translate}}</label>
-					<div class="col-xs-10">
-						<select ng-model="paymentSelected"
-							ng-options="ptype as ptype.name for ptype in paymentTypes"
-							ng-change="selectPayment(paymentSelected)"
-							class="form-control">
-							<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
-						</select>
-					</div>
-				</div>
-				
 			
-				
 				<div class="form-group">
 				<div ng-show="inputCashEnabled">
 				

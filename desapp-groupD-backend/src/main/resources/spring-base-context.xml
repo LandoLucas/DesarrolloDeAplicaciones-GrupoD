@@ -231,4 +231,12 @@
 		<property name="providerService" ref="providerService" />
 	</bean>
 	
+	<!-- CONSOLIDATE ACCOUNTS -->
+	<bean id="consolidateAccountsRest" class="ar.edu.unq.desapp.grupoD.rest.ConsolidateAccountsRest" >
+		<property name="consolidateAccountsService" ref="consolidateAccountsService" />
+	</bean>
+	<bean id="consolidateAccountsService" class="ar.edu.unq.desapp.grupoD.services.ConsolidateAccountsService" >
+		<property name="operationService" ref="operationService" />
+	</bean>
+	
 </beans>
