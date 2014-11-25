@@ -33,19 +33,24 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		}
 		
 	};
-	if($scope.isOutcome){
-		$translate('TITLE_NEW_OUTCOME').then(function (text) {
-			$scope.title = text;
-		    });
-		
-	}else{
-		$translate('TITLE_NEW_INCOME').then(function (text) {
-			$scope.title = text;
-		    });
+	
+	function translateTitle(){
+		if($scope.isOutcome){
+			$translate('TITLE_NEW_OUTCOME').then(function (text) {
+				$scope.title = text;
+			    });
+			
+		}else{
+			$translate('TITLE_NEW_INCOME').then(function (text) {
+				$scope.title = text;
+			    });
+		}
 	}
+	
 	
 	$rootScope.$on('$translateChangeSuccess', function() {
 		translateForms();
+		translateTitle();
 	});
 	
 	function translateForms(){
@@ -187,8 +192,9 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 	}
 	
 	$scope.registerOperation = function() {
-		var data = $scope.populateParams();
+		
 		if(validate()){
+			var data = $scope.populateParams();
 			restServices.invokeRegisterOperation($http, data, $scope.registerOperationOk,
 					restServices.defaultHandlerOnError);
 		}else{
@@ -223,24 +229,38 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		return data;
 	}
     
-
-
-    
-
-	
 	function validate(){
-//		if ($scope.inputAmount == null || $scope.inputAmount == ""){
-//			return false;
-//		}
+		if(!$scope.inputCashEnabled  && !$scope.inputCreditEnabled && !$scope.inputDebitEnabled)return false;
+		if($scope.inputCashEnabled && ($scope.inputCash <=0 || $scope.inputCash == null))return false;
+		if($scope.inputCreditEnabled && ($scope.inputCredit <=0 || $scope.inputCredit == null))return false;
+		if($scope.inputDebitEnabled && ($scope.inputDebit <=0 || $scope.inputDebit == null))return false;
 		return true;
 	}
 	
 	function getErrorMessage(){
-//		if ($scope.inputAmount == null || $scope.inputAmount== ""){
-//			$translate('FORM_ERROR_AMOUNT_REQUIRED').then(function (text) {
-//				growl.error(text);
-//			});
-//		}
+		
+		if (!$scope.inputCashEnabled  && !$scope.inputCreditEnabled && !$scope.inputDebitEnabled){
+			$translate('FORM_ERROR_PAYMENTTYPE_REQUIRED').then(function (text) {
+				growl.error(text);
+			});
+		}
+		
+		if ($scope.inputCashEnabled  && ($scope.inputCash <=0 || $scope.inputCash == null)){
+			$translate('FORM_ERROR_CASH_NOT_POSITIVE').then(function (text) {
+				growl.error(text);
+			});
+		}
+		if ($scope.inputCreditEnabled  && ($scope.inputCredit <=0 || $scope.inputCredit == null)){
+			$translate('FORM_ERROR_CREDIT_NOT_POSITIVE').then(function (text) {
+				growl.error(text);
+			});
+		}
+		if ($scope.inputDebitEnabled  && ($scope.inputDebit <=0 || $scope.inputDebit == null)){
+			$translate('FORM_ERROR_DEBIT_NOT_POSITIVE').then(function (text) {
+				growl.error(text);
+			});
+		}
+
 	}
 
 	$scope.updateOperation= function() {
@@ -261,6 +281,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		 
 		 
 		 translateForms();
+		 translateTitle();
 		 $scope.inicializarVista();
 
 });

@@ -108,6 +108,9 @@
 												"FORM_ERROR_PAYMENTTYPE_REQUIRED": "Error, payment type required",
 												"FORM_ERROR_CLIENT_REQUIRED": "Error, client required",
 												"FORM_ERROR_SELLER_REQUIRED": "Error, seller required",
+												"FORM_ERROR_CASH_NOT_POSITIVE": "Error, cash amount must be positive",
+												"FORM_ERROR_CREDIT_NOT_POSITIVE": "Error, credit amount must be positive",
+												"FORM_ERROR_DEBIT_NOT_POSITIVE": "Error, debit amount must be positive",
 												
 												"DIALOG_CATEGORY_REGISTER_SUCCESS": "Category registered",
 												
