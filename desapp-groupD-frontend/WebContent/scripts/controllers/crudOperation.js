@@ -213,11 +213,15 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 	}
 
 	$scope.populateParams = function() {
+		var cash;var credit;var debit;
+		if($scope.inputCash == null){cash=0}else{cash = $scope.inputCash };
+		if($scope.inputCredit == null){credit=0}else{credit = $scope.inputCredit};
+		if($scope.inputDebit == null){debit=0}else{debit = $scope.inputDebit };
 		var data = {
 			date : $scope.inputDate,
-			cash: $scope.inputCash,
-			credit: $scope.inputCredit,
-			debit: $scope.inputDebit,
+			cash: cash,
+			credit: credit,
+			debit: debit,
 			category : $scope.categorySelected.categoryName,
 			subCategory : $scope.subcategorySelected.subcategoryName,
 			concept: $scope.conceptSelected.conceptName,
