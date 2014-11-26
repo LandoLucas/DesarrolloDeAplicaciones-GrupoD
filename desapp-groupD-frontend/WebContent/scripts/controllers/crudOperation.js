@@ -44,31 +44,9 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		    });
 	}
 	
-	$rootScope.$on('$translateChangeSuccess', function() {
-		translateForms();
-	});
-	
-	function translateForms(){
-		$translate('FORM_CASH_ENABLED').then(function (text) {
-			$scope.formCashEnabled = text;
-		    });
-		$translate('FORM_DEBIT_ENABLED').then(function (text) {
-			$scope.formDebitEnabled = text;
-		    });
-		$translate('FORM_CREDIT_ENABLED').then(function (text) {
-			$scope.formCreditEnabled = text;
-		    });
-	}
-	
-	$scope.getamout = function(){return $scope.inputCash + $scope.inputCredit + $scope.inputDebit;}
-	
 	$scope.paymentTypes= [{code:0,name:"Efectivo"},
 	                      {code:1,name:"Tarjeta de crédito"},
 	                      {code:2,name:"Transferencia bancaria"}];
-	
-	$scope.shifts= [{name:"Mañana"},
-	                      {name:"Tarde"},
-	                      {name:"Noche"}];
 	
 	$scope.modoEdicion = function() {
 		return $rootScope.editingOperation;
@@ -165,7 +143,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 				if(subcat.concepts.length >= 1){
 					$scope.concepts = subcat.concepts;
 				}else{
-					$scope.concepts = null;
+					$scope.concepts = [subcat.concepts];
 				}
 			}
 		}	
@@ -182,7 +160,6 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		$scope.categorySelected=null;
 		$scope.subcategorySelected=null;
 		$scope.conceptSelected=null;
-		$scope.inputCashEnabled = true;
 
 	}
 	
@@ -210,14 +187,12 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 	$scope.populateParams = function() {
 		var data = {
 			date : $scope.inputDate,
-			cash: $scope.inputCash,
-			credit: $scope.inputCredit,
-			debit: $scope.inputDebit,
+			amount: $scope.inputAmount,
 			category : $scope.categorySelected.categoryName,
 			subCategory : $scope.subcategorySelected.subcategoryName,
 			concept: $scope.conceptSelected.conceptName,
 			paymentCode : $scope.paymentSelected.code,
-			shift : $scope.shiftSelected.name,
+			shift : $scope.inputShift,
 			isOutcome: $scope.isOutcome
 		};
 		return data;
@@ -229,18 +204,18 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 
 	
 	function validate(){
-//		if ($scope.inputAmount == null || $scope.inputAmount == ""){
-//			return false;
-//		}
+		if ($scope.inputAmount == null || $scope.inputAmount == ""){
+			return false;
+		}
 		return true;
 	}
 	
 	function getErrorMessage(){
-//		if ($scope.inputAmount == null || $scope.inputAmount== ""){
-//			$translate('FORM_ERROR_AMOUNT_REQUIRED').then(function (text) {
-//				growl.error(text);
-//			});
-//		}
+		if ($scope.inputAmount == null || $scope.inputAmount== ""){
+			$translate('FORM_ERROR_AMOUNT_REQUIRED').then(function (text) {
+				growl.error(text);
+			});
+		}
 	}
 
 	$scope.updateOperation= function() {
@@ -260,7 +235,7 @@ app.controller('CrudOperationCtrl', function($scope, $log, $location, $http,
 		 
 		 
 		 
-		 translateForms();
+		 
 		 $scope.inicializarVista();
 
 });

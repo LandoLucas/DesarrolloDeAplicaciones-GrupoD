@@ -156,11 +156,6 @@
 		        					handlerOnSuccess, handlerOnError);
 		        		}
 		        		
-		        		function invokeConsolidateAccounts(cnxHttp, data, handlerOnSuccess, handlerOnError) {
-		        			var header = defaultHeader();
-		        			
-		        			invokeGetRestService(cnxHttp, header, data, 'consolidate', 'consolidate', handlerOnSuccess, handlerOnError);
-		        		}
 		        		
 		        		//==Rest Bills==\\
 		        		function invokeRegisterBill(cnxHttp, data, handlerOnSuccess, handlerOnError) {
@@ -246,14 +241,20 @@
 		        			invokeRestService(cnxHttp, header, filtro, 'configuracion',
 		        					'borrarUsuario', handlerOnSuccess, handlerOnError);
 		        		}
+		        		
+		        		function invokeConsolidateAccounts(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+		        			var header = defaultHeader();
+		        			
+		        			invokeGetRestService(cnxHttp, header, data, 'consolidate', 'consolidate', handlerOnSuccess, handlerOnError);
+		        		}
 		            	 
 		               return {
 		                 invokeGetCategories: invokeGetCategories,
 		                 invokeGetAllOperations : invokeGetAllOperations,
-		                 invokeConsolidateAccounts : invokeConsolidateAccounts, 
 		                 defaultHandlerOnError: defaultHandlerOnError,
 		                 invokeRestService: invokeRestService,
 		                 invokeGetRestService: invokeGetRestService,
+		                 invokeConsolidateAccounts : invokeConsolidateAccounts, 
 		                 defaultHeader: defaultHeader,
 		                 jsonHeader: jsonHeader,
 		                 mergeJSONs: mergeJSONs,
