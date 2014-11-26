@@ -106,6 +106,9 @@
 														"FORM_ERROR_PAYMENTTYPE_REQUIRED": "Error, se requiere una forma de pago",
 														"FORM_ERROR_CLIENT_REQUIRED": "Error, cliente requerido",
 														"FORM_ERROR_SELLER_REQUIRED": "Error, vendedor requerido",
+														"FORM_ERROR_CASH_NOT_POSITIVE": "Error, monto en efectivo debe ser positivo",
+												"FORM_ERROR_CREDIT_NOT_POSITIVE": "Error, monto en crédito debe ser positivo",
+												"FORM_ERROR_DEBIT_NOT_POSITIVE": "Error, monto en débito debe ser positivo",
 														
 														"DIALOG_CATEGORY_REGISTER_SUCCESS": "Categoría registrada: ",
 														"DIALOG_CATEGORY_DELETE_TITLE": "¿Desea borrar la categoría ",
