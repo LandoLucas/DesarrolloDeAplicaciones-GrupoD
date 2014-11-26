@@ -22,6 +22,7 @@ import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.category.Concept;
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
+import ar.edu.unq.desapp.grupoD.model.payment.CreditCard;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 
 @XmlRootElement(name = "operation")
@@ -66,7 +67,10 @@ public class Operation {
 	private double available;
 	
 	@Column
-	private double devengado; //TODO encontrar traduccion 
+	private double devengado; 
+	
+	@Column
+	private boolean isDevengada = true; //All the operations are considered as "devengadas" unless there is a "devengado"
 	
 	/**
 	 * Returns an instance of a money operation and it saves the transaction details.
@@ -88,7 +92,7 @@ public class Operation {
 	 */
 	public Operation(DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift, 
 					 Category category, SubCategory subCategory, Concept concept, double totalInPettyCash , 
-					 double totalInBank , double available , double devengado){
+					 double totalInBank , double available , double devengado, boolean devengada){
 		setDate(date);
 		setPaymentTypes(paymentTypes);
 		setIncome(isIncome);
@@ -100,8 +104,17 @@ public class Operation {
 		setTotalInBank(totalInBank);
 		setAvailable(available);
 		setDevengado(devengado);
+		setDevengada(devengada);
 	}
 	
+	public boolean isDevengada() {
+		return isDevengada;
+	}
+
+	public void setDevengada(boolean isDevengada) {
+		this.isDevengada = isDevengada;
+	}
+
 	public double getDevengado() {
 		return devengado;
 	}
@@ -216,5 +229,14 @@ public class Operation {
 	 * Needed for frameworks - Do not delete.
 	 */
 	public Operation(){
+	}
+
+	public double getAmountInCreditCard() {
+		for( PaymentType payment : this.paymentTypes ){
+			if(payment instanceof CreditCard){
+				return payment.getAmount();
+			}
+		}
+		return 0;
 	}
 }

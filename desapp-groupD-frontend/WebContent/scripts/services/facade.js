@@ -91,7 +91,8 @@
 
 		        		function defaultHeader() {
 		        			return {
-		        				'Content-Type' : 'application/x-www-form-urlencoded;'
+		        				'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8',
+		        				'Accept-Charset':'charset=utf-8',
 		        			};
 		        		}
 
@@ -155,6 +156,11 @@
 		        					handlerOnSuccess, handlerOnError);
 		        		}
 		        		
+		        		function invokeConsolidateAccounts(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+		        			var header = defaultHeader();
+		        			
+		        			invokeGetRestService(cnxHttp, header, data, 'consolidate', 'consolidate', handlerOnSuccess, handlerOnError);
+		        		}
 		        		
 		        		//==Rest Bills==\\
 		        		function invokeRegisterBill(cnxHttp, data, handlerOnSuccess, handlerOnError) {
@@ -244,6 +250,7 @@
 		               return {
 		                 invokeGetCategories: invokeGetCategories,
 		                 invokeGetAllOperations : invokeGetAllOperations,
+		                 invokeConsolidateAccounts : invokeConsolidateAccounts, 
 		                 defaultHandlerOnError: defaultHandlerOnError,
 		                 invokeRestService: invokeRestService,
 		                 invokeGetRestService: invokeGetRestService,

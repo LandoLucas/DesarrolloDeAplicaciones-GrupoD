@@ -83,4 +83,10 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 	}
 
 	
+	$scope.consolidateAccounts = function() {
+		restServices.invokeConsolidateAccounts($http, {} , $scope.operacionesOk , restServices.defaultHandlerOnError);
+//		restServices.invokeGetAllOperations($http, {}, $scope.operacionesOk , restServices.defaultHandlerOnError);
+		
+	}
+	
 });

@@ -29,10 +29,10 @@ public class OperationBuilder implements ArquitecturalTestBuilder<Operation>{
 	private double totalInBankAccount = 200;
 	private double available = 200;
 	private double devengado = 0;
-	
+	private boolean devengada = true;
 	
 	public Operation build() throws InvalidAmountException{
-		return new Operation(date , paymentTypes , isIncome, shift, category, subCategory, concept , totalInPettyCash , totalInBankAccount, available, devengado);
+		return new Operation(date , paymentTypes , isIncome, shift, category, subCategory, concept , totalInPettyCash , totalInBankAccount, available, devengado, devengada);
 	}
 
 	@Override
@@ -44,5 +44,19 @@ public class OperationBuilder implements ArquitecturalTestBuilder<Operation>{
 		}
 		return operation;
 	}
+
+	public OperationBuilder withDevengado(double devengado) {
+		this.devengado = devengado;
+		return this;
+	}
+
+	public OperationBuilder withDate(DateTime pastDate) {
+		this.date = pastDate;
+		return this;
+	}
 	
+	public OperationBuilder withPaymentType(List<PaymentType> payments){
+		this.paymentTypes = payments;
+		return this;
+	}
 }

@@ -35,6 +35,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 			<ref bean="billRest" />
 			<ref bean="receiptTypeBRest" />
 			<ref bean="providerRest" />
+			<ref bean="consolidateAccountsRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />

@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
 import ar.edu.unq.desapp.grupoD.model.Operation;
+import ar.edu.unq.desapp.grupoD.model.account.BankAccount;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.category.Concept;
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
@@ -63,6 +64,7 @@ public class OperationService {
 		double totalInBankAccount = bankAccountDao.getAmmount();
 		double available = bankAccountDao.getAvailableAmount();
 		double devengado = bankAccountDao.getDevengado();
+		boolean devengada = true;
 		
 		//TODO esto es una negrada, lo se, pero quiero resolverlo rapido, tambien hay que extraerlo a un metodo
 		for( PaymentType paymentType : paymentTypes){
@@ -79,25 +81,49 @@ public class OperationService {
 					totalInBankAccount += paymentType.getAmount();
 					devengado += paymentType.getAmount();
 					bankAccountDao.updateDevengado(devengado);
+					devengada = false;
 				}
 				bankAccountDao.newAmmount(totalInBankAccount);
 			}
 		}
 		
-		Operation operation = new Operation(date, paymentTypes, isIncome, shift, category, subCategory, concept, totalInPettyCash , totalInBankAccount , available , devengado);
+		Operation operation = new Operation(date, paymentTypes, isIncome, shift, category, subCategory, concept, totalInPettyCash , totalInBankAccount , available , devengado, devengada);
 
 		operationDao.save(operation);
+		
+		
 	}
 
 	@Transactional(readOnly=true)
 	public List<Operation> findAll(){
 		return operationDao.findAll();
 	}
-	
-//	@Transactional
-//	public void saveOperation(Operation operation) {
-//		operationDao.save(operation);
-//	}
 
+	public BankAccount devengar() {
+		List<Operation> operations = operationDao.findOperationsWithCreditCardDebts();
+		double devengadoTotal = calculateDevengado(operations);
+		
+		bankAccountDao.devengar(devengadoTotal);
+		
+		markOperationsAsDevengadas(operations);
+		
+		return bankAccountDao.getAccount();
+	}
+
+	private void markOperationsAsDevengadas(List<Operation> operations) {
+		for(Operation operation : operations){
+			operation.setDevengada(true);
+			operationDao.save(operation);
+		}
+	}
+
+	private double calculateDevengado(List<Operation> operations) {
+		double result = 0;
+		for(Operation operation : operations){
+			result += operation.getAmountInCreditCard();
+		}
+		return result;
+	}
+	
 
 }

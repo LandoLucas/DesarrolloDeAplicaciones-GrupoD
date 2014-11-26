@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -102,8 +101,8 @@ public class ArquitecturalPersistenceTest extends AbstractTransactionalJUnit4Spr
 					   !file.getName().contains("BankTransfer.class") &&
 					   !file.getName().contains("CreditCard.class") &&
 					   !file.getName().contains("PettyCash.class") &&
-					   !file.getName().contains("DebitCard.class")
-					   
+					   !file.getName().contains("DebitCard.class") &&
+					   !file.getName().contains("AccountsState")
 					) {
 				classes.add(Class.forName(packageName + '.' + file.getName().substring(0, file.getName().length() - 6)));
 			}
