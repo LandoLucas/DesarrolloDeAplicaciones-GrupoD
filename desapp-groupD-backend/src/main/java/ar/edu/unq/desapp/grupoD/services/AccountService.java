@@ -27,8 +27,8 @@ public class AccountService {
 	@Transactional(readOnly=true)
 	public List<Account> findAll(){
 		List<Account> allAccounts = new ArrayList<Account>();
-//		allAccounts.addAll( pettyCashAccountDao.findAll() );
-//		allAccounts.addAll( bankAccountDao.findAll() );
+		allAccounts.add( pettyCashAccountDao.getAccount() );
+		allAccounts.add( bankAccountDao.getAccount() );
 		
 		return allAccounts;
 	}

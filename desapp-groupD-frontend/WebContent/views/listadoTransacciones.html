@@ -22,6 +22,7 @@
 				<td data-title="tableColumns['totalBank']">{{operacion.totalInBank}}</td>
 				<td data-title="tableColumns['available']">{{operacion.available}}</td>
 				<td data-title="tableColumns['devengado']">{{operacion.devengado}}</td>
+				<td data-title="tableColumns['devengada']">{{operacion.devengada}}</td>
 			</tr>
 		</table>
 
@@ -31,5 +32,17 @@
 				style="padding: 2px; margin-left: 35px;"
 				ng-click="consolidateAccounts()">{{ 'CONSOLIDATE' | translate}}</button>
 		</div>
+		
+		<table ng-table="tableParams" class="table ng-table-responsive" show-filter="true">
+			<tr>
+				<td data-title="amount">amount {{accounts[0].amount}}</td>
+			</tr>
+			<tr>
+				<td data-title="amount">amount {{accounts[1].amount}}</td>
+				<td data-title="available">available {{accounts[1].available}}</td>
+				<td data-title="devengado">devengado {{accounts[1].devengado}}</td>
+			</tr>
+		</table>
+		
 
 	</div>

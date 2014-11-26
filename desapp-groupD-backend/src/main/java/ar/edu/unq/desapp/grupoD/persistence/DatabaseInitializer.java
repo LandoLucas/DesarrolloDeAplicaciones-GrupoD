@@ -145,7 +145,7 @@ public class DatabaseInitializer {
 		paymentTypes2.add(new DebitCard(1500));
 		
 		
-		loadOperation(category, subcategory, concept , new DateTime(), paymentTypes , true, "tarde");
+		loadOperation(category, subcategory, concept , DateTime.now().minusDays(20), paymentTypes , true, "tarde");
 		loadOperation(category, subcategory2, concept , new DateTime(), paymentTypes2 , true, "tarde");
 		
 	}

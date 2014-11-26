@@ -81,7 +81,7 @@ public class OperationService {
 					totalInBankAccount += paymentType.getAmount();
 					devengado += paymentType.getAmount();
 					bankAccountDao.updateDevengado(devengado);
-					devengada = false;
+					if(paymentType.getAmount() > 0 )devengada = false;
 				}
 				bankAccountDao.newAmmount(totalInBankAccount);
 			}

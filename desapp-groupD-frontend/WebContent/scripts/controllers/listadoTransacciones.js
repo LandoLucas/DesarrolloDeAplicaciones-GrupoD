@@ -13,13 +13,26 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 	$scope.operacionesOk = function(response) {
 		$scope.operaciones = response;
 	};
+
+	$scope.accountsOK = function(response) {
+		$scope.accounts = response;
+	};
+	
+	$scope.consolidacionOK = function(response) {
+		$scope.account = response;
+	};
+	
 	
 	function getAllOperations(){
 		restServices.invokeGetAllOperations($http, {}, $scope.operacionesOk , restServices.defaultHandlerOnError);
 	}
 	
-	getAllOperations();
+	function getAccountsState(){
+		restServices.invokeGetAccounts($http, {}, $scope.accountsOK , restServices.defaultHandlerOnError);
+	}
 	
+	getAllOperations();
+	getAccountsState();
 	
 	$scope.tableColumns = {
 		date : "Date",
@@ -33,7 +46,8 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 		totalCash: "Total Cash",
 		totalBank: "Total in Bank",
 		available: "Available",
-		devengado: "Devengado"
+		devengado: "Devengado",
+		devengada: "Devengada",
 	};
 
 	translateTableColumns();
@@ -78,15 +92,16 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 		$translate('DEVENGADO').then(function(text) {
 			$scope.tableColumns.devengado = text;
 		});
-		
-		
+		$translate('DEVENGADA').then(function(text) {
+			$scope.tableColumns.devengada = text;
+		});
 	}
 
 	
 	$scope.consolidateAccounts = function() {
-		restServices.invokeConsolidateAccounts($http, {} , $scope.operacionesOk , restServices.defaultHandlerOnError);
-//		restServices.invokeGetAllOperations($http, {}, $scope.operacionesOk , restServices.defaultHandlerOnError);
-		
+		restServices.invokeConsolidateAccounts($http, {} , $scope.consolidacionOK , restServices.defaultHandlerOnError);
+		$scope.operaciones = getAllOperations();
+		$scope.accounts = getAccountsState();
 	}
 	
 });

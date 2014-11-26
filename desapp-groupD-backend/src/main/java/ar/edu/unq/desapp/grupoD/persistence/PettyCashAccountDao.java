@@ -14,19 +14,23 @@ GenericRepository<PettyCashAccount>{
 	}
 
 	public double getAmount() {
-		//If the account was not yet created do it and return 0
-		List<PettyCashAccount> accounts = this.findAll();
-		if ( accounts.isEmpty() ){
-			this.save(new PettyCashAccount(0));
-			return 0;
-		}
-		return accounts.get(0).getAmount();
+		return getAccount().getAmount();
 	}
 
 	public void newAmmount(double totalInPettyCash) {
-		PettyCashAccount account = findAll().get(0);
+		PettyCashAccount account = getAccount();
 		account.setAmount(totalInPettyCash);
 		save(account);
+	}
+
+	public PettyCashAccount getAccount() {
+		List<PettyCashAccount> accounts = findAll();
+		if(accounts.isEmpty()){
+			PettyCashAccount account = new PettyCashAccount(0);
+			save(account);
+			return account;
+		}
+		return accounts.get(0);
 	}
 
 	

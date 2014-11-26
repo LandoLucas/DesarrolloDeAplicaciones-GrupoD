@@ -70,7 +70,7 @@ public class Operation {
 	private double devengado; 
 	
 	@Column
-	private boolean isDevengada = true; //All the operations are considered as "devengadas" unless there is a "devengado"
+	private boolean isDevengada = true; 
 	
 	/**
 	 * Returns an instance of a money operation and it saves the transaction details.
