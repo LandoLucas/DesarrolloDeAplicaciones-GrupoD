@@ -239,4 +239,9 @@
 		<property name="operationService" ref="operationService" />
 	</bean>
 	
+	<!-- EXCEL -->
+	<bean id="excelReader" class="ar.edu.unq.desapp.grupoD.model.excel.ExcelReader">
+		<property name="operationService" ref="operationService" />
+	</bean>
+	
 </beans>

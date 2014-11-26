@@ -102,7 +102,8 @@ public class ArquitecturalPersistenceTest extends AbstractTransactionalJUnit4Spr
 					   !file.getName().contains("CreditCard.class") &&
 					   !file.getName().contains("PettyCash.class") &&
 					   !file.getName().contains("DebitCard.class") &&
-					   !file.getName().contains("AccountsState")
+					   !file.getName().contains("AccountsState") &&
+					   !file.getName().contains("ExcelReader.class")
 					) {
 				classes.add(Class.forName(packageName + '.' + file.getName().substring(0, file.getName().length() - 6)));
 			}
