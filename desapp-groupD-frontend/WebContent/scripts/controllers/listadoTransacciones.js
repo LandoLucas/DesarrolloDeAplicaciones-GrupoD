@@ -19,7 +19,7 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 	};
 	
 	$scope.consolidacionOK = function(response) {
-		$scope.account = response;
+		$scope.account = response.data;
 	};
 	
 	
@@ -47,7 +47,7 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 		totalBank: "Total in Bank",
 		available: "Available",
 		devengado: "Devengado",
-		devengada: "Devengada",
+		devengada: "Necesita devengar",
 	};
 
 	translateTableColumns();
@@ -96,12 +96,16 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 			$scope.tableColumns.devengada = text;
 		});
 	}
-
+	
 	
 	$scope.consolidateAccounts = function() {
 		restServices.invokeConsolidateAccounts($http, {} , $scope.consolidacionOK , restServices.defaultHandlerOnError);
 		$scope.operaciones = getAllOperations();
 		$scope.accounts = getAccountsState();
-	}
+	};
+	
+	$(function () {
+		  $('[data-toggle="popover"]').popover();
+		});
 	
 });

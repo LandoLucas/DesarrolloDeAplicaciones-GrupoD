@@ -84,9 +84,6 @@
 									ng-click="restrictedAction()">{{
 										'INDEX_EXPENSES_PROJECTIONS' | translate}}</a></li>
 								<li class="divider"></li>
-								<li><a ng-href="#consolidarCuentas" ng-show="true"
-									ng-click="restrictedAction()">{{ 'INDEX_CONSOL_ACCOUNT' |
-										translate}}</a></li>
 								<li class="divider"></li>
 								<li><a ng-show="true" ng-href="#/confCats">{{
 										'INDEX_CATEGORY_CONF' | translate}}</a></li>
@@ -177,16 +174,9 @@
 							
 							<a
 							class="list-group-item"
-							ng-class="{active:isActive('/consolidarCuentas')}"
-							ng-show="UserScope.inMainMenu" ng-href="#/consolidarCuentas">{{
-							'INDEX_CONSOL_ACCOUNT' | translate}}</a>
-							
-							<a
-							class="list-group-item"
 							ng-class="{active:isActive('/listadoTransacciones')}"
 							ng-show="UserScope.inMainMenu" ng-href="#/listadoTransacciones">{{
 							'INDEX_LIST_TRANSACTION' | translate}}</a>
-							
 							
 							 <a class="list-group-item"
 							ng-class="{active:isActive('/confCats')}"
@@ -290,7 +280,9 @@
 	<script
 		src="vendor/angular-dialog-service/dialogs-default-translations.min.js"></script>
 	<script src="vendor/angular-percentage-filter/percentage.js"></script>
-
+	
+	<script src="bower_components/spin.js/spin.js"></script>
+	<script src="bower_components/angular-spinner/angular-spinner.js"></script>
 
 
 

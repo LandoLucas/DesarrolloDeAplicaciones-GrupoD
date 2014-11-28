@@ -84,16 +84,6 @@
 								globalService.setInXBill();
 							}
 
-//							$scope.setInNewOutcome = function(){
-//								$rootScope.editingOperation = false;
-//								$rootScope.outcomeOperation =true;
-//							};
-//							
-//							$scope.setInNewIncome = function(){
-//								$rootScope.editingOperation = false;
-//								$rootScope.outcomeOperation =false;
-//							};
-
 							$rootScope.inDatos = false;
 							$scope.usuarioLogueado = localStorageService
 									.get('usuario');

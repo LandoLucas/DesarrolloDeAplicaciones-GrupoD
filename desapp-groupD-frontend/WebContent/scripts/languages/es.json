@@ -155,7 +155,14 @@
 														
 														"OPERATIONS_LIST_TITLE": "Listado de operaciones",
 														"DEVENGADO": "Devengado",
-														"DEVENGADA": "Devengada",
-														"CONSOLIDATE": "Consolidate accounts"
+														"DEVENGADA": "Devengada?",
+														"CONSOLIDATE": "Consolidate accounts",
 														
+														"ACCOUNTS_STATE": "Estado de las cuentas",
+														"PETTYCASH_TOTAL": "Total en caja chica: ",
+														"BANK_TOTAL": "Total en banco: ",
+														"BANK_TOTAL_AVAILABLE": "Disponible en banco: ",
+														"BANK_TOTAL_DEVENGADO": "Devengado en banco: ",
+														
+														"POPOVER_HELP": "Actualiza el estado de las cuentas bancarias con el monto devengado de operaciones que aun no han sido devengadas con mas de 15 dias de antiguedad"
 }
