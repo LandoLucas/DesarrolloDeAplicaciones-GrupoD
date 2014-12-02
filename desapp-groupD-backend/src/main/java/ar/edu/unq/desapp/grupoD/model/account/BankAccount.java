@@ -47,6 +47,10 @@ public class BankAccount extends Account {
 	public double getAmount() {
 		return amount;
 	}
+	@Override
+	public Boolean isBankAccount(){
+		return true;
+	}
 
 	public BankAccount(){}
 

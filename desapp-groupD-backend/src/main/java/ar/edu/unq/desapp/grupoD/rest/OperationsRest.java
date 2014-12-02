@@ -71,8 +71,8 @@ public class OperationsRest {
 		
 		//Parse payment Type
 		if(cash>0) paymentTypes.add( new PettyCash(cash));
-	    if(credit>0) paymentTypes.add( new CreditCard(cash));
-	    if(debit>0) paymentTypes.add( new DebitCard(cash));
+	    if(credit>0) paymentTypes.add( new CreditCard(credit));
+	    if(debit>0) paymentTypes.add( new DebitCard(debit));
 			
 		if( cash <= 0 && credit <=0 && debit <= 0)throw new RuntimeException("Payment type not set");
 		

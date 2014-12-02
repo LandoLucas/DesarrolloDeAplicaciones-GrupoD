@@ -56,6 +56,11 @@ public class DebitAccount extends Account {
 	public double getAmount() {
 		return amount;
 	}
+	
+	@Override
+	public Boolean isDebitAccount(){
+		return true;
+	}
 
 	public DebitAccount(){
 		
