@@ -43,6 +43,8 @@ public class OperationServiceTest extends AbstractTransactionalJUnit4SpringConte
 	
 		assertTrue( operationService.findAll().get(0).getShift() == shift  );
 		assertTrue( operationService.findAll().get(0).getDate() == date  );
+		assertTrue( operationService.findAll().get(0).getCategory().equals(categoryName));
+		
 	}
 	
 	@Test
