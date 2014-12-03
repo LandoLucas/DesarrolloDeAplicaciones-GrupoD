@@ -51,7 +51,7 @@
 		<property name="hibernateProperties">
 			<props>
 				<!-- Configuration generic properties. They are loaded from file hibernate.properties -->
-				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
 				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
 
@@ -112,15 +112,8 @@
 	</bean>
 
 	<!-- ASPECTS -->
-	<bean id="logServiceExceptionAspect"
-		class="ar.edu.unq.desapp.grupoD.aspects.LogServiceExceptionAspect" />
-
-
-	<!-- <bean id="categoryBrokenDao" class="ar.edu.unq.desapp.grupoD.transaction.CategoryBrokenDao"> -->
-	<!-- <property name="sessionFactory" ref="persistence.sessionFactory" /> -->
-	<!-- </bean> -->
-
-
+	<bean id="logServiceExceptionAspect" class="ar.edu.unq.desapp.grupoD.aspects.LogServiceExceptionAspect" />
+	<bean id="ServiceAuditLoggerAspect" class="ar.edu.unq.desapp.grupoD.aspects.ServiceAuditLoggerAspect" />
 
 
 	<!-- CATEGORY -->
