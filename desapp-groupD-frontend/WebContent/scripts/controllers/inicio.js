@@ -12,5 +12,6 @@ app.controller('InicioCtrl', function($http, $location, $scope, ngTableParams,
 	     globalService.setInMainMenu();
 
 	     $scope.date = Date.now();
+	     $scope.isCollapsed = true;
 
 });

@@ -53,7 +53,6 @@ public class ConceptServiceTest extends AbstractTransactionalJUnit4SpringContext
 		
 		List<Concept> concepts = conceptService.findAll();
 		assertTrue( concepts.isEmpty() );
-		
 	}
 	
 	@Test

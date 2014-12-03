@@ -12,17 +12,14 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				restServices, $timeout) {
 
 			$scope.detailMode = false;
+			$scope.inputDate = $filter("date")(Date.now(), 'yyyy-MM-dd');
 			
 			$scope.enableDetailMode = function(){
 				$scope.detailMode = true;
-//				$scope.pages= [10,20,50];
-//				reloadTable();
 			}
 			
 			$scope.disableDetailMode = function(){
 				$scope.detailMode = false;
-//				$scope.pages= [];
-//				reloadTable();
 			}
 			
 			Array.prototype.sumTotal = function() {
@@ -30,7 +27,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				for (var i = 0, _len = this.length; i < _len; i++) {
 					total += (this[i].price * (this[i].iva + 1)) * this[i].cant
 				}
-				return total
+				return total + $scope.inputIIBB + $scope.inputExtraTax
 			}
 			Array.prototype.sumTotalNoTaxes = function() {
 				var total = 0
@@ -73,6 +70,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 			$rootScope.$on('$translateChangeSuccess', function() {
 				translateTableColumns();
 			});
+			$scope.isCollapsed = false;
 
 			function translateTableColumns() {
 				$translate('FORM_NAME').then(function(text) {
@@ -88,6 +86,10 @@ angular.module('tp-dapp-eiroa-lando').controller(
 					$scope.tableColumns.actions = text;
 				});
 			}
+			
+			$scope.shifts= [{name:"Mañana"},
+		                      {name:"Tarde"},
+		                      {name:"Noche"}];
 
 			$scope.paymentTypes = [ {
 				code : 0,
@@ -236,6 +238,21 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				billElements.push(obj);
 				reloadTable();
 			}
+			
+			$scope.showTotalAmount = function(){
+				if(!$scope.detailMode){
+					return $scope.inputNeto + $scope.inputIVA + $scope.inputIIBB + $scope.inputExtraTax;
+				}else{
+					return billElements.sumTotal();
+				}
+			}
+			$scope.showTotalAmountNoTaxes = function(){
+				if(!$scope.detailMode){
+					return $scope.inputNeto;
+				}else{
+					return billElements.sumTotalNoTaxes();
+				}
+			}
 
 			function reloadTable() {
 				$timeout( // Advertencia, fix sucio con timeout, se debe a
@@ -245,8 +262,6 @@ angular.module('tp-dapp-eiroa-lando').controller(
 						$scope.tableParams.reload();
 					});
 				}, 0);
-				$scope.totalAmount = billElements.sumTotal();
-				$scope.totalAmountNoTaxes = billElements.sumTotalNoTaxes();
 			}
 			$scope.removeItem = function(item) {
 				var index = billElements.indexOf(item)
