@@ -57,8 +57,13 @@ public class OperationService {
 	@Transactional
 	public void saveOperation(DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift, String categoryName, String subCategoryName, String conceptName) throws InvalidAmountException {
 		Category category = categoryService.findByName(categoryName);
+		if(category == null)category = new Category(categoryName);
+		
 		SubCategory subCategory = subCategoryService.findByName(subCategoryName);
+		if(subCategory == null)subCategory = new SubCategory(subCategoryName);
+		
 		Concept concept = conceptService.findByName(conceptName);
+		if(concept == null)concept = new Concept(conceptName);
 		
 		double totalInPettyCash = pettyCashAccountDao.getAmount();
 		double totalInBankAccount = bankAccountDao.getAmmount();

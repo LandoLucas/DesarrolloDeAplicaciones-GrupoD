@@ -49,7 +49,6 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport
 	@SuppressWarnings("unchecked")
 	public List<T> findByExample(final T exampleObject) {
 		return this.getHibernateTemplate().findByExample(exampleObject);
-
 	}
 
 	@Override
@@ -62,7 +61,6 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport
 	@Override
 	public void save(final T entity) {
 		this.getHibernateTemplate().saveOrUpdate(entity);
-		this.getHibernateTemplate().flush();
 	}
 
 	@Override

@@ -2,17 +2,16 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation=" 
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 	   http://www.springframework.org/schema/aop  
        http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-    <aop:aspectj-autoproxy />
+	<aop:aspectj-autoproxy />
 
-	<tx:annotation-driven transaction-manager="transactionManager"	proxy-target-class="true" />
-
+	<tx:annotation-driven transaction-manager="transactionManager" />
 	<!-- ========================= GENERAL DEFINITIONS ========================= -->
 	<!-- Configurer that replaces ${...} placeholders with values from properties 
 		files -->
@@ -47,26 +46,25 @@
 
 		<property name="dataSource" ref="persistence.dataSource" />
 
-			<property name="packagesToScan" value="ar.edu.unq.desapp.grupoD.model" />
+		<property name="packagesToScan" value="ar.edu.unq.desapp.grupoD.model" />
 
-			<property name="hibernateProperties">
-				<props>
-					<!-- Configuration generic properties. They are loaded from file hibernate.properties -->
-					<prop key="hibernate.show_sql">false</prop>
-					<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-					<prop key="hibernate.hbm2ddl.auto">update</prop>
+		<property name="hibernateProperties">
+			<props>
+				<!-- Configuration generic properties. They are loaded from file hibernate.properties -->
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
 
-					<prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
-					<prop key="hibernate.connection.autocommit">true</prop>
-					<prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory
-					</prop>
-				</props>
-			</property>
+				<prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
+				<prop key="hibernate.connection.autocommit">false</prop>
+				<prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory
+
+				</prop>
+			</props>
+		</property>
 
 	</bean>
 
-
-	<!-- Transaction manager for a single JDBC DataSource -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
@@ -86,21 +84,22 @@
 	<!-- ________________________________________ -->
 
 	<!-- ACCOUNT -->
-	<bean id="pettyCashAccountDao" class="ar.edu.unq.desapp.grupoD.persistence.PettyCashAccountDao">
+	<bean id="pettyCashAccountDao"
+		class="ar.edu.unq.desapp.grupoD.persistence.PettyCashAccountDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	<bean id="bankAccountDao" class="ar.edu.unq.desapp.grupoD.persistence.BankAccountDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
-	
+
 	<bean id="accountService" class="ar.edu.unq.desapp.grupoD.services.AccountService">
 		<property name="pettyCashAccountDao" ref="pettyCashAccountDao" />
 		<property name="bankAccountDao" ref="bankAccountDao" />
 	</bean>
-	<bean id="accountRest" class="ar.edu.unq.desapp.grupoD.rest.AccountRest" >
-		<property name="accountService" ref="accountService"/>
+	<bean id="accountRest" class="ar.edu.unq.desapp.grupoD.rest.AccountRest">
+		<property name="accountService" ref="accountService" />
 	</bean>
-	
+
 	<!-- PAYMENTTYPE -->
 	<bean id="paymentTypeDao" class="ar.edu.unq.desapp.grupoD.persistence.PaymentTypeDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
@@ -108,12 +107,14 @@
 	<bean id="paymentTypeService" class="ar.edu.unq.desapp.grupoD.services.PaymentTypeService">
 		<property name="paymentTypeDao" ref="paymentTypeDao" />
 	</bean>
-	<bean id="paymentTypeRest" class="ar.edu.unq.desapp.grupoD.rest.PaymentTypeRest" >
-		<property name="paymentTypeService" ref="paymentTypeService"/>
+	<bean id="paymentTypeRest" class="ar.edu.unq.desapp.grupoD.rest.PaymentTypeRest">
+		<property name="paymentTypeService" ref="paymentTypeService" />
 	</bean>
-	
+
 	<!-- ASPECTS -->
-    <bean id="logServiceExceptionAspect" class="ar.edu.unq.desapp.grupoD.aspects.LogServiceExceptionAspect"/>
+	<bean id="logServiceExceptionAspect" class="ar.edu.unq.desapp.grupoD.aspects.LogServiceExceptionAspect" />
+	<bean id="ServiceAuditLoggerAspect" class="ar.edu.unq.desapp.grupoD.aspects.ServiceAuditLoggerAspect" />
+
 
 	<!-- CATEGORY -->
 	<bean id="categoryDao" class="ar.edu.unq.desapp.grupoD.persistence.CategoryDao">
@@ -122,10 +123,10 @@
 	<bean id="categoryService" class="ar.edu.unq.desapp.grupoD.services.CategoryService">
 		<property name="categoryDao" ref="categoryDao" />
 	</bean>
-	<bean id="categoryRest" class="ar.edu.unq.desapp.grupoD.rest.CategoryRest" >
-		<property name="categoryService" ref="categoryService"/>
+	<bean id="categoryRest" class="ar.edu.unq.desapp.grupoD.rest.CategoryRest">
+		<property name="categoryService" ref="categoryService" />
 	</bean>
-	
+
 	<!-- SUBCATEGORY -->
 	<bean id="subcategoryDao" class="ar.edu.unq.desapp.grupoD.persistence.SubcategoryDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
@@ -134,12 +135,12 @@
 		<property name="categoryDao" ref="categoryDao" />
 		<property name="subcategoryDao" ref="subcategoryDao" />
 	</bean>
-	<bean id="subcategoryRest" class="ar.edu.unq.desapp.grupoD.rest.SubcategoryRest" >
-		<property name="subcategoryService" ref="subcategoryService"/>
+	<bean id="subcategoryRest" class="ar.edu.unq.desapp.grupoD.rest.SubcategoryRest">
+		<property name="subcategoryService" ref="subcategoryService" />
 	</bean>
-	
-	<!--  CONCEPT  -->
-	
+
+	<!-- CONCEPT -->
+
 	<bean id="conceptDao" class="ar.edu.unq.desapp.grupoD.persistence.ConceptDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
@@ -147,11 +148,11 @@
 		<property name="subcategoryDao" ref="subcategoryDao" />
 		<property name="conceptDao" ref="conceptDao" />
 	</bean>
-	<bean id="conceptRest" class="ar.edu.unq.desapp.grupoD.rest.ConceptRest" >
-		<property name="conceptService" ref="conceptService"/>
+	<bean id="conceptRest" class="ar.edu.unq.desapp.grupoD.rest.ConceptRest">
+		<property name="conceptService" ref="conceptService" />
 	</bean>
-	
-	<!-- OPERATIONS -->	
+
+	<!-- OPERATIONS -->
 	<bean id="operationDao" class="ar.edu.unq.desapp.grupoD.persistence.OperationDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
@@ -163,21 +164,21 @@
 		<property name="pettyCashAccountDao" ref="pettyCashAccountDao" />
 		<property name="bankAccountDao" ref="bankAccountDao" />
 	</bean>
-	<bean id="operationsRest" class="ar.edu.unq.desapp.grupoD.rest.OperationsRest" >
-		<property name="operationService" ref="operationService"/>
+	<bean id="operationsRest" class="ar.edu.unq.desapp.grupoD.rest.OperationsRest">
+		<property name="operationService" ref="operationService" />
 	</bean>
-    
-	
+
+
 	<!-- Bill rest -->
-	
+
 	<bean id="billRest" class="ar.edu.unq.desapp.grupoD.rest.BillRest">
 		<property name="receiptTypeAService" ref="receiptTypeAService" />
 		<property name="receiptTypeBService" ref="receiptTypeBService" />
 		<property name="receiptTypeCService" ref="receiptTypeCService" />
 		<property name="receiptTypeXService" ref="receiptTypeXService" />
 	</bean>
-    <!-- RECEIPT TYPE A -->
-    <bean id="receiptADao" class="ar.edu.unq.desapp.grupoD.persistence.ReceiptADao">
+	<!-- RECEIPT TYPE A -->
+	<bean id="receiptADao" class="ar.edu.unq.desapp.grupoD.persistence.ReceiptADao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	<bean id="receiptTypeAService" class="ar.edu.unq.desapp.grupoD.services.ReceiptTypeAService">
@@ -186,10 +187,10 @@
 	<bean id="receiptTypeARest" class="ar.edu.unq.desapp.grupoD.rest.ReceiptTypeARest">
 		<property name="receiptTypeAService" ref="receiptTypeAService" />
 	</bean>
-	
-	
+
+
 	<!-- RECEIPT TYPE B -->
-    <bean id="receiptBDao" class="ar.edu.unq.desapp.grupoD.persistence.ReceiptBDao">
+	<bean id="receiptBDao" class="ar.edu.unq.desapp.grupoD.persistence.ReceiptBDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	<bean id="receiptTypeBService" class="ar.edu.unq.desapp.grupoD.services.ReceiptTypeBService">
@@ -198,28 +199,28 @@
 	<bean id="receiptTypeBRest" class="ar.edu.unq.desapp.grupoD.rest.ReceiptTypeBRest">
 		<property name="receiptTypeBService" ref="receiptTypeBService" />
 	</bean>
-	
-		<!-- RECEIPT TYPE C -->
-    <bean id="receiptCDao" class="ar.edu.unq.desapp.grupoD.persistence.ReceiptCDao">
+
+	<!-- RECEIPT TYPE C -->
+	<bean id="receiptCDao" class="ar.edu.unq.desapp.grupoD.persistence.ReceiptCDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	<bean id="receiptTypeCService" class="ar.edu.unq.desapp.grupoD.services.ReceiptTypeCService">
 		<property name="receiptCDao" ref="receiptCDao" />
 	</bean>
 
-			<!-- RECEIPT TYPE X -->
-    <bean id="receiptXDao" class="ar.edu.unq.desapp.grupoD.persistence.ReceiptXDao">
+	<!-- RECEIPT TYPE X -->
+	<bean id="receiptXDao" class="ar.edu.unq.desapp.grupoD.persistence.ReceiptXDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	<bean id="receiptTypeXService" class="ar.edu.unq.desapp.grupoD.services.ReceiptTypeXService">
 		<property name="receiptXDao" ref="receiptXDao" />
 	</bean>
-	
+
 	<!-- OBJECT DAO -->
 	<bean id="objectDao" class="ar.edu.unq.desapp.grupoD.persistence.ObjectDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
-	
+
 	<!-- PROVIDERS -->
 	<bean id="providerDao" class="ar.edu.unq.desapp.grupoD.persistence.ProviderDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
@@ -230,18 +231,19 @@
 	<bean id="providerRest" class="ar.edu.unq.desapp.grupoD.rest.ProviderRest">
 		<property name="providerService" ref="providerService" />
 	</bean>
-	
+
 	<!-- CONSOLIDATE ACCOUNTS -->
-	<bean id="consolidateAccountsRest" class="ar.edu.unq.desapp.grupoD.rest.ConsolidateAccountsRest" >
+	<bean id="consolidateAccountsRest" class="ar.edu.unq.desapp.grupoD.rest.ConsolidateAccountsRest">
 		<property name="consolidateAccountsService" ref="consolidateAccountsService" />
 	</bean>
-	<bean id="consolidateAccountsService" class="ar.edu.unq.desapp.grupoD.services.ConsolidateAccountsService" >
+	<bean id="consolidateAccountsService"
+		class="ar.edu.unq.desapp.grupoD.services.ConsolidateAccountsService">
 		<property name="operationService" ref="operationService" />
 	</bean>
-	
+
 	<!-- EXCEL -->
 	<bean id="excelReader" class="ar.edu.unq.desapp.grupoD.model.excel.ExcelReader">
 		<property name="operationService" ref="operationService" />
 	</bean>
-	
+
 </beans>

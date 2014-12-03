@@ -87,6 +87,7 @@
 								<li class="divider"></li>
 								<li><a ng-show="true" ng-href="#/confCats">{{
 										'INDEX_CATEGORY_CONF' | translate}}</a></li>
+							
 							</ul></li>
 
 						<li><a ng-href="#" ng-click="restrictedAction()" ng-if="true">{{
@@ -177,6 +178,12 @@
 							ng-class="{active:isActive('/listadoTransacciones')}"
 							ng-show="UserScope.inMainMenu" ng-href="#/listadoTransacciones">{{
 							'INDEX_LIST_TRANSACTION' | translate}}</a>
+							
+							<a
+							class="list-group-item"
+							ng-class="{active:isActive('/reportes')}"
+							ng-show="UserScope.inMainMenu" ng-href="#/reportes">{{
+							'INDEX_REPORTS' | translate}}</a>
 							
 							
 							 <a class="list-group-item"
@@ -297,6 +304,7 @@
 	<script src="scripts/controllers/helpers/secHelper.js"></script>
 	<script src="scripts/controllers/cargarDatos.js"></script>
 	<script src="scripts/controllers/listadoTransacciones.js"></script>
+	<script src="scripts/controllers/reportes.js"></script>
 	<script src="scripts/controllers/accounts.js"></script>
 	<script src="scripts/controllers/newNameEntity.js"></script>
 	<script src="scripts/controllers/bills.js"></script>
