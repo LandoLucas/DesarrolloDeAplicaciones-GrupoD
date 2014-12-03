@@ -26,6 +26,7 @@
 														"INDEX_TYPE_C": "Tipo C",
 														"INDEX_TYPE_X": "Tipo X",
 														"INDEX_USERS": "Usuarios",
+														"INDEX_REPORTS": "Reportes",
 														"SELECT_OPTION": "Seleccione una opción",
 														
 														"WELCOME": "Bienvenido",
@@ -55,7 +56,7 @@
 														"FORM_DEBIT_ENABLED":  "Pago con débito activado",
 														
 														"FORM_TOGGLE_CATEGORIES":"Expandir Categorias",
-														"FORM_TOGGLE_CLIENT":"Expandir Cliente",
+												"FORM_TOGGLE_CLIENT":"Expandir Cliente",
 												"FORM_TOGGLE_PROVIDER":"Expandir Proveedor",
 														
 														"FORM_DATE": "Fecha",
@@ -168,5 +169,7 @@
 														"BANK_TOTAL_AVAILABLE": "Disponible en banco: ",
 														"BANK_TOTAL_DEVENGADO": "Devengado en banco: ",
 														
-														"POPOVER_HELP": "Actualiza el estado de las cuentas bancarias con el monto devengado de operaciones que aun no han sido devengadas con mas de 15 dias de antiguedad"
+														"POPOVER_HELP": "Actualiza el estado de las cuentas bancarias con el monto devengado de operaciones que aun no han sido devengadas con mas de 15 dias de antiguedad",
+														
+														"REPORTS_TITLE": "Reportes"
 }
