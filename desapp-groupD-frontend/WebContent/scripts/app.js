@@ -299,6 +299,9 @@
             }).when('/listadoTransacciones', {
 				templateUrl : 'views/listadoTransacciones.html',
 				controller : 'ListadoTransaccionesCtrl'
+            }).when('/reportes', {
+				templateUrl : 'views/reportes.html',
+				controller : 'ReportesCtrl'
             }).when('/newBill', {
 				templateUrl : 'views/crudBill.html',
 				controller : 'CrudBillCtrl'    
