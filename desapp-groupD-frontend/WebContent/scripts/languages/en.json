@@ -54,6 +54,10 @@
 												"FORM_CREDIT_ENABLED":"Credit payment enabled",
 												"FORM_DEBIT_ENABLED":"Debit payment enabled",
 												
+												"FORM_TOGGLE_CATEGORIES":"Expand Categories",
+												"FORM_TOGGLE_CLIENT":"Expand Client",
+												"FORM_TOGGLE_PROVIDER":"Expand Provider",
+												
 												"FORM_DATE": "Date",
 												"FORM_ADDRESS": "Address",
 												"FORM_PHONE": "Phone",
