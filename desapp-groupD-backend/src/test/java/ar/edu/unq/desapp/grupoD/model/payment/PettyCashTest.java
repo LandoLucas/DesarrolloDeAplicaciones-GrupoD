@@ -14,16 +14,4 @@ public class PettyCashTest {
 		new PettyCash(-100);
 	}
 	
-//	@Test
-//	public void billTest(){
-//		Operation operation = mock(Operation.class);
-//		Account account = mock(Account.class);
-//		PettyCash pettyCash = new PettyCash(account);
-//		
-//		pettyCash.bill(operation);
-//	
-////		verify(account).bill(operation);
-//	}
-	
-	
 }

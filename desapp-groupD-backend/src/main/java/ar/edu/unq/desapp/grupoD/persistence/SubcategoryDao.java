@@ -2,6 +2,9 @@ package ar.edu.unq.desapp.grupoD.persistence;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 
 public class SubcategoryDao extends HibernateGenericDAO<SubCategory> implements

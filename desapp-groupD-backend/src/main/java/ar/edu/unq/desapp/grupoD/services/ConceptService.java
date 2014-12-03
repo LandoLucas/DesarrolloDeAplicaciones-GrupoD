@@ -33,6 +33,7 @@ public class ConceptService {
 		Concept concept = conceptDao.getByName(name);
 		subcategory.getConcepts().remove(concept);
 		subcategoryDao.save(subcategory);
+		conceptDao.delete(concept);
 	}
 
 	@Transactional

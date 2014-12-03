@@ -2,6 +2,7 @@ package ar.edu.unq.desapp.grupoD.services;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.desapp.grupoD.model.category.Category;
@@ -9,6 +10,7 @@ import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
 import ar.edu.unq.desapp.grupoD.persistence.CategoryDao;
 import ar.edu.unq.desapp.grupoD.persistence.SubcategoryDao;
 
+@Transactional
 public class SubCategoryService {
 
 	private SubcategoryDao subcategoryDao;
@@ -48,9 +50,9 @@ public class SubCategoryService {
 		subcategoryDao.save(subcategory);
 	}
 
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void update(String newName, Integer idSub) {
-		this.subcategoryDao.update(newName, idSub);
+		subcategoryDao.update(newName, idSub);
 	}
 
 	@Transactional
