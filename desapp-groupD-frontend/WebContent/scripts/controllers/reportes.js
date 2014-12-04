@@ -6,22 +6,16 @@
  * @description # MainCtrl Controller of the tp-dapp-eiroa-lando
  */
 var app = angular.module('tp-dapp-eiroa-lando');
-//var app = angular.module("nvd3TestApp", ['nvd3ChartDirectives']);
 
 app.controller('ReportesCtrl', function($http, $location, $scope, ngTableParams,
 		$filter, $window, $route, $rootScope, growl, dialogs,globalService,$translate,restServices) {
 
-	$scope.exampleData = [
-	   { key: "One", y: 5 },
-       { key: "Two", y: 2 },
-	   { key: "Three", y: 9 },
-	   { key: "Four", y: 7 },
-	   { key: "Five", y: 4 },
-	   { key: "Six", y: 3 },
-	   { key: "Seven", y: 9 }
+	$scope.data = [
+	    {label: "one", value: 12.2, color: "red"}, 
+	    {label: "two", value: 45, color: "#00ff00"},
+	    {label: "three", value: 10, color: "rgb(0, 0, 255)"}
 	];
 	
-	
-	
+	$scope.options = {thickness: 500};
 	
 });
