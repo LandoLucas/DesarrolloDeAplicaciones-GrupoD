@@ -190,7 +190,7 @@
 							'INDEX_REPORTS' | translate}}</a>
 							
 							
-							 <a class="list-group-item"
+							<a class="list-group-item"
 							ng-class="{active:isActive('/confCats')}"
 							ng-show="UserScope.inMainMenu" ng-href="#/confCats">{{
 							'INDEX_CATEGORY_CONF' | translate}}</a> <a class="list-group-item"
@@ -200,11 +200,14 @@
 							class="list-group-item" ng-click="setInNewOutcome()"
 							ng-class="{active:isActive('/egreso')}"
 							ng-show="UserScope.inCargarDatos" ng-href="#/egreso">{{
-							'INDEX_LOAD_OUTCOME' | translate}}</a> <a class="list-group-item"
+							'INDEX_LOAD_OUTCOME' | translate}}</a><a class="list-group-item"
 							ng-click="setInBills()"
 							ng-class="{active:isActive('/comprobantes')}"
 							ng-show="UserScope.inCargarDatos" style="cursor: pointer;">{{
-							'INDEX_LOAD_RECEIPT' | translate}}</a> <a class="list-group-item a"
+							'INDEX_LOAD_RECEIPT' | translate}}</a><a class="list-group-item"
+							ng-class="{active:isActive('/importar')}" ng-show="UserScope.inCargarDatos"
+							ng-href="#/importar">{{ 'INDEX_LOAD_TRANSACTION' | translate}}</a>
+							<a class="list-group-item a"
 							style="cursor: pointer;" ng-click="setInBuyingBillTypes()"
 							ng-show="UserScope.inBills">{{
 							'INDEX_BUYING_RECEIPT' | translate}}</a> <a class="list-group-item"

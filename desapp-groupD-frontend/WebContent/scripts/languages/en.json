@@ -19,6 +19,7 @@
 												"INDEX_CATEGORY_CONF": "Configure categories",
 												"INDEX_LOAD_INCOME": "Load income",
 												"INDEX_LOAD_OUTCOME": "Load outcome",
+												"INDEX_LOAD_TRANSACTION": "Import transaction",
 												"INDEX_LOAD_RECEIPT": "Load bill",
 												"INDEX_BUYING_RECEIPT": "Buying bill",
 												"INDEX_SELLING_RECEIPT": "Selling bill",
@@ -38,6 +39,10 @@
 												
 												"RECEIPT_SECTION": "Bills section",
 												"RECEIPT_SELECT": "Select the type of bill to load",
+												
+												"IMPORT_SECTION":"Import transactions section",
+												"IMPORT_SELECT_FILE":"Select a file",
+												"IMPORT_UPLOAD_IT":"Upload It",
 												
 												
 												"TITLE_NEW_INCOME": "New income",

@@ -18,6 +18,7 @@
 														"INDEX_CATEGORY_CONF": "Configurar categorias",
 														"INDEX_LOAD_INCOME": "Cargar ingreso",
 														"INDEX_LOAD_OUTCOME": "Cargar egreso",
+														"INDEX_LOAD_TRANSACTION": "Importar transacciones",
 														"INDEX_LOAD_RECEIPT": "Cargar comprobante",
 														"INDEX_BUYING_RECEIPT": "Comprobante de compra",
 														"INDEX_SELLING_RECEIPT": "Comprobante de venta",
@@ -34,6 +35,10 @@
 														
 														"LOAD_DATA_SECTION":"Sección cargar datos",
 														"LOAD_DATA_SELECT":"Seleccione que tipo de operación desea ingresar",
+														
+														"IMPORT_SECTION":"Sección importar transacciones",
+														"IMPORT_SELECT_FILE":"Seleccione un archivo",
+														"IMPORT_UPLOAD_IT":"Cargar",
 														
 														"RECEIPT_SECTION": "Sección comprobantes",
 														"RECEIPT_SELECT": "Seleccione el tipo de comprobante a ingresar",

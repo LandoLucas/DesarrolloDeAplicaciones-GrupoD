@@ -15,7 +15,6 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
     <import resource="classpath:spring-production-context.xml" />
-	
 
 	<bean id="jaxbProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider" />
 
@@ -36,6 +35,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 			<ref bean="receiptTypeBRest" />
 			<ref bean="providerRest" />
 			<ref bean="consolidateAccountsRest" />
+			<ref bean="excelRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />

@@ -308,6 +308,9 @@
 			}).when('/confCats', {
 				templateUrl : 'views/configureCategories.html',
 				controller : 'ConfigureCategoriesCtrl'    
+			}).when('/importar', {
+				templateUrl : 'views/importarTransacciones.html',
+				controller : 'ConfigureCategoriesCtrl'  
 			}).otherwise({
 				redirectTo : '/'
 			});

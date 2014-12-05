@@ -1,0 +1,17 @@
+<div class="col-sm-3 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<div class="jumbotron">
+		<h4>{{ 'IMPORT_SECTION' | translate}}</h4>
+	</div>
+	<div class="container-fluid">
+		<form
+			action="http://127.0.0.1:8080/desapp-groupD-backend/rest/excel/carga"
+			method="post" enctype="multipart/form-data">
+			<h4>{{ 'IMPORT_SELECT_FILE' | translate }}</h4>
+			<p>
+				<input type="file" name="uploadedFile" size="50" />
+			</p>
+
+			<button type="submit" class="btn btn-success ng-binding">{{ 'IMPORT_UPLOAD_IT' | translate }}</button>
+		</form>
+	</div>
+</div>
