@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 	var app = angular.module('facadeModule',
-			[ 'http-auth-interceptor', 'LocalStorageModule' ,'angular-growl','ngRoute','pascalprecht.translate']);
+			[ 'http-auth-interceptor', 'LocalStorageModule' ,'angular-growl','ngRoute','pascalprecht.translate', 'n3-pie-chart' ]);
 	app.config(['$httpProvider', function($httpProvider) {
 	    delete $httpProvider.defaults.headers.common["X-Requested-With"]
 	}]);
