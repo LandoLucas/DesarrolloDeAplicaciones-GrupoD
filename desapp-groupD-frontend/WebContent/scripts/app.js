@@ -309,8 +309,8 @@
 				templateUrl : 'views/configureCategories.html',
 				controller : 'ConfigureCategoriesCtrl'    
 			}).when('/importar', {
-				templateUrl : 'views/importarTransacciones.html',
-				controller : 'ConfigureCategoriesCtrl'  
+				templateUrl : 'views/importarTransacciones.html'
+//				controller : 'ImportCtrl'  
 			}).otherwise({
 				redirectTo : '/'
 			});
