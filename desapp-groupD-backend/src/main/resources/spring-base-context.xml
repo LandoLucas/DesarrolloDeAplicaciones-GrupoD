@@ -245,6 +245,17 @@
 	<bean id="excelReader" class="ar.edu.unq.desapp.grupoD.model.excel.ExcelReader">
 		<property name="operationService" ref="operationService" />
 	</bean>
+	<bean id="excelWriter" class="ar.edu.unq.desapp.grupoD.model.excel.ExcelWriter">
+		<property name="operationService" ref="operationService" />
+	</bean>
+	<bean id="excelRest" class="ar.edu.unq.desapp.grupoD.rest.ExcelRest">
+		<property name="operationService" ref="operationService" />
+		<property name="excelService" ref="excelService" />
+	</bean>
+	<bean id="excelService" class="ar.edu.unq.desapp.grupoD.services.ExcelService">
+		<property name="excelWriter" ref="excelWriter" />
+		<property name="excelReader" ref="excelReader" />
+	</bean>
 
 	<!-- DISTRIBUCION DE GASTOS -->
 	<bean id="distribucionDeGastosRest" class="ar.edu.unq.desapp.grupoD.rest.DistribucionDeGastosRest">
