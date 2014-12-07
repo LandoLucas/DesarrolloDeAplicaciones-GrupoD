@@ -62,7 +62,7 @@ public class OperationsRest {
 		
 		List<PaymentType> paymentTypes = parsePayments(cash,credit,debit);
 				
-		operationService.saveOperation(parsedDate , paymentTypes , isOutcome , shift , categoryName , subCategoryName , conceptName);
+		operationService.saveOperation(parsedDate , paymentTypes , !isOutcome , shift , categoryName , subCategoryName , conceptName);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 
