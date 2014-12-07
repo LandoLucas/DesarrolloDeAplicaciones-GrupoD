@@ -37,16 +37,10 @@ import ar.edu.unq.desapp.grupoD.services.SubCategoryService;
 public class DatabaseInitializer {
 
 	private AccountService accountService;
-	private PaymentTypeService paymentTypeService;
 	private CategoryService categoryService;
-	private SubCategoryService subcategoryService;
 	private OperationService operationService;
 	private ReceiptTypeAService receiptTypeAService;
 	private ReceiptTypeBService receiptTypeBService;
-
-	public void setSubcategoryService(SubCategoryService subcategoryService) {
-		this.subcategoryService = subcategoryService;
-	}
 
 	public void setReceiptTypeAService(ReceiptTypeAService receiptTypeAService) {
 		this.receiptTypeAService = receiptTypeAService;
@@ -68,22 +62,16 @@ public class DatabaseInitializer {
 		this.accountService = accountService;
 	}
 
-	public void setPaymentTypeService(PaymentTypeService paymentTypeService) {
-		this.paymentTypeService = paymentTypeService;
-	}
-
 	@PostConstruct
 	public void populateDatabase() throws InvalidAmountException,
 			InvalidReceiptNumberException {
 
-		//TODO initialize bank accounts
-		
 		loadAccounts();
 		loadOperations();
 		loadReceipts();
-
+		
 		System.out.println("==========================");
-		System.out.println("POPULATED");
+		System.out.println("DATABASE POPULATED");
 		System.out.println("==========================");
 	}
 
@@ -112,10 +100,13 @@ public class DatabaseInitializer {
 
 	private void loadOperations() throws InvalidAmountException {
 		Category category = new Category("Ventas");
+		Category category2 = new Category("Pagos");
+		Category category3 = new Category("Sobornos");
 		
 		List<SubCategory> subcategories = new ArrayList<SubCategory>();
 		SubCategory subcategory = new SubCategory("Ventas 12-10-2014");
 		SubCategory subcategory2 = new SubCategory("Ventas 13-10-2014");
+		SubCategory subcategory3 = new SubCategory("Pago a proveedores");
 		
 		Concept concept = new Concept("ventas tienda");
 		List<Concept> concepts = new ArrayList<Concept>();
@@ -131,9 +122,7 @@ public class DatabaseInitializer {
 		categoryService.save(category);
 		
 		PettyCashAccount pettyCash = new PettyCashAccount();
-//		PaymentType cash = new PettyCash(100);
 		accountService.save(pettyCash);
-//		paymentTypeService.save(cash);
 		List<PaymentType> paymentTypes = new ArrayList<PaymentType>();
 		paymentTypes.add(new PettyCash(200));
 		paymentTypes.add(new CreditCard(300));
@@ -144,10 +133,20 @@ public class DatabaseInitializer {
 		paymentTypes2.add(new CreditCard(1300));
 		paymentTypes2.add(new DebitCard(1500));
 		
+		List<PaymentType> paymentTypes3 = new ArrayList<PaymentType>();
+		paymentTypes3.add(new PettyCash(1500));
+		paymentTypes3.add(new CreditCard(300));
+		paymentTypes3.add(new DebitCard(1500));
+		
+		List<PaymentType> paymentTypes4 = new ArrayList<PaymentType>();
+		paymentTypes4.add(new PettyCash(500));
+		paymentTypes4.add(new CreditCard(300));
+		paymentTypes4.add(new DebitCard(500));
 		
 		loadOperation(category, subcategory, concept , DateTime.now().minusDays(20), paymentTypes , true, "tarde");
 		loadOperation(category, subcategory2, concept , new DateTime(), paymentTypes2 , true, "tarde");
-		
+		loadOperation(category2, subcategory3, concept , DateTime.now().minusDays(6), paymentTypes3 , false, "tarde");
+		loadOperation(category3, subcategory3, concept , DateTime.now().minusDays(12), paymentTypes4 , false, "tarde");
 	}
 
 	private void loadOperation(Category category, SubCategory subcategory, Concept concept , DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift) throws InvalidAmountException {

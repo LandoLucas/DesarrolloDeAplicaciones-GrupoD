@@ -59,4 +59,9 @@ public class OperationBuilder implements ArquitecturalTestBuilder<Operation>{
 		this.paymentTypes = payments;
 		return this;
 	}
+
+	public OperationBuilder withIsIncome(boolean isIncome) {
+		this.isIncome = isIncome;
+		return this;
+	}
 }

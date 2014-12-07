@@ -1,6 +1,8 @@
 package ar.edu.unq.desapp.grupoD.services;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,7 @@ import ar.edu.unq.desapp.grupoD.model.account.BankAccount;
 import ar.edu.unq.desapp.grupoD.model.builders.OperationBuilder;
 import ar.edu.unq.desapp.grupoD.model.payment.CreditCard;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
+import ar.edu.unq.desapp.grupoD.model.payment.PettyCash;
 import ar.edu.unq.desapp.grupoD.persistence.OperationDao;
 
 @ContextConfiguration(locations = {"classpath:spring-base-context.xml"})
@@ -45,6 +48,21 @@ public class OperationServiceTest extends AbstractTransactionalJUnit4SpringConte
 		assertTrue( operationService.findAll().get(0).getDate() == date  );
 		assertTrue( operationService.findAll().get(0).getCategory().equals(categoryName));
 		
+	}
+	
+	@Test
+	public void findAllGastos() throws InvalidAmountException{
+		OperationBuilder builder = new OperationBuilder();
+		List<PaymentType> payments = new ArrayList<PaymentType>();
+		payments.add(new PettyCash(2000));
+		Operation outcome = builder.withIsIncome(false).withPaymentType(payments).any();
+		operationService.saveOperation(outcome);
+
+		List<Operation> outcomes = operationService.findAllOutcomes();
+		
+		assertEquals(1 , outcomes.size());
+		assertSame( outcome , outcomes.get(0));
+		assertEquals(2000 , outcome.getTotalAmount() , 0);
 	}
 	
 	@Test

@@ -36,6 +36,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 			<ref bean="receiptTypeBRest" />
 			<ref bean="providerRest" />
 			<ref bean="consolidateAccountsRest" />
+			<ref bean="distribucionDeGastosRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />

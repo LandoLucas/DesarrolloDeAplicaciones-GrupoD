@@ -129,6 +129,15 @@ public class OperationService {
 		}
 		return result;
 	}
+
+	@Transactional
+	public List<Operation> findAllOutcomes() {
+		return operationDao.findAllOutcomes();
+	}
+
+	public void saveOperation(Operation operation) {
+		operationDao.save(operation);
+	}
 	
 
 }

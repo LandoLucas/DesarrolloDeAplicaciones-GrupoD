@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 	var app = angular.module('facadeModule',
-			[ 'http-auth-interceptor', 'LocalStorageModule' ,'angular-growl','ngRoute','pascalprecht.translate', 'n3-pie-chart' ]);
+			[ 'http-auth-interceptor', 'LocalStorageModule' ,'angular-growl','ngRoute','pascalprecht.translate']);
 	app.config(['$httpProvider', function($httpProvider) {
 	    delete $httpProvider.defaults.headers.common["X-Requested-With"]
 	}]);
@@ -252,6 +252,12 @@
 		        			invokeGetRestService(cnxHttp, header, data, 'account', 'all', handlerOnSuccess, handlerOnError);
 		        		}
 		        		
+		        		function invokeDistribucionDeGastos(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+		        			var header = defaultHeader();
+		        			
+		        			invokeGetRestService(cnxHttp, header, data, 'gastos', 'distribucion', handlerOnSuccess, handlerOnError);
+		        		}
+		        		
 		               return {
 		                 invokeGetCategories: invokeGetCategories,
 		                 invokeGetAllOperations : invokeGetAllOperations,
@@ -271,7 +277,8 @@
 		                 invokeDeleteConcept: invokeDeleteConcept,
 		                 invokeRegistrarUsuario: invokeRegistrarUsuario,
 		                 invokeRegisterBill: invokeRegisterBill,
-		                 invokeGetAccounts : invokeGetAccounts
+		                 invokeGetAccounts : invokeGetAccounts,
+		                 invokeDistribucionDeGastos : invokeDistribucionDeGastos
 		               };
 		             }
 		           ];

@@ -239,4 +239,12 @@ public class Operation {
 		}
 		return 0;
 	}
+
+	public double getTotalAmount() {
+		double total = 0;
+		for(PaymentType payment : this.paymentTypes){
+			total += payment.getAmount();
+		}
+		return total;
+	}
 }

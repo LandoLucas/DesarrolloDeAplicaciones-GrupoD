@@ -74,4 +74,13 @@ GenericRepository<Operation> {
 		return result;
 	}
 
+	public List<Operation> findAllOutcomes() {
+		String hql = "FROM Operation o WHERE o.isIncome =false";
+		
+		Query query = getHibernateTemplate().getSessionFactory()
+				.getCurrentSession().createQuery(hql);
+
+		return query.list();
+	}
+
 }

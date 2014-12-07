@@ -246,4 +246,9 @@
 		<property name="operationService" ref="operationService" />
 	</bean>
 
+	<!-- DISTRIBUCION DE GASTOS -->
+	<bean id="distribucionDeGastosRest" class="ar.edu.unq.desapp.grupoD.rest.DistribucionDeGastosRest">
+		<property name="operationService" ref="operationService" />
+	</bean>
+
 </beans>

@@ -10,12 +10,18 @@ var app = angular.module('tp-dapp-eiroa-lando');
 app.controller('ReportesCtrl', function($http, $location, $scope, ngTableParams,
 		$filter, $window, $route, $rootScope, growl, dialogs,globalService,$translate,restServices) {
 
-	$scope.data = [
-	    {label: "one", value: 12.2, color: "red"}, 
-	    {label: "two", value: 45, color: "#00ff00"},
-	    {label: "three", value: 10, color: "rgb(0, 0, 255)"}
-	];
+	var data = google.visualization.arrayToDataTable([
+	    ['Year', 'Sales', 'Expenses'],
+	    ['2004', 1000, 400],
+	    ['2005', 1170, 460],
+	    ['2006', 660, 1120],
+	    ['2007', 1030, 540]
+	    ]);
 	
-	$scope.options = {thickness: 500};
+	var options = {
+	    title: 'Company Performance'
+	};
+	var chart = new google.visualization.PieChart(document.getElementById('chartdiv'));
+	chart.draw(data, options);
 	
 });
