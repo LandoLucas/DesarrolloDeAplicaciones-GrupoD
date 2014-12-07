@@ -61,8 +61,10 @@
 														"FORM_DEBIT_ENABLED":  "Pago con débito activado",
 														
 														"FORM_TOGGLE_CATEGORIES":"Expandir Categorias",
-												"FORM_TOGGLE_CLIENT":"Expandir Cliente",
-												"FORM_TOGGLE_PROVIDER":"Expandir Proveedor",
+														"FORM_TOGGLE_CLIENT":"Expandir Cliente",
+														"FORM_TOGGLE_PROVIDER":"Expandir Proveedor",
+												
+														"FORM_TRADE_NAME":"Razón Social",
 														
 														"FORM_DATE": "Fecha",
 														"FORM_CODE": "Código",
