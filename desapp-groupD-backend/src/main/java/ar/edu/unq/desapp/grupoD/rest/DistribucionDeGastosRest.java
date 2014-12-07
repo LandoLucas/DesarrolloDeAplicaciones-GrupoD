@@ -31,7 +31,7 @@ public class DistribucionDeGastosRest {
 	@GET
 	@Path("/distribucion")
 	@Produces("application/json")
-	public Response consolidateAccounts() {
+	public Response distribucionDeGastos() {
 		
 		List<Operation> gastos = operationService.findAllOutcomes();
 		Map<String , String> distribucionDeGastos = new HashMap<String, String>();
@@ -40,12 +40,7 @@ public class DistribucionDeGastosRest {
 			Double amount =  operation.getTotalAmount();
 			String category = operation.getCategory();
 			
-//			if(distribucionDeGastos.containsKey(category))	amount += Double.parseDouble( distribucionDeGastos.get(category) );
-			
-			
-			distribucionDeGastos.put( "label" , category );
-			distribucionDeGastos.put( "value" , amount.toString() );
-			
+			distribucionDeGastos.put( category , amount.toString() );
 		}
 		
 		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(distribucionDeGastos).build();

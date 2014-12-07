@@ -172,5 +172,6 @@
 												
 												"POPOVER_HELP": "Actualiza el estado de las cuentas bancarias con el monto devengado de operaciones que aun no han sido devengadas con mas de 15 dias de antiguedad",
 												
-												"REPORTS_TITLE": "Reports"
+												"REPORTS_TITLE": "Reports",
+												"CATEGORIES_DISTRIBUTION_TITLE" : "Outcomes by category"
 }
