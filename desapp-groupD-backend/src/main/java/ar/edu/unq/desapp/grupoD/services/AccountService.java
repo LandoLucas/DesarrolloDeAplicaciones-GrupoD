@@ -43,10 +43,4 @@ public class AccountService {
 		this.bankAccountDao.save(account);
 	}
 	
-	@Transactional
-	public double getPettyCashTotal(){
-		this.pettyCashAccountDao.findAll();
-//		return account.getAmount();
-		return 2;
-	}
 }

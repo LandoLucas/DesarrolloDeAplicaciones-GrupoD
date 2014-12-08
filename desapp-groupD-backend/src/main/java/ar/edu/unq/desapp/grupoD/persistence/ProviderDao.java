@@ -22,11 +22,11 @@ GenericRepository<Provider> {
 		return providers.get(0);
 	}
 
-	@Override
-	public Provider findById(Serializable id) {
-		Provider provider = findById(id);
-		return provider;
-	}
+//	@Override
+//	public Provider findById(Serializable id) {
+//		Provider provider = findById(id);
+//		return provider;
+//	}
 
 	@Override
 	protected Class<Provider> getDomainClass() {

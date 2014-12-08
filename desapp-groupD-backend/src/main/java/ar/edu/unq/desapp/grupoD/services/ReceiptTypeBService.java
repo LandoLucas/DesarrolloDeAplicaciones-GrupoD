@@ -25,8 +25,4 @@ public class ReceiptTypeBService {
 		receiptBDao.save(receipt);
 	}
 
-	@Transactional
-	public void editReceiptB(ReceiptTypeB receipt){
-		receiptBDao.save(receipt);
-	}
 }

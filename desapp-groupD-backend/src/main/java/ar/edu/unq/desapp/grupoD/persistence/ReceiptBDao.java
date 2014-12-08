@@ -8,7 +8,7 @@ public class ReceiptBDao extends HibernateGenericDAO<ReceiptTypeB> implements
 GenericRepository<ReceiptTypeB> {
 
 	public ReceiptTypeB getReceiptByReceiptNumber(int id) {
-		List<ReceiptTypeB> receipts = getHibernateTemplate().find("from ReceiptTypeB where operationID = " + id);
+		List<ReceiptTypeB> receipts = getHibernateTemplate().find("from ReceiptTypeB where id = " + id);
 		if( ! receipts.isEmpty()){
 			return receipts.get(0);
 		}else{

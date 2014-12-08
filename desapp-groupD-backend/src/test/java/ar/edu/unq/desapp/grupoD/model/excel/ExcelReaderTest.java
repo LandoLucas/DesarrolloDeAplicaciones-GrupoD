@@ -10,16 +10,22 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
 import ar.edu.unq.desapp.grupoD.model.Operation;
+import ar.edu.unq.desapp.grupoD.services.ExcelService;
 import ar.edu.unq.desapp.grupoD.services.OperationService;
+import static org.mockito.Mockito.*;
+
 
 @ContextConfiguration(locations = {"classpath:spring-base-context.xml"})
 public class ExcelReaderTest extends AbstractTransactionalJUnit4SpringContextTests{
 	
 	@Autowired
-	ExcelReader reader;
+	private ExcelReader reader;
+
+	@Autowired
+	private ExcelService service;
 	
 	@Autowired
-	OperationService operationService;
+	private OperationService operationService;
 	
 	@Test
 	public void newExcelReaderTest(){
@@ -34,4 +40,23 @@ public class ExcelReaderTest extends AbstractTransactionalJUnit4SpringContextTes
 		
 		assertEquals(operationsPrevias.size()+3 , operations.size());
 	}
+	
+	@Test
+	public void readExcelFile(){
+		ExcelReader mockReader = mock(ExcelReader.class);
+		service.setExcelReader(mockReader);
+		service.readExcel("src/test/resources/data.xls");
+		
+		verify(mockReader).readExcelFile(anyString());
+	}
+
+	@Test
+	public void writeExcelFile(){
+		ExcelWriter mockwriter = mock(ExcelWriter.class);
+		service.setExcelWriter(mockwriter);
+		service.writeExcel();
+		
+		verify(mockwriter).writeExcelFile();
+	}
+	
 }
