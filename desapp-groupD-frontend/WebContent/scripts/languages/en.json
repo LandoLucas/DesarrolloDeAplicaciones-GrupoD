@@ -65,6 +65,8 @@
 												"FORM_TOGGLE_PROVIDER":"Expand Provider",
 												"FORM_TRADE_NAME":"Trade Name",
 												
+												"FORM_TOGGLE_ID_PROVIDER_LOAD":"Enable auto-loading by ID",
+												
 												"FORM_DATE": "Date",
 												"FORM_ADDRESS": "Address",
 												"FORM_PHONE": "Phone",

@@ -3,7 +3,7 @@ package ar.edu.unq.desapp.grupoD.model.builders;
 import ar.edu.unq.desapp.grupoD.model.providers.Provider;
 
 public class ProviderBuilder implements ArquitecturalTestBuilder<Provider> {
-	Integer providerId = 1;
+	String providerId = "1";
 	String name = "Coca-Cola";
 	String tradeName = "Coca-Cola-ferm";
 	String direction = "Calle Poronga";

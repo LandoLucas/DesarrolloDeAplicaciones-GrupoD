@@ -13,8 +13,11 @@ GenericRepository<Provider> {
 	 */
 	private static final long serialVersionUID = 8409104105299693855L;
 	
-	public Provider getByProviderId(int providerId){
-		List<Provider> providers = this.getHibernateTemplate().findByExample(new Provider(providerId));
+	public Provider getByProviderId(String providerId){
+//		List<Provider> providers = this.getHibernateTemplate().findByExample(new Provider(providerId));
+		List<Provider> providers = this.getHibernateTemplate().find("from Provider p where p.providerId = ?", providerId);
+//		List<Provider> providersFull = this.getHibernateTemplate().find("from Provider");
+//		if(providers.isEmpty())return null;
 		if(providers.isEmpty())return null;
 		return providers.get(0);
 	}

@@ -66,6 +66,8 @@
 												
 														"FORM_TRADE_NAME":"Razón Social",
 														
+														"FORM_TOGGLE_ID_PROVIDER_LOAD":"Activar carga automática por ID",
+														
 														"FORM_DATE": "Fecha",
 														"FORM_CODE": "Código",
 														"FORM_ADDRESS": "Dirección",

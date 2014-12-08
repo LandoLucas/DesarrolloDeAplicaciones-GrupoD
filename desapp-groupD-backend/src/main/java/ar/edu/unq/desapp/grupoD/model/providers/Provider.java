@@ -17,7 +17,7 @@ public class Provider {
 	private Integer id;
 	
 	@Column(unique=true)
-	private Integer providerId;
+	private String providerId;
 	
 	@Column
 	private String name;
@@ -35,7 +35,7 @@ public class Provider {
 	private Integer telephone;
 	
 	
-	public Provider(Integer providerId, String name, String dir, String tradeName, int cuit, int telephone){
+	public Provider(String providerId, String name, String dir, String tradeName, int cuit, int telephone){
 		this.setProviderId(providerId);
 		this.setName(name);
 		this.setCuit(cuit);
@@ -46,15 +46,15 @@ public class Provider {
 	}
 	public Provider (){}
 	
-	public Provider(Integer providerId) {
+	public Provider(String providerId) {
 		this.providerId = providerId;
 	}
 	
-	public void setProviderId(Integer providerId){
+	public void setProviderId(String providerId){
 		this.providerId = providerId;
 	}
 	
-	public Integer getProviderId(){
+	public String getProviderId(){
 		return providerId;
 	}
 	
@@ -97,4 +97,13 @@ public class Provider {
 	public String getTradeName(){
 		return tradeName;
 	}
+	@Override
+	public String toString() {
+		return "Provider [id=" + id + ", providerId=" + providerId + ", name="
+				+ name + ", tradeName=" + tradeName + ", direction="
+				+ direction + ", cuit=" + cuit + ", telephone=" + telephone
+				+ "]";
+	}
+	
+	
 }

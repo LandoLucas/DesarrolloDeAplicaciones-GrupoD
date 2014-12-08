@@ -21,7 +21,7 @@ public class ProviderServiceTest  extends AbstractTransactionalJUnit4SpringConte
 	@Test
 	public void saveAndLoadCategory(){
 
-		Integer providerId = 1;
+		String providerId = "1";
 		String name = "Coca-Cola";
 		String tradeName = "Coca-Cola-ferm";
 		String direction = "Calle Poronga";
@@ -40,8 +40,8 @@ public class ProviderServiceTest  extends AbstractTransactionalJUnit4SpringConte
 	
 	@Test
 	public void findByProviderId(){
-		Integer entero = 1;
-		Provider provider = new Provider(1);
+		String entero = "1";
+		Provider provider = new Provider("1");
 		providerService.save(provider);
 		
 		assertEquals(provider, providerService.findByProviderId(entero));
@@ -49,7 +49,7 @@ public class ProviderServiceTest  extends AbstractTransactionalJUnit4SpringConte
 	
 	@Test
 	public void saveProviderAndLoadTest(){
-		Integer providerId = 1;
+		String providerId = "1";
 		String name = "Coca-Cola";
 		String tradeName = "Coca-Cola-ferm";
 		String direction = "Calle Poronga";
@@ -70,7 +70,7 @@ public class ProviderServiceTest  extends AbstractTransactionalJUnit4SpringConte
 	
 	@Test
 	public void editProviderTest(){
-		Integer providerId = 1;
+		String providerId = "1";
 		String name = "Coca-Cola";
 		String tradeName = "Coca-Cola-ferm";
 		String direction = "Calle Poronga";
@@ -90,8 +90,8 @@ public class ProviderServiceTest  extends AbstractTransactionalJUnit4SpringConte
 	
 	@Test
 	public void removeProviderTest(){
-		Integer entero = 1;
-		Provider provider = new Provider(1);
+		String entero = "1";
+		Provider provider = new Provider("1");
 		providerService.save(provider);
 		
 		assertEquals(provider, providerService.findByProviderId(entero));

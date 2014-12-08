@@ -39,32 +39,36 @@ public class ProviderRest {
 	
 	@POST
 	@Path("/new")
-	public Response addProvider(@FormParam("providerId") Integer providerId, @FormParam("name") String name,@FormParam("tradeName") String tradeName,
-			@FormParam("direction") String direction, @FormParam("cuit") Integer cuit,
-			@FormParam("telephone") Integer telephone){
-		providerService.saveProvider(providerId, name, tradeName, direction, cuit, telephone);
+	public Response addProvider(@FormParam("providerId") String providerId, @FormParam("name") String name,@FormParam("tradeName") String tradeName,
+			@FormParam("direction") String direction, @FormParam("cuit") String cuit,
+			@FormParam("telephone") String telephone){
+		providerService.saveProvider(providerId, name, tradeName, direction, Integer.decode(cuit), Integer.decode(telephone));
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
 	@POST
 	@Path("/edit/{providerId}")
-	public Response editProvider(@FormParam("providerId") Integer providerId, @FormParam("name") String name,@FormParam("tradeName") String tradeName,
+	public Response editProvider(@FormParam("providerId") String providerId, @FormParam("name") String name,@FormParam("tradeName") String tradeName,
 			@FormParam("direction") String direction, @FormParam("cuit") Integer cuit,
 			@FormParam("telephone") Integer telephone){
 		providerService.editProvider(providerId, name, tradeName, direction, cuit, telephone); 
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
-	@GET
-	@Path("/{providerId}")
+	@POST
+	@Path("/search")
 	@Produces("application/json")
-	public Provider getProviderByProviderId(@PathParam("providerId") Integer id){
-		return providerService.findByProviderId(id);
+	public Response getProviderByProviderId(@FormParam("providerId") String id){
+		Provider target = providerService.findByProviderId(id);
+		System.out.println(target.toString());
+		return Response.ok().header("Access-Control-Allow-Origin", "*")
+				.entity(target)
+				.build();
 	}
 	
 	@POST
 	@Path("/remove/{providerId}")
-	public Response removepROVIDER(@PathParam("providerId") Integer id){
+	public Response removepROVIDER(@PathParam("providerId") String id){
 		providerService.removeProviderByProviderId(id);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}

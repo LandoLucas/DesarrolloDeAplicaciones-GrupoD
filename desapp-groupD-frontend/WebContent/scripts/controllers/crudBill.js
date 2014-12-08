@@ -12,16 +12,59 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				restServices, $timeout) {
 
 			$scope.detailMode = false;
+
 			$scope.inputDate = $filter("date")(Date.now(), 'yyyy-MM-dd');
+
+			$scope.autoload = true;
+
+			$scope.searchProviderOk = function(response) {
+				console.log(response)
+				$scope.inputClientSellerName = response.name;
+				$scope.inputTradeName = response.tradeName;
+				$scope.inputCuit = response.cuit;
+				$scope.inputPhone = response.telephone;
+				$scope.inputAddress = response.direction;
+				growl.info("Autoloaded..")
+			}
 			
-			$scope.enableDetailMode = function(){
+			$scope.searchProviderFail = function(response){
+				growl.error("Error al intentar obtener el id")
+			}
+
+			$scope.searchProvider = function() {
+				console.log("Tratando de buscar datos para id:"
+						+ $scope.inputClientSellerId)
+
+						var data = {providerId: $scope.inputClientSellerId}
+						restServices.invokeSearchProvider($http, data,
+								$scope.searchProviderOk,
+								$scope.searchProviderFail);
+			}
+
+			$scope.toggleAutoLoading = function() {
+				$scope.autoload = !($scope.autoload);
+			}
+			var tempFilterText = '';
+			var filterTextTimeout = 1000;
+			$scope.$watch('inputClientSellerId', function(val) {
+				if (filterTextTimeout)
+					$timeout.cancel(filterTextTimeout);
+
+				tempFilterText = val;
+				filterTextTimeout = $timeout(function() {
+					if ($scope.inputClientSellerId != null && $scope.autoload)
+						$scope.searchProvider();
+				}, 1000);
+			})
+
+			$scope.enableDetailMode = function() {
 				$scope.detailMode = true;
 			}
-			
-			$scope.disableDetailMode = function(){
+
+			$scope.disableDetailMode = function() {
 				$scope.detailMode = false;
 			}
-			
+
 			Array.prototype.sumTotal = function() {
 				var total = 0
 				for (var i = 0, _len = this.length; i < _len; i++) {
@@ -36,7 +79,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				}
 				return total
 			}
-			
+
 			$scope.getCategoriesOk = function(response) {
 				// growl.info("Categorias obtenidas");
 				$scope.categories = response;
@@ -57,7 +100,6 @@ angular.module('tp-dapp-eiroa-lando').controller(
 					$scope.isOutcome = true;
 				}
 			}
-
 
 			$scope.tableColumns = {
 				item : "item",
@@ -86,10 +128,14 @@ angular.module('tp-dapp-eiroa-lando').controller(
 					$scope.tableColumns.actions = text;
 				});
 			}
-			
-			$scope.shifts= [{name:"Mañana"},
-		                      {name:"Tarde"},
-		                      {name:"Noche"}];
+
+			$scope.shifts = [ {
+				name : "Mañana"
+			}, {
+				name : "Tarde"
+			}, {
+				name : "Noche"
+			} ];
 
 			$scope.paymentTypes = [ {
 				code : 0,
@@ -184,8 +230,6 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				}
 			};
 
-
-
 			$scope.selectCategory = function(category) {
 				if (category != null) {
 					if (category.subcategory == null) {
@@ -217,8 +261,6 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				console.log($scope.concepts);
 			}
 
-
-
 			var billElements = [ {
 				name : "Item",
 				cant : 1,
@@ -238,25 +280,26 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				billElements.push(obj);
 				reloadTable();
 			}
-			
-			$scope.showTotalAmount = function(){
-				if(!$scope.detailMode){
-					return $scope.inputNeto + $scope.inputIVA + $scope.inputIIBB + $scope.inputExtraTax;
-				}else{
+
+			$scope.showTotalAmount = function() {
+				if (!$scope.detailMode) {
+					return $scope.inputNeto + $scope.inputIVA
+							+ $scope.inputIIBB + $scope.inputExtraTax;
+				} else {
 					return billElements.sumTotal();
 				}
 			}
-			$scope.showTotalAmountNoTaxes = function(){
-				if(!$scope.detailMode){
+			$scope.showTotalAmountNoTaxes = function() {
+				if (!$scope.detailMode) {
 					return $scope.inputNeto;
-				}else{
+				} else {
 					return billElements.sumTotalNoTaxes();
 				}
 			}
 
 			function reloadTable() {
 				$timeout( // Advertencia, fix sucio con timeout, se debe a
-							// error en ng-table en tableParams.reload
+				// error en ng-table en tableParams.reload
 				function() {
 					$scope.$watch("dataset", function() {
 						$scope.tableParams.reload();
@@ -282,8 +325,8 @@ angular.module('tp-dapp-eiroa-lando').controller(
 					name : 'asc' // initial sorting
 				}
 			}, {
-				counts: [],
-				total: function() {
+				counts : [],
+				total : function() {
 					return getData().length;
 				}, // length of data
 				getData : function($defer, params) {
@@ -298,8 +341,6 @@ angular.module('tp-dapp-eiroa-lando').controller(
 					$data : {}
 				}
 			});
-
-
 
 			$scope.registerBill = function() {
 
@@ -353,7 +394,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				if ($scope.inputShift) {
 					var shift = $scope.inputShift;
 				}
-				
+
 				var data = {
 					letter : $scope.billLetter,
 					date : $scope.inputDate,
@@ -374,7 +415,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 					shift : shift,
 					isOutcome : $scope.isOutcome,
 					address : add,
-					iva: 21,
+					iva : 21,
 					items : billElements
 				};
 				return data;
@@ -477,8 +518,8 @@ angular.module('tp-dapp-eiroa-lando').controller(
 
 				}
 			}
-			
+
 			$scope.inicializarVista();
 			reloadTable();
-			
+
 		});

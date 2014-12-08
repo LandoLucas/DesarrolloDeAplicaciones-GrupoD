@@ -19,7 +19,7 @@
 						| translate}}</label>
 					<div class="col-xs-9">
 						<input type="date" class="form-control" id="inputDate"
-							ng-model="inputDate" style="width: 120%" tabindex="1">
+							ng-model="inputDate" style="width: 130%" tabindex="1">
 					</div>
 				</div>
 				<div class="pull-right form-group col-xs-12 col-sm-4 col-lg-4">
@@ -50,7 +50,14 @@
 									data-toggle="collapse" 
 									data-target="#collapseTwo"> {{ 'FORM_TOGGLE_PROVIDER' |
 									translate}} </a>
+									<strong   ng-click="toggleAutoLoading()" style="cursor:pointer;font-size: small;margin-left: 10px;">{{ 'FORM_TOGGLE_ID_PROVIDER_LOAD' |
+									translate}}</strong>
+									<span class="glyphicon glyphicon-ok text-success" ng-show="autoload"></span>
+									<span class= "glyphicon glyphicon-remove text-danger" ng-show="!autoload"></span>
+									
 							</h4>
+							 
+							<span class= "glyphicon glyphicon-remove text-danger" ng-hide="true"></span>
 						</div>
 						<div id="collapseTwo" class="panel-collapse collapse in">
 							<div class="panel-body">

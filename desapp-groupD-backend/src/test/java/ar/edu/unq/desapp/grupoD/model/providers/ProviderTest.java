@@ -8,7 +8,7 @@ public class ProviderTest {
 	
 	@Test
 	public void completeConstructorTest(){
-		Integer providerId = 1;
+		String providerId = "1";
 		String name = "Coca-Cola";
 		String tradeName = "Coca-Cola-ferm";
 		String direction = "Calle Poronga";
@@ -27,7 +27,7 @@ public class ProviderTest {
 	
 	@Test
 	public void providerIdConstructorTest(){
-		Integer providerId = 1;
+		String providerId = "1";
 		
 		Provider provider = new Provider(providerId);
 		

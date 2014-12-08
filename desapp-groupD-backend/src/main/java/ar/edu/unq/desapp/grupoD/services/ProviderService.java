@@ -16,7 +16,7 @@ public class ProviderService {
 	}
 	
 	@Transactional
-	public Provider findByProviderId(int id){
+	public Provider findByProviderId(String id){
 		return providerDao.getByProviderId(id);
 	}
 
@@ -31,13 +31,13 @@ public class ProviderService {
 	}
 
 	@Transactional
-	public void saveProvider(Integer providerId, String name, String tradeName, String direction, Integer cuit, Integer telephone) {
+	public void saveProvider(String providerId, String name, String tradeName, String direction, Integer cuit, Integer telephone) {
 		Provider provider = new Provider(providerId, name, direction, tradeName, cuit, telephone);
 		providerDao.save(provider);
 	}
 
 	@Transactional
-	public void editProvider(Integer providerId, String name, String tradeName, String direction, Integer cuit, Integer telephone) {
+	public void editProvider(String providerId, String name, String tradeName, String direction, Integer cuit, Integer telephone) {
 		
 		Provider provider = findByProviderId(providerId);
 		provider.setCuit(cuit);
@@ -50,7 +50,7 @@ public class ProviderService {
 	}
 	
 	@Transactional
-	public void removeProviderByProviderId(int id){
+	public void removeProviderByProviderId(String id){
 		List<Provider> providerToDelete = providerDao.findByExample(new Provider(id));
 		providerDao.delete(providerToDelete.get(0));
 	}

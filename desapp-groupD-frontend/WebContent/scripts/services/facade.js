@@ -205,7 +205,13 @@
 		        					handlerOnSuccess, handlerOnError);
 		        		}
 
-
+		        		//ProveedoresYClientes
+		        		
+		        		function invokeSearchProvider(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+		        			var header = defaultHeader();
+		        			invokeRestService(cnxHttp, header, data, 'provider',
+		        					'search', handlerOnSuccess, handlerOnError);
+		        		}
 
 
 		        		// Usuarios
@@ -278,7 +284,8 @@
 		                 invokeRegistrarUsuario: invokeRegistrarUsuario,
 		                 invokeRegisterBill: invokeRegisterBill,
 		                 invokeGetAccounts : invokeGetAccounts,
-		                 invokeDistribucionDeGastos : invokeDistribucionDeGastos
+		                 invokeDistribucionDeGastos : invokeDistribucionDeGastos,
+		                 invokeSearchProvider: invokeSearchProvider
 		               };
 		             }
 		           ];
