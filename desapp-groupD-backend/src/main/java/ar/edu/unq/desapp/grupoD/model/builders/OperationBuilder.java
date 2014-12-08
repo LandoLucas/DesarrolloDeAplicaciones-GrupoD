@@ -64,4 +64,9 @@ public class OperationBuilder implements ArquitecturalTestBuilder<Operation>{
 		this.isIncome = isIncome;
 		return this;
 	}
+
+	public OperationBuilder withShift(String shift) {
+		this.shift = shift;
+		return this;
+	}
 }

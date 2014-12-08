@@ -23,10 +23,8 @@ import ar.edu.unq.desapp.grupoD.model.receipt.ReceiptTypeB;
 import ar.edu.unq.desapp.grupoD.services.AccountService;
 import ar.edu.unq.desapp.grupoD.services.CategoryService;
 import ar.edu.unq.desapp.grupoD.services.OperationService;
-import ar.edu.unq.desapp.grupoD.services.PaymentTypeService;
 import ar.edu.unq.desapp.grupoD.services.ReceiptTypeAService;
 import ar.edu.unq.desapp.grupoD.services.ReceiptTypeBService;
-import ar.edu.unq.desapp.grupoD.services.SubCategoryService;
 
 /**
  * This class is the responsible to populate the database with fake information
@@ -143,10 +141,23 @@ public class DatabaseInitializer {
 		paymentTypes4.add(new CreditCard(300));
 		paymentTypes4.add(new DebitCard(500));
 		
-		loadOperation(category, subcategory, concept , DateTime.now().minusDays(20), paymentTypes , true, "tarde");
-		loadOperation(category, subcategory2, concept , new DateTime(), paymentTypes2 , true, "tarde");
-		loadOperation(category2, subcategory3, concept , DateTime.now().minusDays(6), paymentTypes3 , false, "tarde");
-		loadOperation(category3, subcategory3, concept , DateTime.now().minusDays(12), paymentTypes4 , false, "tarde");
+		List<PaymentType> paymentTypes5 = new ArrayList<PaymentType>();
+		paymentTypes5.add(new PettyCash(2500));
+		paymentTypes5.add(new CreditCard(1300));
+		paymentTypes5.add(new DebitCard(500));
+		
+		List<PaymentType> paymentTypes6 = new ArrayList<PaymentType>();
+		paymentTypes6.add(new PettyCash(4300));
+		paymentTypes6.add(new CreditCard(1300));
+		paymentTypes6.add(new DebitCard(5500));
+		
+		loadOperation(category, subcategory, concept , DateTime.now().minusDays(20), paymentTypes , true, "Tarde");
+		loadOperation(category, subcategory2, concept , new DateTime(), paymentTypes2 , true, "Tarde");
+		loadOperation(category2, subcategory3, concept , DateTime.now().minusDays(6), paymentTypes3 , false, "Tarde");
+		loadOperation(category3, subcategory3, concept , DateTime.now().minusDays(12), paymentTypes4 , false, "Tarde");
+		loadOperation(category3, subcategory3, concept , DateTime.now().minusDays(12), paymentTypes5 , false, "Mañana");
+		loadOperation(category3, subcategory3, concept , DateTime.now().minusDays(12), paymentTypes6 , false, "Noche");
+		
 	}
 
 	private void loadOperation(Category category, SubCategory subcategory, Concept concept , DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift) throws InvalidAmountException {

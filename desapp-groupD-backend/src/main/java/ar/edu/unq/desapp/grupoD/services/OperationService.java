@@ -135,8 +135,14 @@ public class OperationService {
 		return operationDao.findAllOutcomes();
 	}
 
+	@Transactional
 	public void saveOperation(Operation operation) {
 		operationDao.save(operation);
+	}
+
+	@Transactional
+	public List<Operation> findAllOutcomesByShift(String shift) {
+		return operationDao.findAllOutcomesByShift(shift);
 	}
 	
 

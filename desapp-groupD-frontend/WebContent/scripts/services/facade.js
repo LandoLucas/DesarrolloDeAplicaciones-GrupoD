@@ -188,37 +188,32 @@
 		        		//===Rest subcategorias===
 		        		function invokeNewSubcategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 		        			var header = defaultHeader();
-		        			invokeRestService(cnxHttp, header, data, 'subcategory', 'save',
-		        					handlerOnSuccess, handlerOnError);
+		        			invokeRestService(cnxHttp, header, data, 'subcategory', 'save', handlerOnSuccess, handlerOnError);
 		        		}
 
 		        		function invokeDeleteSubcategory(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 		        			var header = defaultHeader();
-		        			invokeRestService(cnxHttp, header, data, 'subcategory', 'delete',
-		        					handlerOnSuccess, handlerOnError);
+		        			invokeRestService(cnxHttp, header, data, 'subcategory', 'delete', handlerOnSuccess, handlerOnError);
 		        		}
 
 		        		//==Rest Concept==\\
 		        		function invokeDeleteConcept(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 		        			var header = defaultHeader();
-		        			invokeRestService(cnxHttp, header, data, 'concept', 'delete',
-		        					handlerOnSuccess, handlerOnError);
+		        			invokeRestService(cnxHttp, header, data, 'concept', 'delete', handlerOnSuccess, handlerOnError);
 		        		}
 
 		        		//ProveedoresYClientes
 		        		
 		        		function invokeSearchProvider(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 		        			var header = defaultHeader();
-		        			invokeRestService(cnxHttp, header, data, 'provider',
-		        					'search', handlerOnSuccess, handlerOnError);
+		        			invokeRestService(cnxHttp, header, data, 'provider', 'search', handlerOnSuccess, handlerOnError);
 		        		}
 
 
 		        		// Usuarios
 		        		function invokeRegistrarUsuario(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 		        			var header = defaultHeader();
-		        			invokeRestService(cnxHttp, header, data, 'configuracion',
-		        					'registrarUsuario', handlerOnSuccess, handlerOnError);
+		        			invokeRestService(cnxHttp, header, data, 'configuracion', 'registrarUsuario', handlerOnSuccess, handlerOnError);
 		        		}
 
 		        		function invokeBuscarUsuario(cnxHttp, data, handlerOnSuccess, handlerOnError) {
@@ -258,10 +253,16 @@
 		        			invokeGetRestService(cnxHttp, header, data, 'account', 'all', handlerOnSuccess, handlerOnError);
 		        		}
 		        		
-		        		function invokeDistribucionDeGastos(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+		        		function invokeDistribucionDeGastosPorCategoria(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 		        			var header = defaultHeader();
 		        			
-		        			invokeGetRestService(cnxHttp, header, data, 'gastos', 'distribucion', handlerOnSuccess, handlerOnError);
+		        			invokeGetRestService(cnxHttp, header, data, 'gastos', 'distribucionCategoria', handlerOnSuccess, handlerOnError);
+		        		}
+		        		
+		        		function invokeDistribucionDeGastosPorTurno(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+		        			var header = defaultHeader();
+		        			console.log(data)
+		        			invokeRestService(cnxHttp, header, data, 'gastos', 'distribucionTurno', handlerOnSuccess, handlerOnError);
 		        		}
 		        		
 		               return {
@@ -284,7 +285,8 @@
 		                 invokeRegistrarUsuario: invokeRegistrarUsuario,
 		                 invokeRegisterBill: invokeRegisterBill,
 		                 invokeGetAccounts : invokeGetAccounts,
-		                 invokeDistribucionDeGastos : invokeDistribucionDeGastos,
+		                 invokeDistribucionDeGastosPorCategoria : invokeDistribucionDeGastosPorCategoria,
+		                 invokeDistribucionDeGastosPorTurno : invokeDistribucionDeGastosPorTurno,
 		                 invokeSearchProvider: invokeSearchProvider
 		               };
 		             }

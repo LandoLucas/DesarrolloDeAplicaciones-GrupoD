@@ -51,7 +51,7 @@ public class OperationServiceTest extends AbstractTransactionalJUnit4SpringConte
 	}
 	
 	@Test
-	public void findAllGastos() throws InvalidAmountException{
+	public void findAllOutcomes() throws InvalidAmountException{
 		OperationBuilder builder = new OperationBuilder();
 		List<PaymentType> payments = new ArrayList<PaymentType>();
 		payments.add(new PettyCash(2000));
@@ -64,6 +64,22 @@ public class OperationServiceTest extends AbstractTransactionalJUnit4SpringConte
 		assertSame( outcome , outcomes.get(0));
 		assertEquals(2000 , outcome.getTotalAmount() , 0);
 	}
+	
+	@Test
+	public void findAllOutcomesByShift() throws InvalidAmountException{
+		OperationBuilder builder = new OperationBuilder();
+		List<PaymentType> payments = new ArrayList<PaymentType>();
+		payments.add(new PettyCash(1000));
+		Operation outcome = builder.withIsIncome(false).withPaymentType(payments).withShift("Tarde").any();
+		operationService.saveOperation(outcome);
+
+		List<Operation> outcomes = operationService.findAllOutcomesByShift("Tarde");
+		
+		assertEquals(1 , outcomes.size());
+		assertSame( outcome , outcomes.get(0));
+		assertEquals(1000 , outcome.getTotalAmount() , 0);
+	}
+		
 	
 	@Test
 	public void devengar() throws InvalidAmountException{

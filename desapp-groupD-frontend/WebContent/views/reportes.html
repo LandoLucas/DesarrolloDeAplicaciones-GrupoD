@@ -3,8 +3,20 @@
 		<h4>{{ 'REPORTS_TITLE' | translate}}</h4>
 	</div>
 	
-	{{data}}
-	<div id="chartdiv"></div>
+  <tabset justified="true">
+    <tab heading="{{ 'CATEGORIES_DISTRIBUTION_TITLE' | translate}}"><div id="categoriesChart"></div></tab>
+    
+    
+    <tab heading="{{ 'SHIFT_DISTRIBUTION_TITLE' | translate}}">
+    	<tabset vertical="true" type="pills">
+		 	<tab heading="{{ 'SHIFT_MORNING' | translate}}"><div id="shiftChartManana"/></tab>
+		 	<tab heading="{{ 'SHIFT_AFTERNOON' | translate}}"><div id="shiftChartTarde"/></tab>
+	 	 	<tab heading="{{ 'SHIFT_NIGHT' | translate}}"><div id="shiftChartNoche"/></tab>
+	 	 </tabset>
+    </tab>
+    
+  </tabset>
+	
 	
 </div>
 

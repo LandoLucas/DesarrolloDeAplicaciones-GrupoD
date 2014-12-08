@@ -83,4 +83,13 @@ GenericRepository<Operation> {
 		return query.list();
 	}
 
+	public List<Operation> findAllOutcomesByShift(String shift) {
+		String hql = "FROM Operation o WHERE o.shift like '"+shift+"%' and o.isIncome =false";
+		
+		Query query = getHibernateTemplate().getSessionFactory()
+				.getCurrentSession().createQuery(hql);
+
+		return query.list();
+	}
+
 }
