@@ -13,9 +13,11 @@
 				<td data-title="tableColumns['subcategory']">{{operacion.subcategory}}</td>
 				<td data-title="tableColumns['concept']">{{operacion.concept}}</td>
 				<td data-title="tableColumns['shift']">{{operacion.shift}}</td>
-				<td data-title="tableColumns['cash']">{{operacion.paymentTypes[0].amount}}</td>
-				<td data-title="tableColumns['credit']">{{operacion.paymentTypes[1].amount}}</td>
-				<td data-title="tableColumns['debit']">{{operacion.paymentTypes[2].amount}}</td>
+			
+				<td data-title="tableColumns['cash']" style="{{outcomeOperationColor( operacion.income )}}">{{operacion.paymentTypes[0].amount}}</td>
+				<td data-title="tableColumns['credit']" style="{{outcomeOperationColor( operacion.income )}}">{{operacion.paymentTypes[1].amount}}</td>
+				<td data-title="tableColumns['debit']" style="{{outcomeOperationColor( operacion.income )}}">{{operacion.paymentTypes[2].amount}}</td>
+			
 				<td data-title="tableColumns['totalCash']">{{operacion.totalInPettyCash}}</td>
 				<td data-title="tableColumns['totalBank']">{{operacion.totalInBank}}</td>
 				<td data-title="tableColumns['available']">{{operacion.available}}</td>

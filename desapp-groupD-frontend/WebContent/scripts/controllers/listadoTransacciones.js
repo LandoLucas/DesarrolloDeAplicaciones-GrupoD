@@ -12,6 +12,7 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 
 	$scope.operacionesOk = function(response) {
 		$scope.operaciones = response;
+		
 	};
 
 	$scope.accountsOK = function(response) {
@@ -108,4 +109,11 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 		  $('[data-toggle="popover"]').popover();
 		});
 	
+	
+	$scope.style = 'background-color : red'
+	
+	$scope.outcomeOperationColor = function(isIncome) {
+		if(! isIncome){ return 'color : red'}
+	}
+		
 });

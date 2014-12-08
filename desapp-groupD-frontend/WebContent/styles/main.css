@@ -128,3 +128,11 @@ table thead tr th {
 table tbody tr td {
 	text-align: center;
 }
+
+.largeWidth {
+    background-color: red;
+}
+
+.smallWidth {
+    background-color: blue;
+}
