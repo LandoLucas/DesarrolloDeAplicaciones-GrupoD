@@ -129,6 +129,9 @@
 												"FORM_ERROR_CREDIT_NOT_POSITIVE": "Error, monto en crédito debe ser positivo",
 												"FORM_ERROR_DEBIT_NOT_POSITIVE": "Error, monto en débito debe ser positivo",
 														
+														
+														"DIALOG_PROVIDER_DELETE_TITLE":"Desea borrar el cliente/proveedor ",
+														"DIALOG_PROVIDER_DELETE_DESC":"Seleccione una opción ",
 														"DIALOG_CATEGORY_REGISTER_SUCCESS": "Categoría registrada: ",
 														"DIALOG_CATEGORY_DELETE_TITLE": "¿Desea borrar la categoría ",
 														"DIALOG_CATEGORY_DELETE_DESC": " Junto con la categoría se borrarán las subcategorias y conceptos asociados",

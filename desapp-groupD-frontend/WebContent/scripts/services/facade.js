@@ -221,7 +221,7 @@
 		        		
 		        		function invokeEditProvider(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 		        			var header = defaultHeader();
-		        			invokeGetRestService(cnxHttp, header, data, 'provider', 'edit', handlerOnSuccess, handlerOnError);
+		        			invokeRestService(cnxHttp, header, data, 'provider', 'edit', handlerOnSuccess, handlerOnError);
 		        		}
 		        		
 		        		

@@ -34,14 +34,13 @@
 				<td data-title="tableColumns['phone']" sortable="'phone'" filter="{ 'phone': 'text' }">{{provider.telephone}} </td>
 				
 				<td data-title="tableColumns['actions']" style="width:10%">
-				<button type="button"
+				<a type="button"
 						class="btn btn-warning"
-						ng-click="editProvider(provider.id)"
-						ng-show="true"
-						title="{{ 'FORM_EDIT' | translate}} {{provider.name}}"><span class="glyphicon glyphicon-pencil" /></button>
+						ng-href="#/provider"
+						ng-click="editProvider(provider)"
+						title="{{ 'FORM_EDIT' | translate}} {{provider.name}}"><span class="glyphicon glyphicon-pencil" /></a>
 					<button type="button" class="btn btn-danger"
-						ng-show="true"
-						ng-click="confirmaDeleteProvider(provider.id, provider.codigo)"
+						ng-click="confirmDeleteProvider(provider.providerId,provider.name)"
 						title="{{ 'FORM_DELETE' | translate}} {{provider.name}}"><span class="glyphicon glyphicon-trash" /></button></td>
 			</tr>
 		</table>

@@ -13,10 +13,19 @@ angular.module('tp-dapp-eiroa-lando').controller(
 			globalService.setInMainMenu();
 			
 			$scope.inicializarVista = function() {
-
+				if(!$rootScope.registeringProvider){
+					$scope.inputClientSeller = $rootScope.providerToEdit.name
+					$scope.inputTradeName = $rootScope.providerToEdit.tradeName
+					$scope.inputClientSellerId = $rootScope.providerToEdit.providerId
+					$scope.inputPhone= $rootScope.providerToEdit.telephone
+					$scope.inputCuit= $rootScope.providerToEdit.cuit
+					$scope.inputAddress= $rootScope.providerToEdit.direction
+				}
 				
 			}
-
+			$scope.editing= function(){
+				return !$rootScope.registeringProvider;
+			}
 			$scope.registerProvider = function() {
 
 				if (validate()) {
@@ -90,7 +99,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				if ($scope.inputTradeName == null || $scope.inputTradeName== "") {
 					return false;
 				}
-				if ($scope.inpuClientSellerIdr == null
+				if ($scope.inputClientSellerId == null
 						|| $scope.inputClienSellerId == "") {
 					return false;
 				}
@@ -112,7 +121,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				if (validate()) {
 					var data = $scope.populateParams();
 					data.id = $rootScope.providerToEdit.id;
-					restServices.invokeUpdateProvider($http, data,
+					restServices.invokeEditProvider($http, data,
 							$scope.updateProviderOk,
 							restServices.defaultHandlerOnError);
 				} else {

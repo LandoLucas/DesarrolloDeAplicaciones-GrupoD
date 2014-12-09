@@ -79,11 +79,12 @@
 	<div class="col-xs-offset-2 col-xs-10">
 
 		<button type="submit" class="btn btn-success" 
+			ng-hide="editing()"
 			ng-click="registerProvider()">{{ 'FORM_CONFIRM' |
 			translate}}</button>
 
 		<button type="submit" class="btn btn-success" ng-click="updateProvider()"
-			ng-show="modoEdicion()">{{ 'FORM_UPDATE' | translate}}</button>
+			ng-show="editing()">{{ 'FORM_UPDATE' | translate}}</button>
 
 		<a type="button" class="btn btn-default" ng-href="#pyc">{{
 			'FORM_CANCEL' | translate}}</a>
