@@ -75,19 +75,24 @@
 								| translate}}<b class="caret"></b>
 						</a>
 							<ul class="dropdown-menu">
-								<li><a ng-href="#cuentas" ng-show="true"
+								<li><a ng-href="#cuentas" ng-show="false"
 									ng-click="restrictedAction()">{{ 'INDEX_ACCOUNTS' |
 										translate}}</a></li>
 								<li class="divider"></li>
 								<li><a ng-href="#cargarDatos" ng-show="true"
 									ng-click="restrictedAction()">{{ 'INDEX_LOAD_DATA' |
 										translate}}</a></li>
-								
-								<li class="divider"></li>
+										<li><a ng-href="#/reportes">{{ 'INDEX_REPORTS' |
+										translate}}</a></li>
+
 								<li class="divider"></li>
 								<li><a ng-show="true" ng-href="#/confCats">{{
 										'INDEX_CATEGORY_CONF' | translate}}</a></li>
-							
+								<li class="divider"></li>
+								<li><a ng-show="true" ng-href="#/pyc">{{
+										'TITLE_PROVIDERS' | translate}}</a></li>
+								<li class="divider"></li>
+								
 							</ul></li>
 
 						<li><a ng-href="#" ng-click="restrictedAction()" ng-if="true">{{
@@ -98,7 +103,7 @@
 							style="display: block; padding-top: 15px; color: white;">{{getUsuario()}}</b></li>
 
 						<li class="divider"></li>
-						<li><a href="#" ng-click="launch('confirm')">{{
+						<li><a ng-show="false" href="#" ng-click="launch('confirm')">{{
 								'INDEX_LOG_OFF' | translate}}</a></li>
 
 
@@ -162,28 +167,18 @@
 							tooltip-placement="right"
 							tooltip="{{ 'INDEX_GO_BACK' | translate}}" ng-click="goBack()"></span>
 						<a class="list-group-item"
-							ng-class="{active:isActive('/cuentas')}"
-							ng-show="UserScope.inMainMenu" ng-href="#/cuentas">{{
-							'INDEX_ACCOUNTS' | translate}}</a> <a class="list-group-item"
-							ng-show="UserScope.inMainMenu"
+							ng-class="{active:isActive('/cuentas')}" ng-show="false"
+							ng-href="#/cuentas">{{ 'INDEX_ACCOUNTS' | translate}}</a> <a
+							class="list-group-item" ng-show="UserScope.inMainMenu"
 							ng-class="{active:isActive('/cargarDatos')}"
 							ng-href="#/cargarDatos">{{ 'INDEX_LOAD_OUTCOME_INCOME' |
-							translate}}</a> 
-							
-							<a
-							class="list-group-item"
+							translate}}</a> <a class="list-group-item"
 							ng-class="{active:isActive('/listadoTransacciones')}"
 							ng-show="UserScope.inMainMenu" ng-href="#/listadoTransacciones">{{
-							'INDEX_LIST_TRANSACTION' | translate}}</a>
-							
-							<a
-							class="list-group-item"
+							'INDEX_LIST_TRANSACTION' | translate}}</a> <a class="list-group-item"
 							ng-class="{active:isActive('/reportes')}"
 							ng-show="UserScope.inMainMenu" ng-href="#/reportes">{{
-							'INDEX_REPORTS' | translate}}</a>
-							
-							
-							<a class="list-group-item"
+							'INDEX_REPORTS' | translate}}</a> <a class="list-group-item"
 							ng-class="{active:isActive('/confCats')}"
 							ng-show="UserScope.inMainMenu" ng-href="#/confCats">{{
 							'INDEX_CATEGORY_CONF' | translate}}</a> <a class="list-group-item"
@@ -198,31 +193,27 @@
 							ng-class="{active:isActive('/comprobantes')}"
 							ng-show="UserScope.inCargarDatos" style="cursor: pointer;">{{
 							'INDEX_LOAD_RECEIPT' | translate}}</a><a class="list-group-item"
-							ng-class="{active:isActive('/importar')}" ng-show="UserScope.inCargarDatos"
-							ng-href="#/importar">{{ 'INDEX_LOAD_TRANSACTION' | translate}}</a>
-							<a class="list-group-item a"
-							style="cursor: pointer;" ng-click="setInBuyingBillTypes()"
-							ng-show="UserScope.inBills">{{
+							ng-class="{active:isActive('/importar')}"
+							ng-show="UserScope.inCargarDatos" ng-href="#/importar">{{
+							'INDEX_LOAD_TRANSACTION' | translate}}</a> <a
+							class="list-group-item a" style="cursor: pointer;"
+							ng-click="setInBuyingBillTypes()" ng-show="UserScope.inBills">{{
 							'INDEX_BUYING_RECEIPT' | translate}}</a> <a class="list-group-item"
 							style="cursor: pointer;" ng-click="setInSellingBillTypes()"
-							ng-show="UserScope.inBills">{{
-							'INDEX_SELLING_RECEIPT' | translate}}</a> <a class="list-group-item"
-							ng-click="setInABill()" ng-show="UserScope.inBillTypes"
-							ng-href="#/newBill">{{ 'INDEX_TYPE_A' | translate}}</a> <a
-							class="list-group-item" ng-click="setInBBill()"
+							ng-show="UserScope.inBills">{{ 'INDEX_SELLING_RECEIPT' |
+							translate}}</a> <a class="list-group-item" ng-click="setInABill()"
 							ng-show="UserScope.inBillTypes" ng-href="#/newBill">{{
-							'INDEX_TYPE_B' | translate}}</a> <a class="list-group-item"
-							ng-click="setInCBill()" ng-show="UserScope.inBillTypes"
-							ng-href="#/newBill">{{ 'INDEX_TYPE_C' | translate}}</a> <a
-							class="list-group-item" ng-click="setInXBill()"
+							'INDEX_TYPE_A' | translate}}</a> <a class="list-group-item"
+							ng-click="setInBBill()" ng-show="UserScope.inBillTypes"
+							ng-href="#/newBill">{{ 'INDEX_TYPE_B' | translate}}</a> <a
+							class="list-group-item" ng-click="setInCBill()"
 							ng-show="UserScope.inBillTypes" ng-href="#/newBill">{{
-							'INDEX_TYPE_X' | translate}}</a> 
-							<a class="list-group-item"
-							ng-show="UserScope.inMainMenu" 
-							ng-class="{active:isActive('/pyc')}"
-						 ng-href="#/pyc">{{
-							'TITLE_PROVIDERS' | translate}}</a>
-							<a class="list-group-item"
+							'INDEX_TYPE_C' | translate}}</a> <a class="list-group-item"
+							ng-click="setInXBill()" ng-show="UserScope.inBillTypes"
+							ng-href="#/newBill">{{ 'INDEX_TYPE_X' | translate}}</a> <a
+							class="list-group-item" ng-show="UserScope.inMainMenu"
+							ng-class="{active:isActive('/pyc')}" ng-href="#/pyc">{{
+							'TITLE_PROVIDERS' | translate}}</a> <a class="list-group-item"
 							ng-class="{active:isActive('/usuarios')}"
 							ng-show="{{m('mod_usuarios')}}" ng-href="#/usuarios">{{
 							'INDEX_USERS' | translate}}</a>
@@ -323,10 +314,12 @@
 	<script src="scripts/controllers/inicio.js"></script>
 	<script src="scripts/controllers/clientsAndProviders.js"></script>
 	<script src="scripts/controllers/crudProvider.js"></script>
-	
+
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript">
- 		google.load('visualization', '1.0', {'packages':['corechart']});
+		google.load('visualization', '1.0', {
+			'packages' : [ 'corechart' ]
+		});
 	</script>
 </body>
 </html>
