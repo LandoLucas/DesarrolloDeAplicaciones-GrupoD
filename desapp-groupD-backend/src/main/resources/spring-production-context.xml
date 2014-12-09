@@ -18,5 +18,6 @@
 		<property name="operationService" ref="operationService" />
 		<property name="receiptTypeAService" ref="receiptTypeAService" />
 		<property name="receiptTypeBService" ref="receiptTypeBService" />
+		<property name="providerService" ref="providerService" />
     </bean>
 </beans>

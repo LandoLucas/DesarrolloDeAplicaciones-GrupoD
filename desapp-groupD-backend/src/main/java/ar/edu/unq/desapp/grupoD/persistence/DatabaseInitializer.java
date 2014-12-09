@@ -19,11 +19,14 @@ import ar.edu.unq.desapp.grupoD.model.payment.CreditCard;
 import ar.edu.unq.desapp.grupoD.model.payment.DebitCard;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
 import ar.edu.unq.desapp.grupoD.model.payment.PettyCash;
+import ar.edu.unq.desapp.grupoD.model.providers.Provider;
 import ar.edu.unq.desapp.grupoD.model.receipt.ReceiptTypeA;
 import ar.edu.unq.desapp.grupoD.model.receipt.ReceiptTypeB;
+import ar.edu.unq.desapp.grupoD.rest.ProviderRest;
 import ar.edu.unq.desapp.grupoD.services.AccountService;
 import ar.edu.unq.desapp.grupoD.services.CategoryService;
 import ar.edu.unq.desapp.grupoD.services.OperationService;
+import ar.edu.unq.desapp.grupoD.services.ProviderService;
 import ar.edu.unq.desapp.grupoD.services.ReceiptTypeAService;
 import ar.edu.unq.desapp.grupoD.services.ReceiptTypeBService;
 
@@ -38,6 +41,13 @@ public class DatabaseInitializer {
 	private OperationService operationService;
 	private ReceiptTypeAService receiptTypeAService;
 	private ReceiptTypeBService receiptTypeBService;
+	private ProviderService providerService;
+	
+	
+
+	public void setProviderService(ProviderService providerService) {
+		this.providerService = providerService;
+	}
 
 	public void setReceiptTypeAService(ReceiptTypeAService receiptTypeAService) {
 		this.receiptTypeAService = receiptTypeAService;
@@ -66,11 +76,18 @@ public class DatabaseInitializer {
 		loadAccounts();
 		loadOperations();
 		loadReceipts();
-		
+		loadProviders();
 		Logger logger = Logger.getLogger(getClass());
 		logger.info("==========================");
 		logger.info("DATABASE POPULATED");
 		logger.info("==========================");
+	}
+	
+	private void loadProviders(){
+		Provider p1 = new Provider("1a", "Edesur", "Calle de luz 123", "Edesur S.A.", 30221342, 44444444);
+		Provider p2 = new Provider("1b", "Ferretería Cacho", "Calle feliz 321", "Cachito lopez", 1112234, 2345678);
+		providerService.save(p1);
+		providerService.save(p2);
 	}
 
 	private void loadAccounts() {
@@ -127,7 +144,7 @@ public class DatabaseInitializer {
 		loadOperation(category, subcategory2, concept , new DateTime(), paymentTypes2 , true, "Tarde");
 		loadOperation(category2, subcategory3, concept2 , DateTime.now().minusDays(6), paymentTypes3 , false, "Tarde");
 		loadOperation(category3, subcategory3, concept2 , DateTime.now().minusDays(12), paymentTypes4 , true, "Tarde");
-		loadOperation(category3, subcategory3, concept2 , DateTime.now().minusDays(12), paymentTypes5 , false, "Ma�ana");
+		loadOperation(category3, subcategory3, concept2 , DateTime.now().minusDays(12), paymentTypes5 , false, "Mañana");
 		loadOperation(category3, subcategory3, concept2 , DateTime.now().minusDays(12), paymentTypes6 , false, "Noche");
 	}
 
