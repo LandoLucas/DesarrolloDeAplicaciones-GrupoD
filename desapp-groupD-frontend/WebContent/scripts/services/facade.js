@@ -208,6 +208,11 @@
 		        			var header = defaultHeader();
 		        			invokeRestService(cnxHttp, header, data, 'provider', 'search', handlerOnSuccess, handlerOnError);
 		        		}
+		        		
+		        		function invokeGetProviders(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+		        			var header = defaultHeader();
+		        			invokeGetRestService(cnxHttp, header, data, 'provider', 'all', handlerOnSuccess, handlerOnError);
+		        		}
 
 
 		        		// Usuarios
@@ -287,7 +292,8 @@
 		                 invokeGetAccounts : invokeGetAccounts,
 		                 invokeDistribucionDeGastosPorCategoria : invokeDistribucionDeGastosPorCategoria,
 		                 invokeDistribucionDeGastosPorTurno : invokeDistribucionDeGastosPorTurno,
-		                 invokeSearchProvider: invokeSearchProvider
+		                 invokeSearchProvider: invokeSearchProvider,
+		                 invokeGetProviders: invokeGetProviders
 		               };
 		             }
 		           ];

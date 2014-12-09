@@ -308,6 +308,9 @@
 			}).when('/confCats', {
 				templateUrl : 'views/configureCategories.html',
 				controller : 'ConfigureCategoriesCtrl'    
+			}).when('/pyc', {
+				templateUrl : 'views/clientsAndProviders.html',
+				controller : 'ClientsAndProvidersCtrl'    
 			}).when('/importar', {
 				templateUrl : 'views/importarTransacciones.html'
 //				controller : 'ImportCtrl'  

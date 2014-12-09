@@ -216,7 +216,13 @@
 							ng-href="#/newBill">{{ 'INDEX_TYPE_C' | translate}}</a> <a
 							class="list-group-item" ng-click="setInXBill()"
 							ng-show="UserScope.inBillTypes" ng-href="#/newBill">{{
-							'INDEX_TYPE_X' | translate}}</a> <a class="list-group-item"
+							'INDEX_TYPE_X' | translate}}</a> 
+							<a class="list-group-item"
+							ng-show="UserScope.inMainMenu" 
+							ng-class="{active:isActive('/pyc')}"
+						 ng-href="#/pyc">{{
+							'PROVIDERS_TITLE' | translate}}</a>
+							<a class="list-group-item"
 							ng-class="{active:isActive('/usuarios')}"
 							ng-show="{{m('mod_usuarios')}}" ng-href="#/usuarios">{{
 							'INDEX_USERS' | translate}}</a>
@@ -315,6 +321,7 @@
 	<script src="scripts/modules/content_module.js"></script>
 	<script src="scripts/modules/content-mocks_module.js"></script>
 	<script src="scripts/controllers/inicio.js"></script>
+	<script src="scripts/controllers/clientsAndProviders.js"></script>
 	
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript">
