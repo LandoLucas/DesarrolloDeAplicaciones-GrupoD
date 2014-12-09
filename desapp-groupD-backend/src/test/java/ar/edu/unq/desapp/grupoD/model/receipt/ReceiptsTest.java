@@ -17,7 +17,7 @@ public class ReceiptsTest {
 	@Test
 	public void newReceiptTypeBTest() throws InvalidReceiptNumberException{
 		DateTime date = new DateTime();
-		int receiptNumber = 1;
+		String receiptNumber = "1";
 		String clientOrLegalEntityName = "The Coca Cola Company";
 		String firmName = "Coka Cola";
 		String cUIT = "20-33123123-2";
@@ -40,7 +40,7 @@ public class ReceiptsTest {
 	@Test
 	public void newReceiptTypeCTest() throws InvalidReceiptNumberException{
 		DateTime date = new DateTime();
-		int receiptNumber = 1;
+		String receiptNumber = "1";
 		String clientOrLegalEntityName = "The Coca Cola Company";
 		String firmName = "Coka Cola";
 		String cUIT = "20-33123123-2";
@@ -63,7 +63,7 @@ public class ReceiptsTest {
 	@Test
 	public void newReceiptTypeXTest() throws InvalidReceiptNumberException{
 		DateTime date = new DateTime();
-		int receiptNumber = 1;
+		String receiptNumber = "1";
 		String clientOrLegalEntityName = "The Coca Cola Company";
 		String firmName = "Coka Cola";
 		String cUIT = "20-33123123-2";
@@ -84,20 +84,13 @@ public class ReceiptsTest {
 	}
 
 	
-	
-	@Test(expected = InvalidReceiptNumberException.class)
-	public void invalidReceiptNumberTest() throws InvalidReceiptNumberException{
-		ReceiptBuilder receiptBuilder = new ReceiptBuilder();
-		receiptBuilder.withReceiptNumber(0);
-		
-		receiptBuilder.build();
-	}
+
 
 	
 	@Test
 	public void newReceiptTypeATest() throws InvalidReceiptNumberException{
 		DateTime date = new DateTime();
-		int receiptNumber = 1;
+		String receiptNumber = "1";
 		String clientOrLegalEntityName = "The Coca Cola Company";
 		String firmName = "Coka Cola";
 		String cUIT = "20-33123123-2";

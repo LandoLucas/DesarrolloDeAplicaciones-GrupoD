@@ -12,7 +12,7 @@ public class ReceiptTypeBBuilder implements ArquitecturalTestBuilder<ReceiptType
 		ReceiptTypeB receiptTypeB = null;
 		
 		try {
-			receiptTypeB = new ReceiptTypeB(new DateTime(), 1, "telefonica", "telefonica", "20-12345678-2", "address", 123456798, 1200);
+			receiptTypeB = new ReceiptTypeB(new DateTime(), "1", "telefonica", "telefonica", "20-12345678-2", "address", 123456798, 1200);
 		} catch (InvalidReceiptNumberException e) {
 		}
 		

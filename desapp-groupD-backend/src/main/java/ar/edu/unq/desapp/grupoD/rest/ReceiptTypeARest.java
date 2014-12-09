@@ -35,11 +35,12 @@ public class ReceiptTypeARest {
 	
 	@POST
 	@Path("/new")
-	public Response addReceiptA(@FormParam("date") DateTime date, @FormParam("receiptNumber") int receiptNumber,
+	public Response addReceiptA(@FormParam("date") DateTime date, @FormParam("receiptNumber") String receiptNumber,
 			@FormParam("clientName") String clientOrLegalEntityName, @FormParam("firmName") String firmName,
-			@FormParam("cUIT") String cUIT, @FormParam("address") String address, @FormParam("telephoneNumber") int telephoneNumber,
-			@FormParam("iVA") double iVA, @FormParam("iIBB") double iIBB, @FormParam("gravado") double gravado,
-			@FormParam("noGravado") double noGravado) throws InvalidReceiptNumberException{
+			@FormParam("cUIT") String cUIT, @FormParam("address") String address, @FormParam("phone") int telephoneNumber,
+			@FormParam("iva") double iVA, @FormParam("iibb") double iIBB, @FormParam("neto") double gravado,
+			@FormParam("noGravado") double noGravado,
+			@FormParam("generatesOperation") Boolean generatesOperation) throws InvalidReceiptNumberException{
 		
 		ReceiptTypeA receipt = new ReceiptTypeA(date, receiptNumber, clientOrLegalEntityName, firmName, cUIT,address, telephoneNumber,
 			iVA, iIBB, gravado, noGravado);
@@ -50,7 +51,7 @@ public class ReceiptTypeARest {
 	
 	@POST
 	@Path("/edit")
-	public Response editReceiptA(@FormParam("date") DateTime date, @FormParam("receiptNumber") int receiptNumber,
+	public Response editReceiptA(@FormParam("date") DateTime date, @FormParam("receiptNumber") String receiptNumber,
 			@FormParam("clientName") String clientOrLegalEntityName, @FormParam("firmName") String firmName,
 			@FormParam("cUIT") String cUIT, @FormParam("address") String address, @FormParam("telephoneNumber") int telephoneNumber,
 			@FormParam("iVA") double iVA, @FormParam("iIBB") double iIBB, @FormParam("gravado") double gravado,

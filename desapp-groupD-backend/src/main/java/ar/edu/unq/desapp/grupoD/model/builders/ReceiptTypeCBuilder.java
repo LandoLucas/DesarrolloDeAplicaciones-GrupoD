@@ -12,7 +12,7 @@ public class ReceiptTypeCBuilder implements ArquitecturalTestBuilder<ReceiptType
 		ReceiptTypeC receipt = null;
 		
 		try {
-			receipt = new ReceiptTypeC(new DateTime(), 1, "client", "firm", "1212121212", "address", 123456678, 123);
+			receipt = new ReceiptTypeC(new DateTime(), "1", "client", "firm", "1212121212", "address", 123456678, 123);
 		} catch (InvalidReceiptNumberException e) {
 		}
 		

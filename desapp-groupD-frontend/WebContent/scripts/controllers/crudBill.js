@@ -108,6 +108,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 						restServices.defaultHandlerOnError);
 				$scope.inputIIBB = 0;
 				$scope.inputExtraTax=0;
+				$scope.inputNoGravado = 0;
 				$scope.subCategories = null;
 				$scope.concepts = null;
 				$scope.categorySelected = null;
@@ -304,7 +305,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 			$scope.showTotalAmount = function() {
 				if (!$scope.detailMode) {
 					return $scope.inputNeto + $scope.inputIVA
-							+ $scope.inputIIBB + $scope.inputExtraTax;
+							+ $scope.inputIIBB + $scope.inputExtraTax + $scope.inputNoGravado;
 				} else {
 					return billElements.sumTotal();
 				}
@@ -432,6 +433,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 					cuit : cuit,
 					totalNoTaxes : $scope.totalAmountNoTaxes,
 					cash:cash,
+					noGravado: $scope.inputNoGravado,
 					credit:credit,
 					debit:debit,
 					total : $scope.totalAmount,
@@ -509,11 +511,11 @@ angular.module('tp-dapp-eiroa-lando').controller(
 					}
 				}
 
-				if (billElements.length < 1) {
-					$translate('FORM_ERROR_ITEM_REQUIRED').then(function(text) {
-						growl.error(text);
-					});
-				}
+//				if (billElements.length < 1) {
+//					$translate('FORM_ERROR_ITEM_REQUIRED').then(function(text) {
+//						growl.error(text);
+//					});
+//				}
 
 				if ($scope.categorySelected == null
 						|| $scope.categorySelected == "") {
@@ -523,13 +525,6 @@ angular.module('tp-dapp-eiroa-lando').controller(
 							});
 				}
 
-				if ($scope.paymentSelected == null
-						|| $scope.paymentSelected == "") {
-					$translate('FORM_ERROR_PAYMENTTYPE_REQUIRED').then(
-							function(text) {
-								growl.error(text);
-							});
-				}
 				
 				if (!$scope.inputCashEnabled  && !$scope.inputCreditEnabled && !$scope.inputDebitEnabled){
 					$translate('FORM_ERROR_PAYMENTTYPE_REQUIRED').then(function (text) {

@@ -11,7 +11,7 @@ public class ReceiptTypeABuilder implements ArquitecturalTestBuilder<ReceiptType
 	public ReceiptTypeA any() {
 		ReceiptTypeA receipt = null;
 		try {
-			receipt = new ReceiptTypeA(new DateTime(), 1, "telefonica", "telefonica", "12-34569782-9", "address", 123, 21d, 2d, 3d, 2d);
+			receipt = new ReceiptTypeA(new DateTime(), "1", "telefonica", "telefonica", "12-34569782-9", "address", 123, 21d, 2d, 3d, 2d);
 		} catch (InvalidReceiptNumberException e) {
 		}
 		return receipt;

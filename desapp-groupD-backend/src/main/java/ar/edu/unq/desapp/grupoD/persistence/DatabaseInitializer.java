@@ -81,8 +81,8 @@ public class DatabaseInitializer {
 	}
 
 	private void loadReceipts() throws InvalidReceiptNumberException {
-		ReceiptTypeA receiptA = new ReceiptTypeA(new DateTime(), 1, "coca-cola", "The coca cola company", "30-123456-3", "cocalandia", 5555555, 21, 12, 2, 1); 
-		ReceiptTypeB receiptB = new ReceiptTypeB(new DateTime(), 2, "La serenisima", "la serenisima", "30-987654321-3", "serenopolis", 12345678, 220);
+		ReceiptTypeA receiptA = new ReceiptTypeA(new DateTime(), "1", "coca-cola", "The coca cola company", "30-123456-3", "cocalandia", 5555555, 21, 12, 2, 1); 
+		ReceiptTypeB receiptB = new ReceiptTypeB(new DateTime(), "2", "La serenisima", "la serenisima", "30-987654321-3", "serenopolis", 12345678, 220);
 
 		receiptTypeAService.save(receiptA);
 		receiptTypeBService.save(receiptB);
@@ -127,7 +127,7 @@ public class DatabaseInitializer {
 		loadOperation(category, subcategory2, concept , new DateTime(), paymentTypes2 , true, "Tarde");
 		loadOperation(category2, subcategory3, concept2 , DateTime.now().minusDays(6), paymentTypes3 , false, "Tarde");
 		loadOperation(category3, subcategory3, concept2 , DateTime.now().minusDays(12), paymentTypes4 , true, "Tarde");
-		loadOperation(category3, subcategory3, concept2 , DateTime.now().minusDays(12), paymentTypes5 , false, "Mañana");
+		loadOperation(category3, subcategory3, concept2 , DateTime.now().minusDays(12), paymentTypes5 , false, "Maï¿½ana");
 		loadOperation(category3, subcategory3, concept2 , DateTime.now().minusDays(12), paymentTypes6 , false, "Noche");
 	}
 

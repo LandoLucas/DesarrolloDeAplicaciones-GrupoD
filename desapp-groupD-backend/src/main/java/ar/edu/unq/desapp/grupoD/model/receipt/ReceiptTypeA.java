@@ -38,7 +38,7 @@ public class ReceiptTypeA extends Receipt {
 	 * @param noGravado
 	 * @throws InvalidReceiptNumberException if the receipt number is equal or less than 0
 	 */
-	public ReceiptTypeA(DateTime date, int receiptNumber,
+	public ReceiptTypeA(DateTime date, String receiptNumber,
 			String clientOrLegalEntityName, String firmName, String cUIT,
 			String address, int telephoneNumber,
 			double iVA, double iIBB, double gravado,

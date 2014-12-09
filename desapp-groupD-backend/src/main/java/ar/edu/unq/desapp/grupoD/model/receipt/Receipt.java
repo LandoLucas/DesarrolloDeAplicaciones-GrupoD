@@ -23,7 +23,7 @@ public abstract class Receipt {
 	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime date;
 	@Column
-	private int receiptNumber;
+	private String receiptNumber;
 	@Column
 	private String clientOrLegalEntityName;
 	@Column
@@ -37,7 +37,7 @@ public abstract class Receipt {
 	@Column
 	private double finalImport;
 
-	public Receipt(DateTime date, int receiptNumber,
+	public Receipt(DateTime date, String receiptNumber,
 			String clientOrLegalEntityName, String firmName, String cUIT,
 			String address, int telephoneNumber, double finalImport)
 			throws InvalidReceiptNumberException {
@@ -61,14 +61,13 @@ public abstract class Receipt {
 		this.date = date;
 	}
 
-	public int getReceiptNumber() {
+	public String getReceiptNumber() {
 		return receiptNumber;
 	}
 
-	public void setReceiptNumber(int receiptNumber)
+	public void setReceiptNumber(String receiptNumber)
 			throws InvalidReceiptNumberException {
-		if (receiptNumber <= 0)
-			throw new InvalidReceiptNumberException();
+
 		this.receiptNumber = receiptNumber;
 	}
 

@@ -12,7 +12,7 @@ import ar.edu.unq.desapp.grupoD.exceptions.InvalidReceiptNumberException;
 public class ReceiptBuilder {
 
 	private DateTime date = new DateTime();
-	private int receiptNumber = 1;
+	private String receiptNumber = "1";
 	private String clientOrLegalEntityName = "The Coca Cola Company";
 	private String firmName = "Coka Cola";
 	private String cUIT = "20-33123123-2";
@@ -24,7 +24,7 @@ public class ReceiptBuilder {
 		return new ReceiptTypeB(date, receiptNumber, clientOrLegalEntityName, firmName, cUIT, address, telephoneNumber, finalImport);
 	}
 	
-	public ReceiptBuilder withReceiptNumber(int number){
+	public ReceiptBuilder withReceiptNumber(String number){
 		this.receiptNumber = number;
 		return this;
 	}

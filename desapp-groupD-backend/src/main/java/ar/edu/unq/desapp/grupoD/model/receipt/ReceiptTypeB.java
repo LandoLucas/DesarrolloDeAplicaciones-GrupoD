@@ -31,7 +31,7 @@ public class ReceiptTypeB extends Receipt {
 	 * @param finalImport
 	 * @throws InvalidReceiptNumberException if the receipt number is equal or less than 0
 	 */
-	public ReceiptTypeB(DateTime date, int receiptNumber,
+	public ReceiptTypeB(DateTime date, String receiptNumber,
 			String clientOrLegalEntityName, String firmName, String cUIT,
 			String address, int telephoneNumber, double finalImport) throws InvalidReceiptNumberException {
 

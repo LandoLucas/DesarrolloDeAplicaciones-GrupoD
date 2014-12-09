@@ -56,7 +56,7 @@ public class BillRest {
 	public Response newBill(@FormParam("letter") String letter,
 			@FormParam("date") String dateReceived, 
 			@FormParam("serie") String serie,
-			@FormParam("billNumber") int billNumber,
+			@FormParam("billNumber") String billNumber,
 			@FormParam("client_seller") String clientSeller,
 			@FormParam("address") String address,
 			@FormParam("cuit") String cUIT,
