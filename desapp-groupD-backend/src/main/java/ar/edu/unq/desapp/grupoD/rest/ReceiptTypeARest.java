@@ -35,9 +35,9 @@ public class ReceiptTypeARest {
 	
 	@POST
 	@Path("/new")
-	public Response addReceiptA(@FormParam("date") DateTime date, @FormParam("receiptNumber") String receiptNumber,
-			@FormParam("clientName") String clientOrLegalEntityName, @FormParam("firmName") String firmName,
-			@FormParam("cUIT") String cUIT, @FormParam("address") String address, @FormParam("phone") int telephoneNumber,
+	public Response addReceiptA(@FormParam("date") DateTime date, @FormParam("billNumber") String receiptNumber,
+			@FormParam("name") String clientOrLegalEntityName, @FormParam("tradeName") String firmName,
+			@FormParam("cuit") String cUIT, @FormParam("address") String address, @FormParam("phone") int telephoneNumber,
 			@FormParam("iva") double iVA, @FormParam("iibb") double iIBB, @FormParam("neto") double gravado,
 			@FormParam("noGravado") double noGravado,
 			@FormParam("generatesOperation") Boolean generatesOperation) throws InvalidReceiptNumberException{

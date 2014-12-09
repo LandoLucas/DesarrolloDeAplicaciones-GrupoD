@@ -57,15 +57,14 @@ public class BillRest {
 			@FormParam("date") String dateReceived, 
 			@FormParam("serie") String serie,
 			@FormParam("billNumber") String billNumber,
-			@FormParam("client_seller") String clientSeller,
+			@FormParam("name") String clientSeller,
 			@FormParam("address") String address,
 			@FormParam("cuit") String cUIT,
 			@FormParam("phone") int telephoneNumber,
 			@FormParam("iva") double iVA, 
 			@FormParam("iibb") double iIBB,
-			@FormParam("gravado") double gravado,
 			@FormParam("total") double totalFinal,
-			@FormParam("totalNoTaxes") double totalSinImpuestos,
+			@FormParam("neto") double totalSinImpuestos,
 			@FormParam("noGravado") double noGravado)
 			throws InvalidReceiptNumberException {
 		//Parse date
@@ -75,7 +74,7 @@ public class BillRest {
 		switch (letter) {
 		case "a":
 			bill = new ReceiptTypeA(date, billNumber, clientSeller, serie,
-					cUIT, address, telephoneNumber, iVA, iIBB, gravado,
+					cUIT, address, telephoneNumber, iVA, iIBB, totalSinImpuestos,
 					noGravado);
 			receiptTypeAService.save((ReceiptTypeA) bill);
 			break;

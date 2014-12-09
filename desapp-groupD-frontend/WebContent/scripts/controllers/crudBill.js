@@ -415,7 +415,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				if ($scope.inputShift) {
 					var shift = $scope.inputShift;
 				}
-				
+				var total = $scope.showTotalAmount();
 				var cash;var credit;var debit;
 				if($scope.inputCash == null){cash=0}else{cash = $scope.inputCash };
 				if($scope.inputCredit == null){credit=0}else{credit = $scope.inputCredit};
@@ -424,19 +424,21 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				var data = {
 					letter : $scope.billLetter,
 					date : $scope.inputDate,
-					billNumber : $scope.inputSerie +'-'+$scope.inputBillNumber,
-					client_seller : $scope.inputClientSeller,
+					serie: $scope.inputSerie,
+					billNumber : $scope.inputBillNumber,
+					name : $scope.inputClientSeller,
 					tradeName: $scope.inputTradeName,
 					client_seller_id:$scope.inputClientSellerId,
 					iibb : iibb,
 					phone : phone,
 					cuit : cuit,
-					totalNoTaxes : $scope.totalAmountNoTaxes,
+					neto : $scope.inputNeto,
 					cash:cash,
 					noGravado: $scope.inputNoGravado,
 					credit:credit,
 					debit:debit,
-					total : $scope.totalAmount,
+					iva:$scope.inputIVA,
+					total : total,
 					extraTaxes: $scope.inputExtraTax,
 					category : $scope.categorySelected.categoryName,
 					subCategory : sub,
