@@ -11,8 +11,23 @@ public class DebitCard extends PaymentType{
 		this.setAmount(amount);
 	}
 	
+	public DebitCard(){}
+
+	@Override
+	public double getAmountInCash() {
+		return 0;
+	}
+
+	@Override
+	public double getAmountInBank() {
+		return getAmount();
+	}
+
+	@Override
+	public double getAvailable() {
+		return getAmount();
+	};
 	
 	
-	public DebitCard(){};
 	
 }

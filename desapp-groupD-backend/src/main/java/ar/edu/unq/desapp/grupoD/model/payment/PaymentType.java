@@ -7,10 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
-import ar.edu.unq.desapp.grupoD.model.Operation;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -37,24 +35,20 @@ public abstract class PaymentType {
 		return id;
 	}
 
-	
-	
+	public abstract double getAmountInCash();
 
-	
-//	/**
-//	 * Delegates the process of billing to the account
-//	 * @param amount
-//	 */
-//	public void bill( Operation operation) {
-//		this.account.bill(operation);
-//	}
+	public abstract double getAmountInBank();
 
-//	/**
-//	 * @return the amount of days is necessary to 'wait' until the money is available.
-//	 * In case of the credit cards, this takes 15 days
-//	 */
-//	public int getTimeToCredit() {
-//		return 0;
-//	}
+	public double getAvailable() {
+		return 0;
+	}
+
+	public double getDevengado() {
+		return 0;
+	}
+
+	public boolean isDevengada() {
+		return true;
+	}
 
 }

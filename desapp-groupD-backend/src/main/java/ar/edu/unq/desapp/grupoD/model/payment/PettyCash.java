@@ -15,6 +15,16 @@ public class PettyCash extends PaymentType{
 		this.setAmount(amount);
 	}
 	
-	public PettyCash(){};
+	public PettyCash(){}
+
+	@Override
+	public double getAmountInCash() {
+		return getAmount();
+	}
+
+	@Override
+	public double getAmountInBank() {
+		return 0;
+	};
 	
 }

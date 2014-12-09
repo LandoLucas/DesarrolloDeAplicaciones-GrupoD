@@ -11,9 +11,7 @@ import ar.edu.unq.desapp.grupoD.model.account.BankAccount;
 import ar.edu.unq.desapp.grupoD.model.category.Category;
 import ar.edu.unq.desapp.grupoD.model.category.Concept;
 import ar.edu.unq.desapp.grupoD.model.category.SubCategory;
-import ar.edu.unq.desapp.grupoD.model.payment.DebitCard;
 import ar.edu.unq.desapp.grupoD.model.payment.PaymentType;
-import ar.edu.unq.desapp.grupoD.model.payment.PettyCash;
 import ar.edu.unq.desapp.grupoD.persistence.BankAccountDao;
 import ar.edu.unq.desapp.grupoD.persistence.OperationDao;
 import ar.edu.unq.desapp.grupoD.persistence.PettyCashAccountDao;
@@ -56,47 +54,48 @@ public class OperationService {
 
 	@Transactional
 	public void saveOperation(DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift, String categoryName, String subCategoryName, String conceptName) throws InvalidAmountException {
-		Category category = categoryService.findByName(categoryName);
-		if(category == null)category = new Category(categoryName);
-		
-		SubCategory subCategory = subCategoryService.findByName(subCategoryName);
-		if(subCategory == null)subCategory = new SubCategory(subCategoryName);
-		
-		Concept concept = conceptService.findByName(conceptName);
-		if(concept == null)concept = new Concept(conceptName);
-		
+		Category category = getOrCreateCategory(categoryName);
+		SubCategory subCategory = getOrCreateSubCategory(subCategoryName);
+		Concept concept = getOrCreateConcept(conceptName);
+	
 		double totalInPettyCash = pettyCashAccountDao.getAmount();
 		double totalInBankAccount = bankAccountDao.getAmmount();
 		double available = bankAccountDao.getAvailableAmount();
 		double devengado = bankAccountDao.getDevengado();
 		boolean devengada = true;
 		
-		//TODO esto es una negrada, lo se, pero quiero resolverlo rapido, tambien hay que extraerlo a un metodo
 		for( PaymentType paymentType : paymentTypes){
-			
-			if( paymentType instanceof PettyCash ){
-				totalInPettyCash += paymentType.getAmount();
-				pettyCashAccountDao.newAmmount(totalInPettyCash);
-			}else{
-				if( paymentType instanceof DebitCard ){
-					totalInBankAccount += paymentType.getAmount();
-					available += paymentType.getAmount();
-					bankAccountDao.updateAvailable(available);
-				}else{
-					totalInBankAccount += paymentType.getAmount();
-					devengado += paymentType.getAmount();
-					bankAccountDao.updateDevengado(devengado);
-					if(paymentType.getAmount() > 0 )devengada = false;
-				}
-				bankAccountDao.newAmmount(totalInBankAccount);
-			}
-		}
+			totalInPettyCash += paymentType.getAmountInCash();
+			totalInBankAccount += paymentType.getAmountInBank();
+			available += paymentType.getAvailable();
+			pettyCashAccountDao.newAmmount(totalInPettyCash);
+			bankAccountDao.updateAvailable(available);
+			devengado += paymentType.getDevengado();
+			bankAccountDao.updateDevengado(devengado);
+			devengada = paymentType.isDevengada();
+			bankAccountDao.newAmmount(totalInBankAccount);
+		}	
 		
 		Operation operation = new Operation(date, paymentTypes, isIncome, shift, category, subCategory, concept, totalInPettyCash , totalInBankAccount , available , devengado, devengada);
-
 		operationDao.save(operation);
-		
-		
+	}
+
+	private Concept getOrCreateConcept(String conceptName) {
+		Concept concept = conceptService.findByName(conceptName);
+		if(concept == null)concept = new Concept(conceptName);
+		return concept;
+	}
+
+	private SubCategory getOrCreateSubCategory(String subCategoryName) {
+		SubCategory subCategory = subCategoryService.findByName(subCategoryName);
+		if(subCategory == null)subCategory = new SubCategory(subCategoryName);
+		return subCategory;
+	}
+
+	private Category getOrCreateCategory(String categoryName) {
+		Category category = categoryService.findByName(categoryName);
+		if(category == null)category = new Category(categoryName);
+		return category;
 	}
 
 	@Transactional(readOnly=true)
