@@ -40,11 +40,10 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				$scope.inputCuit = response.cuit;
 				$scope.inputPhone = response.telephone;
 				$scope.inputAddress = response.direction;
-				growl.info("Autoloaded..")
 			}
 			
 			$scope.searchProviderFail = function(response){
-				growl.error("Error al intentar obtener el id")
+				console.log("Error al intentar obtener el id")
 			}
 
 			$scope.searchProvider = function() {

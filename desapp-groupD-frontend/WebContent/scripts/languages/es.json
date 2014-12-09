@@ -128,6 +128,9 @@
 														"FORM_ERROR_CASH_NOT_POSITIVE": "Error, monto en efectivo debe ser positivo",
 												"FORM_ERROR_CREDIT_NOT_POSITIVE": "Error, monto en crédito debe ser positivo",
 												"FORM_ERROR_DEBIT_NOT_POSITIVE": "Error, monto en débito debe ser positivo",
+												
+												"FORM_TOTAL_WITHOUT_TAXES":"Total neto",
+												"FORM_TOTAL_WITH_TAXES":"Total con impuestos",
 														
 														
 														"DIALOG_PROVIDER_DELETE_TITLE":"Desea borrar el cliente/proveedor ",

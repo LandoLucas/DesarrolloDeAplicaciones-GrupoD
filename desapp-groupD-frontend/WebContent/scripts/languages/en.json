@@ -125,6 +125,8 @@
 												"FORM_ERROR_PAYMENTTYPE_REQUIRED": "Error, payment type required",
 												"FORM_ERROR_CLIENT_REQUIRED": "Error, client required",
 												"FORM_ERROR_SELLER_REQUIRED": "Error, seller required",
+												"FORM_TOTAL_WITHOUT_TAXES":"Total without taxes",
+												"FORM_TOTAL_WITH_TAXES":"Total with taxes",
 												
 												"DIALOG_CATEGORY_REGISTER_SUCCESS": "Category registered",
 												
