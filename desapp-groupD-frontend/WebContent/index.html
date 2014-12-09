@@ -82,9 +82,7 @@
 								<li><a ng-href="#cargarDatos" ng-show="true"
 									ng-click="restrictedAction()">{{ 'INDEX_LOAD_DATA' |
 										translate}}</a></li>
-								<li><a ng-href="#sectores" ng-show="true"
-									ng-click="restrictedAction()">{{
-										'INDEX_EXPENSES_PROJECTIONS' | translate}}</a></li>
+								
 								<li class="divider"></li>
 								<li class="divider"></li>
 								<li><a ng-show="true" ng-href="#/confCats">{{
@@ -170,10 +168,7 @@
 							ng-show="UserScope.inMainMenu"
 							ng-class="{active:isActive('/cargarDatos')}"
 							ng-href="#/cargarDatos">{{ 'INDEX_LOAD_OUTCOME_INCOME' |
-							translate}}</a> <a class="list-group-item"
-							ng-class="{active:isActive('/gastosYProyecciones')}"
-							ng-show="UserScope.inMainMenu" ng-href="#/gastosYProyecciones">
-							{{ 'INDEX_VIEW_EXPENSES_PROJECTIONS' | translate}}</a> 
+							translate}}</a> 
 							
 							<a
 							class="list-group-item"

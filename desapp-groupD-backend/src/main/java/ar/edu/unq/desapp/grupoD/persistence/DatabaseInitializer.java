@@ -103,6 +103,11 @@ public class DatabaseInitializer {
 		concepts.add(concept);
 		subcategory.setConcepts(concepts);
 		
+		Concept concept2 = new Concept("pagos");
+		List<Concept> concepts2 = new ArrayList<Concept>();
+		concepts.add(concept2);
+		subcategory3.setConcepts(concepts2);
+		
 		
 		subcategories.add(subcategory);
 		subcategories.add(subcategory2);
@@ -116,17 +121,17 @@ public class DatabaseInitializer {
 		
 		List<PaymentType> paymentTypes = createPaymentType(200 , 300 , 500);
 		List<PaymentType> paymentTypes2 = createPaymentType(1200 , 1300 , 1500);
-		List<PaymentType> paymentTypes3 = createPaymentType(1500 , 300 , 1500);
+		List<PaymentType> paymentTypes3 = createPaymentType(600 , 300 , 1500);
 		List<PaymentType> paymentTypes4 = createPaymentType(500 , 300 , 500);
-		List<PaymentType> paymentTypes5 = createPaymentType(2500 , 1300 , 500);
-		List<PaymentType> paymentTypes6 = createPaymentType(4300 , 1300 , 5500);
+		List<PaymentType> paymentTypes5 = createPaymentType(500 , 100 , 200);
+		List<PaymentType> paymentTypes6 = createPaymentType(300 , 300 , 500);
 		
 		loadOperation(category, subcategory, concept , DateTime.now().minusDays(20), paymentTypes , true, "Tarde");
 		loadOperation(category, subcategory2, concept , new DateTime(), paymentTypes2 , true, "Tarde");
-		loadOperation(category2, subcategory3, concept , DateTime.now().minusDays(6), paymentTypes3 , false, "Tarde");
-		loadOperation(category3, subcategory3, concept , DateTime.now().minusDays(12), paymentTypes4 , false, "Tarde");
-		loadOperation(category3, subcategory3, concept , DateTime.now().minusDays(12), paymentTypes5 , false, "Mañana");
-		loadOperation(category3, subcategory3, concept , DateTime.now().minusDays(12), paymentTypes6 , false, "Noche");
+		loadOperation(category2, subcategory3, concept2 , DateTime.now().minusDays(6), paymentTypes3 , false, "Tarde");
+		loadOperation(category3, subcategory3, concept2 , DateTime.now().minusDays(12), paymentTypes4 , true, "Tarde");
+		loadOperation(category3, subcategory3, concept2 , DateTime.now().minusDays(12), paymentTypes5 , false, "Mañana");
+		loadOperation(category3, subcategory3, concept2 , DateTime.now().minusDays(12), paymentTypes6 , false, "Noche");
 	}
 
 	private List<PaymentType> createPaymentType(double pettyCashAmmount, double CreditCardAmount, double DebitCardAmount) throws InvalidAmountException {
