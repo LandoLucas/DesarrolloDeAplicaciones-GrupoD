@@ -130,7 +130,8 @@ app.controller('ConfigureCategoriesCtrl', function($scope, $log, $location, $htt
 
 	
 	$scope.inicializarVista = function() {
-		
+		globalService.setInMainMenu();
+
 		restServices.invokeGetCategories($http, {}, $scope.getCategoriesOk,
 				restServices.defaultHandlerOnError);
 		$scope.subCategories=null;

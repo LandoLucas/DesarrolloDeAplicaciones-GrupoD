@@ -9,6 +9,7 @@ var app = angular.module('tp-dapp-eiroa-lando');
 
 app.controller('ReportesCtrl', function($http, $location, $scope, ngTableParams,
 		$filter, $window, $route, $rootScope, growl, dialogs,globalService,$translate,restServices) {
+	globalService.setInMainMenu();
 
 	$scope.drawChart = function drawChart(nameOfDiv , response) {
 		$translate('SHIFT_DISTRIBUTION_TITLE').then(function(text) {

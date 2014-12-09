@@ -40,17 +40,21 @@ public class ProviderRest {
 	@POST
 	@Path("/new")
 	public Response addProvider(@FormParam("providerId") String providerId, @FormParam("name") String name,@FormParam("tradeName") String tradeName,
-			@FormParam("direction") String direction, @FormParam("cuit") String cuit,
-			@FormParam("telephone") String telephone){
+			@FormParam("address") String direction, @FormParam("cuit") String cuit,
+			@FormParam("phone") String telephone){
 		providerService.saveProvider(providerId, name, tradeName, direction, Integer.decode(cuit), Integer.decode(telephone));
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
 	@POST
-	@Path("/edit/{providerId}")
-	public Response editProvider(@FormParam("providerId") String providerId, @FormParam("name") String name,@FormParam("tradeName") String tradeName,
-			@FormParam("direction") String direction, @FormParam("cuit") Integer cuit,
-			@FormParam("telephone") Integer telephone){
+	@Path("/edit")
+	public Response editProvider(
+			@FormParam("providerId") String providerId,
+			@FormParam("name") String name,
+			@FormParam("tradeName") String tradeName,
+			@FormParam("address") String direction, 
+			@FormParam("cuit") Integer cuit,
+			@FormParam("phone") Integer telephone){
 		providerService.editProvider(providerId, name, tradeName, direction, cuit, telephone); 
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
@@ -67,8 +71,8 @@ public class ProviderRest {
 	}
 	
 	@POST
-	@Path("/remove/{providerId}")
-	public Response removepROVIDER(@PathParam("providerId") String id){
+	@Path("/delete")
+	public Response deleteProvider(@FormParam("providerId") String id){
 		providerService.removeProviderByProviderId(id);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}

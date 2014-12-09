@@ -426,7 +426,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 					billNumber : $scope.inputBillNumber,
 					client_seller : $scope.inputClientSeller,
 					tradeName: $scope.inputTradeName,
-					client_seller_id:$scope.inputcCientSellerId,
+					client_seller_id:$scope.inputClientSellerId,
 					iibb : iibb,
 					phone : phone,
 					cuit : cuit,

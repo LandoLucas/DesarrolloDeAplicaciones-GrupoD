@@ -9,9 +9,9 @@
 	<div class="container-fluid">
 		<form class="form-horizontal" role="form">
 			<form class="form-inline">
-				<a type="submit" class="btn btn-primary" ng-click="nuevoprovider()"
-					ng-show="{{m('registrarprovider')}}"
-					title="{{ 'NEW_USER' | translate}}">{{ 'NEW' | translate}}</a>
+				<a type="submit" class="btn btn-primary" ng-click="newProvider()" ng-href="#/provider"
+					
+					title="{{ 'NEW_USER' | translate}}">{{ 'FORM_CREATE_NEW' | translate}}</a>
 			</form>
 			<br />
 			<legend></legend>
@@ -30,18 +30,19 @@
 				<td data-title="tableColumns['name']"  sortable="'name'" filter="{ 'name': 'text' }">{{provider.name}}</td>
 				<td data-title="tableColumns['tradeName']"  sortable="'tradeName'" filter="{ 'tradeName': 'text' }">{{provider.tradeName}}</td>
 				<td data-title="tableColumns['cuit']" sortable="'cuit'" filter="{ 'cuit': 'text' }">{{provider.cuit}}</td>
-				<td data-title="tableColumns['address']"  sortable="'address'" filter="{ 'address': 'text' }">{{provider.address}}</td>
-				<td data-title="tableColumns['phone']" sortable="'phone'" filter="{ 'phone': 'text' }">{{provider.phone}} </td>
+				<td data-title="tableColumns['address']"  sortable="'address'" filter="{ 'address': 'text' }">{{provider.direction}}</td>
+				<td data-title="tableColumns['phone']" sortable="'phone'" filter="{ 'phone': 'text' }">{{provider.telephone}} </td>
 				
-				<td data-title="tableColumns['actions']"><button type="button"
+				<td data-title="tableColumns['actions']" style="width:10%">
+				<button type="button"
 						class="btn btn-warning"
-						ng-click="prepararEditarprovider(provider.id)"
+						ng-click="editProvider(provider.id)"
 						ng-show="true"
-						title="{{ 'FORM_EDIT' | translate}}{{provider.nickname}}">{{ 'FORM_EDIT' | translate}}</button>
+						title="{{ 'FORM_EDIT' | translate}} {{provider.name}}"><span class="glyphicon glyphicon-pencil" /></button>
 					<button type="button" class="btn btn-danger"
 						ng-show="true"
-						ng-click="confirmacionBorrarprovider(provider.id, provider.codigo)"
-						title="{{ 'FORM_DELETE' | translate}} {{provider.name">{{ 'FORM_DELETE' | translate}}</button></td>
+						ng-click="confirmaDeleteProvider(provider.id, provider.codigo)"
+						title="{{ 'FORM_DELETE' | translate}} {{provider.name}}"><span class="glyphicon glyphicon-trash" /></button></td>
 			</tr>
 		</table>
 	</div>

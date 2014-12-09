@@ -55,6 +55,9 @@
 														"TITLE_USERS": "Usuarios",
 														"TITLE_INCOME_BILL": "Comprobante de Venta",
 														"TITLE_OUTCOME_BILL":"Comprobante de Compra",
+														"TITLE_PROVIDERS":"Clientes y proveedores",
+														
+														"PROVIDER_REGISTERED":"Nuevo Cliente/Proveedor registrado",
 														
 														"FORM_CASH_ENABLED":   "Pago en efectivo activado",
 														"FORM_CREDIT_ENABLED": "Pago con crédito activado",
@@ -65,7 +68,7 @@
 														"FORM_TOGGLE_PROVIDER":"Expandir Proveedor",
 												
 														"FORM_TRADE_NAME":"Razón Social",
-														
+														"FORM_CREATE_NEW":"Crear uno nuevo",
 														"FORM_TOGGLE_ID_PROVIDER_LOAD":"Activar relleno automático por ID",
 														"FORM_GENERATES_OPERATION":"Crear operación en conjunto con el comprobante, utilizando la misma información",
 														"FORM_DATE": "Fecha",
@@ -74,6 +77,8 @@
 														"FORM_PHONE": "Teléfono",
 														"FORM_NICK": "Nick",
 														"FORM_SURNAME": "Apellido",
+														"FORM_TRADENAME": "Razón social",
+														"FORM_CLEAR_FILTER":"Limpiar Filtro",
 														"FORM_AMOUNT": "Monto",
 														"FORM_SELECT_CATEGORY": "Seleccionar categoría",
 														"FORM_NEW_CATEGORY": "Nueva Categoría",

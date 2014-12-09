@@ -221,7 +221,7 @@
 							ng-show="UserScope.inMainMenu" 
 							ng-class="{active:isActive('/pyc')}"
 						 ng-href="#/pyc">{{
-							'PROVIDERS_TITLE' | translate}}</a>
+							'TITLE_PROVIDERS' | translate}}</a>
 							<a class="list-group-item"
 							ng-class="{active:isActive('/usuarios')}"
 							ng-show="{{m('mod_usuarios')}}" ng-href="#/usuarios">{{
@@ -322,6 +322,7 @@
 	<script src="scripts/modules/content-mocks_module.js"></script>
 	<script src="scripts/controllers/inicio.js"></script>
 	<script src="scripts/controllers/clientsAndProviders.js"></script>
+	<script src="scripts/controllers/crudProvider.js"></script>
 	
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript">

@@ -311,6 +311,9 @@
 			}).when('/pyc', {
 				templateUrl : 'views/clientsAndProviders.html',
 				controller : 'ClientsAndProvidersCtrl'    
+			}).when('/provider', {
+				templateUrl : 'views/crudProvider.html',
+				controller : 'CrudProviderCtrl'    
 			}).when('/importar', {
 				templateUrl : 'views/importarTransacciones.html'
 //				controller : 'ImportCtrl'  

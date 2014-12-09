@@ -43,6 +43,7 @@
 												"IMPORT_SECTION":"Import transactions section",
 												"IMPORT_SELECT_FILE":"Select a file",
 												"IMPORT_UPLOAD_IT":"Upload It",
+												"PROVIDER_REGISTERED":"New Client/Provider registered",
 												
 												
 												"TITLE_NEW_INCOME": "New income",
@@ -55,6 +56,7 @@
 												"TITLE_USERS": "Users",
 												"TITLE_INCOME_BILL": "Income Bill",
 												"TITLE_OUTCOME_BILL":"Outcome Bill",
+												"TITLE_PROVIDERS":"Clients and providers",
 												
 												"FORM_CASH_ENABLED":"Cash payment enabled",
 												"FORM_CREDIT_ENABLED":"Credit payment enabled",
@@ -64,7 +66,8 @@
 												"FORM_TOGGLE_CLIENT":"Expand Client",
 												"FORM_TOGGLE_PROVIDER":"Expand Provider",
 												"FORM_TRADE_NAME":"Trade Name",
-												
+												"FORM_CREATE_NEW":"Create a new one",
+												"FORM_CLEAR_FILTER":"Clear filter",
 												"FORM_TOGGLE_ID_PROVIDER_LOAD":"Enable auto-complete by ID",
 												"FORM_GENERATES_OPERATION":"Additionally generate a new operation using the same data",
 												"FORM_DATE": "Date",
@@ -88,6 +91,7 @@
 												"FORM_CANCEL": "Cancel",
 												"REGISTER_NEW_ACCOUNT": "Register new account",
 												"FORM_NAME": "Name",
+												"FORM_TRADENAME": "Trade name",
 												"IS_BANK_ACCOUNT": "Is Analist",
 												"FORM_EDIT": "Edit",
 												"FORM_DELETE": "Delete",

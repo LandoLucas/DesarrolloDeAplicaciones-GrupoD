@@ -14,6 +14,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 
 			// Inicializa los combMainMenuos
 			$scope.inicializarVista = function() {
+				globalService.setInMainMenu();
 				$scope.totalUsers = 0;
 				$scope.currentPage = 1;
 
