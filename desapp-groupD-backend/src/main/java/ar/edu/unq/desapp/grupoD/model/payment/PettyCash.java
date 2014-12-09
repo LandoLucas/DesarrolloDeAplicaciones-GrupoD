@@ -18,13 +18,9 @@ public class PettyCash extends PaymentType{
 	public PettyCash(){}
 
 	@Override
-	public double getAmountInCash() {
-		return getAmount();
+	public double getAmountInCash(boolean isIncome) {
+		if(isIncome) return getAmount();
+		else{return - getAmount();}
 	}
 
-	@Override
-	public double getAmountInBank() {
-		return 0;
-	};
-	
 }

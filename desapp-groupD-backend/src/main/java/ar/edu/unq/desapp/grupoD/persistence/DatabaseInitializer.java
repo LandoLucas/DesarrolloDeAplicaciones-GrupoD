@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 
 import ar.edu.unq.desapp.grupoD.exceptions.InvalidAmountException;
@@ -27,9 +28,7 @@ import ar.edu.unq.desapp.grupoD.services.ReceiptTypeAService;
 import ar.edu.unq.desapp.grupoD.services.ReceiptTypeBService;
 
 /**
- * This class is the responsible to populate the database with fake information
- * in order to test the application
- * 
+ * This class is the responsible to populate the database with fake information in order to test the application
  * @author Lucas
  */
 public class DatabaseInitializer {
@@ -68,32 +67,25 @@ public class DatabaseInitializer {
 		loadOperations();
 		loadReceipts();
 		
-		System.out.println("==========================");
-		System.out.println("DATABASE POPULATED");
-		System.out.println("==========================");
+		Logger logger = Logger.getLogger(getClass());
+		logger.info("==========================");
+		logger.info("DATABASE POPULATED");
+		logger.info("==========================");
 	}
 
 	private void loadAccounts() {
 		PettyCashAccount pettyCashAccount = new PettyCashAccount(0);
 		BankAccount bankAccount = new BankAccount(0,0,0);
-		
 		accountService.save(bankAccount); 
 		accountService.save(pettyCashAccount);
-		System.out.println("Loaded Accounts");
 	}
 
 	private void loadReceipts() throws InvalidReceiptNumberException {
-		ReceiptTypeA receiptA = new ReceiptTypeA(new DateTime(), 1,
-				"coca-cola", "The coca cola company", "30-123456-3",
-				"cocalandia", 5555555, 21, 12, 2, 1);
-		ReceiptTypeB receiptB = new ReceiptTypeB(new DateTime(), 2,
-				"La serenisima", "la serenisima", "30-987654321-3",
-				"serenopolis", 12345678, 220);
+		ReceiptTypeA receiptA = new ReceiptTypeA(new DateTime(), 1, "coca-cola", "The coca cola company", "30-123456-3", "cocalandia", 5555555, 21, 12, 2, 1); 
+		ReceiptTypeB receiptB = new ReceiptTypeB(new DateTime(), 2, "La serenisima", "la serenisima", "30-987654321-3", "serenopolis", 12345678, 220);
 
 		receiptTypeAService.save(receiptA);
 		receiptTypeBService.save(receiptB);
-		
-		
 	}
 
 	private void loadOperations() throws InvalidAmountException {
@@ -121,35 +113,13 @@ public class DatabaseInitializer {
 		
 		PettyCashAccount pettyCash = new PettyCashAccount();
 		accountService.save(pettyCash);
-		List<PaymentType> paymentTypes = new ArrayList<PaymentType>();
-		paymentTypes.add(new PettyCash(200));
-		paymentTypes.add(new CreditCard(300));
-		paymentTypes.add(new DebitCard(500));
 		
-		List<PaymentType> paymentTypes2 = new ArrayList<PaymentType>();
-		paymentTypes2.add(new PettyCash(1200));
-		paymentTypes2.add(new CreditCard(1300));
-		paymentTypes2.add(new DebitCard(1500));
-		
-		List<PaymentType> paymentTypes3 = new ArrayList<PaymentType>();
-		paymentTypes3.add(new PettyCash(1500));
-		paymentTypes3.add(new CreditCard(300));
-		paymentTypes3.add(new DebitCard(1500));
-		
-		List<PaymentType> paymentTypes4 = new ArrayList<PaymentType>();
-		paymentTypes4.add(new PettyCash(500));
-		paymentTypes4.add(new CreditCard(300));
-		paymentTypes4.add(new DebitCard(500));
-		
-		List<PaymentType> paymentTypes5 = new ArrayList<PaymentType>();
-		paymentTypes5.add(new PettyCash(2500));
-		paymentTypes5.add(new CreditCard(1300));
-		paymentTypes5.add(new DebitCard(500));
-		
-		List<PaymentType> paymentTypes6 = new ArrayList<PaymentType>();
-		paymentTypes6.add(new PettyCash(4300));
-		paymentTypes6.add(new CreditCard(1300));
-		paymentTypes6.add(new DebitCard(5500));
+		List<PaymentType> paymentTypes = createPaymentType(200 , 300 , 500);
+		List<PaymentType> paymentTypes2 = createPaymentType(1200 , 1300 , 1500);
+		List<PaymentType> paymentTypes3 = createPaymentType(1500 , 300 , 1500);
+		List<PaymentType> paymentTypes4 = createPaymentType(500 , 300 , 500);
+		List<PaymentType> paymentTypes5 = createPaymentType(2500 , 1300 , 500);
+		List<PaymentType> paymentTypes6 = createPaymentType(4300 , 1300 , 5500);
 		
 		loadOperation(category, subcategory, concept , DateTime.now().minusDays(20), paymentTypes , true, "Tarde");
 		loadOperation(category, subcategory2, concept , new DateTime(), paymentTypes2 , true, "Tarde");
@@ -157,11 +127,17 @@ public class DatabaseInitializer {
 		loadOperation(category3, subcategory3, concept , DateTime.now().minusDays(12), paymentTypes4 , false, "Tarde");
 		loadOperation(category3, subcategory3, concept , DateTime.now().minusDays(12), paymentTypes5 , false, "Mañana");
 		loadOperation(category3, subcategory3, concept , DateTime.now().minusDays(12), paymentTypes6 , false, "Noche");
-		
+	}
+
+	private List<PaymentType> createPaymentType(double pettyCashAmmount, double CreditCardAmount, double DebitCardAmount) throws InvalidAmountException {
+		List<PaymentType> paymentTypes = new ArrayList<PaymentType>();
+		paymentTypes.add(new PettyCash(pettyCashAmmount));
+		paymentTypes.add(new CreditCard(CreditCardAmount));
+		paymentTypes.add(new DebitCard(DebitCardAmount));
+		return paymentTypes;
 	}
 
 	private void loadOperation(Category category, SubCategory subcategory, Concept concept , DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift) throws InvalidAmountException {
-		
 		operationService.saveOperation(date, paymentTypes , isIncome, shift, category.getCategoryName(), subcategory.getSubcategoryName(), concept.getConceptName());
 	}
 

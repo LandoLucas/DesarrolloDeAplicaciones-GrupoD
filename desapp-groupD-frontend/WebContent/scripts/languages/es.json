@@ -169,7 +169,7 @@
 														
 														"OPERATIONS_LIST_TITLE": "Listado de operaciones",
 														"DEVENGADO": "Devengado",
-														"DEVENGADA": "Devengada?",
+														"DEVENGADA": "Pendiente a devengar?",
 														"CONSOLIDATE": "Consolidate accounts",
 														
 														"ACCOUNTS_STATE": "Estado de las cuentas",
@@ -178,7 +178,7 @@
 														"BANK_TOTAL_AVAILABLE": "Disponible en banco: ",
 														"BANK_TOTAL_DEVENGADO": "Devengado en banco: ",
 														
-														"POPOVER_HELP": "Actualiza el estado de las cuentas bancarias con el monto devengado de operaciones que aun no han sido devengadas con mas de 15 dias de antiguedad",
+														"POPOVER_HELP": "Updates the bank account total with the amount of the 'pendiente a devengar' operations older than 15 days",
 														
 														"REPORTS_TITLE": "Reportes",
 														"CATEGORIES_DISTRIBUTION_TITLE" : "Gastos por categoria",

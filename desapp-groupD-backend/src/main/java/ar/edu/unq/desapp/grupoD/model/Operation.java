@@ -70,7 +70,7 @@ public class Operation {
 	private double devengado; 
 	
 	@Column
-	private boolean isDevengada = true; 
+	private boolean pendienteADevengar; 
 	
 	/**
 	 * Returns an instance of a money operation and it saves the transaction details.
@@ -92,7 +92,7 @@ public class Operation {
 	 */
 	public Operation(DateTime date, List<PaymentType> paymentTypes , boolean isIncome, String shift, 
 					 Category category, SubCategory subCategory, Concept concept, double totalInPettyCash , 
-					 double totalInBank , double available , double devengado, boolean devengada){
+					 double totalInBank , double available , double devengado, boolean pendienteADevengar){
 		setDate(date);
 		setPaymentTypes(paymentTypes);
 		setIncome(isIncome);
@@ -104,15 +104,16 @@ public class Operation {
 		setTotalInBank(totalInBank);
 		setAvailable(available);
 		setDevengado(devengado);
-		setDevengada(devengada);
+		setPendienteADevengar(pendienteADevengar);
 	}
 	
-	public boolean isDevengada() {
-		return isDevengada;
+	
+	public void setPendienteADevengar(boolean pendienteADevengar) {
+		this.pendienteADevengar = pendienteADevengar;
 	}
-
-	public void setDevengada(boolean isDevengada) {
-		this.isDevengada = isDevengada;
+	
+	public boolean isPendienteADevengar(){
+		return pendienteADevengar;
 	}
 
 	public double getDevengado() {

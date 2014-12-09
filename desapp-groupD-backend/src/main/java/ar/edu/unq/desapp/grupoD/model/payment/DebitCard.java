@@ -14,18 +14,15 @@ public class DebitCard extends PaymentType{
 	public DebitCard(){}
 
 	@Override
-	public double getAmountInCash() {
-		return 0;
+	public double getAmountInBank(boolean isIncome) {
+		if(isIncome) return getAmount();
+		else{return - getAmount();}
 	}
 
 	@Override
-	public double getAmountInBank() {
-		return getAmount();
-	}
-
-	@Override
-	public double getAvailable() {
-		return getAmount();
+	public double getAvailable(boolean isIncome) {
+		if(isIncome) return getAmount();
+		else{return - getAmount();}
 	};
 	
 	

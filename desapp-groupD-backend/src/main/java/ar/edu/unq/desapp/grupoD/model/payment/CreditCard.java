@@ -17,23 +17,20 @@ public class CreditCard extends PaymentType {
 	public CreditCard(){}
 
 	@Override
-	public double getAmountInCash() {
-		return 0;
+	public double getAmountInBank(boolean isIncome) {
+		if(isIncome) return getAmount();
+		else{return - getAmount();}
 	}
 
 	@Override
-	public double getAmountInBank() {
-		return getAmount();
+	public double getDevengado(boolean isIncome) {
+		if(isIncome) return getAmount();
+		else return 0;
 	}
 
 	@Override
-	public double getDevengado() {
-		return getAmount();
-	}
-
-	@Override
-	public boolean isDevengada() {
-		return  !(getAmount() > 0); //If there is a charge in credit card
+	public boolean isPendienteADevengar() {
+		return  getAmount() > 0; //If there is a charge in credit card
 	};
 	
 }

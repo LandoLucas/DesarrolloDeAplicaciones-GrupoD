@@ -19,7 +19,7 @@ GenericRepository<Operation> {
 	}
 
 	public List<Operation> findOperationsWithCreditCardDebts() {
-		String hql = "FROM Operation o WHERE o.isDevengada =false";
+		String hql = "FROM Operation o WHERE o.pendienteADevengar =true";
 		
 		Query query = getHibernateTemplate().getSessionFactory()
 				.getCurrentSession().createQuery(hql);

@@ -119,7 +119,7 @@ public class OperationServiceTest extends AbstractTransactionalJUnit4SpringConte
 		
 		BankAccount account = operationService.devengar();
 		
-		assertTrue( operation.isDevengada());
+		assertTrue( operation.isPendienteADevengar());
 		assertEquals( 400 , account.getDevengado() , 0);
 		assertEquals( 200 , account.getAvailable() , 0);
 	}

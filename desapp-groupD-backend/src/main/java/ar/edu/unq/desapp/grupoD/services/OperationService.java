@@ -62,21 +62,23 @@ public class OperationService {
 		double totalInBankAccount = bankAccountDao.getAmmount();
 		double available = bankAccountDao.getAvailableAmount();
 		double devengado = bankAccountDao.getDevengado();
-		boolean devengada = true;
+		boolean pendienteADevengar = false;
 		
 		for( PaymentType paymentType : paymentTypes){
-			totalInPettyCash += paymentType.getAmountInCash();
-			totalInBankAccount += paymentType.getAmountInBank();
-			available += paymentType.getAvailable();
+			totalInPettyCash += paymentType.getAmountInCash(isIncome);
+			totalInBankAccount += paymentType.getAmountInBank(isIncome);
+			available += paymentType.getAvailable(isIncome);
 			pettyCashAccountDao.newAmmount(totalInPettyCash);
 			bankAccountDao.updateAvailable(available);
-			devengado += paymentType.getDevengado();
+			devengado += paymentType.getDevengado(isIncome);
 			bankAccountDao.updateDevengado(devengado);
-			devengada = paymentType.isDevengada();
+			if(! pendienteADevengar) pendienteADevengar = paymentType.isPendienteADevengar(); //Avoids overwriting the value if the last payment type is not credit card
 			bankAccountDao.newAmmount(totalInBankAccount);
 		}	
 		
-		Operation operation = new Operation(date, paymentTypes, isIncome, shift, category, subCategory, concept, totalInPettyCash , totalInBankAccount , available , devengado, devengada);
+		if(!isIncome) pendienteADevengar = false;
+		
+		Operation operation = new Operation(date, paymentTypes, isIncome, shift, category, subCategory, concept, totalInPettyCash , totalInBankAccount , available , devengado, pendienteADevengar);
 		operationDao.save(operation);
 	}
 
@@ -116,7 +118,7 @@ public class OperationService {
 
 	private void markOperationsAsDevengadas(List<Operation> operations) {
 		for(Operation operation : operations){
-			operation.setDevengada(true);
+			operation.setPendienteADevengar(false);
 			operationDao.save(operation);
 		}
 	}

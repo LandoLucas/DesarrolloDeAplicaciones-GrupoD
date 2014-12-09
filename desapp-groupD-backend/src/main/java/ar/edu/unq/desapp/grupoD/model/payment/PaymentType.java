@@ -35,20 +35,24 @@ public abstract class PaymentType {
 		return id;
 	}
 
-	public abstract double getAmountInCash();
-
-	public abstract double getAmountInBank();
-
-	public double getAvailable() {
+	public double getAmountInCash(boolean isIncome){
 		return 0;
 	}
 
-	public double getDevengado() {
+	public double getAmountInBank(boolean isIncome){
 		return 0;
 	}
 
-	public boolean isDevengada() {
-		return true;
+	public double getAvailable(boolean isIncome) {
+		return 0;
+	}
+
+	public double getDevengado(boolean isIncome) {
+		return 0;
+	}
+
+	public boolean isPendienteADevengar() {
+		return false;
 	}
 
 }
