@@ -14,6 +14,15 @@ app.controller('ListadoTransaccionesCtrl', function($http, $location, $scope, ng
 		$scope.operaciones = response;
 		
 	};
+	
+	$scope.exportOk = function(response) {
+		growl.info("Exported");
+		 
+	};
+	
+	$scope.exportOperations = function(){
+		restServices.invokeExportOperations($http, {}, $scope.exportOk , restServices.defaultHandlerOnError);
+	}
 
 	$scope.accountsOK = function(response) {
 		$scope.accounts = response;

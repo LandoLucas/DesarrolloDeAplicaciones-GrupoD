@@ -48,6 +48,7 @@ public class ExcelRest {
 		File file = new File("src/test/resources/exportedTransactions.xls");
 		ResponseBuilder response = Response.ok((Object) file);
 		response.header("Content-Disposition", "attachment; filename=RegistroTransacciones.xls");
+		response.header("Access-Control-Allow-Origin", "*");
 		return response.build();
 	}
 

@@ -315,8 +315,8 @@
 				templateUrl : 'views/crudProvider.html',
 				controller : 'CrudProviderCtrl'    
 			}).when('/importar', {
-				templateUrl : 'views/importarTransacciones.html'
-//				controller : 'ImportCtrl'  
+				templateUrl : 'views/importarTransacciones.html',
+				controller : 'ImportCtrl'  
 			}).otherwise({
 				redirectTo : '/'
 			});

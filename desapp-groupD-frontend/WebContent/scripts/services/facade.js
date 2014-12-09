@@ -9,6 +9,7 @@
 		
 		this.$get = [
 		             '$rootScope',
+		             '$window',
 		             '$filter',
 		             '$translate',
 		             'growl',
@@ -141,7 +142,20 @@
 		        		//==Rest PaymentTypes==\\
 
 		        		//==Rest Operations==\\
-
+		        		
+		        		function invokeExportOperations(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+		        			var header = defaultHeader();
+		        			invokeGetRestService(cnxHttp, header, data, 'excel', 'descarga',
+		        					handlerOnSuccess, handlerOnError);
+		        			window.open('http://' + restHost + '/' + restContext + '/rest/'+'excel/descarga');
+		        		}
+		        		
+		        		function invokeImportOperations(cnxHttp, data, handlerOnSuccess, handlerOnError) {
+		        			var header = defaultHeader();
+		        			invokeRestService(cnxHttp, header, data, 'excel', 'carga',
+		        					handlerOnSuccess, handlerOnError);
+		        		}
+		        		
 
 		        		function invokeRegisterOperation(cnxHttp, data, handlerOnSuccess, handlerOnError) {
 		        			var header = defaultHeader();
@@ -312,7 +326,9 @@
 		                 invokeGetProviders: invokeGetProviders,
 		                 invokeRegisterProvider: invokeRegisterProvider,
 		                 invokeEditProvider: invokeEditProvider,
-		                 invokeDeleteProvider: invokeDeleteProvider
+		                 invokeDeleteProvider: invokeDeleteProvider,
+		                 invokeExportOperations: invokeExportOperations,
+		                 invokeImportOperations: invokeImportOperations
 		               };
 		             }
 		           ];
