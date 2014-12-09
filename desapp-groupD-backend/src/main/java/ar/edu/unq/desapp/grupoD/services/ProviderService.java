@@ -37,9 +37,10 @@ public class ProviderService {
 	}
 
 	@Transactional
-	public void editProvider(String providerId, String name, String tradeName, String direction, Integer cuit, Integer telephone) {
+	public void editProvider(Integer id, String providerId, String name, String tradeName, String direction, Integer cuit, Integer telephone) {
 		
-		Provider provider = findByProviderId(providerId);
+		Provider provider = this.providerDao.findById(id);
+		provider.setProviderId(providerId);;
 		provider.setCuit(cuit);
 		provider.setDirection(direction);
 		provider.setName(name);

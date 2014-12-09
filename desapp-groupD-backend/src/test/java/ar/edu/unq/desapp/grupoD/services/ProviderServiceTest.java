@@ -79,8 +79,8 @@ public class ProviderServiceTest  extends AbstractTransactionalJUnit4SpringConte
 		
 		Provider provider = new Provider(providerId, name, direction, tradeName, cuit, telephone);
 		providerService.save(provider);
-		
-		providerService.editProvider(providerId, "Cambio de Nombre", tradeName, direction, cuit, telephone);
+		Provider restored =  providerService.findByProviderId(provider.getProviderId());
+		providerService.editProvider(restored.getId(),providerId, "Cambio de Nombre", tradeName, direction, cuit, telephone);
 		
 		Provider providerEdited = providerService.findByProviderId(providerId);
 		

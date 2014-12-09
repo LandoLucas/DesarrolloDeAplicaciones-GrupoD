@@ -8,7 +8,7 @@
 
 angular.module('tp-dapp-eiroa-lando').controller(
 		'ClientsAndProvidersCtrl',
-		function($scope, $location, $http, $rootScope, growl, dialogs,
+		function($scope, $location, $http, $rootScope, growl, dialogs,$route,
 				globalService, $translate, ngTableParams, restServices,
 				$filter, $timeout) {
 
@@ -17,13 +17,49 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				globalService.setInMainMenu();
 				$scope.totalUsers = 0;
 				$scope.currentPage = 1;
-
 				restServices.invokeGetProviders($http, {},
 						$scope.findOk, restServices.defaultHandlerOnError);
 			}
+			
+			$scope.deleteOk = function(response) {
+				$translate('DIALOG_DELETE_SUCCESS').then(function (text) {
+					growl.info(text + name);
+					$route.reload();
+				    });
+			}
+			function deleteProvider(id) {
+				var data = {
+					providerId: id
+				};
+				restServices.invokeDeleteProvider($http, data, $scope.deleteOk,
+						restServices.defaultHandlerOnError);
+			}
+			$scope.confirmDeleteProvider = function(providerId,name) {
+				var title;
+				var desc;
+				$translate('DIALOG_PROVIDER_DELETE_TITLE').then(function (text) {
+					 title = text;
+					 $translate('DIALOG_PROVIDER_DELETE_DESC').then(function (text) {
+						 desc = text;
+						 var dlg = dialogs.confirm(title + name + ' ?',desc);
+							dlg.result.then(function(btn) {
+								deleteProvider(providerId);
+							}, function(btn) {
+
+							});
+					    });
+				    });				
+			};
+			
+			
 
 			$scope.newProvider = function() {
 				$rootScope.registeringProvider = true;
+			}
+			
+			$scope.editProvider = function(provider) {
+				$rootScope.registeringProvider = false;
+				$rootScope.providerToEdit = provider;
 			}
 
 			$scope.tableColumns = {
@@ -106,6 +142,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 					});
 				}, 0);
 			}
+
 
 
 			// Default Controlador

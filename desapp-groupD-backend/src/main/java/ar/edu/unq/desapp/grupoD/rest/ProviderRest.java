@@ -49,13 +49,14 @@ public class ProviderRest {
 	@POST
 	@Path("/edit")
 	public Response editProvider(
+			@FormParam("id") Integer id,
 			@FormParam("providerId") String providerId,
 			@FormParam("name") String name,
 			@FormParam("tradeName") String tradeName,
 			@FormParam("address") String direction, 
 			@FormParam("cuit") Integer cuit,
 			@FormParam("phone") Integer telephone){
-		providerService.editProvider(providerId, name, tradeName, direction, cuit, telephone); 
+		providerService.editProvider(id,providerId, name, tradeName, direction, cuit, telephone); 
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	

@@ -46,6 +46,14 @@ public class Provider {
 	}
 	public Provider (){}
 	
+	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setTelephone(Integer telephone) {
+		this.telephone = telephone;
+	}
 	public Provider(String providerId) {
 		this.providerId = providerId;
 	}
