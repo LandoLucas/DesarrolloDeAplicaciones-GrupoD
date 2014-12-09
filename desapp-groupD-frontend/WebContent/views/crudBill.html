@@ -39,18 +39,20 @@
 
 				<br /> <br />
 				<legend></legend>
+				<style>strong:hover { 
+    background-color: #C6C9F7</style>
 
 				<div class="panel-group col-xs-12 col-sm-6 col-lg-12" id="accordion">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<a ng-if="isOutcome" href="javascript:;" data-toggle="collapse"
+								<a  ng-if="isOutcome" href="javascript:;" data-toggle="collapse"
 									data-target="#collapseTwo"> {{ 'FORM_TOGGLE_CLIENT' |
 									translate}} </a> <a ng-if="!isOutcome" href="javascript:;"
 									data-toggle="collapse" 
 									data-target="#collapseTwo"> {{ 'FORM_TOGGLE_PROVIDER' |
 									translate}} </a>
-									<strong   ng-click="toggleAutoLoading()" style="cursor:pointer;font-size: small;margin-left: 10px;">{{ 'FORM_TOGGLE_ID_PROVIDER_LOAD' |
+									<strong  ng-style="checkAutoload()" ng-click="toggleAutoLoading()" style="cursor:pointer;font-size: small;margin-left: 10px;">{{ 'FORM_TOGGLE_ID_PROVIDER_LOAD' |
 									translate}}</strong>
 									<span class="glyphicon glyphicon-ok text-success" ng-show="autoload"></span>
 									<span class= "glyphicon glyphicon-remove text-danger" ng-show="!autoload"></span>
@@ -222,6 +224,15 @@
 
 									</div>
 								</div>
+								
+								<div class="form-group">
+					<label for="inputGeneratesOperation" class="control-label col-xs-8 " ng-style="checkGeneratesOperation()">{{
+						'FORM_GENERATES_OPERATION' | translate}}</label>
+					<div class="col-xs-4" >
+						<input type="checkbox"  id="inputGeneratesOperation" class="" 
+							ng-model="inputGeneratesOperation" style=width:20px;height:20px;">
+					</div>
+				</div>
 
 							</div>
 						</div>
@@ -231,16 +242,68 @@
 
 
 
-				<div class="form-group col-xs-12 col-sm-6 col-lg-6">
-					<label for="selectPaymentType" class="control-label col-xs-3">{{
-						'FORM_SELECT_PAYMENT_TYPE' | translate}}</label>
-					<div class="col-xs-6">
-						<select ng-model="paymentSelected"
-							ng-options="ptype as ptype.name for ptype in paymentTypes"
-							ng-change="selectPayment(paymentSelected)" class="form-control"
-							tabindex="13">
-							<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
-						</select>
+<!-- 				<div class="form-group col-xs-12 col-sm-6 col-lg-6"> -->
+<!-- 					<label for="selectPaymentType" class="control-label col-xs-3">{{ -->
+<!-- 						'FORM_SELECT_PAYMENT_TYPE' | translate}}</label> -->
+<!-- 					<div class="col-xs-6"> -->
+<!-- 						<select ng-model="paymentSelected" -->
+<!-- 							ng-options="ptype as ptype.name for ptype in paymentTypes" -->
+<!-- 							ng-change="selectPayment(paymentSelected)" class="form-control" -->
+<!-- 							tabindex="13"> -->
+<!-- 							<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option> -->
+<!-- 						</select> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+
+
+		<div class="form-group">
+				<div ng-show="inputCashEnabled">
+				
+					<label for="inputCash" class="control-label col-xs-2">{{ 'FORM_CASH' | translate}}</label>
+					<div class="col-xs-4">
+						<input type="number" step='any'class="form-control" id="inputCash"
+							ng-model="inputCash" placeholder="{{ 'FORM_CASH' | translate}}">
+					</div>
+					</div>
+					<label for="inputCashEnabled" class="col-xs-3">{{ 'FORM_CASH_ENABLED' | translate}}</label>
+					<div class="col-xs-3">
+					<input type="checkbox" class="checkbox"
+						id="inputCashEnabled" ng-model="inputCashEnabled"
+						>
+					</div>
+			 </div>
+				
+
+				
+				<div class="form-group">
+				 <div ng-show="inputCreditEnabled">
+					<label for="inputCredit" class="control-label col-xs-2">{{ 'FORM_CREDIT' | translate}}</label>
+					<div class="col-xs-4">
+						<input type="number" step='any' class="form-control" id="inputCredit"
+							ng-model="inputCredit" placeholder="{{ 'FORM_CREDIT' | translate}}">
+					</div>
+				 </div>
+				 <label for="inputCreditEnabled" class="col-xs-3">{{ 'FORM_CREDIT_ENABLED' | translate}}</label>
+					<div class="col-xs-3">
+					<input type="checkbox" class="checkbox"
+						id="inputCreditEnabled" ng-model="inputCreditEnabled"
+						>
+					</div>
+				</div>
+				
+				<div class="form-group">
+				 <div ng-show="inputDebitEnabled">
+					<label for="inputDebit" class="control-label col-xs-2">{{ 'FORM_DEBIT' | translate}}</label>
+					<div class="col-xs-4">
+						<input type="number" step='any' class="form-control" id="inputDebit"
+							ng-model="inputDebit" placeholder="{{ 'FORM_DEBIT' | translate}}">
+					</div>
+				 </div>
+				 <label for="inputDebitEnabled" class="col-xs-3">{{'FORM_DEBIT_ENABLED' | translate}}</label>
+					<div class="col-xs-3">
+					<input type="checkbox" class="checkbox"
+						id="inputDebitEnabled" ng-model="inputDebitEnabled"
+						>
 					</div>
 				</div>
 

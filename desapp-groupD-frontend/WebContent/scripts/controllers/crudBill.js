@@ -16,10 +16,26 @@ angular.module('tp-dapp-eiroa-lando').controller(
 			$scope.inputDate = $filter("date")(Date.now(), 'yyyy-MM-dd');
 
 			$scope.autoload = true;
+			
+			$scope.checkAutoload = function(){
+				if($scope.autoload){
+					return {'color':'green' ,'font-style':'italic'};
+				}else{
+					return {'color':'red','font-style':'italic'};
+				}
+			};
+			
+			$scope.checkGeneratesOperation = function(){
+				if($scope.inputGeneratesOperation){
+					return {'color':'blue' ,'font-style':'italic'};
+				}else{
+					return {'font-style':'italic'};
+				}
+			};
 
 			$scope.searchProviderOk = function(response) {
 				console.log(response)
-				$scope.inputClientSellerName = response.name;
+				$scope.inputClientSeller = response.name;
 				$scope.inputTradeName = response.tradeName;
 				$scope.inputCuit = response.cuit;
 				$scope.inputPhone = response.telephone;
@@ -46,6 +62,8 @@ angular.module('tp-dapp-eiroa-lando').controller(
 			}
 			var tempFilterText = '';
 			var filterTextTimeout = 1000;
+			
+			//Forma manual para el delay del update del model del id
 			$scope.$watch('inputClientSellerId', function(val) {
 				if (filterTextTimeout)
 					$timeout.cancel(filterTextTimeout);
@@ -99,6 +117,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				} else {
 					$scope.isOutcome = true;
 				}
+				$scope.inputCashEnabled = true;
 			}
 
 			$scope.tableColumns = {
@@ -394,6 +413,11 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				if ($scope.inputShift) {
 					var shift = $scope.inputShift;
 				}
+				
+				var cash;var credit;var debit;
+				if($scope.inputCash == null){cash=0}else{cash = $scope.inputCash };
+				if($scope.inputCredit == null){credit=0}else{credit = $scope.inputCredit};
+				if($scope.inputDebit == null){debit=0}else{debit = $scope.inputDebit };
 
 				var data = {
 					letter : $scope.billLetter,
@@ -401,22 +425,27 @@ angular.module('tp-dapp-eiroa-lando').controller(
 					serie : $scope.inputSerie,
 					billNumber : $scope.inputBillNumber,
 					client_seller : $scope.inputClientSeller,
+					tradeName: $scope.inputTradeName,
+					client_seller_id:$scope.inputcCientSellerId,
 					iibb : iibb,
 					phone : phone,
 					cuit : cuit,
 					totalNoTaxes : $scope.totalAmountNoTaxes,
+					cash:cash,
+					credit:credit,
+					debit:debit,
 					total : $scope.totalAmount,
 					gravado : $scope.totalAmount,
 					noGravado : $scope.totalAmountNoTaxes,
+					extraTaxes: $scope.inputExtraTax,
 					category : $scope.categorySelected.categoryName,
 					subCategory : sub,
 					concept : con,
-					paymentCode : $scope.paymentSelected.code,
 					shift : shift,
 					isOutcome : $scope.isOutcome,
 					address : add,
-					iva : 21,
-					items : billElements
+					items : billElements,
+					generatesOperation:$scope.inputGeneratesOperation
 				};
 				return data;
 			}
@@ -444,6 +473,10 @@ angular.module('tp-dapp-eiroa-lando').controller(
 						|| $scope.paymentSelected == "") {
 					return false;
 				}
+				if(!$scope.inputCashEnabled  && !$scope.inputCreditEnabled && !$scope.inputDebitEnabled)return false;
+				if($scope.inputCashEnabled && ($scope.inputCash <=0 || $scope.inputCash == null))return false;
+				if($scope.inputCreditEnabled && ($scope.inputCredit <=0 || $scope.inputCredit == null))return false;
+				if($scope.inputDebitEnabled && ($scope.inputDebit <=0 || $scope.inputDebit == null))return false;
 				return true;
 			}
 
@@ -502,6 +535,28 @@ angular.module('tp-dapp-eiroa-lando').controller(
 							function(text) {
 								growl.error(text);
 							});
+				}
+				
+				if (!$scope.inputCashEnabled  && !$scope.inputCreditEnabled && !$scope.inputDebitEnabled){
+					$translate('FORM_ERROR_PAYMENTTYPE_REQUIRED').then(function (text) {
+						growl.error(text);
+					});
+				}
+				
+				if ($scope.inputCashEnabled  && ($scope.inputCash <=0 || $scope.inputCash == null)){
+					$translate('FORM_ERROR_CASH_NOT_POSITIVE').then(function (text) {
+						growl.error(text);
+					});
+				}
+				if ($scope.inputCreditEnabled  && ($scope.inputCredit <=0 || $scope.inputCredit == null)){
+					$translate('FORM_ERROR_CREDIT_NOT_POSITIVE').then(function (text) {
+						growl.error(text);
+					});
+				}
+				if ($scope.inputDebitEnabled  && ($scope.inputDebit <=0 || $scope.inputDebit == null)){
+					$translate('FORM_ERROR_DEBIT_NOT_POSITIVE').then(function (text) {
+						growl.error(text);
+					});
 				}
 
 			}

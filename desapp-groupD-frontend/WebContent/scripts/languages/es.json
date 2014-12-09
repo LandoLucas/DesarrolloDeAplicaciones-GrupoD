@@ -66,8 +66,8 @@
 												
 														"FORM_TRADE_NAME":"Razón Social",
 														
-														"FORM_TOGGLE_ID_PROVIDER_LOAD":"Activar carga automática por ID",
-														
+														"FORM_TOGGLE_ID_PROVIDER_LOAD":"Activar relleno automático por ID",
+														"FORM_GENERATES_OPERATION":"Crear operación en conjunto con el comprobante, utilizando la misma información",
 														"FORM_DATE": "Fecha",
 														"FORM_CODE": "Código",
 														"FORM_ADDRESS": "Dirección",
