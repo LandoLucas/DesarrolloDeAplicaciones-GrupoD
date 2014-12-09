@@ -106,6 +106,8 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				restServices.invokeGetCategories($http, {},
 						$scope.getCategoriesOk,
 						restServices.defaultHandlerOnError);
+				$scope.inputIIBB = 0;
+				$scope.inputExtraTax=0;
 				$scope.subCategories = null;
 				$scope.concepts = null;
 				$scope.categorySelected = null;
@@ -421,8 +423,7 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				var data = {
 					letter : $scope.billLetter,
 					date : $scope.inputDate,
-					serie : $scope.inputSerie,
-					billNumber : $scope.inputBillNumber,
+					billNumber : $scope.inputSerie +'-'+$scope.inputBillNumber,
 					client_seller : $scope.inputClientSeller,
 					tradeName: $scope.inputTradeName,
 					client_seller_id:$scope.inputClientSellerId,
@@ -434,8 +435,6 @@ angular.module('tp-dapp-eiroa-lando').controller(
 					credit:credit,
 					debit:debit,
 					total : $scope.totalAmount,
-					gravado : $scope.totalAmount,
-					noGravado : $scope.totalAmountNoTaxes,
 					extraTaxes: $scope.inputExtraTax,
 					category : $scope.categorySelected.categoryName,
 					subCategory : sub,
@@ -466,10 +465,6 @@ angular.module('tp-dapp-eiroa-lando').controller(
 				}
 				if ($scope.categorySelected == null
 						|| $scope.categorySelected == "") {
-					return false;
-				}
-				if ($scope.paymentSelected == null
-						|| $scope.paymentSelected == "") {
 					return false;
 				}
 				if(!$scope.inputCashEnabled  && !$scope.inputCreditEnabled && !$scope.inputDebitEnabled)return false;

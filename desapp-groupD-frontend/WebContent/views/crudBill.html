@@ -25,14 +25,14 @@
 				<div class="pull-right form-group col-xs-12 col-sm-4 col-lg-4">
 					<label for="inputBillNumber" class="control-label col-xs-3">N°</label>
 					<div class="col-xs-8 ">
-						<input type="number" class="form-control" id="inputBillNumber"
+						<input type="text" class="form-control" id="inputBillNumber"
 							ng-model="inputBillNumber" placeholder="YYYYYYYY" tabindex="3">
 					</div>
 				</div>
 				<div class="pull-right form-group col-xs-12 col-sm-3 col-lg-3">
 					<label for="inputSerie" class="control-label col-xs-3">Serie</label>
 					<div class="col-xs-7 ">
-						<input type="number" class="form-control" id="inputSerie"
+						<input type="text" class="form-control" id="inputSerie"
 							ng-model="inputSerie" placeholder="XXXX" tabindex="2">
 					</div>
 				</div>
@@ -239,30 +239,14 @@
 					</div>
 				</div>
 
-
-
-
-<!-- 				<div class="form-group col-xs-12 col-sm-6 col-lg-6"> -->
-<!-- 					<label for="selectPaymentType" class="control-label col-xs-3">{{ -->
-<!-- 						'FORM_SELECT_PAYMENT_TYPE' | translate}}</label> -->
-<!-- 					<div class="col-xs-6"> -->
-<!-- 						<select ng-model="paymentSelected" -->
-<!-- 							ng-options="ptype as ptype.name for ptype in paymentTypes" -->
-<!-- 							ng-change="selectPayment(paymentSelected)" class="form-control" -->
-<!-- 							tabindex="13"> -->
-<!-- 							<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option> -->
-<!-- 						</select> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-
-
 		<div class="form-group">
 				<div ng-show="inputCashEnabled">
 				
 					<label for="inputCash" class="control-label col-xs-2">{{ 'FORM_CASH' | translate}}</label>
 					<div class="col-xs-4">
 						<input type="number" step='any'class="form-control" id="inputCash"
-							ng-model="inputCash" placeholder="{{ 'FORM_CASH' | translate}}">
+							ng-model="inputCash" placeholder="{{ 'FORM_CASH' | translate}}"
+							tabindex="13">
 					</div>
 					</div>
 					<label for="inputCashEnabled" class="col-xs-3">{{ 'FORM_CASH_ENABLED' | translate}}</label>
@@ -279,13 +263,13 @@
 				 <div ng-show="inputCreditEnabled">
 					<label for="inputCredit" class="control-label col-xs-2">{{ 'FORM_CREDIT' | translate}}</label>
 					<div class="col-xs-4">
-						<input type="number" step='any' class="form-control" id="inputCredit"
+						<input tabindex="14" type="number" step='any' class="form-control" id="inputCredit"
 							ng-model="inputCredit" placeholder="{{ 'FORM_CREDIT' | translate}}">
 					</div>
 				 </div>
 				 <label for="inputCreditEnabled" class="col-xs-3">{{ 'FORM_CREDIT_ENABLED' | translate}}</label>
 					<div class="col-xs-3">
-					<input type="checkbox" class="checkbox"
+					<input  type="checkbox" class="checkbox"
 						id="inputCreditEnabled" ng-model="inputCreditEnabled"
 						>
 					</div>
@@ -295,13 +279,14 @@
 				 <div ng-show="inputDebitEnabled">
 					<label for="inputDebit" class="control-label col-xs-2">{{ 'FORM_DEBIT' | translate}}</label>
 					<div class="col-xs-4">
-						<input type="number" step='any' class="form-control" id="inputDebit"
+						<input tabindex="15" type="number" step='any' class="form-control" id="inputDebit"
 							ng-model="inputDebit" placeholder="{{ 'FORM_DEBIT' | translate}}">
 					</div>
 				 </div>
 				 <label for="inputDebitEnabled" class="col-xs-3">{{'FORM_DEBIT_ENABLED' | translate}}</label>
 					<div class="col-xs-3">
 					<input type="checkbox" class="checkbox"
+					
 						id="inputDebitEnabled" ng-model="inputDebitEnabled"
 						>
 					</div>
@@ -312,7 +297,7 @@
 						'FORM_SHIFT' | translate}}</label>
 					<div class="col-xs-6">
 
-						<select ng-model="inputShift " tabindex="14"
+						<select ng-model="inputShift " tabindex="16"
 							ng-options="shift as shift.name for shift in shifts"
 							ng-change="selectShift(inputShift)" class="form-control">
 							<option value="" label="{{ 'SELECT_OPTION' | translate}}"></option>
@@ -320,13 +305,13 @@
 
 					</div>
 				</div>
-				<div class="form-group col-xs-12 col-sm-6 col-lg-6 pull-right"
-					style="margin-top: 11px;" ng-hide="detailMode">
+				<div class="form-group col-xs-12 col-sm-6 col-lg-6 "
+					 ng-hide="detailMode">
 					<label for="inputNeto" class="control-label col-xs-3">Monto
 						Neto</label>
 					<div class="col-xs-6">
 						<input type="number" class="form-control" id="inputNeto"
-							ng-model="inputNeto" placeholder="Total Neto" tabindex="16">
+							ng-model="inputNeto" placeholder="Total Neto" tabindex="17">
 					</div>
 				</div>
 				<div class="form-group col-xs-12 col-sm-6 col-lg-6"
@@ -335,7 +320,7 @@
 						IVA</label>
 					<div class="col-xs-6">
 						<input type="number" class="form-control" id="inputIVA"
-							ng-model="inputIVA" placeholder="Total IVA" tabindex="15">
+							ng-model="inputIVA" placeholder="Total IVA" tabindex="18">
 					</div>
 				</div>
 				<button type="submit" class="btn btn-success pull-right"
@@ -346,14 +331,14 @@
 				</button>
 				<button type="submit"
 					class="btn btn-info pull-right col-xs-12 col-sm-12 col-lg-12"
-					ng-hide="detailMode" ng-click="enableDetailMode()"
+					ng-hide="true" ng-click="enableDetailMode()"
 					style="margin-bottom: 10px;">
 					<span class="glyphicon glyphicon-list-alt"></span> {{
 					'FORM_ENABLE_DETAIL_MODE' | translate}}
 				</button>
 				<button type="submit"
 					class="btn btn-warning pull-right col-xs-12 col-sm-12 col-lg-12"
-					ng-show="detailMode" ng-click="disableDetailMode()"
+					ng-show="false" ng-click="disableDetailMode()"
 					style="margin-bottom: 10px;">
 					<span class="glyphicon glyphicon-pencil"></span> {{
 					'FORM_DISABLE_DETAIL_MODE' | translate}}
@@ -362,7 +347,7 @@
 
 				<br />
 
-				<table ng-table="tableParams" class="table" ng-show="detailMode">
+				<table ng-table="tableParams" class="table" ng-show="false">
 					<tr ng-repeat="item in $data">
 						<td data-title="tableColumns['item']" sortable="'name'"
 							width="300"><span ng-if="!item.$edit">{{item.name}}</span>
@@ -399,22 +384,22 @@
 					</tr>
 				</table>
 
-				<div class="pull-left form-group col-xs-12 col-sm-6 col-lg-6"
-					style="padding: 20px;">
+				<div class="form-group col-xs-12 col-sm-6 col-lg-6"
+					>
 					<label for="inputIIBB" class="control-label col-xs-3">IIBB</label>
 					<div class="col-xs-6 ">
 						<input type="number" class="form-control" id="inputIIBB"
-							ng-model="inputIIBB" placeholder="IIBB" tabindex="18">
+							ng-model="inputIIBB" placeholder="IIBB" tabindex="19">
 					</div>
 				</div>
 
-				<div class="pull-left form-group col-xs-12 col-sm-6 col-lg-6"
-					style="padding: 20px;">
+				<div class="form-group col-xs-12 col-sm-6 col-lg-6"
+					>
 					<label for="inputExtraTax" class="control-label col-xs-3">impuestos
 						extra</label>
 					<div class="col-xs-6 ">
 						<input type="number" class="form-control" id="inputExtraTax"
-							ng-model="inputExtraTax" placeholder="Extras" tabindex="19">
+							ng-model="inputExtraTax" placeholder="Extras" tabindex="20">
 					</div>
 				</div>
 
@@ -441,7 +426,7 @@
 					<div class="col-xs-offset-2 col-xs-10">
 
 						<button type="submit" class="btn btn-success" ng-show="true"
-							ng-click="registerBill()" tabindex="20">{{
+							ng-click="registerBill()" tabindex="21">{{
 							'FORM_CONFIRM' | translate}}</button>
 
 						<button type="submit" class="btn btn-success"
