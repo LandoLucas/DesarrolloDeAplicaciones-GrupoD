@@ -120,4 +120,6 @@ public abstract class Receipt {
 		this.finalImport = finalImport;
 	}
 
+	public Receipt(){};
+	
 }

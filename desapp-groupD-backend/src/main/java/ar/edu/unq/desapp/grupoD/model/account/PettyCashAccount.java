@@ -35,11 +35,6 @@ public class PettyCashAccount extends Account {
 		return amount;
 	}
 	
-	@Override
-	public Boolean isPettyCashAccount(){
-		return true;
-	}
-
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}

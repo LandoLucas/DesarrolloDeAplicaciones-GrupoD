@@ -1,5 +1,7 @@
 package ar.edu.unq.desapp.grupoD.services;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.desapp.grupoD.model.receipt.ReceiptTypeB;
@@ -23,6 +25,11 @@ public class ReceiptTypeBService {
 	@Transactional
 	public void save(ReceiptTypeB receipt) {
 		receiptBDao.save(receipt);
+	}
+
+	@Transactional
+	public List<ReceiptTypeB> findAll() {
+		return receiptBDao.findAll();
 	}
 
 }

@@ -39,4 +39,5 @@ public class ReceiptTypeB extends Receipt {
 				address, telephoneNumber, finalImport);
 	}
 
+	public ReceiptTypeB() {}
 }

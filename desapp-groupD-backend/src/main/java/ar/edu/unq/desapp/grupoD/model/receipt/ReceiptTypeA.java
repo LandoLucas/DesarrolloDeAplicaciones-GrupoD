@@ -92,4 +92,7 @@ public class ReceiptTypeA extends Receipt {
 		return IVA + IIBB + gravado + noGravado;
 	}
 
+	public ReceiptTypeA() {}
+	
+	
 }

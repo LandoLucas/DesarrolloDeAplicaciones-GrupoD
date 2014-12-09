@@ -116,9 +116,6 @@ public class DatabaseInitializer {
 		
 		categoryService.save(category);
 		
-		PettyCashAccount pettyCash = new PettyCashAccount();
-		accountService.save(pettyCash);
-		
 		List<PaymentType> paymentTypes = createPaymentType(200 , 300 , 500);
 		List<PaymentType> paymentTypes2 = createPaymentType(1200 , 1300 , 1500);
 		List<PaymentType> paymentTypes3 = createPaymentType(600 , 300 , 1500);

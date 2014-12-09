@@ -51,7 +51,7 @@
 		<property name="hibernateProperties">
 			<props>
 				<!-- Configuration generic properties. They are loaded from file hibernate.properties -->
-				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
 				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
 

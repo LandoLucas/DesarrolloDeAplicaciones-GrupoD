@@ -12,7 +12,6 @@ import javax.persistence.Id;
  */
 @Entity
 public class DebitAccount extends Account {
-//	private static double balance = 0;
 	
 	private double amount;
 
@@ -24,30 +23,6 @@ public class DebitAccount extends Account {
 		this.amount = amount;
 	}
 
-//	@Override
-//	public void bill(Operation operation) {
-//		new DebitAccount(operation);
-//	}
-	
-//	public DebitAccount(Operation operation) {
-//		this.amount = operation.getAmount();
-//		setBalance(this.amount, operation);
-//	} 
-
-//	public static void setBalance(double newAmount, Operation operation) {
-//		if (operation.isIncome())
-//			balance = balance + newAmount;
-//		else
-//			balance = balance - newAmount;
-//	}
-//	
-//	public static double getBalance(){
-//		return balance;
-//	}
-	
-//	public static void resetBalance(){
-//		balance = 0;
-//	}
 	
 	public Integer getId() {
 		return id;
@@ -57,11 +32,6 @@ public class DebitAccount extends Account {
 		return amount;
 	}
 	
-	@Override
-	public Boolean isDebitAccount(){
-		return true;
-	}
-
 	public DebitAccount(){
 		
 	}
