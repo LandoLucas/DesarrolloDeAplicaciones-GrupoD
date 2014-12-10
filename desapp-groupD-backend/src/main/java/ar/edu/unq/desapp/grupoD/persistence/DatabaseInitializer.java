@@ -144,7 +144,7 @@ public class DatabaseInitializer {
 		loadOperation(category, subcategory2, concept , new DateTime(), paymentTypes2 , true, "Tarde");
 		loadOperation(category2, subcategory3, concept2 , DateTime.now().minusDays(6), paymentTypes3 , false, "Tarde");
 		loadOperation(category3, subcategory3, concept2 , DateTime.now().minusDays(12), paymentTypes4 , true, "Tarde");
-		loadOperation(category3, subcategory3, concept2 , DateTime.now().minusDays(12), paymentTypes5 , false, "MaÃ±ana");
+		loadOperation(category3, subcategory3, concept2 , DateTime.now().minusDays(12), paymentTypes5 , false, "Mañana");
 		loadOperation(category3, subcategory3, concept2 , DateTime.now().minusDays(12), paymentTypes6 , false, "Noche");
 	}
 
